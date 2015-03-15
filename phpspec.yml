@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: eindwerk
+        psr4_prefix: eindwerk
+        src_path: app
