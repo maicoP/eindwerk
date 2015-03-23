@@ -1,1 +1,21 @@
 /* Empty. Add your own CSS if you like */
+.error,.error > input , .error > select{
+	background-color: #f85f5b !important;
+	color: white !important;
+}
+
+.error > input::-webkit-input-placeholder {
+   color: white;
+}
+
+.error > input:-moz-placeholder { /* Firefox 18- */
+   color: white;  
+}
+
+.error > input::-moz-placeholder {  /* Firefox 19+ */
+   color: white;  
+}
+
+.error > input:-ms-input-placeholder {  
+   color: white;  
+}

@@ -1,0 +1,25 @@
+<ion-view>
+<div class="bar bar-header bar-light">
+  <h1 class="title">logo</h1>
+</div>
+  <ion-content class='has-header'>
+    <form ng-submit="doSave()">
+      <div class="list">
+        <label class="item item-input item-select item-school">
+          <div class="input-label">
+            School
+          </div>
+          <select ng-model="locationData.school">
+            <option ng-repeat="school in schools" value="{{school.name}}">{{school.name}}</option>
+          </select>
+        </label>
+        <label class="item item-input item-price">
+          <input type="text" placeholder="Budget" ng-model="locationData.price">
+        </label>
+        <label class="item">
+          <button class="button button-block button-balanced" type="submit">Opslaan</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>
