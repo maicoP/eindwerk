@@ -1,9 +1,3 @@
-// Ionic Starter menu
-
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-// 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers'])
 
 .run(function($ionicPlatform) {
@@ -19,6 +13,25 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     }
   });
 })
+.run(['$window',function($window){
+  $window.fbAsyncInit = function() {
+    FB.init({ 
+      appId: '730369597078456', 
+      cookie: true, 
+      xfbml: true 
+    });
+  };
+  (function(d){
+    var js, id = 'facebook-jssdk', 
+    ref = d.getElementsByTagName('script')[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement('script'); 
+    js.id = id; 
+    js.async = true;
+    js.src = "//connect.facebook.net/en_US/all.js";
+    ref.parentNode.insertBefore(js, ref);
+  }(document));
+}])
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider

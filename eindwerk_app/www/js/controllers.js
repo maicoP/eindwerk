@@ -33,7 +33,11 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope) {
+.controller('PlaylistsCtrl', function($scope,$http) {
+  $http({method: "GET",url:'db/getkot.php'})
+      .success(function(data, status, headers, config) {
+        console.log(data);
+    });
   $scope.playlists = [
     { title: 'Reggae', id: 1 },
     { title: 'Chill', id: 2 },
@@ -45,10 +49,10 @@ angular.module('starter.controllers', [])
 })
 
 .controller('StartCtrl', function($location) {
-  if(window.localStorage.hasOwnProperty('username') && window.localStorage.hasOwnProperty('password'))
-    {
-        $location.path('/menu/playlists');
-    }
+/*  if(window.localStorage.hasOwnProperty('username') && window.localStorage.hasOwnProperty('password'))
+  {
+      $location.path('/menu/playlists');
+  }*/
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
@@ -57,6 +61,7 @@ angular.module('starter.controllers', [])
 .controller('RegisterCtrl', function($scope, $stateParams,$timeout,$location) {
 
   $scope.registerData = {};
+
   $scope.doRegister = function() {
       //controlleren of alle velden zijn ingevuld
       var isValid = true;
@@ -68,33 +73,37 @@ angular.module('starter.controllers', [])
       if(!$scope.registerData.hasOwnProperty('username'))
       {
         isValid = false;
-        angular.element(usernameEl).addClass('shake'); 
-        angular.element(usernameEl).addClass('animated'); 
-        angular.element(usernameEl).addClass('error'); 
-        $timeout(function() {
-          angular.element(usernameEl).removeClass('shake');
-          angular.element(usernameEl).removeClass('animated');
-         },700);
+        addError(usernameEl,$timeout);
       }
 
       if(!$scope.registerData.hasOwnProperty('password'))
       {
         isValid = false;
-        angular.element(passwordEl).addClass('shake'); 
-        angular.element(passwordEl).addClass('animated'); 
-        angular.element(passwordEl).addClass('error'); 
-        $timeout(function() {
-          angular.element(passwordEl).removeClass('shake');
-          angular.element(passwordEl).removeClass('animated');
-         },700);
+        addError(passwordEl,$timeout);
       }
 
       if(isValid)
       {
-        window.localStorage['username'] = $scope.registerData.username;
-        window.localStorage['password'] = $scope.registerData.password;
+        var userdata = {
+          username: $scope.registerData.username,
+          password: $scope.registerData.password
+        }
+        window.localStorage['userdata'] = JSON.stringify(userdata);
         $location.path('/location');
       }
+  };
+
+  $scope.facebookRegister = function() {
+    FB.getLoginStatus(function(response) {
+        if (response.status === 'connected') {
+          console.log('logind');
+        }
+        else {
+          FB.login(function(){
+            console.log('inloggen');
+          },{scope: ['email']});
+        }
+      });
   };
 })
 .controller('LocationCtrl', function($scope, $stateParams,$timeout,$location) {
@@ -112,34 +121,22 @@ angular.module('starter.controllers', [])
       //controlleren of alle velden zijn ingevuld
       var isValid = true;
       var schoolEl = document.querySelector( '.item-school' );
-      var pricedEl = document.querySelector( '.item-price' );
+      var priceEl = document.querySelector( '.item-price' );
       //remove red from input fields
       angular.element(schoolEl).removeClass('error');
-      angular.element(pricedEl).removeClass('error');
+      angular.element(priceEl).removeClass('error');
       if(!$scope.locationData.hasOwnProperty('school'))
       {
         isValid = false;
         
-        angular.element(schoolEl).addClass('shake'); 
-        angular.element(schoolEl).addClass('animated'); 
-        angular.element(schoolEl).addClass('error'); 
-        $timeout(function() {
-          angular.element(schoolEl).removeClass('shake');
-          angular.element(schoolEl).removeClass('animated');
-         },700);
+        addError(schoolEl,$timeout);
       }
 
       if(!$scope.locationData.hasOwnProperty('price'))
       {
         isValid = false;
         
-        angular.element(pricedEl).addClass('shake'); 
-        angular.element(pricedEl).addClass('animated'); 
-        angular.element(pricedEl).addClass('error'); 
-        $timeout(function() {
-          angular.element(pricedEl).removeClass('shake');
-          angular.element(pricedEl).removeClass('animated');
-         },700);
+        addError(priceEl,$timeout);
       }
 
       if(isValid)
@@ -150,3 +147,14 @@ angular.module('starter.controllers', [])
       }
   };
 });
+
+function addError(el,$timeout)
+  {
+    angular.element(el).addClass('shake'); 
+    angular.element(el).addClass('animated'); 
+    angular.element(el).addClass('error'); 
+    $timeout(function() {
+      angular.element(el).removeClass('shake');
+      angular.element(el).removeClass('animated');
+     },700);
+  }

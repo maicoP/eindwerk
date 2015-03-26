@@ -23,11 +23,11 @@ class CreateTalbeKot extends Migration {
 			$table->string('size');
 			$table->text('info');
 			$table->string('email');
-			$table->string('telephonenumber');
-			$table->boolean('bikestands');
-			$table->boolean('seperatekitchen');
-			$table->boolean('seperatebathroom');
-			$table->boolean('furniture');
+			$table->string('telephonenumber')->default(false);
+			$table->boolean('bikestands')->default(false);
+			$table->boolean('seperatekitchen')->default(false);
+			$table->boolean('seperatebathroom')->default(false);
+			$table->boolean('furniture')->default(false);
 			$table->date('begindate');
 			$table->date('enddate');
 			$table->integer("fk_userid")->unsigned();

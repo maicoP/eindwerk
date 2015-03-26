@@ -54,10 +54,10 @@ return [
 
 		'mysql' => [
 			'driver'    => 'mysql',
-			'host'      => env('DB_HOST', 'sql3.freemysqlhosting.net'/*'localhost'*/),
-			'database'  => env('DB_DATABASE', 'sql370683'/*'eindwerk'*/),
-			'username'  => env('DB_USERNAME', 'sql370683'/*'homestead'*/),
-			'password'  => env('DB_PASSWORD', 'dG9!sU5!'/*'secret'*/),
+			'host'      => env('DB_HOST', 'www.db4free.net'/*'sql3.freemysqlhosting.net''localhost'*/),
+			'database'  => env('DB_DATABASE', 'eindwerk'/*'sql370683''eindwerk'*/),
+			'username'  => env('DB_USERNAME', 'homestead'/*'sql370683''homestead'*/),
+			'password'  => env('DB_PASSWORD', 'password'/*'dG9!sU5!''secret'*/),
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
