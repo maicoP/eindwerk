@@ -36,7 +36,7 @@ angular.module('starter.controllers', [])
 .controller('PlaylistsCtrl', function($scope,$http) {
   $http({method: "GET",dataType: "jsonp",url:'http://eindwerk.co.nf/db/getkot.php',headers:{'Access-Control-Allow-Origin': '*'}})
       .success(function(data, status, headers, config) {
-        console.log(data);
+        
     });
   $scope.playlists = [
     { title: 'Reggae', id: 1 },
@@ -47,18 +47,26 @@ angular.module('starter.controllers', [])
     { title: 'Cowbell', id: 6 }
   ];
 })
+.controller('MainKotCtrl', function($scope,$http) {
+  $http({method: "GET",dataType: "jsonp",url:'http://eindwerk.co.nf/db/getkot.php',headers:{'Access-Control-Allow-Origin': '*'}})
+      .success(function(data, status, headers, config) {
+        console.log(data);
+        $scope.kot = data[0];
+        /*angular.element(document.getElementById('content')).append('<div class="kotInfo"><span class="adress">'+data[0].streatname+' '+data[0].housenumber+' '+data[0].city+'</span><span class="price"> €'+data[0].price+'</span></div>');*/
+    });
+})
 
 .controller('StartCtrl', function($location) {
   if(window.localStorage.hasOwnProperty('userdata'))
   {
-      $location.path('/menu/playlists');
+      $location.path('/menu/main');
   }
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 })
 
-.controller('RegisterCtrl', function($scope, $stateParams,$timeout,$location) {
+.controller('RegisterCtrl', function($scope, $stateParams,$timeout,$location,$http) {
 
   $scope.registerData = {};
 
@@ -84,12 +92,25 @@ angular.module('starter.controllers', [])
 
       if(isValid)
       {
-        var userdata = {
+        var userdata ={
           username: $scope.registerData.username,
           password: $scope.registerData.password
         }
-        window.localStorage['userdata'] = JSON.stringify(userdata);
-        $location.path('/location');
+        /*window.localStorage['userdata'] = JSON.stringify(userdata);*/
+        $http({method: "POST",dataType:"jsonp",url:'http://eindwerk.co.nf/db/register.php',data : {username: $scope.registerData.username,password: $scope.registerData.password},headers:{'Access-Control-Allow-Origin': '*'}})
+        .success(function(data, status, headers, config) {
+          console.log(data);
+          if(data['result'])
+          {
+            userdata = {
+              username:data['username'],
+              password: data['password']
+            };
+            window.localStorage['userdata'] = JSON.stringify(userdata);
+            $location.path('/location');
+          }
+        });
+        /*$location.path('/location');*/
       }
   };
 

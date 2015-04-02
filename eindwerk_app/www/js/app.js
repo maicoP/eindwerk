@@ -88,6 +88,15 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         }
       }
     })
+    .state('menu.main', {
+      url: "/main",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/main_kot.html",
+          controller: 'MainKotCtrl'
+        }
+      }
+    })
 
   .state('menu.single', {
     url: "/playlists/:playlistId",
