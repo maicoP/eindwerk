@@ -34,7 +34,7 @@ angular.module('starter.controllers', [])
 })
 
 .controller('PlaylistsCtrl', function($scope,$http) {
-  $http({method: "GET",url:'db/getkot.php'})
+  $http({method: "GET",dataType: "jsonp",url:'http://eindwerk.co.nf/db/getkot.php',headers:{'Access-Control-Allow-Origin': '*'}})
       .success(function(data, status, headers, config) {
         console.log(data);
     });
@@ -49,10 +49,10 @@ angular.module('starter.controllers', [])
 })
 
 .controller('StartCtrl', function($location) {
-/*  if(window.localStorage.hasOwnProperty('username') && window.localStorage.hasOwnProperty('password'))
+  if(window.localStorage.hasOwnProperty('userdata'))
   {
       $location.path('/menu/playlists');
-  }*/
+  }
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
