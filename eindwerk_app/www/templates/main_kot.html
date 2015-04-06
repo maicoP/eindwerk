@@ -2,6 +2,7 @@
   <ion-content id='content'>
 		<img src="" alt="">
 		<div class='info'>
+			<img ng-repeat="image in kot.image" src="http://eindwerk.co.nf/{{image}}" alt="">
 			<span class='distance'>1,6 km</span>
 			<span class='adress'>{{kot.housenumber}} {{kot.streatname}} {{kot.city}}</span>
 			<span class='price'> € {{kot.price}}</span>

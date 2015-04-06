@@ -1,9 +1,9 @@
 <?php 
-$host="www.db4free.net"; // Host name
-$username="homestead"; // Mysql username
-$password="password"; // Mysql password
-$db_name="eindwerk"; // Database name
+$host="fdb13.biz.nf"; // Host name
+$username="1847346_eindwerk"; // Mysql username
+$password="mm22mm33"; // Mysql password
+$db_name="1847346_eindwerk"; // Database name
 
 // Connect to server and select database.
-$con = mysql_connect($host, $username, $password)or die("cannot connect");
-mysql_select_db("$db_name")or die("cannot select DB");
+$con = mysqli_connect($host, $username, $password)or die("cannot connect");
+mysqli_select_db($con,$db_name)or die("cannot select DB");

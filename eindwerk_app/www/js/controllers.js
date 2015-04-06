@@ -51,8 +51,7 @@ angular.module('starter.controllers', [])
   $http({method: "GET",dataType: "jsonp",url:'http://eindwerk.co.nf/db/getkot.php',headers:{'Access-Control-Allow-Origin': '*'}})
       .success(function(data, status, headers, config) {
         console.log(data);
-        $scope.kot = data[0];
-        /*angular.element(document.getElementById('content')).append('<div class="kotInfo"><span class="adress">'+data[0].streatname+' '+data[0].housenumber+' '+data[0].city+'</span><span class="price"> €'+data[0].price+'</span></div>');*/
+        $scope.kot = data;
     });
 })
 
@@ -103,6 +102,7 @@ angular.module('starter.controllers', [])
           if(data['result'])
           {
             userdata = {
+              id : data['id'],
               username:data['username'],
               password: data['password']
             };
@@ -110,7 +110,6 @@ angular.module('starter.controllers', [])
             $location.path('/location');
           }
         });
-        /*$location.path('/location');*/
       }
   };
 
@@ -127,7 +126,7 @@ angular.module('starter.controllers', [])
       });
   };
 })
-.controller('LocationCtrl', function($scope, $stateParams,$timeout,$location) {
+.controller('LocationCtrl', function($scope, $stateParams,$timeout,$location,$http) {
 
   $scope.locationData = {};
   $scope.schools = [
@@ -162,9 +161,18 @@ angular.module('starter.controllers', [])
 
       if(isValid)
       {
-        window.localStorage['school'] = $scope.locationData.school;
-        window.localStorage['price'] = $scope.locationData.price;
-        $location.path('/menu/playlists');
+        userdata = JSON.parse(window.localStorage['userdata']);
+        $http({method: "POST",dataType:"jsonp",url:'http://eindwerk.co.nf/db/savebasicfilter.php',data : {school: $scope.locationData.school,price: $scope.locationData.price , userid: userdata['id']},headers:{'Access-Control-Allow-Origin': '*'}})
+        .success(function(data, status, headers, config) {
+          console.log(data);
+          if(data['result'])
+          {
+            userdata['school'] = $scope.locationData.school;
+            userdata['price'] = $scope.locationData.price;
+            window.localStorage['userdata'] = JSON.stringify(userdata);
+            $location.path('/menu/main');
+          }
+        });
       }
   };
 });
