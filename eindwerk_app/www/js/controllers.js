@@ -23,7 +23,6 @@ angular.module('starter.controllers', [])
 
   // Perform the login action when the user submits the login form
   $scope.doLogin = function() {
-    console.log('Doing login', $scope.loginData);
 
     // Simulate a login delay. Remove this and replace with your login
     // code if using a login system
@@ -34,7 +33,7 @@ angular.module('starter.controllers', [])
 })
 
 .controller('PlaylistsCtrl', function($scope,$http) {
-  $http({method: "GET",dataType: "jsonp",url:'http://eindwerk.co.nf/db/getkot.php',headers:{'Access-Control-Allow-Origin': '*'}})
+  $http({method: "GET",dataType: "jsonp",url:'http://maicopaulussen.2fh.co/eindwerk/db/getkot.php',headers:{'Access-Control-Allow-Origin': '*'}})
       .success(function(data, status, headers, config) {
         
     });
@@ -47,18 +46,40 @@ angular.module('starter.controllers', [])
     { title: 'Cowbell', id: 6 }
   ];
 })
-.controller('MainKotCtrl', function($scope,$http) {
-  $http({method: "GET",dataType: "jsonp",url:'http://eindwerk.co.nf/db/getkot.php',headers:{'Access-Control-Allow-Origin': '*'}})
+.controller('MainKotCtrl', function($scope,$http,$window) {
+  userdata = JSON.parse(window.localStorage['userdata']);
+  $http({method: "post",dataType: "jsonp",url:'http://maicopaulussen.2fh.co/eindwerk/db/getkot.php',data: {userid: userdata['id']},headers:{'Access-Control-Allow-Origin': '*'}})
       .success(function(data, status, headers, config) {
         console.log(data);
-        $scope.kot = data;
+        $scope.kot = data['kot'];
+        $scope.kot.image = data['images'];
     });
+
+  $scope.vote = function(vote,kotid)
+  {
+    
+    $http({method: "post",dataType: "jsonp",url:'http://maicopaulussen.2fh.co/eindwerk/db/vote.php',data : {userid: userdata['id'],kotid: kotid,vote: vote},headers:{'Access-Control-Allow-Origin': '*'}})
+        .success(function(data, status, headers, config) {
+          if(data)
+          {
+            $window.location.reload(true);
+          }
+      });
+  }
 })
 
-.controller('StartCtrl', function($location) {
+.controller('StartCtrl', function($location,$http) {
   if(window.localStorage.hasOwnProperty('userdata'))
   {
-      $location.path('/menu/main');
+      userdata = JSON.parse(window.localStorage['userdata']);
+      $http({method: "post",dataType: "jsonp",url:'http://maicopaulussen.2fh.co/eindwerk/db/checkUser.php',data : {userid: userdata['id']},headers:{'Access-Control-Allow-Origin': '*'}})
+        .success(function(data, status, headers, config) {
+          if(data.succes)
+          {
+            $location.path('/menu/main');
+          }  
+      });
+      
   }
 })
 
@@ -96,7 +117,7 @@ angular.module('starter.controllers', [])
           password: $scope.registerData.password
         }
         /*window.localStorage['userdata'] = JSON.stringify(userdata);*/
-        $http({method: "POST",dataType:"jsonp",url:'http://eindwerk.co.nf/db/register.php',data : {username: $scope.registerData.username,password: $scope.registerData.password},headers:{'Access-Control-Allow-Origin': '*'}})
+        $http({method: "POST",dataType:"jsonp",url:'http://maicopaulussen.2fh.co/eindwerk/db/register.php',data : {username: $scope.registerData.username,password: $scope.registerData.password},headers:{'Access-Control-Allow-Origin': '*'}})
         .success(function(data, status, headers, config) {
           console.log(data);
           if(data['result'])
@@ -114,17 +135,35 @@ angular.module('starter.controllers', [])
   };
 
   $scope.facebookRegister = function() {
-    FB.getLoginStatus(function(response) {
-        if (response.status === 'connected') {
-          console.log('logind');
+    facebookConnectPlugin.login(["public_profile", "email"],
+      function(success) {
+        if(success.status == 'connected')
+        {
+          facebookConnectPlugin.api('/me',["public_profile", "email"],function(result){
+              $http({method: "POST",dataType:"jsonp",url:'http://maicopaulussen.2fh.co/eindwerk/db/register.php',data : {username: result.name,password: ''},headers:{'Access-Control-Allow-Origin': '*'}})
+                .success(function(data, status, headers, config) {
+                  if(data['result'])
+                  {
+                    userdata = {
+                      id : data['id'],
+                      username:data['username'],
+                      password: data['password']
+                    };
+                    window.localStorage['userdata'] = JSON.stringify(userdata);
+                    $location.path('/location');
+                  }
+                });
+          });
         }
-        else {
-          FB.login(function(){
-            console.log('inloggen');
-          },{scope: ['email']});
-        }
-      });
+      
+    }, function (error) {
+      console.log(error);
+    });
   };
+
+  function facebookReg(){
+    
+  }
 })
 .controller('LocationCtrl', function($scope, $stateParams,$timeout,$location,$http) {
 
@@ -162,9 +201,8 @@ angular.module('starter.controllers', [])
       if(isValid)
       {
         userdata = JSON.parse(window.localStorage['userdata']);
-        $http({method: "POST",dataType:"jsonp",url:'http://eindwerk.co.nf/db/savebasicfilter.php',data : {school: $scope.locationData.school,price: $scope.locationData.price , userid: userdata['id']},headers:{'Access-Control-Allow-Origin': '*'}})
+        $http({method: "POST",dataType:"jsonp",url:'http://maicopaulussen.2fh.co/eindwerk/db/savebasicfilter.php',data : {school: $scope.locationData.school,price: $scope.locationData.price , userid: userdata['id']},headers:{'Access-Control-Allow-Origin': '*'}})
         .success(function(data, status, headers, config) {
-          console.log(data);
           if(data['result'])
           {
             userdata['school'] = $scope.locationData.school;
@@ -175,6 +213,29 @@ angular.module('starter.controllers', [])
         });
       }
   };
+})
+
+.controller('SettingsCtrl', function($scope, $stateParams,$timeout,$location,$http) {
+
+  $scope.locationData = {};
+  userdata = JSON.parse(window.localStorage['userdata']);
+  $http({method: "POST",dataType:"jsonp",url:'http://maicopaulussen.2fh.co/eindwerk/db/getUser.php',data : {userid: userdata['id']},headers:{'Access-Control-Allow-Origin': '*'}})
+        .success(function(data, status, headers, config) {
+          console.log(data);
+          if(data['succes'])
+          {
+            $scope.userdata = data['result'];
+          }
+        });
+  $scope.userdata = JSON.parse(window.localStorage['userdata']);
+  $scope.schools = [
+                      { name :'Karel De Grote , groenplaats'},
+                      { name :'Karel De Grote , hoboken'},
+                      { name :'Thomas More'},
+                      { name :'Universiteit antwerpen'},
+                      { name :'lessius'}
+                    ];
+  $scope.schools.sort();          
 });
 
 function addError(el,$timeout)

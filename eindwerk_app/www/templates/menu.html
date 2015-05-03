@@ -5,7 +5,11 @@
       </ion-nav-back-button>
 
       <ion-nav-buttons side="left">
-        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        <a class="icon ion-gear-a" href="#/menu/settings"></a>
+        </button>
+      </ion-nav-buttons>
+      <ion-nav-buttons side="right">
+        <a class="icon ion-heart" href="#/menu/favorite"></a>
         </button>
       </ion-nav-buttons>
     </ion-nav-bar>
@@ -21,13 +25,13 @@
         <ion-item nav-clear menu-close ng-click="login()">
           Login
         </ion-item>
-        <ion-item nav-clear menu-close href="#/app/search">
+        <ion-item nav-clear menu-close href="#/menu/search">
           Search
         </ion-item>
-        <ion-item nav-clear menu-close href="#/app/browse">
+        <ion-item nav-clear menu-close href="#/menu/browse">
           Browse
         </ion-item>
-        <ion-item nav-clear menu-close href="#/app/playlists">
+        <ion-item nav-clear menu-close href="#/menu/playlists">
           Playlists
         </ion-item>
       </ion-list>

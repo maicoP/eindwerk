@@ -1,6 +1,6 @@
 angular.module('starter', ['ionic', 'starter.controllers'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform,$ionicPopup) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -11,29 +11,23 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+    if(window.Connection) {
+      if(navigator.connection.type == Connection.NONE) {
+          $ionicPopup.confirm({
+              title: "Internet Disconnected",
+              content: "The internet is disconnected on your device."
+          })
+          .then(function(result) {
+              if(!result) {
+                  ionic.Platform.exitApp();
+              }
+          });
+      }
+    }
   });
 })
-.run(['$window',function($window){
-  $window.fbAsyncInit = function() {
-    FB.init({ 
-      appId: '730369597078456', 
-      cookie: true, 
-      xfbml: true 
-    });
-  };
-  (function(d){
-    var js, id = 'facebook-jssdk', 
-    ref = d.getElementsByTagName('script')[0];
-    if (d.getElementById(id)) {return;}
-    js = d.createElement('script'); 
-    js.id = id; 
-    js.async = true;
-    js.src = "//connect.facebook.net/en_US/all.js";
-    ref.parentNode.insertBefore(js, ref);
-  }(document));
-}])
 
-.config(function($stateProvider, $urlRouterProvider,$httpProvider) {
+.config(function($stateProvider,$urlRouterProvider,$httpProvider) {
   $stateProvider
 
 
@@ -60,6 +54,25 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     url: "/location",
     templateUrl: "templates/location.html",
     controller: 'LocationCtrl'
+  })
+
+  .state('menu.settings', {
+    url: "/settings",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/settings.html",
+        controller: 'SettingsCtrl'
+      }
+    }
+  })
+
+  .state('menu.favorite', {
+    url: "/favorite",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/favorite.html"
+      }
+    }
   })
 
   .state('menu.search', {

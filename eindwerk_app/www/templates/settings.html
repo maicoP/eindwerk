@@ -1,0 +1,18 @@
+<ion-view view-title="Instellingen">
+  <ion-content id='content'>
+	  <label class="item item-input item-stacked-label">
+	    <span class="input-label">Gebruikersnaam: </span>
+	    <input type="text" placeholder="Gebruikersnaam" value="{{userdata.username}}">
+	  </label>
+	  <label class="item item-input item-stacked-label item-select item-school">
+	    <span class="input-label">School: </span>
+	   	 <select ng-model="locationData.school">
+	        <option ng-repeat="school in schools"  ng-selected="school.name == userdata.school" value="{{school.name}}">{{school.name}}</option>
+	      </select>
+	  </label>
+	  <label class="item item-input item-stacked-label">
+	    <span class="input-label">Prijs: </span>
+	    <input type="text" placeholder="Prijs" value="{{userdata.price}}">
+	  </label>
+  </ion-content>
+</ion-view>
