@@ -19,3 +19,25 @@
 .error > input:-ms-input-placeholder {  
    color: white;  
 }
+
+.tut_title{
+	margin:10px;
+	font-size:16px;
+}
+
+.bar-custom-header{
+	background-color:#191919;
+}
+
+.bar-custom-header .title{
+	color:#fff;
+}
+
+.bar-custom-footer{
+	background-color:#fff055;
+	
+}
+
+.bar-custom-footer .title{
+	color: #191919;
+}
