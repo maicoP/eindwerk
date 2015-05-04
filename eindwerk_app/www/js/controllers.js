@@ -32,22 +32,15 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope,$http) {
-  $http({method: "GET",dataType: "jsonp",url:'http://maicopaulussen.2fh.co/eindwerk/db/getkot.php',headers:{'Access-Control-Allow-Origin': '*'}})
-      .success(function(data, status, headers, config) {
-        
-    });
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
-})
 .controller('MainKotCtrl', function($scope,$http,$window) {
   userdata = JSON.parse(window.localStorage['userdata']);
+  $scope.change_image = function($event){
+      console.log(document.getElementById('main_image'));
+      console.log(angular.element(document.getElementById('main_image')).attr("src"));
+      angular.element(document.getElementById('main_image')).attr("src", angular.element($event.target).attr('src'));
+      
+  };
+
   $http({method: "post",dataType: "jsonp",url:'http://maicopaulussen.2fh.co/eindwerk/db/getkot.php',data: {userid: userdata['id']},headers:{'Access-Control-Allow-Origin': '*'}})
       .success(function(data, status, headers, config) {
         console.log(data);
@@ -160,14 +153,11 @@ angular.module('starter.controllers', [])
       console.log(error);
     });
   };
-
-  function facebookReg(){
-    
-  }
 })
 .controller('LocationCtrl', function($scope, $stateParams,$timeout,$location,$http) {
 
   $scope.locationData = {};
+  $scope.locationData.price = 100;
   $scope.schools = [
                       { name :'Karel De Grote , groenplaats'},
                       { name :'Karel De Grote , hoboken'},
@@ -197,12 +187,14 @@ angular.module('starter.controllers', [])
         
         addError(priceEl,$timeout);
       }
+      console.log($scope.locationData.price);
 
       if(isValid)
       {
         userdata = JSON.parse(window.localStorage['userdata']);
         $http({method: "POST",dataType:"jsonp",url:'http://maicopaulussen.2fh.co/eindwerk/db/savebasicfilter.php',data : {school: $scope.locationData.school,price: $scope.locationData.price , userid: userdata['id']},headers:{'Access-Control-Allow-Origin': '*'}})
         .success(function(data, status, headers, config) {
+          console.log(data);
           if(data['result'])
           {
             userdata['school'] = $scope.locationData.school;
@@ -216,15 +208,72 @@ angular.module('starter.controllers', [])
 })
 
 .controller('SettingsCtrl', function($scope, $stateParams,$timeout,$location,$http) {
+  $scope.changeUsername = function(){
+      $scope.postChanges('username',$scope.userdata.username); 
+  };
 
-  $scope.locationData = {};
+  $scope.changeSchool = function(){
+      $scope.postChanges('school',$scope.userdata.school);    
+  };
+
+  $scope.changePrice = function(){
+      $scope.postChanges('price',$scope.userdata.price);   
+  };
+
+  $scope.changeDistance = function(){
+      $scope.postChanges('distance',$scope.userdata.distance);   
+  };
+
+  $scope.changeStartDate = function(){
+      $scope.postChanges('startDate',$scope.userdata.startDate);   
+  };
+
+  $scope.changeEndDate = function(){
+      $scope.postChanges('endDate',$scope.userdata.endDate);   
+  };
+
+  $scope.changeBikestands = function(){
+      $scope.postChanges('bikestands',$scope.userdata.bikestands);   
+  };
+
+  $scope.changeSeperatekitchen = function(){
+      $scope.postChanges('seperatekitchen',$scope.userdata.seperatekitchen);   
+  };
+
+  $scope.changeSeperatebathroom = function(){
+      $scope.postChanges('seperatebathroom',$scope.userdata.seperatebathroom);   
+  };
+
+  $scope.changeFurniture = function(){
+      $scope.postChanges('furniture',$scope.userdata.furniture);   
+  };
+
+  //needed to cancel the timeout function
+  var delay;
+  $scope.postChanges = function(field,value)
+  {
+    //cancel current timeout
+    $timeout.cancel(delay);
+    delay = $timeout(function() {
+      console.log(field+'='+value);
+      userdata = JSON.parse(window.localStorage['userdata']);
+        $http({method: "POST",dataType:"jsonp",url:'http://maicopaulussen.2fh.co/eindwerk/db/changeFilters.php',data : {field: field,value: value , userid: userdata['id']},headers:{'Access-Control-Allow-Origin': '*'}})
+        .success(function(data, status, headers, config) {
+          console.log(data);
+        });
+    }, 1000);
+    
+  }
+
   userdata = JSON.parse(window.localStorage['userdata']);
   $http({method: "POST",dataType:"jsonp",url:'http://maicopaulussen.2fh.co/eindwerk/db/getUser.php',data : {userid: userdata['id']},headers:{'Access-Control-Allow-Origin': '*'}})
         .success(function(data, status, headers, config) {
-          console.log(data);
+          console.log(data['result'][0]);
           if(data['succes'])
           {
-            $scope.userdata = data['result'];
+            $scope.userdata = data['result'][0];
+            $scope.userdata.startDate = new Date(data['result'][0]['startDate']);
+            $scope.userdata.endDate = new Date(data['result'][0]['endDate']);
           }
         });
   $scope.userdata = JSON.parse(window.localStorage['userdata']);

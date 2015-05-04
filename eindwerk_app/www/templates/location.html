@@ -13,8 +13,12 @@
             <option ng-repeat="school in schools" value="{{school.name}}">{{school.name}}</option>
           </select>
         </label>
-        <label class="item item-input item-price">
-          <input type="text" placeholder="Budget" ng-model="locationData.price">
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Prijs: <span>€{{locationData.price}}</span></span>
+          
+          <div class="range">
+          <input ng-model="locationData.price"  type="range" min="100" max="800" name="price">
+        </div>
         </label>
         <label class="item">
           <button class="button button-block button-balanced" type="submit">Opslaan</button>

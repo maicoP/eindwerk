@@ -1,18 +1,76 @@
 <ion-view view-title="Instellingen">
   <ion-content id='content'>
-	  <label class="item item-input item-stacked-label">
-	    <span class="input-label">Gebruikersnaam: </span>
-	    <input type="text" placeholder="Gebruikersnaam" value="{{userdata.username}}">
-	  </label>
-	  <label class="item item-input item-stacked-label item-select item-school">
-	    <span class="input-label">School: </span>
-	   	 <select ng-model="locationData.school">
-	        <option ng-repeat="school in schools"  ng-selected="school.name == userdata.school" value="{{school.name}}">{{school.name}}</option>
-	      </select>
-	  </label>
-	  <label class="item item-input item-stacked-label">
-	    <span class="input-label">Prijs: </span>
-	    <input type="text" placeholder="Prijs" value="{{userdata.price}}">
-	  </label>
+	  <div class="card">
+	  	 <div class="item item-divider">
+		    Gebruiker
+		  </div>
+		  <label class="item item-input item-stacked-label">
+		    <span class="input-label">Gebruikersnaam: </span>
+		    <input type="text" ng-change='changeUsername()' ng-model='userdata.username' placeholder="Gebruikersnaam" value="{{userdata.username}}">
+		  </label>
+
+		  <label class="item item-input item-stacked-label item-select item-school">
+		    <span class="input-label">School: </span>
+		   	 <select ng-change='changeSchool()' ng-model="userdata.school">
+		        <option ng-repeat="school in schools"  ng-selected="school.name == userdata.school" value="{{school.name}}">{{school.name}}</option>
+		      </select>
+		  </label>
+		</div>
+		<div class="card">	
+		  <div class="item item-divider">
+		    Kot
+		  </div>
+		  <label class="item item-input item-stacked-label">
+		    <span class="input-label">Prijs: <span>€{{userdata.price}}</span></span>
+		    
+	    	<div class="range">
+			  <input ng-change='changePrice()'ng-model="userdata.price"  type="range" min="100" max="800" name="price">
+			</div>
+		  </label>
+
+		  <label class="item item-input item-stacked-label">
+		    <span class="input-label">Afstand van campus: <span>{{userdata.distance}}km</span></span>
+	    	<div class="range">
+			  <input ng-change='changeDistance()' ng-model="userdata.distance" type="range" min="0" max="100" name="price" >
+			</div>
+		  </label>
+
+		  <label class="item item-input item-stacked-label item-select item-school">
+		    <span class="input-label">Start datum: </span>
+		   	 <input ng-change='changeStartDate()' ng-model="userdata.startDate" type="date">
+		  </label>
+
+		  <label class="item item-input item-stacked-label item-select item-school">
+		    <span class="input-label">Eind datum: </span>
+		   	<input ng-change='changeEndDate()' ng-model="userdata.endDate" type="date">
+		  </label>
+
+	  	  <ul class="item list">
+			  <li class="item item-checkbox">
+			     <label class="checkbox">
+			       <input ng-change='changeBikestands()' ng-model="userdata.bikestands" type="checkbox">
+			     </label>
+			     Fietsenstalling
+			  </li>
+			  <li class="item item-checkbox">
+			     <label class="checkbox">
+			       <input ng-change='changeSeperatekitchen()' ng-model="userdata.seperatekitchen" type="checkbox">
+			     </label>
+			     Aparte keuken
+			  </li>
+			  <li class="item item-checkbox">
+			     <label class="checkbox">
+			       <input ng-change='changeSeperatebathroom()' ng-model="userdata.seperatebathroom" type="checkbox">
+			     </label>
+			     Aparte Badkamer
+			  </li>
+			  <li class="item item-checkbox">
+			     <label class="checkbox">
+			       <input ng-change='changeFurniture()' ng-model="userdata.furniture" type="checkbox">
+			     </label>
+			     Bemeubeld
+			  </li>
+		  </ul>
+	</div>
   </ion-content>
 </ion-view>
