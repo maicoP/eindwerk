@@ -1,4 +1,4 @@
-<ion-view view-title="Main">
+<ion-view view-title="KOTTER">
   <ion-content id='content'>
   	<div class="card">
 		<div class='info'>
@@ -8,13 +8,21 @@
 			<span class='adress'>{{kot.housenumber}} {{kot.streatname}} {{kot.city}}</span>
 			<span class='price'> € {{kot.price}}</span>
 		</div>
-		<div>
-			<a ng-click="vote('like',kot.id)" ng-href="#">like</a>
-			<br/>
-		</div>
-		<div>
-			<a ng-click="vote('dislike',kot.id)" ng-href="#">dislike</a>
-		</div>
+
 	</div>
   </ion-content>
+
+  <div class="like_dislike" style="position: absolute; bottom: 0px; width: 100%">
+
+    <div class="row">
+        <div class="col">
+            <button ng-click="vote('dislike',kot.id)" ng-href="#" class="button button-block button-assertive">Dislike</button>
+        </div>
+        <div class="col">
+            <button ng-click="vote('like',kot.id)" ng-href="#" class="button button-block button-positive">Like</button>
+        </div>
+    </div>
+
+    </div>
+
 </ion-view>
