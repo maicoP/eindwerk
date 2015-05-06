@@ -1,7 +1,7 @@
 {
-  "name": "eindwerk_app",
+  "name": "conference",
   "version": "1.0.0",
-  "description": "eindwerk_app: An Ionic project",
+  "description": "conference: An Ionic project",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^0.7.1",
@@ -15,6 +15,7 @@
     "shelljs": "^0.3.0"
   },
   "cordovaPlugins": [
+    "https://github.com/phonegap/phonegap-facebook-plugin.git",
     "org.apache.cordova.network-information"
   ]
 }
