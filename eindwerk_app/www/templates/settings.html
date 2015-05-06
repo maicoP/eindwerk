@@ -1,5 +1,12 @@
-<ion-view view-title="Instellingen">
-  <ion-content id='content'>
+<ion-view>
+	<div class="bar bar-header bar-dark">
+	  	<a class="button button-icon icon ion-arrow-left-c" href="#/main"></a>	
+	  	<div class="h1 title">Kotter</div>
+	</div>
+	<div class="bar bar-subheader">
+	  <h2 class="title">Instellingen</h2>
+	</div>
+  <ion-content id='content' class='content has-header has-subheader padding'>
 	  <div class="card">
 	  	 <div class="item item-divider">
 		    Gebruiker
@@ -31,7 +38,7 @@
 		  <label class="item item-input item-stacked-label">
 		    <span class="input-label">Afstand van campus: <span>{{userdata.distance}}km</span></span>
 	    	<div class="range">
-			  <input ng-change='changeDistance()' ng-model="userdata.distance" type="range" min="0" max="100" name="price" >
+			  <input ng-change='changeDistance()' ng-model="userdata.distance" type="range" min="1" max="20" name="price" >
 			</div>
 		  </label>
 

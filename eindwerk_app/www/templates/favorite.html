@@ -1,5 +1,23 @@
-<ion-view view-title="Main">
-  <ion-content id='content'>
-		<h1>Favorite</h1>
+<ion-view>
+	<div class="bar bar-header bar-dark">
+		<a class="button button-icon icon ion-arrow-left-c" href="#/main"></a>	
+	  	<div class="h1 title">Kotter</div>
+	</div>
+	<div class="bar bar-subheader">
+	  <h2 class="title">Jou Favorieten</h2>
+	</div>
+  <ion-content id='content' class='content has-header padding'>
+	<div ng-repeat="kot in favKot" class="card">
+		<div class='info'>
+			<img width='100%' id='main_image' src="http://maicopaulussen.2fh.co/eindwerk/public/{{kot.images[0].image}}" alt="">
+			<img ng-repeat="image in kot.images" width='25%' ng-click='change_image($event)' src="http://maicopaulussen.2fh.co/eindwerk/public/{{image.image}}" alt="">
+			<span class='distance'>1,6 km</span>
+			<span class='adress'>{{kot.housenumber}} {{kot.streatname}} {{kot.city}}</span>
+			<span class='price'> € {{kot.price}}</span>
+		</div>
+		<div class='row' >
+			<a ng-click="vote('dislike',kot.id)" ng-href="#" class="col button button-full button-assertive icon ion-thumbsdown"></a>
+		</div>
+	</div>
   </ion-content>
 </ion-view>

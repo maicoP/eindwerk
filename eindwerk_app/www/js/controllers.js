@@ -69,14 +69,20 @@ angular.module('starter.controllers', [])
         .success(function(data, status, headers, config) {
           if(data.succes)
           {
-            $location.path('/menu/main');
+            $location.path('/main');
           }  
       });
       
   }
 })
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
+.controller('FavKotCtrl', function($scope, $stateParams,$http) {
+  userdata = JSON.parse(window.localStorage['userdata']);
+  $http({method: "post",dataType: "jsonp",url:'http://maicopaulussen.2fh.co/eindwerk/db/getFavKot.php',data : {userid: userdata['id']},headers:{'Access-Control-Allow-Origin': '*'}})
+      .success(function(data, status, headers, config) {
+        $scope.favKot = data;
+        console.log(data); 
+    });
 })
 
 .controller('RegisterCtrl', function($scope, $stateParams,$timeout,$location,$http) {
@@ -200,7 +206,7 @@ angular.module('starter.controllers', [])
             userdata['school'] = $scope.locationData.school;
             userdata['price'] = $scope.locationData.price;
             window.localStorage['userdata'] = JSON.stringify(userdata);
-            $location.path('/menu/main');
+            $location.path('/main');
           }
         });
       }

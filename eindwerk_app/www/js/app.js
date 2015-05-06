@@ -31,13 +31,6 @@ angular.module('starter', ['ionic', 'starter.controllers'])
   $stateProvider
 
 
-  .state('menu', {
-    url: "/menu",
-    abstract: true,
-    templateUrl: "templates/menu.html",
-    controller: 'AppCtrl'
-  })
-
   .state('tutorial', {
     url: "/tutorial",
     templateUrl: "templates/tut1.html",
@@ -56,70 +49,22 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     controller: 'LocationCtrl'
   })
 
-  .state('menu.settings', {
+  .state('settings', {
     url: "/settings",
-    views: {
-      'menuContent': {
-        templateUrl: "templates/settings.html",
-        controller: 'SettingsCtrl'
-      }
-    }
+    templateUrl: "templates/settings.html",
+    controller: 'SettingsCtrl'
   })
 
-  .state('menu.favorite', {
+  .state('favorite', {
     url: "/favorite",
-    views: {
-      'menuContent': {
-        templateUrl: "templates/favorite.html"
-      }
-    }
+    templateUrl: "templates/favorite.html",
+    controller: 'FavKotCtrl'
   })
-
-  .state('menu.search', {
-    url: "/search",
-    views: {
-      'menuContent': {
-        templateUrl: "templates/search.html"
-      }
-    }
-  })
-
-  .state('menu.browse', {
-    url: "/browse",
-    views: {
-      'menuContent': {
-        templateUrl: "templates/browse.html"
-      }
-    }
-  })
-    .state('menu.playlists', {
-      url: "/playlists",
-      views: {
-        'menuContent': {
-          templateUrl: "templates/playlists.html",
-          controller: 'PlaylistsCtrl'
-        }
-      }
-    })
-    .state('menu.main', {
+    .state('main', {
       url: "/main",
-      views: {
-        'menuContent': {
-          templateUrl: "templates/main_kot.html",
-          controller: 'MainKotCtrl'
-        }
-      }
-    })
-
-  .state('menu.single', {
-    url: "/playlists/:playlistId",
-    views: {
-      'menuContent': {
-        templateUrl: "templates/playlist.html",
-        controller: 'PlaylistCtrl'
-      }
-    }
-  });
+      templateUrl: "templates/main_kot.html",
+      controller: 'MainKotCtrl'
+    });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tutorial');
   $httpProvider.defaults.useXDomain = true;

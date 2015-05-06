@@ -1,5 +1,10 @@
-<ion-view view-title="Main">
-  <ion-content id='content'>
+<ion-view>
+	<div class="bar bar-header bar-dark">
+		<a class="button button-icon icon ion-gear-a" href="#/settings"></a>
+	  	<div class="h1 title">Kotter</div>
+	  	<a class="button button-clear icon ion-heart" href="#/favorite"></a>	
+	</div>
+  <ion-content id='content' class='content has-header padding'>
   	<div class="card">
 		<div class='info'>
 			<img width='100%' id='main_image' src="http://maicopaulussen.2fh.co/eindwerk/public/{{kot.image[0].image}}" alt="">
@@ -8,12 +13,10 @@
 			<span class='adress'>{{kot.housenumber}} {{kot.streatname}} {{kot.city}}</span>
 			<span class='price'> € {{kot.price}}</span>
 		</div>
-		<div>
-			<a ng-click="vote('like',kot.id)" ng-href="#">like</a>
+		<div class='row'>
+			<a ng-click="vote('like',kot.id)" ng-href="#" class="col button button-full button-balanced icon ion-thumbsup"></a>
 			<br/>
-		</div>
-		<div>
-			<a ng-click="vote('dislike',kot.id)" ng-href="#">dislike</a>
+			<a ng-click="vote('dislike',kot.id)" ng-href="#" class="col button button-full button-assertive icon ion-thumbsdown"></a>
 		</div>
 	</div>
   </ion-content>
