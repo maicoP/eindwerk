@@ -10,10 +10,23 @@
 	<div ng-repeat="kot in favKot" class="card">
 		<div class='info'>
 			<img width='100%' id='main_image' src="http://maicopaulussen.2fh.co/eindwerk/public/{{kot.images[0].image}}" alt="">
-			<img ng-repeat="image in kot.images" width='25%' ng-click='change_image($event)' src="http://maicopaulussen.2fh.co/eindwerk/public/{{image.image}}" alt="">
-			<span class='distance'>1,6 km</span>
-			<span class='adress'>{{kot.housenumber}} {{kot.streatname}} {{kot.city}}</span>
-			<span class='price'> € {{kot.price}}</span>
+			<div class="kot_thumbs">
+				<img ng-repeat="image in kot.images" width='25%' ng-click='change_image($event)' src="http://maicopaulussen.2fh.co/eindwerk/public/{{image.image}}" alt="" class="kot_thumb">
+			</div>
+		    <div class="kot_icons">
+				<a class="item item-icon-left item-icon-right kot_details" href="#">
+					<i class="icon ion-navigate"><p>1,6km</p></i>
+					<i class="icon ion-social-euro"><p>{{kot.price}}</p></i>
+				</a>
+
+				<a class="item item-icon-left" href="#">
+					<i class="icon ion-android-pin"><p>{{kot.housenumber}} {{kot.streatname}} {{kot.city}}</p></i>
+				</a>
+
+				<a class="item item-text-wrap" href="#">
+					<p>Cicero famously orated against his political opponent Lucius Sergius Catilina. Occasionally the first Oration against Catiline is taken for type specimens: Quo usque tandem abutere, Catilina? </p>
+				</a>
+		    </div>
 		</div>
 		<div class='row' >
 			<a ng-click="vote('dislike',kot.id)" ng-href="#" class="col button button-full button-assertive icon ion-thumbsdown"></a>
