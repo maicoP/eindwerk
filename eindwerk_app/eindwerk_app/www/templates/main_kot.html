@@ -1,0 +1,20 @@
+<ion-view view-title="Main">
+  <ion-content id='content'>
+  	<div class="card">
+		<div class='info'>
+			<img width='100%' id='main_image' src="http://maicopaulussen.2fh.co/eindwerk/public/{{kot.image[0].image}}" alt="">
+			<img ng-repeat="image in kot.image" width='25%' ng-click='change_image($event)' src="http://maicopaulussen.2fh.co/eindwerk/public/{{image.image}}" alt="">
+			<span class='distance'>1,6 km</span>
+			<span class='adress'>{{kot.housenumber}} {{kot.streatname}} {{kot.city}}</span>
+			<span class='price'> € {{kot.price}}</span>
+		</div>
+		<div>
+			<a ng-click="vote('like',kot.id)" ng-href="#">like</a>
+			<br/>
+		</div>
+		<div>
+			<a ng-click="vote('dislike',kot.id)" ng-href="#">dislike</a>
+		</div>
+	</div>
+  </ion-content>
+</ion-view>
