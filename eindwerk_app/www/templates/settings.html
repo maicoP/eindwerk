@@ -3,7 +3,7 @@
 	  	<a class="button button-icon icon ion-arrow-left-c" href="#/main"></a>	
 	  	<div class="h1 title">Kotter</div>
 	</div>
-	<div class="bar bar-subheader">
+	<div class="bar bar-subheader sub_menu">
 	  <h2 class="title">Instellingen</h2>
 	</div>
   <ion-content id='content' class='content has-header has-subheader padding'>
@@ -29,18 +29,25 @@
 		  </div>
 		  <label class="item item-input item-stacked-label">
 		    <span class="input-label">Prijs: <span>€{{userdata.price}}</span></span>
-		    
-	    	<div class="range">
-			  <input ng-change='changePrice()'ng-model="userdata.price"  type="range" min="100" max="800" name="price">
+			<div class="list">
+				<div class="item range range-positive">
+					<i class="icon ion-ios-minus-outline"></i>
+				    			  <input ng-change='changePrice()'ng-model="userdata.price"  type="range" min="100" max="800" name="price">
+				    <i class="icon ion-ios-plus-outline"></i>
+				</div>
 			</div>
-		  </label>
+			</label>
 
 		  <label class="item item-input item-stacked-label">
-		    <span class="input-label">Afstand van campus: <span>{{userdata.distance}}km</span></span>
-	    	<div class="range">
-			  <input ng-change='changeDistance()' ng-model="userdata.distance" type="range" min="1" max="20" name="price" >
+		    <span class="input-label">Afstand tot campus: <span>{{userdata.distance}}km</span></span>
+			<div class="list">
+				<div class="item range range-positive">
+					<i class="icon ion-ios-navigate-outline"></i>
+				    			  <input ng-change='changeDistance()' ng-model="userdata.distance" type="range" min="1" max="20" name="price">
+				    <i class="icon ion-ios-navigate"></i>
+				</div>
 			</div>
-		  </label>
+			</label>
 
 		  <label class="item item-input item-stacked-label item-select item-school">
 		    <span class="input-label">Start datum: </span>
