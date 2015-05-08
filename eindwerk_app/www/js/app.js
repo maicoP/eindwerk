@@ -60,6 +60,11 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     templateUrl: "templates/favorite.html",
     controller: 'FavKotCtrl'
   })
+  .state('detail', {
+    url: "/favorite",
+    templateUrl: "templates/favorite.html",
+    controller: 'FavKotCtrl'
+  })
     .state('main', {
       url: "/main",
       templateUrl: "templates/main_kot.html",

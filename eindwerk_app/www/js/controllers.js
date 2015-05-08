@@ -32,7 +32,8 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('MainKotCtrl', function($scope,$http,$window) {
+.controller('MainKotCtrl', function($scope,$http,$window,$ionicLoading) {
+    
   userdata = JSON.parse(window.localStorage['userdata']);
   $scope.change_image = function($event){
       console.log(document.getElementById('main_image'));
@@ -43,9 +44,57 @@ angular.module('starter.controllers', [])
 
   $http({method: "post",dataType: "jsonp",url:'http://maicopaulussen.2fh.co/eindwerk/db/getkot.php',data: {userid: userdata['id']},headers:{'Access-Control-Allow-Origin': '*'}})
       .success(function(data, status, headers, config) {
-        console.log(data);
         $scope.kot = data['kot'];
+        adress = $scope.kot.city+' '+$scope.kot.zipcode+' '+$scope.kot.streatname+' '+$scope.kot.housenumber;
         $scope.kot.image = data['images'];
+        var schoolLatlng;
+        var adressLatlng;
+        var myLatlng = new google.maps.LatLng(51.301137, 4.733754);
+        var mapOptions = {
+            center: myLatlng,
+            zoom: 13,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+        var geocoder = new google.maps.Geocoder();
+        geocoder.geocode( { 'address': 'Karel De Grote , groenplaats'}, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                  console.log(results);
+                  schoolLatlng = results[0].geometry.location;
+                  map.setCenter(results[0].geometry.location);
+                          var marker = new google.maps.Marker({
+                              map: map,
+                              animation: google.maps.Animation.DROP,
+                              position: results[0].geometry.location
+                          }); 
+              } else {
+                alert('Geocode was not successful for the following reason: ' + status);
+            }
+        });
+         geocoder.geocode( { 'address': adress}, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                  console.log(results);
+                  adressLatlng = results[0].geometry.location;
+                  map.setCenter(results[0].geometry.location);
+                          var marker = new google.maps.Marker({
+                              map: map,
+                              animation: google.maps.Animation.DROP,
+                              position: results[0].geometry.location
+                          });
+                  var latlngbounds = new google.maps.LatLngBounds();
+                  latlngbounds.extend(adressLatlng);
+                  latlngbounds.extend(schoolLatlng);
+                  map.setCenter(latlngbounds.getCenter());
+                  map.fitBounds(latlngbounds);
+                  $scope.lenght = google.maps.geometry.spherical.computeDistanceBetween(adressLatlng,schoolLatlng)/1000;  
+                  $scope.lenght = $scope.lenght.toFixed(2);
+              } else {
+                alert('Geocode was not successful for the following reason: ' + status);
+            }
+        });
+         
+ 
+        $scope.map = map;
     });
 
   $scope.vote = function(vote,kotid)
