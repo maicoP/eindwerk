@@ -57,7 +57,7 @@ angular.module('starter.controllers', [])
         };
         var map = new google.maps.Map(document.getElementById("map"), mapOptions);
         var geocoder = new google.maps.Geocoder();
-        geocoder.geocode( { 'address': 'Karel De Grote , groenplaats'}, function(results, status) {
+        geocoder.geocode( { 'address':  userdata['school']}, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
                   console.log(results);
                   schoolLatlng = results[0].geometry.location;
@@ -274,6 +274,9 @@ angular.module('starter.controllers', [])
   $scope.changeSchool = function(){
     $timeout.cancel(delaySchool);
     delaySchool = $timeout(function() {
+      userdata = JSON.parse(window.localStorage['userdata']);
+      userdata['school'] = $scope.userdata.school;
+      window.localStorage['userdata'] = JSON.stringify(userdata);
       $scope.postChanges('school',$scope.userdata.school);
     }, 1000);    
   };
