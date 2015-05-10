@@ -1,24 +1,20 @@
 <ion-view>
-<div class="bar bar-header bar-light">
-  <h1 class="title">logo</h1>
-</div>
-  <ion-content class='has-header'>
+  <ion-pane class='register_content'>
+    <p class="text-center register_item"><img src="img/register_logo.png" alt=""></p>
     <form ng-submit="doRegister()">
       <div class="list">
-        <label class="item item-input item-username">
+        <label class="item item-input item-username register_item register_userpass_item">
           <input type="text" placeholder="Gebruikersnaam" ng-model="registerData.username">
         </label>
-        <label class="item item-input item-password">
+        <label class="item item-input item-password register_item register_userpass_item">
           <input type="password" placeholder="Wachtwoord" ng-model="registerData.password">
         </label>
-        <label class="item">
-          <button class="button button-block button-balanced" type="submit">Aanmelden</button>
+        <label class="item register_item">
+          <button class="button button-block button-positive register_button" type="submit">Aanmelden</button>
+          <button type='button' class="button button-block button-stable register_fb" ng-click='facebookRegister()'>Facebook</button>
         </label>
       </div>
     </form>
-    <label class="item">
-      <button type='button' class="button button-block button-positive" ng-click='facebookRegister()'>Aanmelden met facebook</button>
-    </label>
-    
-  </ion-content>
+    <div class="register_antwerpen"></div>
+  </ion-pane>
 </ion-view>
