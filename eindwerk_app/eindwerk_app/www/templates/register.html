@@ -1,0 +1,24 @@
+<ion-view>
+<div class="bar bar-header bar-light">
+  <h1 class="title">logo</h1>
+</div>
+  <ion-content class='has-header'>
+    <form ng-submit="doRegister()">
+      <div class="list">
+        <label class="item item-input item-username">
+          <input type="text" placeholder="Gebruikersnaam" ng-model="registerData.username">
+        </label>
+        <label class="item item-input item-password">
+          <input type="password" placeholder="Wachtwoord" ng-model="registerData.password">
+        </label>
+        <label class="item">
+          <button class="button button-block button-balanced" type="submit">Aanmelden</button>
+        </label>
+      </div>
+    </form>
+    <label class="item">
+      <button type='button' class="button button-block button-positive" ng-click='facebookRegister()'>Aanmelden met facebook</button>
+    </label>
+    
+  </ion-content>
+</ion-view>
