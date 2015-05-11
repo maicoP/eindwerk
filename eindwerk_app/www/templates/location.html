@@ -1,28 +1,32 @@
 <ion-view>
-<div class="bar bar-header bar-light">
-  <h1 class="title">logo</h1>
-</div>
-  <ion-content class='has-header'>
+  <div class="bar bar-header bar-dark bar_setup">
+      <div class="h1 title"><img src="header.png" alt=""></div>
+  </div>
+  <div class="bar bar-subheader sub_menu tut_subheader">
+    <h2 class="title">We hebben nog een paar gegevens nodig...</h2>
+  </div>
+  <ion-content class='has-header has-subheader setup_content'>
     <form ng-submit="doSave()">
       <div class="list">
         <label class="item item-input item-select item-school">
           <div class="input-label">
-            School
+            Hogeschool / Universiteit
           </div>
           <select ng-model="locationData.school">
             <option ng-repeat="school in schools" value="{{school.name}}">{{school.name}}</option>
           </select>
         </label>
-        <label class="item item-input item-stacked-label">
-          <span class="input-label">Prijs: <span>€{{locationData.price}}</span></span>
+        <label class="item item-input item-stacked-label bg_white">
+          <span class="input-label">Maximum huurprijs: <span>€{{locationData.price}}</span></span>
           
           <div class="range">
           <input ng-model="locationData.price"  type="range" min="100" max="800" name="price">
         </div>
         </label>
         <label class="item">
-          <button class="button button-block button-balanced" type="submit">Opslaan</button>
+          <button class="button button-block button-positive" type="submit">Opslaan</button>
         </label>
+        <label class="item item-text-wrap"><p class="text-center item-text-wrap">* De gegevens hierboven (en nog een pak meer filters) kan u altijd eenvoudig wijzigen in de app via het menu linksboven 'instellingen' (tandwiel icoontje).</p></label>
       </div>
     </form>
   </ion-content>

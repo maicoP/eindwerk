@@ -110,11 +110,12 @@ img.kot_thumb{
 /*TUTORIAL*/
 
 .tut_header,.tut_subheader,.tut_content, .tut_action{
-	background-color:#242424!important;
+	background-color:#387ef5!important;
 }
 
 .tut_body{
-	background:transparent;
+	/* background:transparent; */
+	background-color:#F4F4F4;
 	/* border: 1px solid #b7b7b7; */
 }
 
@@ -165,4 +166,25 @@ button.button.button-block.button-positive.button_action{
 }
 .register_content input[type=text],.register_content input[type=password] {
    color:#b7b7b7;
+}
+
+/*SETUP*/
+
+.bar_setup{
+	background-color:#387ef5!important;
+}
+
+.setup_content{
+	background-color:#387ef5;
+	height:100%!important;
+}
+
+.setup_content .item-select select{
+	max-width:46%;
+}
+
+/**/
+
+.bg_white{
+	background-color:#fff;
 }
