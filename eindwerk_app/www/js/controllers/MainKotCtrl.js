@@ -1,7 +1,7 @@
 angular.module('starter.controllers', [])
 
 .controller('MainKotCtrl', function($scope,$http,$window,$ionicScrollDelegate,$ionicLoading,$timeout) {
-    
+  $scope.loading=true;
   userdata = JSON.parse(window.localStorage['userdata']);
   $scope.change_image = function($event){
       console.log(document.getElementById('main_image'));
@@ -9,7 +9,12 @@ angular.module('starter.controllers', [])
       angular.element(document.getElementById('main_image')).attr("src", angular.element($event.target).attr('src'));
       
   };
+  var kotids = [];
   var currCenter;
+  getKot();
+  function getKot()
+  {
+      
   var schoolLatlng;
   var adressLatlng;
   var myLatlng = new google.maps.LatLng(51.301137, 4.733754);
@@ -20,11 +25,10 @@ angular.module('starter.controllers', [])
   };
   var map = new google.maps.Map(document.getElementById("map"), mapOptions);
   var geocoder = new google.maps.Geocoder();
-  $http({method: "post",dataType: "jsonp",url:'http://maicopaulussen.2fh.co/eindwerk/db/getkot.php',data: {userid: userdata['id']},headers:{'Access-Control-Allow-Origin': '*'}})
+  $http({method: "post",dataType: "jsonp",url:'http://maicopaulussen.2fh.co/eindwerk/db/getkot.php',data: {userid: userdata['id'],kotids: kotids},headers:{'Access-Control-Allow-Origin': '*'}})
       .success(function(data, status, headers, config) {
         console.log(data);
-        $scope.kot = data['kot'];
-        adress = $scope.kot.city+' '+$scope.kot.zipcode+' '+$scope.kot.streatname+' '+$scope.kot.housenumber;
+        adress = data['kot']['city']+' '+data['kot']['zipcode']+' '+data['kot']['streatname']+' '+data['kot']['housenumber'];
 
         geocoder.geocode( { 'address':  userdata['school']}, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
@@ -44,8 +48,20 @@ angular.module('starter.controllers', [])
                               animation: google.maps.Animation.DROP,
                               position: results[0].geometry.location
                           });
-                  $scope.lenght = google.maps.geometry.spherical.computeDistanceBetween(adressLatlng,schoolLatlng)/1000;
-                  $scope.lenght = $scope.lenght.toFixed(2);
+                  lenght = google.maps.geometry.spherical.computeDistanceBetween(adressLatlng,schoolLatlng)/1000;
+                  lenght = lenght.toFixed(2);
+                  if(lenght <= data['filter']['distance'])
+                  {
+                    $scope.kot = data['kot'];
+                    $scope.lenght = lenght;
+                    $scope.loading=false;
+                  }
+                  else
+                  {
+                    kotids.push(data['kot']['id']);
+                    console.log(kotids);
+                    getKot();
+                  }
               } else {
                 alert('Geocode was not successful for the following reason: ' + status);
             }
@@ -53,6 +69,8 @@ angular.module('starter.controllers', [])
 
         $scope.map = map;
     });
+  }
+
 
   $scope.vote = function(vote,kotid)
   {
