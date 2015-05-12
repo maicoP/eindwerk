@@ -7,7 +7,10 @@
 	  <h2 class="title">Favorieten</h2>
 	</div>
   <ion-content id='content' class='content has-header padding'>
-	<div ng-repeat="kot in favKot" class="card fav_card">
+  	<div class='padding' style='margin-top:30px' ng-show='loading'>
+	   	loading
+	</div>
+	<div ng-repeat="kot in favKot" class="card fav_card" ng-show='!loading'>
 		<div class='info'>
 			<img width='100%' id='main_image' src="http://maicopaulussen.2fh.co/eindwerk/public/{{kot.images[0].image}}" alt="">
 			<div class="kot_thumbs">

@@ -52,9 +52,10 @@ angular.module('starter.controllers', [])
                   lenght = lenght.toFixed(2);
                   if(lenght <= data['filter']['distance'])
                   {
+                    $scope.loading=false;
                     $scope.kot = data['kot'];
                     $scope.lenght = lenght;
-                    $scope.loading=false;
+                    $scope.$apply();
                   }
                   else
                   {
