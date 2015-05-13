@@ -83,14 +83,7 @@
 	<div id="map" data-tap-disabled="true"></div>
 		</div>
 		
-<div class="row">
-	<button ng-click="info()" id='openInfo' class="button button-block button-positive">
-	  Contact &amp; Informatie
-	</button>
-	<button ng-click="closeInfo()" id='closeInfo' class="button button-block button-primary hidden">
-	  Sluiten
-	</button>
-</div>
+
 	    </div>
 		</div>
 	</div>
@@ -101,6 +94,12 @@
     <div class="row" ng-show='!loading'>
         <div class="col">
         	<img ng-click="vote('dislike',kot.id)" src="img/icons/dislike.png" align="left" alt="">
+        </div>
+        <div class="col text-center" id='openInfo'>
+          <img ng-click="info()"   src="img/icons/info.png" alt="">
+        </div>
+        <div class="col text-center hidden" id='closeInfo'>
+          <img ng-click="closeInfo()"   src="img/icons/k.png" alt="">
         </div>
         <div class="col">
         	<img ng-click="vote('like',kot.id)" src="img/icons/like.png" align="right" alt="">

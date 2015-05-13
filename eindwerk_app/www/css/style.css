@@ -50,6 +50,7 @@
 	background-color:#FFF;
 	margin:0;
 	padding:0;
+	height:75px;
 }
 
 .like_dislike a{
@@ -200,4 +201,10 @@ button.button.button-block.button-positive.button_action{
 
 .bg_white{
 	background-color:#fff;
+}
+
+.middle{
+	margin-left:28px;
+	width:56px;
+	height:56px;
 }
