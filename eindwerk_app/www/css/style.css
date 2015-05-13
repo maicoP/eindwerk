@@ -47,7 +47,7 @@
 }
 
 .like_dislike{
-	background-color:#FFF;
+	background-color:#fff8dc;
 	margin:0;
 	padding:0;
 	height:75px;
@@ -91,7 +91,7 @@ img.kot_thumb{
 }
 
 .kot_card .item-divider{
-	background-color:#ff6347;
+	background-color:#00a99d;
 	color:#fff;
 }
 
@@ -207,4 +207,9 @@ button.button.button-block.button-positive.button_action{
 	margin-left:28px;
 	width:56px;
 	height:56px;
+}
+
+
+.main_content{
+	background-color:#fff8dc;
 }
