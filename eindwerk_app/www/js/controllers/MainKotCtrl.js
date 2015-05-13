@@ -4,10 +4,7 @@ angular.module('starter.controllers', [])
   $scope.loading=true;
   userdata = JSON.parse(window.localStorage['userdata']);
   $scope.change_image = function($event){
-      console.log(document.getElementById('main_image'));
-      console.log(angular.element(document.getElementById('main_image')).attr("src"));
-      angular.element(document.getElementById('main_image')).attr("src", angular.element($event.target).attr('src'));
-      
+      angular.element(document.getElementById('main_image')).attr("src", angular.element($event.target).attr('src'));  
   };
   var kotids = [];
   var currCenter;
@@ -15,61 +12,59 @@ angular.module('starter.controllers', [])
   function getKot()
   {
       
-  var schoolLatlng;
-  var adressLatlng;
-  var myLatlng = new google.maps.LatLng(51.301137, 4.733754);
-  var mapOptions = {
-      center: myLatlng,
-      zoom: 16,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-  };
-  var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-  var geocoder = new google.maps.Geocoder();
-  $http({method: "post",dataType: "jsonp",url:'http://maicopaulussen.2fh.co/eindwerk/db/getkot.php',data: {userid: userdata['id'],kotids: kotids},headers:{'Access-Control-Allow-Origin': '*'}})
-      .success(function(data, status, headers, config) {
-        console.log(data);
-        adress = data['kot']['city']+' '+data['kot']['zipcode']+' '+data['kot']['streatname']+' '+data['kot']['housenumber'];
+    var schoolLatlng;
+    var adressLatlng;
+    var mapOptions = {
+        zoom: 16,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+    var geocoder = new google.maps.Geocoder();
+    $http({method: "post",dataType: "jsonp",url:'http://maicopaulussen.2fh.co/eindwerk/db/getkot.php',data: {userid: userdata['id'],kotids: kotids},headers:{'Access-Control-Allow-Origin': '*'}})
+        .success(function(data, status, headers, config) {
+          console.log(data);
+          adress = data['kot']['city']+' '+data['kot']['zipcode']+' '+data['kot']['streatname']+' '+data['kot']['housenumber'];
 
-        geocoder.geocode( { 'address':  userdata['school']}, function(results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-                  schoolLatlng = results[0].geometry.location;
-              } else {
-                alert('Geocode was not successful for the following reason: ' + status);
-            }
-        });
+          geocoder.geocode( { 'address':  userdata['school']}, function(results, status) {
+              if (status == google.maps.GeocoderStatus.OK) {
+                    schoolLatlng = results[0].geometry.location;
+                } else {
+                  alert('Geocode was not successful for the following reason: ' + status);
+              }
+          });
 
-         geocoder.geocode( { 'address': adress}, function(results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-                  adressLatlng = results[0].geometry.location;
-                  map.setCenter(results[0].geometry.location);
-                  currCenter = results[0].geometry.location;
-                          var marker = new google.maps.Marker({
-                              map: map,
-                              animation: google.maps.Animation.DROP,
-                              position: results[0].geometry.location
-                          });
-                  lenght = google.maps.geometry.spherical.computeDistanceBetween(adressLatlng,schoolLatlng)/1000;
-                  lenght = lenght.toFixed(2);
-                  if(lenght <= data['filter']['distance'])
-                  {
-                    $scope.loading=false;
-                    $scope.kot = data['kot'];
-                    $scope.lenght = lenght;
-                    $scope.$apply();
-                  }
-                  else
-                  {
-                    kotids.push(data['kot']['id']);
-                    console.log(kotids);
-                    getKot();
-                  }
-              } else {
-                alert('Geocode was not successful for the following reason: ' + status);
-            }
-        });
+           geocoder.geocode( { 'address': adress}, function(results, status) {
+              if (status == google.maps.GeocoderStatus.OK) {
+                    adressLatlng = results[0].geometry.location;
+                    map.setCenter(results[0].geometry.location);
+                    currCenter = results[0].geometry.location;
+                            var marker = new google.maps.Marker({
+                                map: map,
+                                animation: google.maps.Animation.DROP,
+                                position: results[0].geometry.location
+                            });
+                    lenght = google.maps.geometry.spherical.computeDistanceBetween(adressLatlng,schoolLatlng)/1000;
+                    lenght = lenght.toFixed(2);
+                    if(lenght <= data['filter']['distance'])
+                    {
+                      $scope.loading=false;
+                      $scope.kot = data['kot'];
+                      $scope.lenght = lenght;
+                      $scope.$apply();
+                    }
+                    else
+                    {
+                      kotids.push(data['kot']['id']);
+                      console.log(kotids);
+                      getKot();
+                    }
+                } else {
+                  alert('Geocode was not successful for the following reason: ' + status);
+              }
+          });
 
-        $scope.map = map;
-    });
+          $scope.map = map;
+      });
   }
 
 
