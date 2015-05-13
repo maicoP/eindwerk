@@ -1,8 +1,8 @@
 <?php 
-$host="fdb13.biz.nf"; // Host name
-$username="1847346_eindwerk"; // Mysql username
+$host="mysql.2freehosting.com"; // Host name
+$username="u118779281_eindw"; // Mysql username
 $password="mm22mm33"; // Mysql password
-$db_name="1847346_eindwerk"; // Database name
+$db_name="u118779281_eindw"; // Database name
 
 // Connect to server and select database.
 $con = mysqli_connect($host, $username, $password)or die("cannot connect");

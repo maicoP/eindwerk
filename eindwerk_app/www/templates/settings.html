@@ -7,7 +7,7 @@
 	  <h2 class="title">Instellingen</h2>
 	</div>
   <ion-content id='content' class='content has-header has-subheader padding'>
-	  <div class="card">
+	  <div class="list list-inset">
 	  	 <div class="item item-divider">
 		    Gebruiker
 		  </div>
@@ -23,14 +23,14 @@
 		      </select>
 		  </label>
 		</div>
-		<div class="card">	
+		<div class="list list-inset">	
 		  <div class="item item-divider">
 		    Kot
 		  </div>
 		  <label class="item item-input item-stacked-label">
 		    <span class="input-label">Prijs: <span>€{{userdata.price}}</span></span>
 			<div class="list">
-				<div class="item range range-positive">
+				<div class="range range-positive">
 					<i class="icon ion-ios-minus-outline"></i>
 				    			  <input ng-change='changePrice()'ng-model="userdata.price"  type="range" min="100" max="800" name="price">
 				    <i class="icon ion-ios-plus-outline"></i>
@@ -41,7 +41,7 @@
 		  <label class="item item-input item-stacked-label">
 		    <span class="input-label">Afstand tot campus: <span>{{userdata.distance}}km</span></span>
 			<div class="list">
-				<div class="item range range-positive">
+				<div class="range range-positive">
 					<i class="icon ion-ios-navigate-outline"></i>
 				    			  <input ng-change='changeDistance()' ng-model="userdata.distance" type="range" min="1" max="20" name="price">
 				    <i class="icon ion-ios-navigate"></i>
@@ -59,7 +59,7 @@
 		   	<input ng-change='changeEndDate()' ng-model="userdata.endDate" type="date">
 		  </label>
 
-	  	  <ul class="item list">
+	  	  <ul class="list">
 			  <li class="item item-checkbox">
 			     <label class="checkbox">
 			       <input ng-change='changeBikestands()' ng-model="userdata.bikestands" type="checkbox">

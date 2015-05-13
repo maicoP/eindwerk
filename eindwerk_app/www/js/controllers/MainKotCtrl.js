@@ -29,7 +29,7 @@ angular.module('starter.controllers', [])
               if (status == google.maps.GeocoderStatus.OK) {
                     schoolLatlng = results[0].geometry.location;
                 } else {
-                  alert('Geocode was not successful for the following reason: ' + status);
+                  console.log('Geocode was not successful for the following reason: ' + status);
               }
           });
 
@@ -59,7 +59,7 @@ angular.module('starter.controllers', [])
                       getKot();
                     }
                 } else {
-                  alert('Geocode was not successful for the following reason: ' + status);
+                  console.log('Geocode was not successful for the following reason: ' + status);
               }
           });
 
