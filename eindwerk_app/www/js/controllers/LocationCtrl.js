@@ -4,8 +4,8 @@ angular.module('starter.controllers')
   $scope.locationData = {};
   $scope.locationData.price = 100;
   $scope.schools = [
-                      { name :'Karel De Grote , groenplaats'},
-                      { name :'Karel De Grote , hoboken'},
+                      { name :'KDG, groenplaats'},
+                      { name :'KDG, hoboken'},
                       { name :'Thomas More'},
                       { name :'Universiteit antwerpen'},
                       { name :'lessius'}

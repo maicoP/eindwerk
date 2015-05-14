@@ -101,11 +101,11 @@ angular.module('starter.controllers')
         });
   $scope.userdata = JSON.parse(window.localStorage['userdata']);
   $scope.schools = [
-                      { name :'Karel De Grote , groenplaats'},
-                      { name :'Karel De Grote , hoboken'},
+                      { name :'KDG , Groenplaats'},
+                      { name :'KDG , Hoboken'},
                       { name :'Thomas More'},
-                      { name :'Universiteit antwerpen'},
-                      { name :'lessius'}
+                      { name :'Universiteit Antwerpen'},
+                      { name :'Lessius'}
                     ];
   $scope.schools.sort();          
 });

@@ -1,5 +1,6 @@
 <?php namespace eindwerk\Http\Controllers;
 
+use Auth;
 use Illuminate\Contracts\Auth\Guard;
 
 class HomeController extends Controller {
@@ -37,7 +38,15 @@ class HomeController extends Controller {
 	
 	public function index()
 	{
-		return view('index');
+		if (Auth::check())
+		{
+			return Redirect('/kot');
+		}
+		else
+		{
+			return view('index');
+		}
+		
 	}
 
 }

@@ -1,5 +1,8 @@
 <?php namespace eindwerk\Http\Controllers;
 
+use Auth;
+use Illuminate\Contracts\Auth\Guard;
+
 class WelcomeController extends Controller {
 
 	/*
@@ -30,7 +33,14 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('index');
+		if (Auth::check())
+		{
+			return Redirect::to('/kot');
+		}
+		else
+		{
+			return view('index');
+		}
 	}
 
 }
