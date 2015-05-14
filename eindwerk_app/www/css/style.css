@@ -50,7 +50,7 @@
 	background-color:#fff8dc;
 	margin:0;
 	padding:0;
-	height:75px;
+	height:60px;
 }
 
 .like_dislike a{
@@ -87,8 +87,11 @@ img.kot_thumb{
 
 .kot_card{
 	margin-top:2px;
-	margin-bottom:85px;
 	padding-top:0px;
+}
+
+.footer_padding{
+	margin-bottom:80px!important;
 }
 
 .kot_card .item-divider{
@@ -205,9 +208,9 @@ button.button.button-block.button-positive.button_action{
 }
 
 .middle{
-	margin-left:28px;
-	width:56px;
-	height:56px;
+	margin-left:25px;
+	width:50px;
+	height:50px;
 }
 
 
@@ -219,4 +222,8 @@ button.button.button-block.button-positive.button_action{
 
 #extraInfo{
 	margin-bottom:85px;
+}
+
+.footer_row{
+	padding:inherit;
 }

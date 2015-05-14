@@ -10,7 +10,7 @@
   	<div class='padding' style='margin-top:30px' ng-show='loading'>
 	   	loading
 	</div>
-	<div ng-repeat="(key,kot) in favKot" id="card{{key}}" type="list-inset" class="list list-inset fav_card" ng-show='!loading'>
+	<div ng-repeat="(key,kot) in favKot" id="card{{key}}" type="list-inset" class="list list-inset fav_card footer_padding" ng-show='!loading'>
 		<div class='info'>
 			<img width='100%' id='main_image{{kot.id}}' src="http://maicopaulussen.2fh.co/eindwerk/public/{{kot.images[0].image}}" alt="">
 			<div class="kot_thumbs">
@@ -93,11 +93,11 @@
 	        </div>
 		</div>
 		<div class='row' >
-	        <div class="col text-center" id='openInfo{{key}}'>
-	          <img ng-click="info({{key}})"   src="img/icons/info.png" alt="">
+	        <div class="col" id='openInfo{{key}}'>
+	          <img ng-click="info({{key}})"   src="img/icons/info.png" alt="" align="right">
 	        </div>
-	        <div class="col text-center hidden" id='closeInfo{{key}}'>
-	          <img ng-click="closeInfo({{key}})"   src="img/icons/k.png" alt="">
+	        <div class="col hidden" id='closeInfo{{key}}'>
+	          <img ng-click="closeInfo({{key}})"   src="img/icons/k.png" alt="" align="right">
 	        </div>
 	        <div class="col">
 	        	<img ng-click="vote('dislike',kot.id)" src="img/icons/dislike.png" align="left" alt="">
