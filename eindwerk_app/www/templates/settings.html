@@ -17,8 +17,8 @@
 		  </label>
 
 		  <label class="item item-input item-stacked-label item-select item-school">
-		    <span class="input-label">School: </span>
-		   	 <select ng-change='changeSchool()' ng-model="userdata.school">
+		    <span class="input-label">Hogeschool / Universiteit: </span>
+		   	 <select ng-change='changeSchool()' ng-model="userdata.school" class="setting_school">
 		        <option ng-repeat="school in schools"  ng-selected="school.name == userdata.school" value="{{school.name}}">{{school.name}}</option>
 		      </select>
 		  </label>
