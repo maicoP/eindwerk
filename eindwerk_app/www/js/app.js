@@ -13,12 +13,13 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     }
     if(window.Connection) {
       if(navigator.connection.type == Connection.NONE) {
-          $ionicPopup.confirm({
-              title: "Internet Disconnected",
-              content: "The internet is disconnected on your device."
+          $ionicPopup.alert({
+              title: "Internet verbinding",
+              content: "Er is een internet verbinding nodig."
           })
           .then(function(result) {
-              if(!result) {
+            console.log(result);
+              if(result) {
                   ionic.Platform.exitApp();
               }
           });

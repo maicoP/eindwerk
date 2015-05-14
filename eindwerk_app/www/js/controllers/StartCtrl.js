@@ -1,5 +1,6 @@
 angular.module('starter.controllers')
-.controller('StartCtrl', function($location,$http) {
+.controller('StartCtrl', function($scope,$location,$http) {
+  $scope.loading = true;
   if(window.localStorage.hasOwnProperty('userdata'))
   {
       userdata = JSON.parse(window.localStorage['userdata']);
@@ -8,8 +9,15 @@ angular.module('starter.controllers')
           if(data.succes)
           {
             $location.path('/main');
+          }
+          else
+          {
+            $scope.loading = false;
           }  
-      });
-      
+      });   
+  }
+  else
+  {
+    $scope.loading = false;
   }
 });

@@ -6,8 +6,10 @@
     <h2 class="title">Zoek op een leuke manier jou droomkot</h2>
   </div>
   <ion-content class='has-header has-subheader padding tut_content'>
-
-<ion-slide-box>
+<div ng-show='loading'>
+  loading
+</div>
+<ion-slide-box ng-show='!loading'>
 
   <ion-slide>
   <div class="list card tut_body">
