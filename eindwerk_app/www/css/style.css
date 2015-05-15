@@ -168,6 +168,38 @@ button.button.button-block.button-positive.button_action{
 	border:0;
 }
 
+.location_item{
+	background:transparent;
+}
+
+.register_item p, .location_item p{
+	color:#f4f4f4;
+}
+
+.location_item .input-label, .register_item .input-label{
+	color:#f4f4f4;	
+}
+
+.register_setting_school{
+	background-color:#387ef5!important;
+	color:#f4f4f4!important;
+	/* font-weight:bold; */
+}
+
+.no_border_bottom{
+	border-bottom-width:0px;
+}
+
+.no_border{
+	border:0;
+}
+
+
+
+.setup_content .item-select:after{
+	color:#fff;
+}
+
 .register_userpass_item{
 	background-color:#fff;
 	margin-bottom:10px;
@@ -196,6 +228,7 @@ button.button.button-block.button-positive.button_action{
 
 .bar_setup{
 	background-color:#387ef5!important;
+	border:0;
 }
 
 .setup_content{
@@ -204,7 +237,7 @@ button.button.button-block.button-positive.button_action{
 }
 
 .setup_content .item-select select{
-	max-width:46%;
+	max-width:60%;
 }
 
 /**/
