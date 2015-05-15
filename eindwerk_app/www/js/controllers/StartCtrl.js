@@ -13,11 +13,13 @@ angular.module('starter.controllers')
           else
           {
             $scope.loading = false;
+            console.log($scope.loading);
           }  
       });   
   }
   else
   {
     $scope.loading = false;
+    console.log($scope.loading);
   }
 });

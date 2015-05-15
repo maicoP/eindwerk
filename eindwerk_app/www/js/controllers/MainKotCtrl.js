@@ -11,14 +11,18 @@ angular.module('starter.controllers', [])
   getKot();
   function getKot()
   {
-      
+    var map;
+    function initilaize(){
+      var mapOptions = {
+          zoom: 16,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      map = new google.maps.Map(document.getElementById("map"), mapOptions);
+    }
+    google.maps.event.addDomListener(window, "load",initilaize());
     var schoolLatlng;
     var adressLatlng;
-    var mapOptions = {
-        zoom: 16,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+    
     var geocoder = new google.maps.Geocoder();
     $http({method: "post",dataType: "jsonp",url:'http://maicopaulussen.2fh.co/eindwerk/db/getkot.php',data: {userid: userdata['id'],kotids: kotids},headers:{'Access-Control-Allow-Origin': '*'}})
         .success(function(data, status, headers, config) {
