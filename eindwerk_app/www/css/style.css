@@ -148,7 +148,7 @@ button.button.button-block.button-positive.button_action{
 /*REGISTER*/
 
 .register_content{
-	background-color:#00053f;
+	background-color:#387ef5;
 }
 
 .register_antwerpen{
@@ -169,7 +169,7 @@ button.button.button-block.button-positive.button_action{
 }
 
 .register_userpass_item{
-	background-color:#08090b;
+	background-color:#fff;
 	margin-bottom:10px;
 	margin-left:15px;
 	margin-right:15px;
@@ -178,12 +178,15 @@ button.button.button-block.button-positive.button_action{
 .register_button{
 	text-transform:uppercase;
 	letter-spacing:1px;
+	color:#387ef5!important;
 }
 
 .register_fb{
 	text-transform:uppercase;
 	letter-spacing:1px;
-	color:#3894fa!important;
+	color:#fff!important;
+	background-color:#3b5998!important;
+	border-color:#2f4c88!important;
 }
 .register_content input[type=text],.register_content input[type=password] {
    color:#b7b7b7;
