@@ -1,18 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>KOTTER</title>
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,500,300' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,700,400italic,700italic,900,900italic' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="css/animate.min.css" type="text/css">
-    <link rel="stylesheet" href="css/custom.css" type="text/css">
-</head>
+@extends('head')
+@section('title')
+    KOTTER
+@stop
+@section('content')
 
-<body id="top">
     <nav id="top_nav" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -161,6 +152,5 @@
     <script src="js/jquery.easing.min.js"></script>
     <script src="js/wow.min.js"></script><!--animeer items vanaf user scrolled-->
     <script src="js/custom.js"></script>
-
-</body>
-</html>
+    
+@stop
