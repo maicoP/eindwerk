@@ -100,12 +100,9 @@ angular.module('starter.controllers')
           }
         });
   $scope.userdata = JSON.parse(window.localStorage['userdata']);
-  $scope.schools = [
-                      { name :'KDG , Groenplaats'},
-                      { name :'KDG , Hoboken'},
-                      { name :'Thomas More'},
-                      { name :'Universiteit Antwerpen'},
-                      { name :'Lessius'}
-                    ];
-  $scope.schools.sort();          
+  $http({method: "GET",dataType:"jsonp",url:'http://maicopaulussen.2fh.co/eindwerk/db/getSchools.php',headers:{'Access-Control-Allow-Origin': '*'}})
+  .success(function(data, status, headers, config) {
+    $scope.schools = data;
+  });
+           
 });

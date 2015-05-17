@@ -3,6 +3,7 @@ angular.module('starter.controllers', [])
 .controller('MainKotCtrl', function($scope,$http,$window,$ionicScrollDelegate,$ionicLoading,$timeout) {
   $scope.loading=true;
   userdata = JSON.parse(window.localStorage['userdata']);
+  $scope.user = userdata;
   $scope.change_image = function($event){
       angular.element(document.getElementById('main_image')).attr("src", angular.element($event.target).attr('src'));  
   };
@@ -12,14 +13,6 @@ angular.module('starter.controllers', [])
   function getKot()
   {
     var map;
-    function initilaize(){
-      var mapOptions = {
-          zoom: 16,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-      };
-      map = new google.maps.Map(document.getElementById("map"), mapOptions);
-    }
-    google.maps.event.addDomListener(window, "load",initilaize());
     var schoolLatlng;
     var adressLatlng;
     
@@ -40,13 +33,18 @@ angular.module('starter.controllers', [])
            geocoder.geocode( { 'address': adress}, function(results, status) {
               if (status == google.maps.GeocoderStatus.OK) {
                     adressLatlng = results[0].geometry.location;
+                    var mapOptions = {
+                        zoom: 16,
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                    };
+                    map = new google.maps.Map(document.getElementById("map"), mapOptions);
                     map.setCenter(results[0].geometry.location);
                     currCenter = results[0].geometry.location;
-                            var marker = new google.maps.Marker({
-                                map: map,
-                                animation: google.maps.Animation.DROP,
-                                position: results[0].geometry.location
-                            });
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        animation: google.maps.Animation.DROP,
+                        position: results[0].geometry.location
+                    });
                     lenght = google.maps.geometry.spherical.computeDistanceBetween(adressLatlng,schoolLatlng)/1000;
                     lenght = lenght.toFixed(2);
                     if(lenght <= data['filter']['distance'])

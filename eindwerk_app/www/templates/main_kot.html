@@ -5,8 +5,8 @@
 	  	<a class="button button-clear icon ion-heart iconmenu" href="#/favorite"></a>	
 	</div>
   <ion-content id='content' class='content has-header padding content_yellowbg'>
-  	<div ng-show='loading' class="center text-center item-text">
-    <div class="loader">Loading...</div>
+  	<div ng-show='loading'>
+	   	loading
 	</div>
   	<div class="list list-inset kot_card footer_padding" type="list-inset" ng-show='!loading'>
     		<div class='info'>
@@ -17,7 +17,7 @@
     	    <div class="kot_icons">
 
       			<a class="item item-icon-left kot_details" href="#">
-      				<i class="icon ion-navigate"><p>{{lenght}} km van KDG Groenplaats</p></i>
+      				<i class="icon ion-navigate"><p>{{lenght}} km van {{user.school}}</p></i>
       			</a>
 
       			<a class="item item-icon-left  kot_details" href="#">
