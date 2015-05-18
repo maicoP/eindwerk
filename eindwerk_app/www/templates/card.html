@@ -1,0 +1,88 @@
+<td-cards ng-show='!loading'>
+        <td-card on-drag-left="onDragLeft(kot.id)" on-drag-right="onDragRight(kot.id)" on-swipe-left="cardSwipedLeft(kot.id)" on-swipe-right="cardSwipedRight(kot.id)" class="card-{{kot.id}}" id="card-{{kot.id}}">
+          <div class='info'>
+              <img width='100%' id='main_image' src="http://maicopaulussen.2fh.co/eindwerk/public/{{kot.images[0].image}}" alt="">
+              <div class="kot_thumbs">
+                <img ng-repeat="image in kot.images" width='25%' ng-click='change_image($event)' src="http://maicopaulussen.2fh.co/eindwerk/public/{{image.image}}" alt="" class="kot_thumb">
+              </div>
+              <div class="kot_icons">
+    
+                <a class="item item-icon-left kot_details" href="#">
+                  <i class="icon ion-navigate"><p>{{lenght}} km van {{user.school}}</p></i>
+                </a>
+    
+                <a class="item item-icon-left  kot_details" href="#">
+                  <i class="icon ion-android-pin"><p>{{kot.streatname}} {{kot.housenumber}} {{kot.city}}</p></i>
+                </a>
+    
+                <a class="item item-icon-left  kot_details" href="#">
+                  <i class="icon ion-social-euro"><p>{{kot.price}},0</p></i>
+                </a>
+    
+                <a class="item item-icon-left kot_details" href="#">
+                  <i class="icon ion-android-expand"><p>{{kot.size}} &#13217;</p></i>
+                </a>
+    
+              </div>
+            <div id='extraInfo' class='padding hidden'>
+    
+                <div class="list card main_info">
+    
+                  <div class="item item-divider">
+                    Contact
+                  </div>
+    
+    
+                  <a href="tel:{{kot.telephonenumber}}" class="item item-icon-left">
+                    <i class="icon ion-ios-telephone-outline"></i>
+                    {{kot.telephonenumber}}
+                  </a>
+    
+                  <a href="mailto:{{kot.email}}" class="item item-icon-left">
+                    <i class="icon ion-ios-email-outline"></i>
+                    {{kot.email}}
+                  </a>
+    
+                  <div class="item item-divider">
+                    Info
+                  </div>
+    
+                  <a href="#" class="item item-icon-left">
+                    <i class="icon ion-ios-information-outline"></i>
+                    {{kot.info}}
+                  </a>
+    
+                  <div class="item item-divider">
+                    Opties
+                  </div>
+    
+                  <a ng-if="kot.seperatebathroom  == '1'" href="#" class="item item-icon-right">
+                    <i class="icon ion-android-done"></i>
+                    Aparte badkamer
+                  </a>
+                  <a ng-if="kot.seperatekitchen  == '1'" href="#" class="item item-icon-right">
+                    <i class="icon ion-android-done"></i>
+                    Aparte keuken
+                  </a>
+                  <a ng-if="kot.bikestands  == '1'" href="#" class="item item-icon-right">
+                    <i class="icon ion-android-done"></i>
+                    Fietsenstalling
+                  </a>
+                  <a ng-if="kot.furniture  == '1'" href="#" class="item item-icon-right">
+                    <i class="icon ion-android-done"></i>
+                    Bemeubeld
+                  </a>
+                  <a ng-if="kot.wifi  == '1'" href="#" class="item item-icon-right">
+                    <i class="icon ion-android-done"></i>
+                    Wifi
+                  </a>
+    
+                </div>
+              <div id="map" data-tap-disabled="true"></div>
+            </div>
+            <div class="no-text">NOPE</div>
+            <div class="yes-text">LIKE</div>
+    
+          </div>
+        </td-card>
+      </td-cards>

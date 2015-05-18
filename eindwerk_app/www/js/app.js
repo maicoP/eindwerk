@@ -1,4 +1,4 @@
-angular.module('starter', ['ionic', 'starter.controllers'])
+angular.module('starter', ['ionic','ionic.contrib.ui.tinderCards', 'starter.controllers'])
 
 .run(function($ionicPlatform,$ionicPopup) {
   $ionicPlatform.ready(function() {
@@ -79,3 +79,5 @@ delete $httpProvider.defaults.headers.common["X-Requested-With"];
 $httpProvider.defaults.headers.common["Accept"] = "application/json";
 $httpProvider.defaults.headers.common["Content-Type"] = "application/json";
 });
+
+

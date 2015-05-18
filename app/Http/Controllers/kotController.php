@@ -50,6 +50,10 @@ class kotController extends Controller {
 		$kot->fk_userid = \Auth::user()->id;
 		$kot->begindate = $request->begindate_submit;
 		$kot->enddate = $request->enddate_submit;
+		$kot->bikestands = ($request->get('bikestands') == 'on' ? true :false );
+		$kot->seperatekitchen = ($request->get('seperatekitchen') == 'on' ? true :false );
+		$kot->seperatebathroom = ($request->get('seperatebathroom') == 'on' ? true :false );
+		$kot->furniture = ($request->get('furniture') == 'on' ? true :false );
 		$kot->save();
 		foreach( $request->file('images') as $image)
 		{
@@ -102,6 +106,10 @@ class kotController extends Controller {
 		$kot->fill($request->all());
 		$kot->begindate = $request->begindate_submit;
 		$kot->enddate = $request->enddate_submit;
+		$kot->bikestands = ($request->get('bikestands') == 'on' ? true :false );
+		$kot->seperatekitchen = ($request->get('seperatekitchen') == 'on' ? true :false );
+		$kot->seperatebathroom = ($request->get('seperatebathroom') == 'on' ? true :false );
+		$kot->furniture = ($request->get('furniture') == 'on' ? true :false );
 		$kot->save();
 		foreach( $request->file('images') as $image)
 		{

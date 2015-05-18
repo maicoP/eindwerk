@@ -1,5 +1,5 @@
 angular.module('starter.controllers')
-.controller('SettingsCtrl', function($scope, $stateParams,$timeout,$location,$http) {
+.controller('SettingsCtrl', function($scope, $stateParams,$timeout,$location,$http,$state) {
   var delayName;
   $scope.changeUsername = function(){
     $timeout.cancel(delayName);
@@ -81,6 +81,7 @@ angular.module('starter.controllers')
         $http({method: "POST",dataType:"jsonp",url:'http://maicopaulussen.2fh.co/eindwerk/db/changeFilters.php',data : {field: field,value: value , userid: userdata['id']},headers:{'Access-Control-Allow-Origin': '*'}})
         .success(function(data, status, headers, config) {
           console.log(data);
+          $state.reload() ;
         });
   }
 

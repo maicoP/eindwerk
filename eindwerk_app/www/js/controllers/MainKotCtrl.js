@@ -1,15 +1,15 @@
 angular.module('starter.controllers', [])
 
-.controller('MainKotCtrl', function($scope,$http,$window,$ionicScrollDelegate,$ionicLoading,$timeout) {
+.controller('MainKotCtrl', function($scope,$http,$window,$ionicScrollDelegate,$ionicLoading,$timeout,$state) {
   $scope.loading=true;
   userdata = JSON.parse(window.localStorage['userdata']);
   $scope.user = userdata;
-  $scope.change_image = function($event){
-      angular.element(document.getElementById('main_image')).attr("src", angular.element($event.target).attr('src'));  
-  };
   var kotids = [];
   var currCenter;
   getKot();
+  $scope.change_image = function($event){
+      angular.element(document.getElementById('main_image')).attr("src", angular.element($event.target).attr('src'));  
+  }; 
   function getKot()
   {
     var map;
@@ -33,25 +33,33 @@ angular.module('starter.controllers', [])
            geocoder.geocode( { 'address': adress}, function(results, status) {
               if (status == google.maps.GeocoderStatus.OK) {
                     adressLatlng = results[0].geometry.location;
-                    var mapOptions = {
-                        zoom: 16,
-                        mapTypeId: google.maps.MapTypeId.ROADMAP
-                    };
-                    map = new google.maps.Map(document.getElementById("map"), mapOptions);
-                    map.setCenter(results[0].geometry.location);
-                    currCenter = results[0].geometry.location;
-                    var marker = new google.maps.Marker({
-                        map: map,
-                        animation: google.maps.Animation.DROP,
-                        position: results[0].geometry.location
+                    google.maps.event.addDomListener(window, "load", function(){
+                      var mapOptions = {
+                          zoom: 16,
+                          mapTypeId: google.maps.MapTypeId.ROADMAP
+                      };
+                      map = new google.maps.Map(document.getElementById("map"), mapOptions);
+                      map.setCenter(results[0].geometry.location);
+                      currCenter = results[0].geometry.location;
+                      var marker = new google.maps.Marker({
+                          map: map,
+                          animation: google.maps.Animation.DROP,
+                          position: results[0].geometry.location
+                      });
+                      $scope.map = map;
                     });
                     lenght = google.maps.geometry.spherical.computeDistanceBetween(adressLatlng,schoolLatlng)/1000;
                     lenght = lenght.toFixed(2);
                     if(lenght <= data['filter']['distance'])
                     {
                       $scope.loading=false;
+                      $scope.include='templates/card.html';
+
                       $scope.kot = data['kot'];
                       $scope.lenght = lenght;
+                      if(document.querySelectorAll('td-card')[0] !== undefined && document.querySelectorAll('td-card')[0] !== undefined){
+                        document.querySelectorAll('td-card')[0].removeAttribute("style");
+                      }
                       $scope.$apply();
                     }
                     else
@@ -65,19 +73,18 @@ angular.module('starter.controllers', [])
               }
           });
 
-          $scope.map = map;
       });
   }
 
 
   $scope.vote = function(vote,kotid)
   {
-    
+    console.log('vote');
     $http({method: "post",dataType: "jsonp",url:'http://maicopaulussen.2fh.co/eindwerk/db/vote.php',data : {userid: userdata['id'],kotid: kotid,vote: vote},headers:{'Access-Control-Allow-Origin': '*'}})
         .success(function(data, status, headers, config) {
           if(data)
           {
-            $window.location.reload(true);
+            getKot();
           }
       });
   }
@@ -88,8 +95,6 @@ angular.module('starter.controllers', [])
     var openInfo = document.getElementById('openInfo');
     var closeInfo = document.getElementById('closeInfo');
     $ionicScrollDelegate.scrollBottom(true);
-    google.maps.event.trigger($scope.map, 'resize');
-    $scope.map.setCenter(currCenter);
     angular.element(info).removeClass('hidden'); 
     angular.element(closeInfo).removeClass('hidden'); 
     angular.element(openInfo).addClass('hidden');
@@ -110,5 +115,31 @@ angular.module('starter.controllers', [])
       angular.element(info).addClass('hidden');
       angular.element(openInfo).removeClass('hidden');
      },200);
+  }
+  $scope.cardSwipedLeft = function(id) {
+    console.log('LEFT SWIPE');
+    $scope.vote('dislike',id);
+  };
+  $scope.cardSwipedRight = function(id) {
+    console.log('RIGHT SWIPE');
+    $scope.vote('like',id);
+  };
+  // in case swipe is slow and not recognized as a swipe
+  $scope.onDragLeft= function(id){
+    
+    /*document.querySelectorAll('td-card')[0].addEventListener('dragend', function(){
+      if(document.querySelectorAll('td-card')[0].getBoundingClientRect()['left'] < -75)
+      {
+        $scope.vote('dislike',id);
+        console.log(document.querySelectorAll('td-card')[0].getBoundingClientRect()['left']);
+      }
+    }, false);*/
+  }
+  $scope.onDragRight= function(id){
+    /*console.log(document.querySelectorAll('td-card')[0].getBoundingClientRect()['right']);
+    if(document.querySelectorAll('td-card')[0].getBoundingClientRect()['right'] > 435)
+    {
+      $scope.vote('like',id);
+    }*/
   }
 });
