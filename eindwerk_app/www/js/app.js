@@ -28,10 +28,10 @@ angular.module('starter', ['ionic','ionic.contrib.ui.tinderCards', 'starter.cont
   });
 })
 
-.config(function($stateProvider,$urlRouterProvider,$httpProvider) {
+.config(function($ionicConfigProvider,$stateProvider,$urlRouterProvider,$httpProvider) {
+  // set caching off
+  $ionicConfigProvider.views.maxCache(0);
   $stateProvider
-
-
   .state('tutorial', {
     url: "/tutorial",
     templateUrl: "templates/tut1.html",
@@ -55,22 +55,16 @@ angular.module('starter', ['ionic','ionic.contrib.ui.tinderCards', 'starter.cont
     templateUrl: "templates/settings.html",
     controller: 'SettingsCtrl'
   })
-
+  .state('main', {
+      url: "/main",
+      templateUrl: "templates/main_kot.html",
+      controller: 'MainKotCtrl'
+    })
   .state('favorite', {
     url: "/favorite",
     templateUrl: "templates/favorite.html",
     controller: 'FavKotCtrl'
-  })
-  .state('detail', {
-    url: "/favorite",
-    templateUrl: "templates/favorite.html",
-    controller: 'FavKotCtrl'
-  })
-    .state('main', {
-      url: "/main",
-      templateUrl: "templates/main_kot.html",
-      controller: 'MainKotCtrl'
-    });
+  });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tutorial');
   $httpProvider.defaults.useXDomain = true;

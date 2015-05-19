@@ -7,7 +7,11 @@
 	  <h2 class="title">Instellingen</h2>
 	</div>
   <ion-content id='content' class='content has-header has-subheader padding content_yellowbg'>
-	  <div class="list list-inset">
+  	<div id='loading' ng-show='loading'>
+      loading
+  	</div>
+
+	<div ng-show='!loading' class="list list-inset">
 	  	 <div class="item item-divider">
 		    Gebruiker
 		  </div>
@@ -16,17 +20,17 @@
 		    <input type="text" ng-change='changeUsername()' ng-model='userdata.username' placeholder="Gebruikersnaam" value="{{userdata.username}}">
 		  </label>
 
-<label class="item item-input item-stacked-label">		  
-<span class="input-label">Hogeschool / Universiteit: </span>
-</label>
+			<label class="item item-input item-stacked-label">		  
+			<span class="input-label">Hogeschool / Universiteit: </span>
+			</label>
 		  <label class="item item-input item-stacked-label item-select item-school">
 		    
 		   	 <select ng-change='changeSchool()' ng-model="userdata.school" class="setting_school">
 		        <option ng-repeat="school in schools"  ng-selected="school.name == userdata.school" value="{{school.name}}">{{school.name}}</option>
 		      </select>
 		  </label>
-		</div>
-		<div class="list list-inset footer_padding">	
+	</div>
+	<div ng-show='!loading' class="list list-inset footer_padding">	
 		  <div class="item item-divider">
 		    Kot
 		  </div>

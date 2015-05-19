@@ -3,14 +3,10 @@ angular.module('starter.controllers')
 
   $scope.locationData = {};
   $scope.locationData.price = 100;
-  $scope.schools = [
-                      { name :'KDG, groenplaats'},
-                      { name :'KDG, hoboken'},
-                      { name :'Thomas More'},
-                      { name :'Universiteit antwerpen'},
-                      { name :'lessius'}
-                    ];
-  $scope.schools.sort();          
+  $http({method: "GET",dataType:"jsonp",url:'http://maicopaulussen.2fh.co/eindwerk/db/getSchools.php',headers:{'Access-Control-Allow-Origin': '*'}})
+  .success(function(data, status, headers, config) {
+    $scope.schools = data;
+  });        
   $scope.doSave = function() {
       //controlleren of alle velden zijn ingevuld
       var isValid = true;

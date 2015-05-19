@@ -1,5 +1,6 @@
 angular.module('starter.controllers')
 .controller('SettingsCtrl', function($scope, $stateParams,$timeout,$location,$http,$state) {
+  $scope.loading= true;
   var delayName;
   $scope.changeUsername = function(){
     $timeout.cancel(delayName);
@@ -81,14 +82,14 @@ angular.module('starter.controllers')
         $http({method: "POST",dataType:"jsonp",url:'http://maicopaulussen.2fh.co/eindwerk/db/changeFilters.php',data : {field: field,value: value , userid: userdata['id']},headers:{'Access-Control-Allow-Origin': '*'}})
         .success(function(data, status, headers, config) {
           console.log(data);
-          $state.reload() ;
         });
   }
+
 
   userdata = JSON.parse(window.localStorage['userdata']);
   $http({method: "POST",dataType:"jsonp",url:'http://maicopaulussen.2fh.co/eindwerk/db/getUser.php',data : {userid: userdata['id']},headers:{'Access-Control-Allow-Origin': '*'}})
         .success(function(data, status, headers, config) {
-          console.log(data['result'][0]['bikestands']);
+          console.log(data);
           if(data['succes'])
           {
             $scope.userdata = data['result'][0];
@@ -98,6 +99,7 @@ angular.module('starter.controllers')
             $scope.userdata.seperatekitchen = (data['result'][0]['seperatekitchen'] == 1) ? true : false;
             $scope.userdata.seperatebathroom = (data['result'][0]['seperatebathroom'] == 1) ? true : false;
             $scope.userdata.furniture = (data['result'][0]['furniture'] == 1) ? true : false;
+            $scope.loading = false;
           }
         });
   $scope.userdata = JSON.parse(window.localStorage['userdata']);

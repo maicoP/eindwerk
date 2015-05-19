@@ -5,6 +5,7 @@ angular.module('starter.controllers')
   $http({method: "post",dataType: "jsonp",url:'http://maicopaulussen.2fh.co/eindwerk/db/getFavKot.php',data : {userid: userdata['id']},headers:{'Access-Control-Allow-Origin': '*'}})
       .success(function(data, status, headers, config) {
         $scope.favKot = data;
+        console.log($scope.favKot);
         var geocoder = new google.maps.Geocoder();
         angular.forEach($scope.favKot, function(value, key) {
           var schoolLatlng;
