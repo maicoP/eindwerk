@@ -37,7 +37,7 @@
 								<span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu">
-								<li><a href="login.html"><i class="halflings-icon off"></i> Logout</a></li>
+								<li><a href="/auth/logout"><i class="halflings-icon off"></i> Logout</a></li>
 							</ul>
 						</li>
 					</ul>
