@@ -131,23 +131,17 @@
 						<div class="control-group">
 							<label class="control-label">Afbeeldingen</label>
 							<div class="controls" id='input-images'>
+								<?php $i=0 ?>
 								@foreach($kot->images as $image)
 									<img width='300px' src="{{URL::to('/').'/'.$image->image}}" alt="">
 									<button id='{{$image->id}}' class="btn btn-danger delImg" type="button">x</button>
+									<?php ++$i ?>
 								@endforeach
 								<div id='img-1'>
+									@for($i;$i<4;++$i)
 									{!! Form::file('images[]', array('multiple'=>true,'class'=>'img_up')) !!}
-									<button id='del-1' type="button" class="btn btn-danger img-del col-md-2 col-md-offset-4">x</button>
+									@endfor
 								</div>							
-							</div>
-						</div>
-
-						
-						<div class="control-group">
-							<div class="controls col-md-offset-4">
-								<button type="button" class="btn btn-info" id='add-image' style="margin-right: 15px;">
-									Afbeelding toevoegen
-								</button>	
 							</div>
 						</div>
 						<div class="control-group">

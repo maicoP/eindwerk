@@ -133,17 +133,10 @@
 								<div class="controls" id='input-images'>
 									<div id='img-1' class="imgd">
 										{!! Form::file('images[]', array('multiple'=>true,'class'=>'imgd')) !!}
-										<button id='del-1' type="button" class="btn btn-danger img-del col-md-2 col-md-offset-4">x</button>
+										{!! Form::file('images[]', array('multiple'=>true,'class'=>'imgd')) !!}
+										{!! Form::file('images[]', array('multiple'=>true,'class'=>'imgd')) !!}
+										{!! Form::file('images[]', array('multiple'=>true,'class'=>'imgd')) !!}
 									</div>
-								</div>
-							</div>
-
-							
-							<div class="control-group">
-								<div class="controls col-md-offset-4">
-									<button type="button" class="btn btn-info" id='add-image' style="margin-right: 15px;">
-										Afbeelding toevoegen
-									</button>
 								</div>
 							</div>
 							<div class="control-group">
