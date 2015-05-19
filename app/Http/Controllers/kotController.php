@@ -5,6 +5,7 @@ use eindwerk\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use eindwerk\Http\Requests\addKotRequest;
+use eindwerk\Http\Requests\editKotRequest;
 use eindwerk\Kot;
 use eindwerk\Image;
 use Illuminate\Contracts\Auth\Guard;
@@ -48,8 +49,8 @@ class kotController extends Controller {
 	{
 		$kot->fill($request->all());
 		$kot->fk_userid = \Auth::user()->id;
-		$kot->begindate = $request->begindate_submit;
-		$kot->enddate = $request->enddate_submit;
+		$kot->begindate = $request->begindate;
+		$kot->enddate = $request->enddate;
 		$kot->bikestands = ($request->get('bikestands') == 'on' ? true :false );
 		$kot->seperatekitchen = ($request->get('seperatekitchen') == 'on' ? true :false );
 		$kot->seperatebathroom = ($request->get('seperatebathroom') == 'on' ? true :false );
@@ -100,28 +101,32 @@ class kotController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update(addKotRequest $request,$id)
+	public function update(editKotRequest $request,$id)
 	{
 		$kot =  Kot::find($id);
 		$kot->fill($request->all());
-		$kot->begindate = $request->begindate_submit;
-		$kot->enddate = $request->enddate_submit;
+		$kot->begindate = $request->begindate;
+		$kot->enddate = $request->enddate;
 		$kot->bikestands = ($request->get('bikestands') == 'on' ? true :false );
 		$kot->seperatekitchen = ($request->get('seperatekitchen') == 'on' ? true :false );
 		$kot->seperatebathroom = ($request->get('seperatebathroom') == 'on' ? true :false );
 		$kot->furniture = ($request->get('furniture') == 'on' ? true :false );
 		$kot->save();
-		foreach( $request->file('images') as $image)
+		if($request->hasFile('images'))
 		{
-			$filename = str_random(40).'.png';
-			$destination = 'kot_img/';
-			$image->move('kot_img/', $filename);
-			$image = new Image;
-			$image->image = $destination.$filename;
-			$image->fk_kotid = $kot->id;
-			$image->save();
+			foreach( $request->file('images') as $image)
+			{
+				$filename = str_random(40).'.png';
+				$destination = 'kot_img/';
+				$image->move('kot_img/', $filename);
+				$image = new Image;
+				$image->image = $destination.$filename;
+				$image->fk_kotid = $kot->id;
+				$image->save();
 
+			}
 		}
+		
 
 		return Redirect('/kot');
 	}

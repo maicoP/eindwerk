@@ -2,7 +2,7 @@
 
 use eindwerk\Http\Requests\Request;
 
-class addKotRequest extends Request {
+class editKotRequest extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -30,8 +30,7 @@ class addKotRequest extends Request {
             'size'  =>  'required',
             'telephonenumber'   =>  'required',
             'begindate'    =>  'required',
-            'enddate'   =>  'required|after:begindate',
-            'images' => 'required'
+            'enddate'   =>  'required|after:begindate'
 		];
 	}
 

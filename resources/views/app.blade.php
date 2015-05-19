@@ -6,6 +6,7 @@
 	<title>@yield('title')</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="csrf-token" content="{{ csrf_token() }}" /> 
 	<link id="bootstrap-style" href="/app/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/app/css/bootstrap-responsive.min.css" rel="stylesheet">
 	<link id="base-style" href="/app/css/style.css" rel="stylesheet">
@@ -84,14 +85,14 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script src="/app/js/bootstrap.min.js"></script>
 		<script src="/app/js/custom.js"></script>
-
+		<script src="/js/app.js"></script>
 		<script src="/lib/pickadate/picker.js"></script>
 		<script src="/lib/pickadate/picker.date.js"></script>
 		<script src="/lib/pickadate/translations/nl_NL.js"></script>
 		<script>
 			$(document).ready(function(){
 				$('.date').pickadate({
-					format : 'dd-mm-yyyy',
+					format : 'yyyy-mm-dd',
 			        formatSubmit : 'yyyy-mm-dd'
 			        
 			    });
