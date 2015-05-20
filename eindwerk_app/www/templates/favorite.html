@@ -7,10 +7,13 @@
 	  <h2 class="title">Favorieten</h2>
 	</div>
   <ion-content id='content' class='content has-header padding content_yellowbg'>
-  	<div class='padding' style='margin-top:30px' ng-show='loading'>
+  	<div class='padding' style='margin-top:40px' ng-show='loading'>
 	   	loading
 	</div>
-	<div ng-repeat="(key,kot) in favKot" id="card{{key}}" type="list-inset" class="list list-inset fav_card footer_padding" ng-show='!loading'>
+	<div ng-show='noResult'  style='margin-top:40px'>
+	    geen resultaten
+	</div>
+	<div ng-repeat="(key,kot) in favKot" id="card{{key}}" type="list-inset" class="list list-inset fav_card footer_padding" ng-show='!loading && !noResult'>
 		<div class='info'>
 			<img width='100%' id='main_image{{kot.id}}' src="http://maicopaulussen.2fh.co/eindwerk/public/{{kot.images[0].image}}" alt="">
 			<div class="kot_thumbs">
