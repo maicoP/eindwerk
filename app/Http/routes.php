@@ -12,9 +12,10 @@
 */
 Route::resource('kot','kotController');
 
-Route::get('/', 'welcomeController@index');
-Route::get('/home', 'homeController@index');
+Route::get('/', 'homeController@index');
+Route::get('/contact', 'homeController@contact');
 Route::post('/images/delete/{id}','kotController@deleteImage');
+Route::post('/message/send','homeController@sendMessage');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

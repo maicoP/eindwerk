@@ -2,7 +2,6 @@
 
 use eindwerk\Http\Requests;
 use eindwerk\Http\Controllers\Controller;
-
 use Illuminate\Http\Request;
 use eindwerk\Http\Requests\addKotRequest;
 use eindwerk\Http\Requests\editKotRequest;

@@ -2,6 +2,8 @@
 
 use Auth;
 use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Http\Request;
+use eindwerk\Http\Requests\contactRequest;
 
 class HomeController extends Controller {
 
@@ -33,7 +35,7 @@ class HomeController extends Controller {
 	 */
 	public function __construct()
 	{
-		$this->middleware('auth');
+		$this->middleware('guest');
 	}
 	
 	public function index()
@@ -47,6 +49,20 @@ class HomeController extends Controller {
 			return view('index');
 		}
 		
+	}
+
+	public function contact()
+	{
+		return view('contact');
+	}
+
+	public function sendMessage(contactRequest $request)
+	{
+		Mail::send('emails.contact', array('message' => $request->get('boodschap'),'name' => $request->get('naam'),'email' => $request->get('email')), function($message)
+		{
+		    $message->to('maicopaulussen@hotmail.be', 'Kotter contact')->subject('Contact kotter');
+		});
+		return redirect('/contact');
 	}
 
 }
