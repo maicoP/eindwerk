@@ -6,8 +6,11 @@
 	</div>
 
   <ion-content id='content' class='content has-header padding content_yellowbg'>
-      <div ng-show='!extraInfo' ng-include="include">
+      <div ng-show='!extraInfo && !noResult' ng-include="include">
         
+      </div>
+      <div ng-show='noResult'>
+        geen resultaten
       </div>
       <div ng-show='extraInfo' id='extraInfo' class='padding'>
         <div id='map'></div>
