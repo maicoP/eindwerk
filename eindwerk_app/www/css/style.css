@@ -345,6 +345,8 @@ button.button.button-block.button-positive.button_action{
     width:100%;
 }
 
+
+
 .loader,
 .loader:before,
 .loader:after {
@@ -391,6 +393,11 @@ button.button.button-block.button-positive.button_action{
   -webkit-animation: load2 2s infinite ease;
   animation: load2 2s infinite ease;
 }
+
+.dark_loader:before,.dark_loader:after{
+	background: #1c1d22;
+}
+
 @-webkit-keyframes load2 {
   0% {
     -webkit-transform: rotate(0deg);
