@@ -253,6 +253,7 @@ button.button.button-block.button-positive.button_action{
 	height:50px;
 }
 
+/*Content dark color*/
 
 .content_dark, .content_dark .info{
 	background-color:#1c1d22;
@@ -298,6 +299,12 @@ button.button.button-block.button-positive.button_action{
 	color:#c1c1c1;
 }
 
+.content_dark .item-divider{
+	background-color:#363a40;
+}
+
+/**/
+
 
 #extraInfo{
 	margin-bottom:85px;
@@ -333,6 +340,8 @@ button.button.button-block.button-positive.button_action{
 	margin:0px!important;
 }
 
+/*loader*/
+
 .center{
     top: 50%;
     -webkit-transform: translateY(-50%);
@@ -344,8 +353,6 @@ button.button.button-block.button-positive.button_action{
     margin:0 auto;
     width:100%;
 }
-
-
 
 .loader,
 .loader:before,
@@ -455,5 +462,3 @@ td-card img {
 	background-size: cover;
 	background-position: center,center;
 }
-
-
