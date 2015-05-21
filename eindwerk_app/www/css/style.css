@@ -108,6 +108,14 @@ img.kot_thumb{
 
 .fav_card{
 	margin-top:45px;
+	border-radius:0;
+	padding-bottom:0;
+	padding-top:0;
+}
+
+.info_message{
+	text-align:center;
+	color:#e4e4e4
 }
 
 .sub_menu{
@@ -246,10 +254,49 @@ button.button.button-block.button-positive.button_action{
 }
 
 
-.content_yellowbg{
-	background-color:#fff8dc;
+.content_dark, .content_dark .info{
+	background-color:#1c1d22;
 }
 
+.content_dark .info a{
+	background-color:#2a2d32;
+	border-color:#1c1d22;
+}
+
+.content_dark .info p{
+	color:#fff;
+}
+
+.content_dark img.kot_thumb{
+	border-color:#1c1d22;
+}
+
+.content_dark .item{
+	background-color:#2a2d32;
+	border-color:#2a2d32;
+	color:#fff;
+}
+
+.content_dark .list-inset{
+	border-radius:0;
+	border:none;
+}
+
+.content_dark .list{
+	padding-bottom:0;
+}
+
+.content_dark .item:first-child{
+	border-radius:0;
+}
+
+.content_dark input, .content_dark select{
+	background-color:#2a2d32;
+}
+
+.content_dark .input-label, .content_dark input, .content_dark .list, .content_dark .item-checkbox, .content_dark select{
+	color:#c1c1c1;
+}
 
 
 #extraInfo{

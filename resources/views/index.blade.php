@@ -32,8 +32,8 @@
             <div class="header_content">
                 <img src="img/logo.png" alt="">
                 <hr>
-                <h2 class="slogan">De zoektocht naar je droomkot <br>werd plots een pak aangenamer.</h2>
-                <a href="#download" class="btn btn-primary btn_download page-scroll">Download de gratis app</a>
+                <h2 class="slogan">De app waarmee je je droomkot vindt in Antwerpen.</h2>
+                <p><a href=""><img class="download_mobile"src="img/android.png" alt=""></a><a href=""><img class="download_mobile" src="img/ios.png" alt=""></a></p>
             </div>
         </div>
     </div>

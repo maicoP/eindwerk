@@ -41,6 +41,7 @@ h1,h2{
         font-family:"Roboto";
         font-size:30px;
         font-weight:400;
+        margin-bottom:20px;
     }
 
 p{
@@ -179,12 +180,12 @@ p{
 
     .navbar-default.affix .navbar-header .navbar-brand {
         font-size: 18px;/*create transition if larger/smaller*/
-        color: #972F38;
+        color: #000;
     }
 
     .navbar-default.affix .navbar-header .navbar-brand:hover,
     .navbar-default.affix .navbar-header .navbar-brand:focus {
-        color: #eb3812;
+        color: #3399FF;
     }
 
     .navbar-default.affix .nav>li>a,

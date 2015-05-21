@@ -1,17 +1,17 @@
-<ion-view>
-	<div class="bar bar-header bar-dark">
+<ion-view class="content_dark">
+	<div class="bar bar-header content_dark">
 		<a class="button button-icon icon ion-arrow-left-c" href="#/main"></a>	
 	  	<div class="h1 title"><img src="img/k.png" alt=""></div>
 	</div>
 	<div class="bar bar-subheader sub_menu">
 	  <h2 class="title">Favorieten</h2>
 	</div>
-  <ion-content id='content' class='content has-header padding content_yellowbg'>
+  <ion-content id='content' class='content has-header padding content_dark'>
   	<div class='padding' style='margin-top:40px' ng-show='loading'>
 	   	loading
 	</div>
-	<div ng-show='noResult'  style='margin-top:40px'>
-	    geen resultaten
+	<div ng-show='noResult' class="info_message center">
+	    U heeft nog geen koten aan uw favorieten toegevoegd.
 	</div>
 	<div ng-repeat="(key,kot) in favKot" id="card{{key}}" type="list-inset" class="list list-inset fav_card footer_padding" ng-show='!loading && !noResult'>
 		<div class='info'>
@@ -95,7 +95,7 @@
 	        	<div id="map" class="map{{key}}" data-tap-disabled="true"></div>
 	        </div>
 		</div>
-		<div class='row' >
+		<div class='row content_dark' >
 	        <div class="col" id='openInfo{{key}}'>
 	          <img ng-click="info({{key}})"   src="img/icons/info.png" alt="" align="right">
 	        </div>

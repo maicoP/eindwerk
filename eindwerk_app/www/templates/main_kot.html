@@ -5,12 +5,12 @@
 	  	<a class="button button-clear icon ion-heart iconmenu" href="#/favorite"></a>	
 	</div>
 
-  <ion-content id='content' class='content has-header padding content_yellowbg'>
+  <ion-content id='content' class='content has-header padding content_dark'>
       <div ng-show='!extraInfo && !noResult' ng-include="include">
         
       </div>
-      <div ng-show='noResult'>
-        geen resultaten
+      <div ng-show='noResult' class='info_message center'>
+        We konden geen koten vinden met uw huidige filters.
       </div>
       <div ng-show='extraInfo' id='extraInfo' class='padding'>
         <div id='map'></div>
@@ -73,7 +73,7 @@
 
   </ion-content>
 
-  <div class="like_dislike" style="position: absolute; bottom: 0px; width: 100%">
+  <div class="like_dislike content_dark" style="position: absolute; bottom: 0px; width: 100%">
 
     <div class="row footer_row" ng-show='!loading'>
         <div class="col">
