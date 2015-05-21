@@ -126,6 +126,9 @@
 						    <label class='col-md-3'>
 						      <input type="checkbox" name='furniture' {{($kot->furniture ?  'checked' : '')}}> Bemeubeld
 						    </label>
+						    <label class='col-md-3'>
+						      <input type="checkbox" name='wifi' {{($kot->wifi ?  'checked' : '')}}> Internet inbegrepen
+						    </label>
 						</div>
 
 						<div class="control-group">

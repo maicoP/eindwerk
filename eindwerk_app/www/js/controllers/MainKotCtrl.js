@@ -45,7 +45,6 @@ angular.module('starter.controllers', [])
           if(data['kot'] != null)
           {
               adress = data['kot']['city']+' '+data['kot']['zipcode']+' '+data['kot']['streatname']+' '+data['kot']['housenumber'];
-
               geocoder.geocode( { 'address':  userdata['school']}, function(results, status) {
                   if (status == google.maps.GeocoderStatus.OK) {
                         schoolLatlng = results[0].geometry.location;

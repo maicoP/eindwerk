@@ -43,6 +43,7 @@
 				<li>{{($kot->seperatekitchen ? 'Aparte keuken' : '')}}</li> 
 				<li>{{($kot->seperatebathroom ? 'Aparte Badkamer' : '')}}</li>
 				<li>{{($kot->furniture ? 'Bemeubeld' : '')}}</li>
+				<li>{{($kot->wifi ? 'wifi' : '')}}</li>
 			</ul>
 			<h2>Contact</h2>
 			<p>E-mail: <b>{{$kot->email}}</b></p>

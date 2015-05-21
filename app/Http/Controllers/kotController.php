@@ -54,6 +54,7 @@ class kotController extends Controller {
 		$kot->seperatekitchen = ($request->get('seperatekitchen') == 'on' ? true :false );
 		$kot->seperatebathroom = ($request->get('seperatebathroom') == 'on' ? true :false );
 		$kot->furniture = ($request->get('furniture') == 'on' ? true :false );
+		$kot->wifi = ($request->get('wifi') == 'on' ? true :false );
 		$kot->save();
 		foreach( $request->file('images') as $image)
 		{
@@ -110,6 +111,7 @@ class kotController extends Controller {
 		$kot->seperatekitchen = ($request->get('seperatekitchen') == 'on' ? true :false );
 		$kot->seperatebathroom = ($request->get('seperatebathroom') == 'on' ? true :false );
 		$kot->furniture = ($request->get('furniture') == 'on' ? true :false );
+		$kot->wifi = ($request->get('wifi') == 'on' ? true :false );
 		$kot->save();
 		if($request->hasFile('images'))
 		{

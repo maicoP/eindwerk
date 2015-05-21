@@ -74,7 +74,20 @@ angular.module('starter.controllers')
       $scope.postChanges('furniture',$scope.userdata.furniture);
     }, 1000);   
   };
-
+  var delaySize;
+  $scope.changeSize = function(){
+    $timeout.cancel(delaySize);
+    delaySize = $timeout(function() {
+      $scope.postChanges('size',$scope.userdata.size);
+    }, 1000);   
+  };
+  var delayWifi;
+  $scope.changeWifi = function(){
+    $timeout.cancel(delayWifi);
+    delayWifi = $timeout(function() {
+      $scope.postChanges('wifi',$scope.userdata.wifi);
+    }, 1000);   
+  };
   $scope.postChanges = function(field,value)
   {
       console.log(value);
@@ -99,6 +112,7 @@ angular.module('starter.controllers')
             $scope.userdata.seperatekitchen = (data['result'][0]['seperatekitchen'] == 1) ? true : false;
             $scope.userdata.seperatebathroom = (data['result'][0]['seperatebathroom'] == 1) ? true : false;
             $scope.userdata.furniture = (data['result'][0]['furniture'] == 1) ? true : false;
+            $scope.userdata.wifi = (data['result'][0]['wifi'] == 1) ? true : false;
             $scope.loading = false;
           }
         });

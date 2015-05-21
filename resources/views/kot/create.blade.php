@@ -126,6 +126,9 @@
 							    <label class='col-md-3'>
 							      <input type="checkbox" name='furniture'> Bemeubeld
 							    </label>
+							    <label class='col-md-3'>
+							      <input type="checkbox" name='wifi'> Internet inbegrepen
+							    </label>
 							</div>
 
 							<div class="control-group">
