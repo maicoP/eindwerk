@@ -92,7 +92,7 @@ angular.module('starter.controllers')
   {
       console.log(value);
       userdata = JSON.parse(window.localStorage['userdata']);
-        $http({method: "POST",dataType:"jsonp",url:'http://maicopaulussen.2fh.co/eindwerk/db/changeFilters.php',data : {field: field,value: value , userid: userdata['id']},headers:{'Access-Control-Allow-Origin': '*'}})
+        $http({method: "POST",dataType:"jsonp",url:'http://kotterapp.be/db/changeFilters.php',data : {field: field,value: value , userid: userdata['id']},headers:{'Access-Control-Allow-Origin': '*'}})
         .success(function(data, status, headers, config) {
           console.log(data);
         });
@@ -100,7 +100,7 @@ angular.module('starter.controllers')
 
 
   userdata = JSON.parse(window.localStorage['userdata']);
-  $http({method: "POST",dataType:"jsonp",url:'http://maicopaulussen.2fh.co/eindwerk/db/getUser.php',data : {userid: userdata['id']},headers:{'Access-Control-Allow-Origin': '*'}})
+  $http({method: "POST",dataType:"jsonp",url:'http://kotterapp.be/db/getUser.php',data : {userid: userdata['id']},headers:{'Access-Control-Allow-Origin': '*'}})
         .success(function(data, status, headers, config) {
           console.log(data);
           if(data['succes'])
@@ -117,7 +117,7 @@ angular.module('starter.controllers')
           }
         });
   $scope.userdata = JSON.parse(window.localStorage['userdata']);
-  $http({method: "GET",dataType:"jsonp",url:'http://maicopaulussen.2fh.co/eindwerk/db/getSchools.php',headers:{'Access-Control-Allow-Origin': '*'}})
+  $http({method: "GET",dataType:"jsonp",url:'http://kotterapp.be/db/getSchools.php',headers:{'Access-Control-Allow-Origin': '*'}})
   .success(function(data, status, headers, config) {
     $scope.schools = data;
   });

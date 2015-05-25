@@ -33,10 +33,6 @@ class HomeController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function __construct()
-	{
-		$this->middleware('guest');
-	}
 	
 	public function index()
 	{

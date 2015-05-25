@@ -24,9 +24,17 @@ if( $filters['furniture'] == true)
 {
 	$sql =$sql.'and furniture = 1 ';
 }
+if( $filters['wifi'] == true)
+{
+	$sql =$sql.'and wifi = 1 ';
+}
 if( $filters['price'] > 0)
 {
 	$sql =$sql."and price <= '".$filters['price']."' ";
+}
+if( $filters['size'] > 0)
+{
+	$sql =$sql."and size >= '".$filters['size']."' ";
 }
 if( $filters['startDate'] != 0)
 {

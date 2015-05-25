@@ -14,5 +14,5 @@ for($i = 0; $array[$i] = mysqli_fetch_assoc($result); $i++)
 }
 array_pop($array);
 
-echo json_encode($array);
+echo json_encode(array('kotten' => $array));
 

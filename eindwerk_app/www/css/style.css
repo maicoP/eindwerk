@@ -183,6 +183,16 @@ button.button.button-block.button-positive.button_action{
 	border:0;
 }
 
+.btn_submit{
+	padding-bottom: 0px;
+}
+.btn_fb{
+	padding-top: 0px;
+}
+
+.btn_fb > button{
+	margin-top: 0px !important;
+}
 .location_item{
 	background:transparent;
 }

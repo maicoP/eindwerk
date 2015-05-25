@@ -30,7 +30,7 @@ angular.module('starter.controllers')
           password: $scope.registerData.password
         }
         /*window.localStorage['userdata'] = JSON.stringify(userdata);*/
-        $http({method: "POST",dataType:"jsonp",url:'http://maicopaulussen.2fh.co/eindwerk/db/register.php',data : {username: $scope.registerData.username,password: $scope.registerData.password},headers:{'Access-Control-Allow-Origin': '*'}})
+        $http({method: "POST",dataType:"jsonp",url:'http://kotterapp.be/db/register.php',data : {username: $scope.registerData.username,password: $scope.registerData.password},headers:{'Access-Control-Allow-Origin': '*'}})
         .success(function(data, status, headers, config) {
           console.log(data);
           if(data['result'])
@@ -53,7 +53,7 @@ angular.module('starter.controllers')
         if(success.status == 'connected')
         {
           facebookConnectPlugin.api('/me',["public_profile", "email"],function(result){
-              $http({method: "POST",dataType:"jsonp",url:'http://maicopaulussen.2fh.co/eindwerk/db/register.php',data : {username: result.name,password: ''},headers:{'Access-Control-Allow-Origin': '*'}})
+              $http({method: "POST",dataType:"jsonp",url:'http://kotterapp.be/db/register.php',data : {username: result.name,password: ''},headers:{'Access-Control-Allow-Origin': '*'}})
                 .success(function(data, status, headers, config) {
                   if(data['result'])
                   {

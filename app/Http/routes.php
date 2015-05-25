@@ -13,6 +13,7 @@
 Route::resource('kot','kotController');
 
 Route::get('/', 'homeController@index');
+Route::get('/api/getKot', 'apiController@getKot');
 Route::get('/contact', 'homeController@contact');
 Route::post('/images/delete/{id}','kotController@deleteImage');
 Route::post('/message/send','homeController@sendMessage');

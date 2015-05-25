@@ -15,9 +15,9 @@
 	</div>
 	<div ng-repeat="(key,kot) in favKot" id="card{{key}}" type="list-inset" class="list list-inset fav_card footer_padding" ng-show='!loading && !noResult'>
 		<div class='info'>
-			<img width='100%' id='main_image{{kot.id}}' src="http://maicopaulussen.2fh.co/eindwerk/public/{{kot.images[0].image}}" alt="">
+			<img width='100%' id='main_image{{kot.id}}' src="http://kotterapp.be//{{kot.images[0].image}}" alt="">
 			<div class="kot_thumbs">
-				<img ng-repeat="image in kot.images" width='25%' ng-click='change_image($event,{{kot.id}})' src="http://maicopaulussen.2fh.co/eindwerk/public/{{image.image}}" alt="" class="kot_thumb">
+				<img ng-repeat="image in kot.images" width='25%' ng-click='change_image($event,{{kot.id}})' src="http://kotterapp.be//{{image.image}}" alt="" class="kot_thumb">
 			</div>
 		    <div class="kot_icons">
 

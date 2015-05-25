@@ -5,7 +5,7 @@ angular.module('starter.controllers')
   $scope.loading= false;
   $scope.noResult= false;
 
-  $http({method: "post",dataType: "jsonp",url:'http://maicopaulussen.2fh.co/eindwerk/db/getFavKot.php',data : {userid: userdata['id']},headers:{'Access-Control-Allow-Origin': '*'}})
+  $http({method: "post",dataType: "jsonp",url:'http://kotterapp.be/db/getFavKot.php',data : {userid: userdata['id']},headers:{'Access-Control-Allow-Origin': '*'}})
     .success(function(data, status, headers, config) {
       if(0<data['kotten'].length)
       {
@@ -56,7 +56,7 @@ angular.module('starter.controllers')
   $scope.vote = function(vote,kotid)
   {
     
-    $http({method: "post",dataType: "jsonp",url:'http://maicopaulussen.2fh.co/eindwerk/db/changeVote.php',data : {userid: userdata['id'],kotid: kotid,vote: vote},headers:{'Access-Control-Allow-Origin': '*'}})
+    $http({method: "post",dataType: "jsonp",url:'http://kotterapp.be/db/changeVote.php',data : {userid: userdata['id'],kotid: kotid,vote: vote},headers:{'Access-Control-Allow-Origin': '*'}})
         .success(function(data, status, headers, config) {
           if(data)
           {
