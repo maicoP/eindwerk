@@ -1,5 +1,25 @@
 @import url("font-awesome.min.css");
 
+html, body{
+	height:100%;
+}
+
+/*sticky footer*/
+
+.page_wrapper {
+  min-height: 100%;
+  margin-bottom: -45px; 
+  background-color:#FFF;
+}
+.page_wrapper:after {
+  content: "";
+  display: block;
+}
+.site_footer, .page_wrapper:after {
+  height: 25px; 
+}
+
+/*general*/
 
 body {
 	background: #F5F5F5;

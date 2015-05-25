@@ -31,7 +31,7 @@
 @if (Auth::check())
 
 <body>
-
+<div class="page_wrapper">
 	<div class="navbar">
 		<div class="navbar-inner">
 			<div class="container-fluid">
@@ -44,13 +44,9 @@
 				<div class="nav-no-collapse header-nav">
 					<ul class="nav pull-right">
 						<li class="dropdown">
-							<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-								<i class="halflings-icon white user"></i> {{ Auth::user()->name }} 
-								<span class="caret"></span>
+							<a class="btn" data-toggle="dropdown" href="#">
+								{{ Auth::user()->name }} 
 							</a>
-							<ul class="dropdown-menu">
-								<li><a href="/auth/logout"><i class="halflings-icon off"></i> Logout</a></li>
-							</ul>
 						</li>
 					</ul>
 				</div>
@@ -67,6 +63,7 @@
 						<li><a href="/kot"><i class="icon-tasks"></i><span class="hidden-tablet"> Koten Overzicht</span></a></li>	
 						<li><a href="/kot/create"><i class="icon-plus"></i><span class="hidden-tablet"> Kot Toevoegen</span></a></li>
 						<li><a href="/contact"><i class="icon-envelope"></i><span class="hidden-tablet"> Contact</span></a></li>
+						<li><a href="/auth/logout"><i class="icon-signout"></i><span class="hidden-tablet"> Uitloggen</span></a></li>
 					</ul>
 				</div>
 			</div>
@@ -89,8 +86,8 @@
 	@yield('content')
 
 		<div class="clearfix"></div>
-		
-		<footer>
+</div>
+		<footer class="site_footer">
 			<p><span style="text-align:left;float:left">&copy; 2015 <a href="#" alt="Bootstrap_Metro_Dashboard">Maico Paulussen &amp; Matthias Verhoeven</a></span></p>
 		</footer>
 
