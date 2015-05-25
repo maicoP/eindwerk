@@ -56,7 +56,7 @@
 							</div>
 						</div>
 						
-						<h2>Contact gegevens</h2>
+						<h2>Contact</h2>
 						<div class="control-group">
 							<label class="control-label">E-mail</label>
 							<div class="controls">
@@ -71,7 +71,7 @@
 							</div>
 						</div>
 
-						<h2>Extra Info</h2>
+						<h2>Informatei</h2>
 						<div class="control-group">
 							<label class="control-label">Oppervlakte (in m²)</label>
 							<div class="controls">
@@ -150,7 +150,7 @@
 						<div class="control-group">
 							<div class="controls col-md-offset-4">
 								<button type="submit" class="btn btn-primary" style="margin-right: 15px;">
-									Kot opslaaan
+									Wijzigingen opslaan
 								</button>
 							</div>
 						</div>						

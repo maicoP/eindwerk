@@ -10,7 +10,7 @@
 				<div class="row-fluid">
 					<div class="span13">
 						
-						<h1>Koten</h1>
+						<h1>Alle toegevoegde koten</h1>
 						
 						<div class="status approved top_spacing"><span>Koten in het systeem</span></div>
 

@@ -1,25 +1,12 @@
+/*import*/
+
 @import url("font-awesome.min.css");
+
+/*general*/
 
 html, body{
 	height:100%;
 }
-
-/*sticky footer*/
-
-.page_wrapper {
-  min-height: 100%;
-  margin-bottom: -45px; 
-  background-color:#FFF;
-}
-.page_wrapper:after {
-  content: "";
-  display: block;
-}
-.site_footer, .page_wrapper:after {
-  height: 25px; 
-}
-
-/*general*/
 
 body {
 	background: #F5F5F5;
@@ -64,8 +51,7 @@ h6 {
 	line-height: 12px;
 }
 
-
-/*NAV*/
+/*navigation*/
 
 .navbar .btn-navbar {
     border-radius: 0;
@@ -89,8 +75,7 @@ h6 {
        -moz-border-radius: 0px;
           	border-radius: 0px;
   	*zoom: 1;
-	border-bottom: 1px solid #38383D;
-	
+	border-bottom: 1px solid #38383D;	
 }
 
 .navbar-inner a {
@@ -143,7 +128,7 @@ a.brand span {
 }
 
 
-/*SIDE-NAV*/
+/*zij navigatie*/
 
 #sidebar-left {
 	background: #3A3A3A;
@@ -221,7 +206,7 @@ a.brand span {
           	border-radius: 0px;
 }
 
-/*GENERAL*/
+/*content*/
 
 #content {
 	background: #ffffff;
@@ -261,7 +246,22 @@ a:hover,a:active{
 	color:#2D89EF;
 }
 
-/*FOOTER*/
+/*sticky footer*/
+
+.page_wrapper {
+  min-height: 100%;
+  margin-bottom: -25px; 
+  background-color:#FFF;
+}
+.page_wrapper:after {
+  content: "";
+  display: block;
+}
+.site_footer, .page_wrapper:after {
+  height: 25px; 
+}
+
+/*footer*/
 
 footer {
 	min-height: 24px;
@@ -272,7 +272,7 @@ footer {
 	      	border-radius: 0px;
 }
 
-/*KOTEN*/
+/*koten*/
 
 .status.denied {
 	background: #FFEFEC; 
@@ -366,11 +366,15 @@ footer {
 }
 
 
-/*BUTTONS*/
+/*buttons*/
 
 .btn-edit_delete{
 	width:150px!important;
 	border-radius:0;
+	background-image: none;
+    border-radius: 0;
+    font-size: 18px;
+    padding: 11px 14px;
 }
 
 .frm-edit_delete{
@@ -398,39 +402,17 @@ footer {
     display: block;
 }
 
-/*menu dropdown*/
-
-.dropdown-menu {
-  	position: absolute;
-  	top: 100%;
-  	left: 0;
-  	z-index: 1000;
-  	display: none;
-  	float: left;
-  	min-width: 160px;
-	max-width: 300px;
-  	padding: 0px 0;
-  	margin: 5px 0 0 0;
-  	list-style: none;
-	text-shadow: none;
-  	-webkit-border-radius: 0px;
-       -moz-border-radius: 0px;
-          	border-radius: 0px;
-  	-webkit-box-shadow: none;
-       -moz-box-shadow: none;
-            box-shadow: none;	
+.btn-primary{
+	background-color: #2d89ef;
+	border-color: #2d89ef;
 }
 
-.dropdown-menu li a {
-  	display: block;
-  	padding: 7px 10px !important;
-  	clear: both;
-  	font-weight: normal;
-  	line-height: 20px;
-  	color: #000;
-	text-shadow: none;
-  	white-space: normal !important;
+.btn-primary:hover{
+	background-color:#357ebd;
+	border-color:#307Aa9;
 }
+
+/*img upload fix*/
 
 .img_up{
 	margin-top:20px;
