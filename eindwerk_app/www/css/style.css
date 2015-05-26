@@ -481,3 +481,10 @@ td-card img {
 	background-size: cover;
 	background-position: center,center;
 }
+
+/*border fix*/
+
+.card .item:first-child, .list-inset .item:first-child, .padding > .list .item:first-child{
+	border:none;
+	border-radius:0;
+}
