@@ -102,7 +102,8 @@ img.kot_thumb{
 }
 
 .footer_padding{
-	margin-bottom:80px!important;
+	padding-bottom:55px!important; /*iphone*/
+	background-color:#1c1d22;
 }
 
 .kot_card .item-divider{
@@ -325,7 +326,7 @@ button.button.button-block.button-positive.button_action{
 
 
 #extraInfo{
-	margin-bottom:85px;
+	padding-bottom:50px;
 }
 
 .footer_row{
@@ -479,4 +480,11 @@ td-card img {
 	background-image: url('../img/bg.png');
 	background-size: cover;
 	background-position: center,center;
+}
+
+/*border fix*/
+
+.card .item:first-child, .list-inset .item:first-child, .padding > .list .item:first-child{
+	border:none;
+	border-radius:0;
 }

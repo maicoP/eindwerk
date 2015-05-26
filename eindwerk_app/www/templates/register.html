@@ -1,13 +1,18 @@
 <ion-view>
   <ion-pane class='bg-gradient'>
-    <p class="text-center register_item"><img src="img/register_logo.png" alt=""></p>
+    <p class="text-center register_item"><img src="img/register_logo.png" width="198" height="198" alt=""></p>
     <form ng-submit="doRegister()">
       <div class="list">
+<<<<<<< HEAD
         <div ng-show='errors' class=' padding'>
           <p class='error' ng-repeat='error in errors'>{{error}}</p>
         </div>
         <label class="item item-input item-email register_item register_userpass_item">
           <input type="email" placeholder="Email" ng-model="registerData.email">
+=======
+        <label class="item item-input item-username register_item register_userpass_item">
+          <input type="text" placeholder="Email" ng-model="registerData.username">
+>>>>>>> 99224d03b3fa2b16fc7106ee8f4d3ec7aa60581f
         </label>
         <label class="item item-input item-password register_item register_userpass_item">
           <input type="password" placeholder="Wachtwoord" ng-model="registerData.password">
