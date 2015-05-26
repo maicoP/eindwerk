@@ -3,7 +3,7 @@ angular.module('starter.controllers')
 
   $scope.locationData = {};
   $scope.locationData.price = 100;
-  $http({method: "GET",dataType:"jsonp",url:'http://kotterapp.be/db/getSchools.php',headers:{'Access-Control-Allow-Origin': '*'}})
+  $http({method: "GET",dataType:"jsonp",url:'http://kotterapp.be/api/getschools',headers:{'Access-Control-Allow-Origin': '*'}})
   .success(function(data, status, headers, config) {
     $scope.schools = data;
   });        
@@ -28,15 +28,14 @@ angular.module('starter.controllers')
         
         addError(priceEl,$timeout);
       }
-      console.log($scope.locationData.price);
 
       if(isValid)
       {
         userdata = JSON.parse(window.localStorage['userdata']);
-        $http({method: "POST",dataType:"jsonp",url:'http://kotterapp.be/db/savebasicfilter.php',data : {school: $scope.locationData.school,price: $scope.locationData.price , userid: userdata['id']},headers:{'Access-Control-Allow-Origin': '*'}})
+        $http({method: "get",dataType:"jsonp",url:'http://kotterapp.be/api/savefilter',params : {school: $scope.locationData.school,price: $scope.locationData.price , userid: userdata['id']},headers:{'Access-Control-Allow-Origin': '*'}})
         .success(function(data, status, headers, config) {
           console.log(data);
-          if(data['result'])
+          if(data['succes'])
           {
             userdata['school'] = $scope.locationData.school;
             userdata['price'] = $scope.locationData.price;

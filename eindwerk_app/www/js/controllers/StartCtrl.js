@@ -4,7 +4,7 @@ angular.module('starter.controllers')
   if(window.localStorage.hasOwnProperty('userdata'))
   {
       userdata = JSON.parse(window.localStorage['userdata']);
-      $http({method: "post",dataType: "jsonp",url:'http://kotterapp.be/db/checkUser.php',data : {userid: userdata['id']},headers:{'Access-Control-Allow-Origin': '*'}})
+      $http({method: "get",dataType: "jsonp",url:'http://kotterapp.be/api/checkuser',params : {userid: userdata['id']},headers:{'Access-Control-Allow-Origin': '*'}})
         .success(function(data, status, headers, config) {
           if(data.succes)
           {

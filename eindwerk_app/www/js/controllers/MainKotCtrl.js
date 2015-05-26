@@ -39,7 +39,7 @@ angular.module('starter.controllers', [])
     var adressLatlng;
     var geocoder = new google.maps.Geocoder();
     
-    $http({method: "post",dataType: "jsonp",url:'http://kotterapp.be/db/getkot.php',data: {userid: userdata['id'],kotids: kotids},headers:{'Access-Control-Allow-Origin': '*'}})
+    $http({method: "get",dataType: "jsonp",url:'http://kotterapp.be/api/getKot',params: {userid: userdata['id'],kotids: kotids},headers:{'Access-Control-Allow-Origin': '*'}})
         .success(function(data, status, headers, config) {
           console.log(data);
           if(data['kot'] != null)
@@ -92,7 +92,7 @@ angular.module('starter.controllers', [])
 
   $scope.vote = function(vote,kotid)
   {
-    $http({method: "post",dataType: "jsonp",url:'http://kotterapp.be/db/vote.php',data : {userid: userdata['id'],kotid: kotid,vote: vote},headers:{'Access-Control-Allow-Origin': '*'}})
+    $http({method: "get",dataType: "jsonp",url:'http://kotterapp.be/api/vote',params : {userid: userdata['id'],kotid: kotid,vote: vote},headers:{'Access-Control-Allow-Origin': '*'}})
         .success(function(data, status, headers, config) {
           if(data)
           {

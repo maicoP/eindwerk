@@ -2,10 +2,13 @@ angular.module('starter.controllers')
 .controller('SettingsCtrl', function($scope, $stateParams,$timeout,$location,$http,$state) {
   $scope.loading= true;
   var delayName;
-  $scope.changeUsername = function(){
+  $scope.changeEmail = function(){
     $timeout.cancel(delayName);
     delayName = $timeout(function() {
-      $scope.postChanges('username',$scope.userdata.username); 
+      userdata = JSON.parse(window.localStorage['userdata']);
+      userdata['email'] = $scope.userdata.email;
+      window.localStorage['userdata'] = JSON.stringify(userdata);
+      $scope.postChanges('email',$scope.userdata.email); 
     }, 1000);
   };
   var delaySchool;
@@ -50,28 +53,28 @@ angular.module('starter.controllers')
   $scope.changeBikestands = function(){
     $timeout.cancel(delayBike);
     delayBike = $timeout(function() {
-      $scope.postChanges('bikestands',$scope.userdata.bikestands);
+      $scope.postChanges('bikestands',$scope.userdata.bikestands?1:0);
     }, 1000);   
   };
   var delayKitchen;
   $scope.changeSeperatekitchen = function(){
     $timeout.cancel(delayKitchen);
     delayKitchen = $timeout(function() {
-      $scope.postChanges('seperatekitchen',$scope.userdata.seperatekitchen);
+      $scope.postChanges('seperatekitchen',$scope.userdata.seperatekitchen?1:0);
     }, 1000);   
   };
   var delayBath;
   $scope.changeSeperatebathroom = function(){
     $timeout.cancel(delayBath);
     delayBath = $timeout(function() {
-      $scope.postChanges('seperatebathroom',$scope.userdata.seperatebathroom);
+      $scope.postChanges('seperatebathroom',$scope.userdata.seperatebathroom?1:0);
     }, 1000);   
   };
   var delayFurn;
   $scope.changeFurniture = function(){
     $timeout.cancel(delayFurn);
     delayFurn = $timeout(function() {
-      $scope.postChanges('furniture',$scope.userdata.furniture);
+      $scope.postChanges('furniture',$scope.userdata.furniture?1:0);
     }, 1000);   
   };
   var delaySize;
@@ -85,41 +88,53 @@ angular.module('starter.controllers')
   $scope.changeWifi = function(){
     $timeout.cancel(delayWifi);
     delayWifi = $timeout(function() {
-      $scope.postChanges('wifi',$scope.userdata.wifi);
+      $scope.postChanges('wifi',$scope.userdata.wifi?1:0);
     }, 1000);   
   };
   $scope.postChanges = function(field,value)
   {
       console.log(value);
       userdata = JSON.parse(window.localStorage['userdata']);
-        $http({method: "POST",dataType:"jsonp",url:'http://kotterapp.be/db/changeFilters.php',data : {field: field,value: value , userid: userdata['id']},headers:{'Access-Control-Allow-Origin': '*'}})
+        $http({method: "get",dataType:"jsonp",url:'http://kotterapp.be/api/changefilter',params : {field: field,value: value , userid: userdata['id']},headers:{'Access-Control-Allow-Origin': '*'}})
         .success(function(data, status, headers, config) {
-          console.log(data);
+          $scope.errors= false;
+          if(data['value'])
+          {
+            angular.forEach(data['value'], function(value,key){
+               data['value'][key] = value.replace('value', "email");
+              });
+            $scope.errors = data['value'];
+          }
         });
   }
 
 
   userdata = JSON.parse(window.localStorage['userdata']);
-  $http({method: "POST",dataType:"jsonp",url:'http://kotterapp.be/db/getUser.php',data : {userid: userdata['id']},headers:{'Access-Control-Allow-Origin': '*'}})
+  $http({method: "get",dataType:"jsonp",url:'http://kotterapp.be/api/getappuser',params : {userid: userdata['id']},headers:{'Access-Control-Allow-Origin': '*'}})
         .success(function(data, status, headers, config) {
-          console.log(data);
+          console.log(data['result']);
           if(data['succes'])
           {
-            $scope.userdata = data['result'][0];
-            $scope.userdata.startDate = new Date(data['result'][0]['startDate']);
-            $scope.userdata.endDate = new Date(data['result'][0]['endDate']);
-            $scope.userdata.bikestands = (data['result'][0]['bikestands'] == 1) ? true : false;
-            $scope.userdata.seperatekitchen = (data['result'][0]['seperatekitchen'] == 1) ? true : false;
-            $scope.userdata.seperatebathroom = (data['result'][0]['seperatebathroom'] == 1) ? true : false;
-            $scope.userdata.furniture = (data['result'][0]['furniture'] == 1) ? true : false;
-            $scope.userdata.wifi = (data['result'][0]['wifi'] == 1) ? true : false;
+            $scope.userdata.id = data['result']['id'];
+            $scope.userdata.email = data['result']['email'];
+            $scope.userdata.school = data['result']['school'];
+            $scope.userdata.price = data['result']['filter']['price'];
+            $scope.userdata.size = data['result']['filter']['size'];
+            $scope.userdata.distance = data['result']['filter']['distance'];
+            $scope.userdata.startDate = new Date(data['result']['filter']['startDate']);
+            $scope.userdata.endDate = new Date(data['result']['filter']['endDate']);
+            $scope.userdata.bikestands = (data['result']['filter']['bikestands'] == 1) ? true : false;
+            $scope.userdata.seperatekitchen = (data['result']['filter']['seperatekitchen'] == 1) ? true : false;
+            $scope.userdata.seperatebathroom = (data['result']['filter']['seperatebathroom'] == 1) ? true : false;
+            $scope.userdata.furniture = (data['result']['filter']['furniture'] == 1) ? true : false;
+            $scope.userdata.wifi = (data['result']['filter']['wifi']== 1) ? true : false;
             $scope.loading = false;
           }
         });
   $scope.userdata = JSON.parse(window.localStorage['userdata']);
-  $http({method: "GET",dataType:"jsonp",url:'http://kotterapp.be/db/getSchools.php',headers:{'Access-Control-Allow-Origin': '*'}})
+  $http({method: "GET",dataType:"jsonp",url:'http://kotterapp.be/api/getschools',headers:{'Access-Control-Allow-Origin': '*'}})
   .success(function(data, status, headers, config) {
     $scope.schools = data;
-  });
+  }); 
            
 });

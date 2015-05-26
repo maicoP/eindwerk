@@ -3,8 +3,11 @@
     <p class="text-center register_item"><img src="img/register_logo.png" alt=""></p>
     <form ng-submit="doRegister()">
       <div class="list">
-        <label class="item item-input item-username register_item register_userpass_item">
-          <input type="text" placeholder="Gebruikersnaam" ng-model="registerData.username">
+        <div ng-show='errors' class=' padding'>
+          <p class='error' ng-repeat='error in errors'>{{error}}</p>
+        </div>
+        <label class="item item-input item-email register_item register_userpass_item">
+          <input type="email" placeholder="Email" ng-model="registerData.email">
         </label>
         <label class="item item-input item-password register_item register_userpass_item">
           <input type="password" placeholder="Wachtwoord" ng-model="registerData.password">

@@ -10,14 +10,16 @@
     <div ng-show="loading" class="center text-center item-text">
       <div class="loader dark_loader">Loading...</div>
     </div>
-
+	<div ng-show='errors' class=' padding'>
+      <p class='error' ng-repeat='error in errors'>{{error}}</p>
+    </div>
 	<div ng-show='!loading' class="list list-inset">
 	  	 <div class="item item-divider">
 		    Gebruiker
 		  </div>
 		  <label class="item item-input item-stacked-label">
-		    <span class="input-label">Gebruikersnaam: </span>
-		    <input type="text" ng-change='changeUsername()' ng-model='userdata.username' placeholder="Gebruikersnaam" value="{{userdata.username}}">
+		    <span class="input-label">Email: </span>
+		    <input type="text" ng-change='changeEmail()' ng-model='userdata.email' placeholder="Email">
 		  </label>
 
 			<label class="item item-input item-stacked-label">		  
