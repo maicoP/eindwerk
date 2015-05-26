@@ -77,16 +77,16 @@
 
     <div class="row footer_row" ng-show='!loading'>
         <div class="col">
-        	<img ng-click="vote('dislike',kot.id)" src="img/icons/dislike.png" align="left" alt="">
+        	<img ng-click="vote('dislike',kot.id)" width="50" height="50" src="img/icons/dislike.png" align="left" alt="">
         </div>
         <div ng-show='!extraInfo' class="col text-center" id='openInfo'>
           <img ng-click="info()" width="50" height="50" src="img/icons/info.png" alt="">
         </div>
         <div ng-show='extraInfo' class="col text-center" id='closeInfo'>
-          <img ng-click="closeInfo()"   src="img/icons/k.png" alt="">
+          <img ng-click="closeInfo()" width="50" height="50" src="img/icons/k.png" alt="">
         </div>
         <div class="col">
-        	<img ng-click="vote('like',kot.id)" src="img/icons/like.png" align="right" alt="">
+        	<img ng-click="vote('like',kot.id)" width="50" height="50" src="img/icons/like.png" align="right" alt="">
         </div>
     </div>
 
