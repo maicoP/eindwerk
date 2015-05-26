@@ -102,7 +102,9 @@ img.kot_thumb{
 }
 
 .footer_padding{
-	margin-bottom:80px!important;
+	padding-bottom:40px; /*iphone*/
+	margin-bottom:40px!important; /*desktop*/
+	background-color:#1c1d22;
 }
 
 .kot_card .item-divider{
