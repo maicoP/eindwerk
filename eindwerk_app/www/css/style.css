@@ -102,8 +102,7 @@ img.kot_thumb{
 }
 
 .footer_padding{
-	padding-bottom:40px; /*iphone*/
-	margin-bottom:40px!important; /*desktop*/
+	padding-bottom:55px!important; /*iphone*/
 	background-color:#1c1d22;
 }
 
