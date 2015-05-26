@@ -57,7 +57,7 @@ angular.module('starter.controllers')
         {
           facebookConnectPlugin.api('/me',["public_profile", "email"],function(result){
             console.log(result);
-              /*$http({method: "get",dataType:"jsonp",url:'http://kotterapp.be/db/register.php',params : {email: result.name,password: ''},headers:{'Access-Control-Allow-Origin': '*'}})
+              $http({method: "get",dataType:"jsonp",url:'http://kotterapp.be/api/register',params : {email: result.email,password: ''},headers:{'Access-Control-Allow-Origin': '*'}})
                 .success(function(data, status, headers, config) {
                   if(data['succes'])
                   {
@@ -69,7 +69,7 @@ angular.module('starter.controllers')
                     window.localStorage['userdata'] = JSON.stringify(userdata);
                     $location.path('/location');
                   }
-                });*/
+                });
           });
         }
       
