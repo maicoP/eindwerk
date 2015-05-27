@@ -39,6 +39,11 @@ class kotController extends Controller {
 		return view('kot.create');
 	}
 
+	public function help()
+	{
+		return view('kot.help');
+	}
+
 	/**
 	 * Store a newly created resource in storage.
 	 *

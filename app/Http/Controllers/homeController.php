@@ -52,6 +52,7 @@ class HomeController extends Controller {
 		return view('contact');
 	}
 
+
 	public function sendMessage(contactRequest $request)
 	{
 		Mail::send('emails.contact', array('message' => $request->get('boodschap'),'name' => $request->get('naam'),'email' => $request->get('email')), function($message)
