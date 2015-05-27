@@ -488,3 +488,8 @@ td-card img {
 	border:none;
 	border-radius:0;
 }
+
+.card .item:last-child, .list-inset .item:last-child, .padding > .list .item:last-child{
+	border:none;
+	border-radius:0;	
+}
