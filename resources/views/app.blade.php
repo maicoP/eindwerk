@@ -62,7 +62,7 @@
 					<ul class="nav nav-tabs nav-stacked main-menu">
 						<li><a href="/kot"><i class="icon-tasks"></i><span class="hidden-tablet"> Koten Overzicht</span></a></li>	
 						<li><a href="/kot/create"><i class="icon-plus"></i><span class="hidden-tablet"> Kot Toevoegen</span></a></li>
-						<!-- <li><a href="/contact"><i class="icon-envelope"></i><span class="hidden-tablet"> Contact</span></a></li> -->
+						<li><a href="/kot/help"><i class="icon-info-sign"></i><span class="hidden-tablet"> Help</span></a></li>
 						<li><a href="/auth/logout"><i class="icon-signout"></i><span class="hidden-tablet"> Uitloggen</span></a></li>
 					</ul>
 				</div>
