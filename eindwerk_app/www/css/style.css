@@ -493,3 +493,9 @@ td-card img {
 	border:none;
 	border-radius:0;	
 }
+
+/*range fix (test)*/
+
+input.ng-untouched.ng-valid.ng-dirty.ng-valid-parse{
+	padding-right:0px;
+}
