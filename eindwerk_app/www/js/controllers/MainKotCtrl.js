@@ -39,9 +39,14 @@ angular.module('starter.controllers', [])
     $http({method: "get",dataType: "jsonp",url:'http://kotterapp.be/api/getKot',params: {userid: userdata['id'],kotids: kotids},headers:{'Access-Control-Allow-Origin': '*'}})
         .success(function(data, status, headers, config) {
           console.log(data);
-          if(data['kot'] != null)
+          if(data['kot'] == false)
           {
-            $scope.loading=false;
+            $scope.loading = false;
+            $scope.noResult = true;
+            
+          }
+          else
+          {
             $scope.include='templates/card.html';
             var location = new Array();
             location['lat'] = data['kot']['lat'];
@@ -52,12 +57,7 @@ angular.module('starter.controllers', [])
             if(document.querySelectorAll('td-card')[0] !== undefined && document.querySelectorAll('td-card')[0] !== undefined){
               document.querySelectorAll('td-card')[0].removeAttribute("style");
             }
-            $scope.map = map;
-          }
-          else
-          {
-            $scope.loading = false;
-            $scope.noResult = true;
+            $scope.loading=false;
           }
           
       });
@@ -69,6 +69,8 @@ angular.module('starter.controllers', [])
         .success(function(data, status, headers, config) {
           if(data)
           {
+            console.log('test');
+            $scope.loading = true;
             getKot();
           }
       });
@@ -93,36 +95,26 @@ angular.module('starter.controllers', [])
     var closeInfo = document.getElementById('closeInfo');
   };
 
-  $scope.cardSwipedLeft = function(id) {
-    $timeout.cancel(timeout);// in case the drage event gets fired
-    $scope.vote('dislike',id);
-  };
-
-  $scope.cardSwipedRight = function(id) {
-    $timeout.cancel(timeout);// in case the drage event gets fired
-    $scope.vote('like',id);
-  };
-
-  // in case swipe is slow and not recognized as a swipe
   var timeout;
-  $scope.onDragLeft= function(id){
-      if(document.querySelectorAll('td-card')[0].getBoundingClientRect()['left'] < -75)
+  $scope.onRelease = function(id)
+  {
+    console.log(document.querySelectorAll('td-card')[0].getBoundingClientRect()['right']);
+    if(document.querySelectorAll('td-card')[0].getBoundingClientRect()['right'] > 435)
+    {
+
+      $timeout.cancel(timeout);
+      timeout = $timeout(function() {
+        $scope.vote('like',id);
+      }, 800);
+    }
+
+    if(document.querySelectorAll('td-card')[0].getBoundingClientRect()['left'] < -75)
       {
         $timeout.cancel(timeout);
         timeout = $timeout(function() {
           $scope.vote('dislike',id);
         }, 800);
       }
-  };
-
-  $scope.onDragRight= function(id){
-    if(document.querySelectorAll('td-card')[0].getBoundingClientRect()['right'] > 435)
-    {
-      $timeout.cancel(timeout);
-      timeout = $timeout(function() {
-        $scope.vote('like',id);
-      }, 800);
-    }
-  };
+  }
 
 });
