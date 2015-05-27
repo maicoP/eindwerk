@@ -10,6 +10,7 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::resource('kot','kotController');
 
 Route::get('/', 'homeController@index');
 Route::get('/api/getKot', 'apiController@getKot');
@@ -23,11 +24,9 @@ Route::get('/api/register', 'apiController@register');
 Route::get('/api/getschools', 'apiController@getSchools');
 Route::get('/api/savefilter', 'apiController@saveFilter');
 Route::get('/contact', 'homeController@contact');
-Route::get('/kot/help', 'kotController@help');
+Route::get('/help', 'kotController@help');
 Route::post('/images/delete/{id}','kotController@deleteImage');
 Route::post('/message/send','homeController@sendMessage');
-
-Route::resource('kot','kotController');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
