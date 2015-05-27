@@ -15,7 +15,10 @@ class CreateAppUserKotsTable extends Migration {
 		Schema::create('app_user_kots', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->timestamps();
+			$table->string('type');
+			$table->integer('fk_kotid')->unsigned();
+			$table->integer('fk_app_userid')->unsigned();
+			
 		});
 	}
 

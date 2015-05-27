@@ -137,7 +137,8 @@ return [
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Html\HtmlServiceProvider',
 		'Intervention\Image\ImageServiceProvider',
-
+		'Alexpechkarev\GoogleGeocoder\GoogleGeocoderServiceProvider',
+		'Toin0u\Geotools\GeotoolsServiceProvider',
 		/*
 		 * Application Service Providers...
 		 */
@@ -195,6 +196,7 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
 		'Form'		=> 'Illuminate\Html\FormFacade',
+		'Geotools' => 'Toin0u\Geotools\Facade\Geotools',
 		'Image' => 'Intervention\Image\Facades\Image',
 
 	],

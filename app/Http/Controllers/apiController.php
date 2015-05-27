@@ -20,7 +20,6 @@ class apiController extends Controller {
 	 */
 	public function getKot(Request $request)
 	{
-		return AppUser::all();
 		$userid = $request->get('userid'); 
 		$filter = Filter::where('fk_app_userid',$userid)->first();
 		$votedKotten = AppUserKot::where('fk_app_userid',$userid)->get();

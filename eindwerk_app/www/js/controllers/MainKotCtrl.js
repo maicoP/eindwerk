@@ -35,50 +35,23 @@ angular.module('starter.controllers', [])
 
   function getKot()
   {
-    var schoolLatlng;
-    var adressLatlng;
-    var geocoder = new google.maps.Geocoder();
     
     $http({method: "get",dataType: "jsonp",url:'http://kotterapp.be/api/getKot',params: {userid: userdata['id'],kotids: kotids},headers:{'Access-Control-Allow-Origin': '*'}})
         .success(function(data, status, headers, config) {
           console.log(data);
           if(data['kot'] != null)
           {
-              adress = data['kot']['city']+' '+data['kot']['zipcode']+' '+data['kot']['streatname']+' '+data['kot']['housenumber'];
-              geocoder.geocode( { 'address':  userdata['school']}, function(results, status) {
-                  if (status == google.maps.GeocoderStatus.OK) {
-                        schoolLatlng = results[0].geometry.location;
-                    } else {
-                      console.log('Geocode was not successful for the following reason: ' + status);
-                  }
-              });
-
-               geocoder.geocode( { 'address': adress}, function(results, status) {
-                  if (status == google.maps.GeocoderStatus.OK) {
-                        adressLatlng = results[0].geometry.location;
-                        lenght = google.maps.geometry.spherical.computeDistanceBetween(adressLatlng,schoolLatlng)/1000;
-                        lenght = lenght.toFixed(2);
-                        if(lenght <= data['filter']['distance'])
-                        {
-                          $scope.loading=false;
-                          $scope.include='templates/card.html';
-                          google.maps.event.addDomListener($window, "load",setMap(results[0].geometry.location));
-                          $scope.kot = data['kot'];
-                          $scope.lenght = lenght;
-                          if(document.querySelectorAll('td-card')[0] !== undefined && document.querySelectorAll('td-card')[0] !== undefined){
-                            document.querySelectorAll('td-card')[0].removeAttribute("style");
-                          }
-                          $scope.$apply();
-                        }
-                        else
-                        {
-                          kotids.push(data['kot']['id']);
-                          getKot();
-                        }
-                    } else {
-                      console.log('Geocode was not successful for the following reason: ' + status);
-                  }
-              });
+            $scope.loading=false;
+            $scope.include='templates/card.html';
+            var location = new Array();
+            location['lat'] = data['kot']['lat'];
+            location['lng'] = data['kot']['lng'];
+            google.maps.event.addDomListener($window, "load",setMap(location));
+            $scope.kot = data['kot'];
+            $scope.lenght = data['kot']['distance'];
+            if(document.querySelectorAll('td-card')[0] !== undefined && document.querySelectorAll('td-card')[0] !== undefined){
+              document.querySelectorAll('td-card')[0].removeAttribute("style");
+            }
             $scope.map = map;
           }
           else

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAppUserKotsTable extends Migration {
+class AlterKot extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,10 +12,10 @@ class CreateAppUserKotsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('app_user_kots', function(Blueprint $table)
+		Schema::table('kot', function(Blueprint $table)
 		{
-			$table->increments('id');
-			$table->timestamps();
+			$table->string('lat');
+			$table->string('lng');
 		});
 	}
 
@@ -26,7 +26,11 @@ class CreateAppUserKotsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('app_user_kots');
+		Schema::table('kot', function(Blueprint $table)
+		{
+			$table->dropcolumn('lat');
+			$table->dropcolumn('lng');
+		});
 	}
 
 }

@@ -15,7 +15,9 @@ class CreateAppUsersTable extends Migration {
 		Schema::create('app_users', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->timestamps();
+			$table->string('email');
+			$table->string('password');
+			$table->string('schools');
 		});
 	}
 
