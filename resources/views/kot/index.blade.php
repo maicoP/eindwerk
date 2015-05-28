@@ -11,12 +11,9 @@
 					<div class="span13">
 						
 						<h1>Alle toegevoegde koten</h1>
-						
-						<div class="status approved top_spacing"><span>Koten in het systeem</span></div>
-
 
 			@forelse($koten as $kot)
-
+					<div class="status approved top_spacing"><span>Koten in het systeem</span></div>
 						<div class="kot approved">
 							<div class="info">
 								<a href="/kot/{{$kot->id}}"><div class="title">{{$kot->streatname}}  {{$kot->housenumber}} {{$kot->zipcode}} {{$kot->city}}</div>
@@ -38,7 +35,10 @@
 						</div>
 
 			@empty
-			 <p>u hebt nog geen kotten toegevoegd</p>
+				<p><br>Er zijn geen koten beschikbaar omdat u er nog geen heeft toegevoegd.</p>
+  				<p>Een kot toevoegen doet u via de knop "<b>Kot toevoegen</b>" in de balk links opzij.</p>
+			 	<img src="/app/img/kot.png" alt="">
+  				<p>Voor meer hulp en informatie navigeert u naar het menu "<b>Help</b>".</p>
 			@endforelse						
 
 						<div class="status pending"><span>Koten in review</span></div>

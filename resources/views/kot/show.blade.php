@@ -3,13 +3,8 @@
 	KOTTER - Kot detail
 @stop
 @section('content')
-<ul class="breadcrumb">
-					<li>
-						<i class="icon-home"></i>
-						<a href="{{URL::to('/kot')}}">Home</a>
-						<i class="icon-angle-right"></i> 
-					</li>
-					<li><a href="#">Kot toevoegen</a></li>
+	
+<li><a href="#">Kot detail</a></li>
 				</ul>
 			
 				<div class="row-fluid sortable">

@@ -88,7 +88,7 @@
 		<div class="clearfix"></div>
 </div>
 		<footer class="site_footer">
-			<p><span style="text-align:left;float:left">&copy; 2015 <a href="#" alt="Bootstrap_Metro_Dashboard">Maico Paulussen &amp; Matthias Verhoeven</a></span></p>
+			<p>&copy; 2015 <a href="#">Maico Paulussen &amp; Matthias Verhoeven</a></p>
 		</footer>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
