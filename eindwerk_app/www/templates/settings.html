@@ -10,9 +10,14 @@
     <div ng-show="loading" class="center text-center item-text">
     	<img class="spinner" src="../img/svg-loaders/puff.svg" alt="">
     </div>
+
 	<div ng-show='errors' class=' padding'>
-      <p class='error' ng-repeat='error in errors'>{{error}}</p>
-    </div>
+	  <a class="item item-icon-left error_item" href="#">
+	    <i class="icon ion-alert"></i>
+	    <p class='error error_text' ng-repeat='error in errors'>{{error}}</p>
+	  </a>
+	</div>
+
 	<div ng-show='!loading' class="list list-inset">
 	  	 <div class="item item-divider">
 		    Gebruiker
@@ -37,7 +42,7 @@
 		    Kot
 		  </div>
 		  <label class="item item-input item-stacked-label">
-		    <span class="input-label">Max Prijs: <span>€{{userdata.price}}</span></span>
+		    <span class="input-label">Maximum Prijs: <span>€{{userdata.price}}</span></span>
 			<div class="list">
 				<div class="range range-positive">
 					<i class="icon ion-ios-minus-outline"></i>
@@ -48,7 +53,7 @@
 			</label>
 
 		  <label class="item item-input item-stacked-label">
-		    <span class="input-label">Min Oppervlakte: <span>{{userdata.size}}m²</span></span>
+		    <span class="input-label">Minimum Oppervlakte: <span>{{userdata.size}}m²</span></span>
 			<div class="list">
 				<div class="range range-positive">
 					<i class="icon ion-ios-minus-outline"></i>

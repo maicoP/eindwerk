@@ -1,3 +1,5 @@
+/*errors*/
+
 .error,.error > input , .error > select{
 	background-color: #f85f5b !important;
 	color: white !important;
@@ -17,6 +19,15 @@
 
 .error > input:-ms-input-placeholder {  
    color: white;  
+}
+
+.error_text{
+	color:white;
+	background:transparent!important;
+}
+
+.error_item{
+	background-color:#ff8181!important;
 }
 
 .hidden{
