@@ -3,9 +3,12 @@
     <p class="text-center register_item"><img src="img/register_logo.png" width="198" height="198" alt=""></p>
     <form ng-submit="doRegister()">
       <div class="list">
-        <div ng-show='errors' class=' padding'>
-          <p class='error' ng-repeat='error in errors'>{{error}}</p>
-        </div>
+      <div ng-show='errors' class=' padding'>
+        <a class="item item-icon-left error_item" href="#">
+          <i class="icon ion-alert"></i>
+          <p class='error error_text' ng-repeat='error in errors'>{{error}}</p>
+        </a>
+      </div>
         <label class="item item-input item-email register_item register_userpass_item">
           <input type="email" placeholder="Email" ng-model="registerData.email">
         </label>
