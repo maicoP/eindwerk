@@ -55,6 +55,11 @@ angular.module('starter', ['ionic','ionic.contrib.ui.tinderCards', 'starter.cont
     templateUrl: "templates/settings.html",
     controller: 'SettingsCtrl'
   })
+  .state('login', {
+    url: "/login",
+    templateUrl: "templates/login.html",
+    controller: 'LoginCtrl'
+  })
   .state('main', {
       url: "/main",
       templateUrl: "templates/main_kot.html",

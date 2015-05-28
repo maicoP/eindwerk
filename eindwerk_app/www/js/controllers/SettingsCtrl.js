@@ -108,13 +108,22 @@ angular.module('starter.controllers')
           }
         });
   }
-
+  $scope.resetKot = false;
   $scope.resetKotten = function()
   {
     $http({method: "get",dataType:"jsonp",url:'http://kotterapp.be/api/resetkotten',params : {userid: userdata['id']},headers:{'Access-Control-Allow-Origin': '*'}})
       .success(function(data, status, headers, config) {
-        console.log(data);
+        if(data['succes'])
+        {
+          $scope.resetKot = true;
+        }
       });
+  }
+
+  $scope.logout = function()
+  {
+    localStorage.clear();
+    $location.path('/');
   }
 
 

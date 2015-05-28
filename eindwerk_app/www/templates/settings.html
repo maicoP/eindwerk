@@ -116,11 +116,18 @@
 			     Internet Inbegrepen
 			  </li>
 		  </ul>
-
+			<div ng-show='resetKot' class=''>
+				De koten zijn met succes gereset.
+			</div>
 		  <button class="button button-block button-dark" ng-click='resetKotten()'>
-		  	Reset koten
+			Reset koten
 		  </button>
 		  <p class="text-center">Hiermee reset je alle koten die je hebt geliked/gedisliked. Je krijgt opnieuw alle beschikbare koten te zien.</p>
+
+		  <button class="button button-block button-dark" ng-click='logout()'>
+		  	Uitloggen
+		  </button>
+		  	
 	</div>
   </ion-content>
 </ion-view>
