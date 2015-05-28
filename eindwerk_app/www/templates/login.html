@@ -1,25 +1,26 @@
-<ion-modal-view>
-  <ion-header-bar>
-    <h1 class="title">Login</h1>
-    <div class="buttons">
-      <button class="button button-clear" ng-click="closeLogin()">Close</button>
-    </div>
-  </ion-header-bar>
-  <ion-content>
+<ion-view>
+  <ion-pane class='bg-gradient'>
+    <p class="text-center register_item"><img src="img/register_logo.png" width="198" height="198" alt=""></p>
     <form ng-submit="doLogin()">
       <div class="list">
-        <label class="item item-input">
-          <span class="input-label">Username</span>
-          <input type="text" ng-model="loginData.username">
+        <div ng-show='error'>
+          <p class='error' >{{error}}</p>
+        </div>
+        <label class="item item-input item-email register_item register_userpass_item">
+          <input type="email" placeholder="Email" ng-model="loginData.email">
         </label>
-        <label class="item item-input">
-          <span class="input-label">Password</span>
-          <input type="password" ng-model="loginData.password">
+        <label class="item item-input item-password register_item register_userpass_item">
+          <input type="password" placeholder="Wachtwoord" ng-model="loginData.password">
         </label>
-        <label class="item">
-          <button class="button button-block button-positive" type="submit">Log in</button>
+        <label class="item register_item btn_submit">
+          <button class="icon-left ion-android-arrow-forward button button-block button-stable register_button" type="submit">Inloggen</button>
+        </label>
+        <label class="item register_item btn_fb">
+          <button type='button' class="icon-left ion-social-facebook button button-block button-dark register_fb" ng-click='facebookRegister()'>Facebook</button>
         </label>
       </div>
     </form>
-  </ion-content>
-</ion-modal-view>
+      
+    <div class="register_antweDrpen"></div>
+  </ion-pane>
+</ion-view>

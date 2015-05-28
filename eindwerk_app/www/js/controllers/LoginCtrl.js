@@ -1,9 +1,9 @@
 angular.module('starter.controllers')
-.controller('RegisterCtrl', function($scope, $stateParams,$timeout,$location,$http) {
+.controller('LoginCtrl', function($scope, $stateParams,$timeout,$location,$http) {
 
-  $scope.registerData = {};
+  $scope.loginData= {};
 
-  $scope.doRegister = function() {
+  $scope.doLogin = function() {
       //controlleren of alle velden zijn ingevuld
       var isValid = true;
       var emailEl = document.querySelector( '.item-email' );
@@ -11,13 +11,13 @@ angular.module('starter.controllers')
       //remove red from input fields
       angular.element(emailEl).removeClass('error');
       angular.element(passwordEl).removeClass('error');
-      if(!$scope.registerData.hasOwnProperty('email'))
+      if(!$scope.loginData.hasOwnProperty('email'))
       {
         isValid = false;
         addError(emailEl,$timeout);
       }
 
-      if(!$scope.registerData.hasOwnProperty('password'))
+      if(!$scope.loginData.hasOwnProperty('password'))
       {
         isValid = false;
         addError(passwordEl,$timeout);
@@ -26,24 +26,25 @@ angular.module('starter.controllers')
       if(isValid)
       {
         var userdata ={
-          email: $scope.registerData.email,
-          password: $scope.registerData.password
+          email: $scope.loginData.email,
+          password: $scope.loginData.password
         }
-        $http({method: "get",dataType:"jsonp",url:'http://kotterapp.be/api/register',params : {email: $scope.registerData.email,password: $scope.registerData.password},headers:{'Access-Control-Allow-Origin': '*'}})
+        $http({method: "get",dataType:"jsonp",url:'http://kotterapp.be/api/login',params : {email: $scope.loginData.email,password: $scope.loginData.password},headers:{'Access-Control-Allow-Origin': '*'}})
         .success(function(data, status, headers, config) {
-          if(data['email'])
-          {
-            $scope.errors = data['email'];
-          }
+          console.log(data);
           if(data['succes'])
           {
             userdata = {
-              id : data['id'],
-              email:data['email'],
-              password: data['password']
+              id : data['user']['id'],
+              email:data['user']['email'],
+              password: data['user']['password']
             };
             window.localStorage['userdata'] = JSON.stringify(userdata);
-            $location.path('/location');
+            $location.path('/main');
+          }
+          else
+          {
+            $scope.error = 'email of password is niet correct'
           }
         });
       }
@@ -56,21 +57,21 @@ angular.module('starter.controllers')
         {
           facebookConnectPlugin.api('/me',["public_profile", "email"],function(result){
             console.log(result);
-              $http({method: "get",dataType:"jsonp",url:'http://kotterapp.be/api/register',params : {email: result.email,password: '',facebook:true},headers:{'Access-Control-Allow-Origin': '*'}})
+              $http({method: "get",dataType:"jsonp",url:'http://kotterapp.be/api/fblogin',params : {email: result.email,password: ''},headers:{'Access-Control-Allow-Origin': '*'}})
                 .success(function(data, status, headers, config) {
-                  if(data['email'])
-                  {
-                    $scope.errors = data['email'];
-                  }
                   if(data['succes'])
                   {
                     userdata = {
-                      id : data['id'],
-                      email:data['email'],
-                      password: data['password']
+                      id : data['user']['id'],
+                      email:data['user']['email'],
+                      password: data['user']['password']
                     };
                     window.localStorage['userdata'] = JSON.stringify(userdata);
-                    $location.path('/location');
+                    $location.path('/main');
+                  }
+                  else
+                  {
+                    $scope.error = 'u bent nog niet geregistreerd';
                   }
                 });
           });
