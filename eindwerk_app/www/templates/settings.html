@@ -7,6 +7,10 @@
 	  <h2 class="title">Instellingen</h2>
 	</div>
   <ion-content id='content' class='content has-header has-subheader padding content_dark'>
+    
+    <div ng-show="!loading" class="center item-text">
+    	<img class="spinner" src="img/svg-loaders/puff.svg" alt="">
+    </div>
 
 	<div ng-show='errors' class=' padding'>
 	  <a class="item item-icon-left error_item" href="#">
@@ -15,11 +19,7 @@
 	  </a>
 	</div>
 
-    <div ng-show="loading" class="center text-center">
-    	<img class="spinner" src="img/svg-loaders/puff.svg" alt="">
-    </div>
-
-	<div ng-show='!loading' class="list list-inset">
+	<div ng-show='loading' class="list list-inset">
 	  	 <div class="item item-divider">
 		    Gebruiker
 		  </div>
@@ -38,7 +38,7 @@
 		      </select>
 		  </label>
 	</div>
-	<div ng-show='!loading' class="list list-inset footer_padding">	
+	<div ng-show='loading' class="list list-inset footer_padding">	
 		  <div class="item item-divider">
 		    Kot
 		  </div>
