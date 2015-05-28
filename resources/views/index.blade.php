@@ -30,7 +30,7 @@
     <div class="header_wrapper">
         <div class="header">
             <div class="header_content">
-                <img src="img/logo.png" alt="">
+                <img class="logo" src="img/logo.png" alt="">
                 <hr>
                 <h2 class="slogan">De app waarmee je je droomkot vindt in Antwerpen.</h2>
                 <p><a href=""><img class="download_mobile"src="img/android.png" alt=""></a><a href=""><img class="download_mobile" src="img/ios.png" alt=""></a></p>
