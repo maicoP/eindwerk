@@ -10,7 +10,7 @@
     <div ng-show="loading" class="center item-text">
     	<img class="spinner" src="img/svg-loaders/puff.svg" alt="">
     </div>
-	<div ng-show='noResult' class="info_message center">
+	<div ng-show='noResult' class="info_message center text-center">
 	    U heeft nog geen koten aan uw favorieten toegevoegd.
 	</div>
 	<div ng-repeat="(key,kot) in favKot" id="card{{key}}" type="list-inset" class="list list-inset fav_card footer_padding" ng-show='!loading && !noResult'>
