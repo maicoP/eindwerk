@@ -1,5 +1,4 @@
-(function($){ //anonymous function
-    
+(function($){ 
 
     //page scroll easing.js
     $('a.page-scroll').bind('click', function(event) {
