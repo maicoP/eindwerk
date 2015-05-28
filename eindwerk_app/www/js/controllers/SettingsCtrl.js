@@ -2,6 +2,7 @@ angular.module('starter.controllers')
 .controller('SettingsCtrl', function($scope, $stateParams,$timeout,$location,$http,$state) {
   $scope.loading= true;
   var delayName;
+  var userdata = JSON.parse(window.localStorage['userdata']);
   $scope.changeEmail = function(){
     $timeout.cancel(delayName);
     delayName = $timeout(function() {
@@ -94,7 +95,7 @@ angular.module('starter.controllers')
   $scope.postChanges = function(field,value)
   {
       console.log(value);
-      userdata = JSON.parse(window.localStorage['userdata']);
+      
         $http({method: "get",dataType:"jsonp",url:'http://kotterapp.be/api/changefilter',params : {field: field,value: value , userid: userdata['id']},headers:{'Access-Control-Allow-Origin': '*'}})
         .success(function(data, status, headers, config) {
           $scope.errors= false;
@@ -108,11 +109,18 @@ angular.module('starter.controllers')
         });
   }
 
+  $scope.resetKotten = function()
+  {
+    $http({method: "get",dataType:"jsonp",url:'http://kotterapp.be/api/resetkotten',params : {userid: userdata['id']},headers:{'Access-Control-Allow-Origin': '*'}})
+      .success(function(data, status, headers, config) {
+        console.log(data);
+      });
+  }
+
 
   userdata = JSON.parse(window.localStorage['userdata']);
   $http({method: "get",dataType:"jsonp",url:'http://kotterapp.be/api/getappuser',params : {userid: userdata['id']},headers:{'Access-Control-Allow-Origin': '*'}})
         .success(function(data, status, headers, config) {
-          console.log(data['result']);
           if(data['succes'])
           {
             $scope.userdata.id = data['result']['id'];
