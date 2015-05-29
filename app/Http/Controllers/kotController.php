@@ -25,7 +25,7 @@ class kotController extends Controller {
 	
 	public function index()
 	{
-		$koten = Kot::where('fk_userid','=',\Auth::user()->id)->get();
+		$koten = Kot::with('images')->where('fk_userid','=',\Auth::user()->id)->get();
 		return view('kot.index',['koten' => $koten]);
 	}
 
@@ -39,11 +39,6 @@ class kotController extends Controller {
 		return view('kot.create');
 	}
 
-	public function help()
-	{
-		return view('kot.help');
-	}
-
 	/**
 	 * Store a newly created resource in storage.
 	 *
@@ -52,6 +47,11 @@ class kotController extends Controller {
 	public function store(addKotRequest $request,Kot $kot)
 	{
 		$kot->fill($request->all());
+
+		$param = array("address"=> $request->get('streatname').' '.$request->get('housenumber').' '.$request->get('zipcode').' '.$request->get('city'));
+		$response = \Geocoder::geocode('json', $param);
+		$response = json_decode($response);
+
 		$kot->fk_userid = \Auth::user()->id;
 		$kot->begindate = $request->begindate;
 		$kot->enddate = $request->enddate;
@@ -60,12 +60,15 @@ class kotController extends Controller {
 		$kot->seperatebathroom = ($request->get('seperatebathroom') == 'on' ? true :false );
 		$kot->furniture = ($request->get('furniture') == 'on' ? true :false );
 		$kot->wifi = ($request->get('wifi') == 'on' ? true :false );
+		$kot->lat = $response->results[0]->geometry->location->lat;
+		$kot->lng = $response->results[0]->geometry->location->lng;
+		$kot->status = 'new';
 		$kot->save();
 		foreach( $request->file('images') as $image)
 		{
 			$filename = str_random(40).'.png';
 			$destination = 'kot_img/';
-			$image->move('kot_img/', $filename);
+			$image->move($destination, $filename);
 			$image = new Image;
 			$image->image = $destination.$filename;
 			$image->fk_kotid = $kot->id;
@@ -100,6 +103,11 @@ class kotController extends Controller {
 		return view('kot.edit',['kot' => $kot]);
 	}
 
+	public function help()
+	{
+		return view('kot.help');
+	}
+
 	/**
 	 * Update the specified resource in storage.
 	 *
@@ -110,6 +118,11 @@ class kotController extends Controller {
 	{
 		$kot =  Kot::find($id);
 		$kot->fill($request->all());
+
+		$param = array("address"=> $request->get('streatname').' '.$request->get('housenumber').' '.$request->get('zipcode').' '.$request->get('city'));
+		$response = \Geocoder::geocode('json', $param);
+		$response = json_decode($response);
+
 		$kot->begindate = $request->begindate;
 		$kot->enddate = $request->enddate;
 		$kot->bikestands = ($request->get('bikestands') == 'on' ? true :false );
@@ -117,6 +130,8 @@ class kotController extends Controller {
 		$kot->seperatebathroom = ($request->get('seperatebathroom') == 'on' ? true :false );
 		$kot->furniture = ($request->get('furniture') == 'on' ? true :false );
 		$kot->wifi = ($request->get('wifi') == 'on' ? true :false );
+		$kot->lat = $response->results[0]->geometry->location->lat;
+		$kot->lng = $response->results[0]->geometry->location->lng;
 		$kot->save();
 		if($request->hasFile('images'))
 		{
@@ -124,7 +139,7 @@ class kotController extends Controller {
 			{
 				$filename = str_random(40).'.png';
 				$destination = 'kot_img/';
-				$image->move('kot_img/', $filename);
+				$image->move($destination, $filename);
 				$image = new Image;
 				$image->image = $destination.$filename;
 				$image->fk_kotid = $kot->id;

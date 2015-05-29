@@ -4,6 +4,7 @@ use eindwerk\Http\Requests;
 use eindwerk\Http\Controllers\Controller;
 use eindwerk\Http\Requests\createUserRequest;
 use eindwerk\User;
+use eindwerk\Kot;
 use eindwerk\Http\Requests\createUser; 
 
 class usersController extends Controller {
@@ -91,6 +92,8 @@ class usersController extends Controller {
 	public function destroy($id)
 	{
 		user::destroy($id);
+		Kot::where('fk_userid',$id)->delete();
+		//images nog mee verwijderen
 		return redirect('/user');
 	}
 
