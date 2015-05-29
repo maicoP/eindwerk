@@ -1,4 +1,4 @@
-@extends('head')
+{{-- @extends('head')
 
 @section('content')
 <div class="container-fluid">
@@ -63,3 +63,4 @@
 	</div>
 </div>
 @endsection
+ --}}

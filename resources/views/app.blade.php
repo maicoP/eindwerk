@@ -61,7 +61,7 @@
 				<div class="nav-collapse sidebar-nav">
 					<ul class="nav nav-tabs nav-stacked main-menu">
 						@if(Auth::user()->type == 'admin')
-						<li><a href="/users"><i class=""></i><span class="hidden-tablet"> Gebruikers beheer</span></a></li>	
+						<li><a href="/user"><i class=""></i><span class="hidden-tablet"> Gebruikers beheer</span></a></li>	
 						<li><a href="/manage/kot"><i class=""></i><span class="hidden-tablet"> koten beheer</span></a></li>	
 						@endif
 						<li><a href="/kot"><i class="icon-tasks"></i><span class="hidden-tablet"> Koten Overzicht</span></a></li>	

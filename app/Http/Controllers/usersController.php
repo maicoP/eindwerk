@@ -3,6 +3,8 @@
 use eindwerk\Http\Requests;
 use eindwerk\Http\Controllers\Controller;
 use eindwerk\Http\Requests\createUserRequest;
+use eindwerk\User;
+use eindwerk\Http\Requests\createUser; 
 
 class usersController extends Controller {
 
@@ -11,9 +13,15 @@ class usersController extends Controller {
 	 *
 	 * @return Response
 	 */
+	public function __construct()
+	{
+		$this->middleware('auth');
+	}
+
 	public function index()
 	{
-		//
+		$users =  User::where('type','user')->get();
+		return view('users.index',['users' => $users]);
 	}
 
 	/**
@@ -31,9 +39,14 @@ class usersController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(createUserRequest $request)
+	public function store(createUser $request)
 	{
-		dd($request->test);//Input::get()
+		$user = new User;
+		$user->fill($request->all());
+		$user->password = bcrypt($request->get('password'));
+		$user->type = 'user';
+		$user->save();
+		return redirect('/user');
 	}
 
 	/**
@@ -77,7 +90,8 @@ class usersController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+		user::destroy($id);
+		return redirect('/user');
 	}
 
 }

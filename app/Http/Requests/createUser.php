@@ -2,7 +2,7 @@
 
 use eindwerk\Http\Requests\Request;
 
-class createUserRequest extends Request {
+class createUser extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -22,13 +22,10 @@ class createUserRequest extends Request {
 	public function rules()
 	{
 		return [
-			'test' => 'required'
+            'name' => 'required|max:255',
+			'email' => 'required|email|max:255|unique:users',
+			'password' => 'required|confirmed|min:6',
 		];
-	}
-
-	public function forbiddenResponse()
-	{
-		return $this->redirector->to('/');
 	}
 
 }

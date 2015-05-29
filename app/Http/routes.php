@@ -11,8 +11,9 @@
 |
 */
 Route::resource('kot','kotController');
-
+Route::resource('user','usersController');
 Route::get('/', 'homeController@index');
+
 Route::get('/api/getKot', 'apiController@getKot');
 Route::get('/api/vote', 'apiController@vote');
 Route::get('/api/changevote', 'apiController@changeVote');
@@ -26,11 +27,12 @@ Route::get('/api/savefilter', 'apiController@saveFilter');
 Route::get('/api/resetkotten', 'apiController@resetKotten');
 Route::get('/api/login', 'apiController@login');
 Route::get('/api/fblogin', 'apiController@fbLogin');
+
 Route::get('/contact', 'homeController@contact');
 Route::get('/help', 'kotController@help');
 Route::post('/images/delete/{id}','kotController@deleteImage');
 Route::post('/message/send','homeController@sendMessage');
-Route::get('/auth/register','homeController@register');
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
@@ -38,9 +40,7 @@ Route::controllers([
 
 Route::group(['middleware' => 'eindwerk\Http\Middleware\AdminMiddleware'], function()
 {
-    Route::get('/admin', function()
-    {
-        return 'admin';
-    });
+    Route::resource('user','usersController');
+    Route::get('manage/kot','kotController@manageKot');
 
 });
