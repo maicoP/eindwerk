@@ -1,6 +1,7 @@
 <?php namespace eindwerk\Http\Controllers;
 
 use Validator;
+use Hash;
 use eindwerk\Http\Requests;
 use eindwerk\Http\Controllers\Controller;
 use eindwerk\Kot;
@@ -22,51 +23,7 @@ class apiController extends Controller {
 	{
 		$userid = $request->get('userid'); 
 		$filter = Filter::where('fk_app_userid',$userid)->first();
-		$votedKotten = AppUserKot::where('fk_app_userid',$userid)->get();
-		$votedKottenId = array();
-		foreach($votedKotten as $kot)
-		{
-			$votedKottenId[] = $kot->fk_kotid;
-		}
-
-		$kot = Kot::with('images')->whereNotIn('id',$votedKottenId);
-		if($filter->bikestands == true)
-		{
-			$kot = $kot->where('bikestands',true);
-		}
-		if($filter->seperatebathroom == true)
-		{
-			$kot = $kot->where('seperatebathroom',true);
-		}
-		if($filter->seperatekitchen == true)
-		{
-			$kot = $kot->where('seperatekitchen',true);
-		}
-		if($filter->wifi == true)
-		{
-			$kot = $kot->where('wifi',true);
-		}
-		if($filter->furniture == true)
-		{
-			$kot = $kot->where('furniture',true);
-		}
-		if($filter->price > 0)
-		{
-			$kot = $kot->where('price','<=',$filter->price);
-		}
-		if($filter->size > 0)
-		{
-			$kot = $kot->where('size','>=',$filter->size);
-		}
-		if($filter->startDate != 0)
-		{
-			$kot = $kot->where('begindate','<=',$filter->startDate);
-		}
-		if($filter->endDate != 0)
-		{
-			$kot = $kot->where('enddate','>=',$filter->endDate);
-		}
-		$kot = $kot->first();
+		$kot = Kot::getKot($userid,$filter,array());
 		return response()->json(['filter'=> $filter,'kot'=>$kot]);
 	}
 
@@ -173,7 +130,7 @@ class apiController extends Controller {
 		{
 			$user = new AppUser;
 			$user->email = $request->get('email');
-			$user->password = bcrypt($request->get('password'));
+			$user->password =  ($request->has('facebook') ? '' : bcrypt($request->get('password')));
 			$user->save();
 			return response()->json(['succes' => true,'email' => $user->email,'password' => $user->password,'id' => $user->id]);
 		}
@@ -194,6 +151,40 @@ class apiController extends Controller {
 		$filter->price = $request->get('price');
 		$filter->save();
 		return response()->json(['succes'=>true]);
-	}	
+	}
+
+	public function resetKotten(Request $request)
+	{
+		$userid = $request->get('userid');
+		AppUserKot::where('fk_app_userid',$userid)->delete();
+		return response()->json(['succes'=>true]);
+	}
+
+	public function login(Request $request){
+		$email = $request->get('email');
+		$password = $request->get('password');
+		$user = AppUser::where('email',$email)->first();
+		if(count($user) > 0)
+		{
+			if (Hash::check($password, $user->password))
+			{
+			    return response()->json(['succes' => true,'user' => $user]);
+			}
+		}
+		
+		return response()->json(['succes' => false]);
+	}
+
+	public function fbLogin(Request $request){
+		$email = $request->get('email');
+		$password = $request->get('password');
+		$user = AppUser::where('email',$email)->first();
+		if(count($user) > 0)
+		{
+			return response()->json(['succes' => true,'user' => $user]);
+		}
+		
+		return response()->json(['succes' => false]);
+	}		
 
 }

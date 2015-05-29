@@ -3,8 +3,13 @@
 	KOTTER - Kot bewerken
 @stop
 @section('content')
-
-<li><a href="#">Kot bewerken</a></li>
+				<ul class="breadcrumb">
+					<li>
+						<i class="icon-home"></i>
+						<a href="/kot">Home</a>
+						<i class="icon-angle-right"></i> 
+					</li>
+					<li><a href="#">Kot bewerken</a></li>
 				</ul>
 			
 				<div class="row-fluid sortable">

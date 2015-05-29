@@ -60,6 +60,10 @@
 			<div id="sidebar-left" class="span2">
 				<div class="nav-collapse sidebar-nav">
 					<ul class="nav nav-tabs nav-stacked main-menu">
+						@if(Auth::user()->type == 'admin')
+						<li><a href="/users"><i class=""></i><span class="hidden-tablet"> Gebruikers beheer</span></a></li>	
+						<li><a href="/manage/kot"><i class=""></i><span class="hidden-tablet"> koten beheer</span></a></li>	
+						@endif
 						<li><a href="/kot"><i class="icon-tasks"></i><span class="hidden-tablet"> Koten Overzicht</span></a></li>	
 						<li><a href="/kot/create"><i class="icon-plus"></i><span class="hidden-tablet"> Kot Toevoegen</span></a></li>
 						<li><a href="/help"><i class="icon-info-sign"></i><span class="hidden-tablet"> Help</span></a></li>
@@ -77,12 +81,6 @@
 			
 			<div id="content" class="span10">
 			
-				<ul class="breadcrumb">
-					<li>
-						<i class="icon-home"></i>
-						<a href="/kot">Home</a>
-						<i class="icon-angle-right"></i> 
-					</li>
 	@yield('content')
 
 		<div class="clearfix"></div>

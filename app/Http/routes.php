@@ -23,12 +23,24 @@ Route::get('/api/checkuser', 'apiController@checkUser');
 Route::get('/api/register', 'apiController@register');
 Route::get('/api/getschools', 'apiController@getSchools');
 Route::get('/api/savefilter', 'apiController@saveFilter');
+Route::get('/api/resetkotten', 'apiController@resetKotten');
+Route::get('/api/login', 'apiController@login');
+Route::get('/api/fblogin', 'apiController@fbLogin');
 Route::get('/contact', 'homeController@contact');
 Route::get('/help', 'kotController@help');
 Route::post('/images/delete/{id}','kotController@deleteImage');
 Route::post('/message/send','homeController@sendMessage');
-
+Route::get('/auth/register','homeController@register');
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+Route::group(['middleware' => 'eindwerk\Http\Middleware\AdminMiddleware'], function()
+{
+    Route::get('/admin', function()
+    {
+        return 'admin';
+    });
+
+});

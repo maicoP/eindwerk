@@ -3,17 +3,24 @@
 	KOTTER - Overzicht koten
 @stop
 @section('content')
-
-<li><a href="#">Koten overzicht</a></li>
+				<ul class="breadcrumb">
+					<li>
+						<i class="icon-home"></i>
+						<a href="/kot">Home</a>
+						<i class="icon-angle-right"></i> 
+					</li>
+					<li><a href="#">Koten overzicht</a></li>
 				</ul>
 
 				<div class="row-fluid">
 					<div class="span13">
 						
 						<h1>Alle toegevoegde koten</h1>
-
+			@if(!$koten->isEmpty())
+				<div class="status approved top_spacing"><span>Koten in het systeem</span></div>
+			@endif
 			@forelse($koten as $kot)
-					<div class="status approved top_spacing"><span>Koten in het systeem</span></div>
+					
 						<div class="kot approved">
 							<div class="info">
 								<a href="/kot/{{$kot->id}}"><div class="title">{{$kot->streatname}}  {{$kot->housenumber}} {{$kot->zipcode}} {{$kot->city}}</div>

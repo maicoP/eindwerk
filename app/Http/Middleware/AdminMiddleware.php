@@ -3,25 +3,7 @@
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
 
-class Authenticate {
-
-	/**
-	 * The Guard implementation.
-	 *
-	 * @var Guard
-	 */
-	protected $auth;
-
-	/**
-	 * Create a new filter instance.
-	 *
-	 * @param  Guard  $auth
-	 * @return void
-	 */
-	public function __construct(Guard $auth)
-	{
-		$this->auth = $auth;
-	}
+class AdminMiddleware {
 
 	/**
 	 * Handle an incoming request.
@@ -30,6 +12,11 @@ class Authenticate {
 	 * @param  \Closure  $next
 	 * @return mixed
 	 */
+	public function __construct(Guard $auth)
+	{
+		$this->auth = $auth;
+	}
+
 	public function handle($request, Closure $next)
 	{
 		if ($this->auth->guest())
@@ -40,9 +27,13 @@ class Authenticate {
 			}
 			else
 			{
-				return redirect()->guest('auth/login');
+				return redirect()->guest('/');
 			}
 		}
+		if ($request->user()->type != 'admin')
+        {
+            return redirect('/kot');
+        }
 		return $next($request);
 	}
 
