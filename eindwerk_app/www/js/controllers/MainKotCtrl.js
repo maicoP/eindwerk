@@ -96,8 +96,25 @@ angular.module('starter.controllers', [])
   };
 
   var timeout;
+  $scope.swipeLeft = function(id)
+  {
+    console.log('leftswipe');
+    $timeout.cancel(timeout);
+      timeout = $timeout(function() {
+        $scope.vote('dislike',id);
+      }, 800);
+  }
+  $scope.swipeRight = function(id)
+  {
+    console.log('rightswipe');
+    $timeout.cancel(timeout);
+      timeout = $timeout(function() {
+        $scope.vote('like',id);
+      }, 800);
+  }
   $scope.onRelease = function(id)
   {
+    console.log('drag');
     console.log(document.querySelectorAll('td-card')[0].getBoundingClientRect()['right']);
     if(document.querySelectorAll('td-card')[0].getBoundingClientRect()['right'] > 435)
     {

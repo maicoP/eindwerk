@@ -52,7 +52,7 @@ class Kot extends Eloquent{
             $votedKottenId[] = $kot->fk_kotid;
         }
 
-        $kot = Kot::with('images')->whereNotIn('id',$votedKottenId)->whereNotIn('id',$kotid);
+        $kot = Kot::with('images')->where('status','accepted')->whereNotIn('id',$votedKottenId)->whereNotIn('id',$kotid);
         if($filter->bikestands == true)
         {
             $kot = $kot->where('bikestands',true);

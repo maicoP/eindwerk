@@ -4,41 +4,13 @@ angular.module('starter.controllers')
   var geocoder = new google.maps.Geocoder();
   $scope.loading= false;
   $scope.noResult= false;
+  $scope.userdata = userdata;
 
   $http({method: "get",dataType: "jsonp",url:'http://kotterapp.be/api/favkotten',params : {userid: userdata['id']},headers:{'Access-Control-Allow-Origin': '*'}})
     .success(function(data, status, headers, config) {
       if(0<data['kotten'].length)
       {
         $scope.favKot = data['kotten'];
-
-        angular.forEach($scope.favKot, function(value, key) {
-          var schoolLatlng;
-          var adressLatlng;
-          
-          adress = value['city']+' '+value['zipcode']+' '+value['streatname']+' '+value['housenumber'];
-          geocoder.geocode( { 'address':  userdata['school']}, function(results, status) {
-              if (status == google.maps.GeocoderStatus.OK) {
-                    schoolLatlng = results[0].geometry.location;
-                } else {
-                  alert('Geocode was not successful for the following reason: ' + status);
-              }
-          });
-
-           geocoder.geocode( { 'address': adress}, function(results, status) {
-              if (status == google.maps.GeocoderStatus.OK) {
-                    adressLatlng = results[0].geometry.location;
-                   
-                    lenght = google.maps.geometry.spherical.computeDistanceBetween(adressLatlng,schoolLatlng)/1000;
-                    lenght = lenght.toFixed(2);
-                    $scope.favKot[key]['lenght'] = lenght;
-                    $scope.favKot[key]['location'] = adressLatlng;
-                    $scope.$apply();
-                } else {
-                  alert('Geocode was not successful for the following reason: ' + status);
-              }
-          });
-        });
-
         $scope.loading= false;
       }
       else
@@ -72,14 +44,20 @@ angular.module('starter.controllers')
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     var map = new google.maps.Map(document.getElementsByClassName("map"+id)[0], mapOptions);
+
     var info = document.getElementById("extraInfo"+id);
     var openInfo = document.getElementById("openInfo"+id);
     var closeInfo = document.getElementById("closeInfo"+id);
-    console.log($scope.favKot);
+
+    var location = new Array();
+    location['lat'] = $scope.favKot[id]['lat'];
+    location['lng'] = $scope.favKot[id]['lng'];
+
+    map.setCenter(location);
     var marker = new google.maps.Marker({
         map: map,
         animation: google.maps.Animation.DROP,
-        position: $scope.favKot[id]['location']
+        position: location
     });
     google.maps.event.trigger(map, "resize");
     map.setCenter($scope.favKot[id]['location']);

@@ -11,6 +11,7 @@ use eindwerk\AppUserKot;
 use eindwerk\AppUser;
 use eindwerk\School;
 use Illuminate\Http\Request;
+use Toin0u\Geotools\Facade\Geotools;
 
 class apiController extends Controller {
 
@@ -50,9 +51,20 @@ class apiController extends Controller {
 	public function favKotten(Request $request)
 	{
 		$userid = $request->get('userid');
-		$favkotten = Kot::with('images')->whereHas('appuserkot',function($q){
+		$user = AppUser::find($userid);
+		$favkotten = Kot::with('images')->whereHas('appuserkot',function($q) use($userid){
 			$q->where('type','like');
+			$q->where('fk_app_userid',$userid);
 		})->get();
+		foreach($favkotten as $kot)
+		{
+			$response = \Geocoder::geocode('json',['address' => $user->school]);
+	        $response = json_decode($response);
+	        $coordA   = Geotools::coordinate([$kot->lat, $kot->lng]);
+	        $coordB   = Geotools::coordinate([$response->results[0]->geometry->location->lat,$response->results[0]->geometry->location->lng]);
+	        $distance = Geotools::distance()->setFrom($coordA)->setTo($coordB);
+	        $kot->distance = number_format($distance->in('km')->haversine(), 2, '.', '');
+		}
 		return response()->json(['kotten'=>$favkotten]);
 	}
 

@@ -1,5 +1,5 @@
 <td-cards ng-show='!loading'>
-        <td-card  on-release="onRelease(kot.id)" on-drag-left="onDragLeft(kot.id)" on-drag-right="onDragRight(kot.id)" on-swipe-left="cardSwipedLeft(kot.id)" on-swipe-right="cardSwipedRight(kot.id)" class="card-{{kot.id}}" id="card-{{kot.id}}">
+        <td-card  on-release="onRelease(kot.id)" on-swipe-left="swipeLeft(kot.id)" on-swipe-right="swipeRight(kot.id)" class="card-{{kot.id}}" id="card-{{kot.id}}">
           <div class='info'>
               <img width='100%' id='main_image' src="http://kotterapp.be/{{kot.images[0].image}}" alt="">
               <div class="kot_thumbs">
