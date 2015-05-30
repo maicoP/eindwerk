@@ -30,6 +30,13 @@ class Kot extends Eloquent{
 
     }
 
+    public function user()
+    {
+
+        return $this->belongsTo('eindwerk\User','fk_userid');
+
+    }
+
 
 
 	protected $fillable = ['city', 'streatname', 'housenumber','zipcode','price','size','info','email','telephonenumber','bikestands','seperatekitchen','seperatebathroom','furniture','begindate','enddate','fk_userid','lat','lng'];

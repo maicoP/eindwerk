@@ -23,7 +23,7 @@
 				  	<td>{{$user->email}}</td>
 				  	<td>{!!Form::open(['url' => 'user/'.$user->id,'method' => 'DELETE','class' => 'frm-edit_delete'])!!}
 										{!!Form::submit('Delete',array('class' => 'btn btn-danger btn-edit_delete'))!!}
-									{!!Form::close()!!}
+									{!!Form::close()!!}</td>
 				  </tr>
 				  @endforeach
 				</table>

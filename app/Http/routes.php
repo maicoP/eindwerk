@@ -42,5 +42,7 @@ Route::group(['middleware' => 'eindwerk\Http\Middleware\AdminMiddleware'], funct
 {
     Route::resource('user','usersController');
     Route::get('manage/kot','kotController@manageKot');
+    Route::get('accept/kot/{kotid}','kotController@acceptKot');
+    Route::get('decline/kot/{kotid}','kotController@declineKot');
 
 });

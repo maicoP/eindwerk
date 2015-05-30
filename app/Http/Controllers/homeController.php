@@ -4,6 +4,7 @@ use Auth;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 use eindwerk\Http\Requests\contactRequest;
+use Mail;
 
 class HomeController extends Controller {
 
@@ -55,7 +56,7 @@ class HomeController extends Controller {
 
 	public function sendMessage(contactRequest $request)
 	{
-		Mail::send('emails.contact', array('message' => $request->get('boodschap'),'name' => $request->get('naam'),'email' => $request->get('email')), function($message)
+		Mail::send('emails.contact', array('mes' => $request->get('boodschap'),'name' => $request->get('naam'),'email' => $request->get('email')), function($message)
 		{
 		    $message->to('maicopaulussen@hotmail.be', 'Kotter contact')->subject('Contact kotter');
 		});

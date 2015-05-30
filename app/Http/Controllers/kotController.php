@@ -25,8 +25,34 @@ class kotController extends Controller {
 	
 	public function index()
 	{
-		$koten = Kot::with('images')->where('fk_userid','=',\Auth::user()->id)->get();
-		return view('kot.index',['koten' => $koten]);
+		$koten = Kot::with('images')->where('fk_userid','=',\Auth::user()->id)->where('status','accepted')->get();
+		$new = Kot::with('images')->where('fk_userid','=',\Auth::user()->id)->where('status','new')->get();
+		$declined = Kot::with('images')->where('fk_userid','=',\Auth::user()->id)->where('status','declined')->get();
+		return view('kot.index',['koten' => $koten,'new' => $new,'declined' => $declined]);
+	}
+
+	public function manageKot()
+	{
+		$kotenNew =  Kot::where('status','new')->get();
+		$kotenAc =  Kot::where('status','accepted')->get();
+		$kotenDe =  Kot::where('status','declined')->get();
+		return view('kot.manage',['kotenNew' => $kotenNew,'kotenAc' => $kotenAc,'kotenDe' => $kotenDe]);
+	}
+
+	public function acceptKot($kotid)
+	{
+		$kot =  Kot::find($kotid);
+		$kot->status = 'accepted';
+		$kot->save();
+		return redirect('/manage/kot');
+	}
+
+	public function declineKot($kotid)
+	{
+		$kot =  Kot::find($kotid);
+		$kot->status = 'declined';
+		$kot->save();
+		return redirect('/manage/kot');
 	}
 
 	/**
@@ -88,7 +114,12 @@ class kotController extends Controller {
 	public function show($id)
 	{
 		$kot =  Kot::find($id);
-		return view('kot.show',['kot' => $kot]);
+		if($kot->fk_userid == \Auth::user()->id || \Auth::user()->type =='admin')
+		{
+			return view('kot.show',['kot' => $kot]);
+		}
+		return redirect('/kot');
+	}
 	}
 
 	/**
