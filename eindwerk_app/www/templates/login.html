@@ -3,9 +3,14 @@
     <p class="text-center register_item"><img src="img/register_logo.png" width="198" height="198" alt=""></p>
     <form ng-submit="doLogin()">
       <div class="list">
-        <div ng-show='error'>
-          <p class='error' >{{error}}</p>
-        </div>
+
+      <div ng-show='error' class=' paddingr'>
+        <a class="item item-icon-left error_item" href="#">
+          <i class="icon ion-alert"></i>
+          <p class='error'>{{error}}</p>
+        </a>
+      </div>
+
         <label class="item item-input item-email register_item register_userpass_item">
           <input type="email" placeholder="Email" ng-model="loginData.email">
         </label>

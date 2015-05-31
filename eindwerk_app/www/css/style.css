@@ -1,7 +1,7 @@
 /*errors*/
 
 .error,.error > input , .error > select{
-	background-color: #f85f5b !important;
+	background:transparent!important;
 	color: white !important;
 }
 
@@ -28,6 +28,7 @@
 
 .error_item{
 	background-color:#ff8181!important;
+	color:white!important;
 }
 
 .hidden{
@@ -447,4 +448,8 @@ td-card img {
 
 input.ng-untouched.ng-valid.ng-dirty.ng-valid-parse{
 	padding-right:0px;
+}
+
+.paddingr{
+	padding:16px;
 }
