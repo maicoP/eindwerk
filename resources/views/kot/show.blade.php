@@ -43,13 +43,23 @@
 			<p>Beschikbaar van <b>{{$kot->begindate}}</b> tot <b>{{$kot->enddate}}</b></p>
 			<p>Beschrijving / Info: <b>{{$kot->info}}</b></p>
 			<h2>Opties</h2>
-			<ul>
-				<li>{{($kot->bikestands ? 'Fietsenstalling' : '')}}</li> 
-				<li>{{($kot->seperatekitchen ? 'Aparte keuken' : '')}}</li> 
-				<li>{{($kot->seperatebathroom ? 'Aparte Badkamer' : '')}}</li>
-				<li>{{($kot->furniture ? 'Bemeubeld' : '')}}</li>
-				<li>{{($kot->wifi ? 'wifi' : '')}}</li>
-			</ul>
+			<ul> 				
+				@if($kot->bikestands)
+					<li>Fietsenstalling</li> 
+				@endif
+				@if($kot->seperatekitchen)
+					<li>Aparte keuken</li>
+				@endif
+				@if($kot->seperatebathroom) 
+					<li>Aparte Badkamer</li>
+				@endif
+				@if($kot->furniture)
+					<li>Bemeubeld</li>
+				@endif
+				@if($kot->wifi)
+					<li>wifi</li>
+				@endif
+		</ul>
 			<h2>Contact</h2>
 			<p>E-mail: <b>{{$kot->email}}</b></p>
 			<p>Telefoonnummer: <b>{{$kot->telephonenumber}}</b></p>

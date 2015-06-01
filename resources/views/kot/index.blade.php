@@ -45,6 +45,7 @@
 								<div class="price">€{{$kot->price}}</div>
 								<div>{{$kot->size}}m²</div>
 								<div class="kot_info"><br>{{$kot->info}}</div>
+								<div>Aantal likes @if(!$kot->appUserKotCount->isEmpty()){{$kot->appUserKotCount[0]->count}}@else 0 @endif</div>
 							</div>
 						</div>
 			@endforeach					

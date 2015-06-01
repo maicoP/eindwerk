@@ -56,11 +56,11 @@ class HomeController extends Controller {
 
 	public function sendMessage(contactRequest $request)
 	{
-		Mail::send('emails.contact', array('mes' => $request->get('boodschap'),'name' => $request->get('naam'),'email' => $request->get('email')), function($message)
+		Mail::send('emails.contact', array('mes' => $request->get('boodschap'),'name' => $request->get('naam'),'email' => $request->get('email'),'company' =>$request->get('bedrijf')), function($message)
 		{
 		    $message->to('maicopaulussen@hotmail.be', 'Kotter contact')->subject('Contact kotter');
 		});
-		return redirect('/contact');
+		return redirect('/');
 	}
 
 }

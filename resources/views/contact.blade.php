@@ -36,13 +36,8 @@
                                     <div class="alert alert-danger">
                                         <strong>Oeps!</strong> Er was een probleem met jou gegevens.<br><br>
                                         <ul>
-                                            
                                             @foreach ($errors->all() as $error)
-                                                @if($error == 'These credentials do not match our records.')
-                                                    <li>Deze gegevens zijn niet correct</li>
-                                                @else
                                                     <li>{{$error}}</li>
-                                                @endif
                                             @endforeach
                                         </ul>
                                     </div>

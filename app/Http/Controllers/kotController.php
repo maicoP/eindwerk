@@ -7,6 +7,7 @@ use eindwerk\Http\Requests\addKotRequest;
 use eindwerk\Http\Requests\editKotRequest;
 use eindwerk\Kot;
 use eindwerk\Image;
+use eindwerk\AppUserKot;
 use Illuminate\Contracts\Auth\Guard;
 
 
@@ -25,7 +26,7 @@ class kotController extends Controller {
 	
 	public function index()
 	{
-		$koten = Kot::with('images')->where('fk_userid','=',\Auth::user()->id)->where('status','accepted')->get();
+		$koten = Kot::with('images')->with('appUserKotCount')->where('fk_userid','=',\Auth::user()->id)->where('status','accepted')->get();
 		$new = Kot::with('images')->where('fk_userid','=',\Auth::user()->id)->where('status','new')->get();
 		$declined = Kot::with('images')->where('fk_userid','=',\Auth::user()->id)->where('status','declined')->get();
 		return view('kot.index',['koten' => $koten,'new' => $new,'declined' => $declined]);
@@ -119,7 +120,6 @@ class kotController extends Controller {
 			return view('kot.show',['kot' => $kot]);
 		}
 		return redirect('/kot');
-	}
 	}
 
 	/**

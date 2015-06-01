@@ -62,7 +62,6 @@ angular.module('starter.controllers', [])
           
       });
   };
-
   $scope.vote = function(vote,kotid)
   {
     $http({method: "get",dataType: "jsonp",url:'http://kotterapp.be/api/vote',params : {userid: userdata['id'],kotid: kotid,vote: vote},headers:{'Access-Control-Allow-Origin': '*'}})

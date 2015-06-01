@@ -37,6 +37,12 @@ class Kot extends Eloquent{
 
     }
 
+    public function appUserKotCount()
+    {
+        return $this->hasMany('eindwerk\AppUserKot','fk_kotid')->selectRaw("fk_kotid, count(*) as count")->where('type','like')->groupBy('fk_kotid');
+        // replace module_id with appropriate foreign key if needed
+    }
+
 
 
 	protected $fillable = ['city', 'streatname', 'housenumber','zipcode','price','size','info','email','telephonenumber','bikestands','seperatekitchen','seperatebathroom','furniture','begindate','enddate','fk_userid','lat','lng'];

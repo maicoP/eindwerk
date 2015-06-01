@@ -49,6 +49,39 @@ p{
     font-size: 16px;
     line-height: 1.5;
 }
+.contact_wrapper{
+    background: #191919;
+    padding: 20px;
+    margin-left: 0px;
+    margin-right: 0px;
+    color: white;
+}
+.contact_wrapper > h2{
+    margin-top: 20px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+.contact_form{
+    margin: 5px;
+}
+
+.btn_contact{
+    background-color: #3399FF;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px !important;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto !important;
+    display: block;
+}
+
+textarea.contact_form{
+    height: 123px;
+}
+.contact_group{
+    margin-bottom: 35px;
+}
 
 .bg_info {
     background-color: #3399FF;
@@ -65,7 +98,7 @@ p{
 
 .bg_download {
     color: #fff;
-    background-color: #191919; 
+    background-color: #0D0D0D; 
     padding: 50px 0;
     padding-bottom:5px;
 }

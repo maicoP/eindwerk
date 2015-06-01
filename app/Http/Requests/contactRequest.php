@@ -23,7 +23,6 @@ class contactRequest extends Request {
 	{
 		return [
 			'naam' => 'required|min:3',
-			'bedrijf' => 'required',
 			'email' => 'required|email',
 			'boodschap' => 'required|min:3'
 		];
