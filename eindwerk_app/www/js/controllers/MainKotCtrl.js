@@ -77,21 +77,30 @@ angular.module('starter.controllers', [])
 
   $scope.info = function()
   {
-    $scope.extraInfo=true;
-    console.log(map);
     google.maps.event.trigger(map, 'resize');
     map.setCenter(currCenter);
     var info = document.getElementById('extraInfo');
-    var openInfo = document.getElementById('openInfo');
-    var closeInfo = document.getElementById('closeInfo');
+    var card = document.querySelectorAll('td-card')[0];
+    angular.element(card).removeClass('fadeIn animated');
+    angular.element(card).addClass('fadeOut animated');
+    $timeout(function(){
+      $scope.extraInfo=true;
+      angular.element(info).removeClass('fadeOut animated');
+      angular.element(info).addClass('fadeIn animated');
+    },500);
   };
 
   $scope.closeInfo = function()
   {
-    $scope.extraInfo=false;
     var info = document.getElementById('extraInfo');
-    var openInfo = document.getElementById('openInfo');
-    var closeInfo = document.getElementById('closeInfo');
+    var card = document.querySelectorAll('td-card')[0];
+    angular.element(info).removeClass('fadeIn animated');
+    angular.element(info).addClass('fadeOut animated');
+    $timeout(function(){
+      $scope.extraInfo=false;
+      angular.element(card).removeClass('fadeOut animated');
+      angular.element(card).addClass('fadeIn animated');
+    },500);
   };
 
   var timeout;

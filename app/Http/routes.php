@@ -26,9 +26,7 @@ Route::get('/api/getschools', 'apiController@getSchools');
 Route::get('/api/savefilter', 'apiController@saveFilter');
 Route::get('/api/resetkotten', 'apiController@resetKotten');
 Route::get('/api/login', 'apiController@login');
-Route::get('/api/fblogin', 'apiController@fbLogin');
-
-Route::get('/contact', 'homeController@contact');
+Route::get('/api/fblogin', 'apiController@fbLogin');;
 Route::get('/help', 'kotController@help');
 Route::post('/images/delete/{id}','kotController@deleteImage');
 Route::post('/message/send','homeController@sendMessage');
