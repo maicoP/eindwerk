@@ -453,3 +453,11 @@ input.ng-untouched.ng-valid.ng-dirty.ng-valid-parse{
 .paddingr{
 	padding:16px;
 }
+
+.mapHidden{
+	opacity: 0;
+}
+
+.mapShow{
+	opacity: 1;
+}

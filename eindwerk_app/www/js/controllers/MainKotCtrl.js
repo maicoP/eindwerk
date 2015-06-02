@@ -4,10 +4,8 @@ angular.module('starter.controllers', [])
   $scope.loading=true;
   $scope.extraInfo=false;
   $scope.noResult=false;
-
   var kotids = [];
-  var currCenter;
-  var map;
+  var currentLocation = new Array();
   var userdata = JSON.parse(window.localStorage['userdata']);
   $scope.user = userdata;
 
@@ -20,17 +18,18 @@ angular.module('starter.controllers', [])
   function setMap(location){
     var mapOptions = {
         zoom: 15,
+        center: location,
+        draggable: false,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
-    currCenter = location;
-    map = new google.maps.Map(document.getElementById("map"), mapOptions);
-    map.setCenter(location);
-
+    $scope.map = new google.maps.Map(document.getElementById("map"), mapOptions);
+    
     var marker = new google.maps.Marker({
-        map: map,
+        map: $scope.map,
         animation: google.maps.Animation.DROP,
         position: location
     });
+    console.log($scope.map);
   };
 
   function getKot()
@@ -42,16 +41,15 @@ angular.module('starter.controllers', [])
           if(data['kot'] == false)
           {
             $scope.loading = false;
-            $scope.noResult = true;
-            
+            $scope.noResult = true;  
           }
           else
           {
             $scope.include='templates/card.html';
-            var location = new Array();
-            location['lat'] = data['kot']['lat'];
-            location['lng'] = data['kot']['lng'];
-            google.maps.event.addDomListener($window, "load",setMap(location));
+            
+            currentLocation['lat'] = data['kot']['lat'];
+            currentLocation['lng'] = data['kot']['lng'];
+            google.maps.event.addDomListener(document.getElementById("map"), "load",setMap(currentLocation));
             $scope.kot = data['kot'];
             $scope.lenght = data['kot']['distance'];
             if(document.querySelectorAll('td-card')[0] !== undefined && document.querySelectorAll('td-card')[0] !== undefined){
@@ -79,33 +77,42 @@ angular.module('starter.controllers', [])
 
   $scope.info = function()
   {
-    google.maps.event.trigger(map, 'resize');
-    map.setCenter(currCenter);
+    $scope.map.draggable =true;
     var info = document.getElementById('extraInfo');
     var card = document.querySelectorAll('td-card')[0];
     var openInfo = document.getElementById('openInfo');
     var closeInfo = document.getElementById('closeInfo');
+    var map = document.getElementById("map");
     angular.element(card).removeClass('fadeIn animated');
-    angular.element(card).addClass('fadeOut animated');
-    $timeout(function(){
+    angular.element(card).addClass('fadeOut animated');    $timeout(function(){
       $scope.extraInfo=true;
       angular.element(info).removeClass('fadeOut animated');
       angular.element(info).addClass('fadeIn animated');
+      angular.element(map).removeClass('mapHidden fadeOut animated');
+      angular.element(map).addClass('mapShow');
+      angular.element(map).addClass('fadeIn animated');
     },500);
   };
 
   $scope.closeInfo = function()
   {
+    $scope.map.draggable =false;
     var info = document.getElementById('extraInfo');
     var card = document.querySelectorAll('td-card')[0];
     var openInfo = document.getElementById('openInfo');
     var closeInfo = document.getElementById('closeInfo');
+    var map = document.getElementById("map");
     angular.element(info).removeClass('fadeIn animated');
     angular.element(info).addClass('fadeOut animated');
+    angular.element(map).removeClass('mapShow fadeIn animated');
+    
+    angular.element(map).addClass('fadeOut animated');
     $timeout(function(){
       $scope.extraInfo=false;
+      angular.element(map).addClass('mapHidden');
       angular.element(card).removeClass('fadeOut animated');
       angular.element(card).addClass('fadeIn animated');
+      $ionicScrollDelegate.scrollTop();
     },500);
   };
 
@@ -146,6 +153,7 @@ angular.module('starter.controllers', [])
           $scope.vote('dislike',id);
         }, 800);
       }
+      $ionicScrollDelegate.scrollTop();
   }
 
 });

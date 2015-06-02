@@ -1,99 +1,53 @@
-<ion-view>
-<div class="bar bar-header bar-custom-header">
-  <h1 class="title">KOTMASTER</h1>
-</div>
-  <ion-content class='has-header'>
-	<div class="tut_title text-center">Zoek op een leuke manier jou droomkot</div>
-
-<ion-slide-box>
+<ion-view class='bg-gradient'>
+  <div class="bar bar-header trans_header">
+      <div class="h1 title"><img src="img/header.png" width="130" height="35" alt=""></div>
+  </div>
+  <ion-content class='has-header padding'>
+  <div ng-show="loading" class="center item-text center_slider">
+    <img class="spinner" src="img/svg-loaders/puff.svg" alt="">
+  </div>
+<ion-slide-box ng-show='!loading'>
 
   <ion-slide>
-  <div class="list card">
-    <div class="item item-body">
-      <img class="full-image" src="img/tut1.jpg">
-      <p class="text-center">
-        Je navigeert door te swipen.<br>
-        Een kot naar <b>links</b> swipen doe je als een kot je niet <b>interesseert</b>. Door een kot naar <b>rechts</b> te slepen voeg je het toe aan je <b>favorieten</b> en kan je het later eenvoudig opnieuw bekijken.
-      </p>
-    </div>
+      <img class="full-image" src="img/tutorial_ex.png">
+  </ion-slide>
 
-  <div class="item tabs tabs-secondary tabs-icon-left">
-    <a class="tab-item" href="#">
-    </a>
-    <a class="tab-item" href="#">
-      <i class=""></i>
-      Tutorial 1/3
-    </a>
-    <a class="tab-item" href="#">
-      <i class="icon ion-arrow-right-a"></i>
-      Next
-    </a>
-  </div>
-  </div>
+   <ion-slide>
+      <img class="full-image" src="img/tutorial_ex2.png">
   </ion-slide>
 
   <ion-slide>
-  <div class="list card">
-    <div class="item item-body">
-      <img class="full-image" src="img/tut2.jpg">
-      <p class="text-center">
-        Naar <b>boven</b> swipen laat meer <b>foto's</b> zien van het active kot, handig indien je na de eerste foto nog geen beslissing kan maken.<br>
-        Door naar <b>beneden</b> te swipen laat je alle nuttige <b>contact informatie</b> zien.
-      </p>
-    </div>
-
-  <div class="item tabs tabs-secondary tabs-icon-left">
-    <a class="tab-item" href="#">
-      <i class="icon ion-arrow-left-a"></i>
-      Previous
-    </a>
-    <a class="tab-item" href="#">
-      <i class=""></i>
-      Tutorial 2/3
-    </a>
-    <a class="tab-item" href="#">
-      <i class="icon ion-arrow-right-a"></i>
-      Next
-    </a>
-  </div>
-  </div>
+      <img class="full-image" src="img/tutorial.png">
   </ion-slide>
 
   <ion-slide>
-  <div class="list card">
-    <div class="item item-body">
-      <img class="full-image" src="img/tut3.jpg">
-      <p class="text-center">
-        That's it!<br><br>No seriously, this is everything you need to know. Press this huge yellow button below, and start exploring the best student rooms of Antwerp city!
-      </p>
-    </div>
-
-  <div class="item tabs tabs-secondary tabs-icon-left">
-    <a class="tab-item" href="#">
-      <i class="icon ion-arrow-left-a"></i>
-      Previous
-    </a>
-    <a class="tab-item" href="#">
-      <i class=""></i>
-      Tutorial 3/3
-    </a>
-    <a class="tab-item" href="#">
-    </a>
-  </div>
-  </div>
+      <img class="full-image" src="img/tutorial3.png">
   </ion-slide>
 
-
-
+  <ion-slide>
+      <img class="full-image" src="img/tutorial2.png">
+  </ion-slide>
 
   <!-- More slides here... -->
 </ion-slide-box>
 
   </ion-content>
 
-<div class="bar bar-footer bar-custom-footer">
+  <div class="tut_footer row" style="position: absolute; bottom: 0px; width: 100%">
 
-  <a href="#/register"><div class="title">Aan de slag</div></a>
-</div>
+    <a href="#/register" class='col col-50 padding'>
+        <button class="button button-stable button-block register_button">
+          Aan de slag
+        </button>
+    </a>
+      <a href="#/login" class='col col-50 padding'>
+        <button class="button  button-stable button-block register_button">
+          Inloggen
+        </button>
+      </a>
+      
+    </div>
+
+    </div>
 
 </ion-view>
