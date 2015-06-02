@@ -91,6 +91,9 @@ angular.module('starter.controllers', [])
       $scope.extraInfo=true;
       angular.element(info).removeClass('fadeOut animated');
       angular.element(info).addClass('fadeIn animated');
+      angular.element(openInfo).css( "display", "none" );
+      angular.element(closeInfo).css( "display", "block" );
+
     },500);
   };
 
@@ -106,6 +109,8 @@ angular.module('starter.controllers', [])
       $scope.extraInfo=false;
       angular.element(card).removeClass('fadeOut animated');
       angular.element(card).addClass('fadeIn animated');
+      angular.element(closeInfo).css( "display", "none" );
+      angular.element(openInfo).css( "display", "block" );
     },500);
   };
 
