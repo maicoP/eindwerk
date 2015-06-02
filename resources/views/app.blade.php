@@ -11,7 +11,7 @@
 	<link href="/app/css/bootstrap-responsive.min.css" rel="stylesheet">
 	<link id="base-style" href="/app/css/style.css" rel="stylesheet">
 	<link id="base-style-responsive" href="/app/css/style-responsive.css" rel="stylesheet">
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&subset=latin,cyrillic-ext,latin-ext' rel='stylesheet' type='text/css'>	
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800%26subset=latin,cyrillic-ext,latin-ext' rel='stylesheet' type='text/css'>	
 	<link href="/lib/pickadate/themes/default.css" rel="stylesheet">
 	<link href="/lib/pickadate/themes/default.date.css" rel="stylesheet">
     <link rel="apple-touch-icon" sizes="57x57" href="/icons/apple-touch-icon-57x57.png">
@@ -61,8 +61,8 @@
 				<div class="nav-collapse sidebar-nav">
 					<ul class="nav nav-tabs nav-stacked main-menu">
 						@if(Auth::user()->type == 'admin')
-						<li><a href="/user"><i class=""></i><span class="hidden-tablet"> Gebruikers beheer</span></a></li>	
-						<li><a href="/manage/kot"><i class=""></i><span class="hidden-tablet"> koten beheer</span></a></li>	
+						<li><a href="/user"><i class="icon-user"></i><span class="hidden-tablet"> Gebruikers Beheer</span></a></li>	
+						<li><a href="/manage/kot"><i class="icon-home"></i><span class="hidden-tablet"> Koten Beheer</span></a></li>	
 						@endif
 						<li><a href="/kot"><i class="icon-tasks"></i><span class="hidden-tablet"> Koten Overzicht</span></a></li>	
 						<li><a href="/kot/create"><i class="icon-plus"></i><span class="hidden-tablet"> Kot Toevoegen</span></a></li>

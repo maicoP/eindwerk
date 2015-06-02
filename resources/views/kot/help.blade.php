@@ -44,9 +44,9 @@
 
 						<h1><br>Richtlijnen koten</h1>
 
-						Kotter staat voor de net-iets-meer koten, de kuxueuzere koten. Daarom zijn hier enkele richtlijnen zodat u zelf kan controleren of een kot aan de richtlijnen voldoet alvorens het in het systeem in te geven.<br>
+						Kotter staat voor de net-iets-meer koten, de kuxueuzere koten. Daarom zijn hier enkele richtlijnen zodat u zelf kan controleren of een kot aan de richtlijnen voldoet alvorens het in het systeem in te geven.<br><br>
 
-						<ul><br>
+						<ul>
 						<li>Het kot heeft een minimum oppervlakte van x m2.</li>
 						<li>Het kot heeft een eigen badkamer (of in geval van een duplex: maximum 2 personen voor 1 badkamer)</li>
 						<li>Het kot bevind zich in zeer goede staat</li>

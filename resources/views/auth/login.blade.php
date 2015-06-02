@@ -1,5 +1,7 @@
 @extends('head')
-
+@section('title')
+    KOTTER - Login
+@stop
 @section('content')
     <nav id="top_nav" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">

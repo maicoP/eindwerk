@@ -1,5 +1,7 @@
 @extends('head')
-
+@section('title')
+    KOTTER - Reset paswoord
+@stop
 @section('content')
 
    <div class="header_wrapper">

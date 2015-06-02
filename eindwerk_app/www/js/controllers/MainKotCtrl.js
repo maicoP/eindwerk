@@ -84,13 +84,16 @@ angular.module('starter.controllers', [])
     var closeInfo = document.getElementById('closeInfo');
     var map = document.getElementById("map");
     angular.element(card).removeClass('fadeIn animated');
-    angular.element(card).addClass('fadeOut animated');    $timeout(function(){
+    angular.element(card).addClass('fadeOut animated');    
+    $timeout(function(){
       $scope.extraInfo=true;
       angular.element(info).removeClass('fadeOut animated');
       angular.element(info).addClass('fadeIn animated');
       angular.element(map).removeClass('mapHidden fadeOut animated');
       angular.element(map).addClass('mapShow');
       angular.element(map).addClass('fadeIn animated');
+      angular.element(openInfo).css( "display", "none" );
+      angular.element(closeInfo).css( "display", "block" );
     },500);
   };
 
@@ -113,6 +116,8 @@ angular.module('starter.controllers', [])
       angular.element(card).removeClass('fadeOut animated');
       angular.element(card).addClass('fadeIn animated');
       $ionicScrollDelegate.scrollTop();
+      angular.element(closeInfo).css( "display", "none" );
+      angular.element(openInfo).css( "display", "block" );
     },500);
   };
 

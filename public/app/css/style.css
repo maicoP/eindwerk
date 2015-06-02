@@ -371,6 +371,10 @@ footer {
 
 /*buttons*/
 
+.btn-add_user{
+	margin-bottom:20px;
+}
+
 .btn-edit_delete{
 	width:150px!important;
 	border-radius:0;
