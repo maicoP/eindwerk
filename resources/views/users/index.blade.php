@@ -11,9 +11,9 @@
 					</li>
 					<li><a href="#">Gebruikers</a></li>
 				</ul>
-				<div><a class="btn btn-info" href="user/create">Gebruiker toevoegen</a></div>
+				<a class="btn btn-info btn-add_user" href="user/create">Gebruiker toevoegen</a>
 				<table class="table table-striped">
-				  <tr><br>
+				  <tr>
 				  	<th>Naam</th>
 				  	<th>email</th>
 				  	<th></th>

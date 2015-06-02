@@ -141,7 +141,7 @@
 							<div class="controls" id='input-images'>
 								<?php $i=0 ?>
 								@foreach($kot->images as $image)
-									<img width='300px' src="{{URL::to('/').'/'.$image->image}}" alt="">
+									<img width='300' src="{{URL::to('/').'/'.$image->image}}" alt="">
 									<button id='{{$image->id}}' class="btn btn-danger delImg" type="button">x</button>
 									<?php ++$i ?>
 								@endforeach

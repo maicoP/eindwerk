@@ -3,7 +3,6 @@
 	Gebruiker toevoegen
 @stop
 @section('content')
-<div class="container-fluid">
 				<ul class="breadcrumb">
 					<li>
 						<i class="icon-home"></i>

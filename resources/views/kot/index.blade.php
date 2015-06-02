@@ -31,7 +31,7 @@
 						<div class="kot approved">
 							<div class="info">
 								<a href="/kot/{{$kot->id}}"><div class="title">{{$kot->streatname}}  {{$kot->housenumber}} {{$kot->zipcode}} {{$kot->city}}</div>
-								<div><img width="300" src="{{URL::to('/').'/'.$kot->images[0]->image}}"></div></a>
+								<div><img width="300" src="{{URL::to('/').'/'.$kot->images[0]->image}}" alt="Kot image"></div></a>
 								<div>
 									{!!Form::open(['url' => 'kot/'.$kot->id.'/edit','method' => 'GET','class' => 'frm-edit_delete'])!!}
 										{!!Form::submit('Edit',array('class' => 'btn btn-primary btn-edit_delete'))!!}
@@ -57,7 +57,7 @@
 						<div class="kot pending">
 							<div class="info">
 								<a href="/kot/{{$kot->id}}"><div class="title">{{$kot->streatname}}  {{$kot->housenumber}} {{$kot->zipcode}} {{$kot->city}}</div>
-								<div><img width="300" src="{{URL::to('/').'/'.$kot->images[0]->image}}"></div></a>
+								<div><img width="300" src="{{URL::to('/').'/'.$kot->images[0]->image}}" alt="Kot image"></div></a>
 								<div>
 									{!!Form::open(['url' => 'kot/'.$kot->id.'/edit','method' => 'GET','class' => 'frm-edit_delete'])!!}
 										{!!Form::submit('Edit',array('class' => 'btn btn-primary btn-edit_delete'))!!}
@@ -84,7 +84,7 @@
 							<div class="kot denied">
 								<div class="info">
 									<a href="/kot/{{$kot->id}}"><div class="title">{{$kot->streatname}}  {{$kot->housenumber}} {{$kot->zipcode}} {{$kot->city}}</div>
-									<div><img width="300" src="{{URL::to('/').'/'.$kot->images[0]->image}}"></div></a>
+									<div><img width="300" src="{{URL::to('/').'/'.$kot->images[0]->image}}" alt="Kot image"></div></a>
 									<div>
 										{!!Form::open(['url' => 'kot/'.$kot->id.'/edit','method' => 'GET','class' => 'frm-edit_delete'])!!}
 											{!!Form::submit('Edit',array('class' => 'btn btn-primary btn-edit_delete'))!!}

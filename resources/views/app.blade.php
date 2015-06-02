@@ -11,7 +11,7 @@
 	<link href="/app/css/bootstrap-responsive.min.css" rel="stylesheet">
 	<link id="base-style" href="/app/css/style.css" rel="stylesheet">
 	<link id="base-style-responsive" href="/app/css/style-responsive.css" rel="stylesheet">
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&subset=latin,cyrillic-ext,latin-ext' rel='stylesheet' type='text/css'>	
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800%26subset=latin,cyrillic-ext,latin-ext' rel='stylesheet' type='text/css'>	
 	<link href="/lib/pickadate/themes/default.css" rel="stylesheet">
 	<link href="/lib/pickadate/themes/default.date.css" rel="stylesheet">
     <link rel="apple-touch-icon" sizes="57x57" href="/icons/apple-touch-icon-57x57.png">

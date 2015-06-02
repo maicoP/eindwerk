@@ -120,19 +120,19 @@
 
 							<div class="checkbox controls col-md-offset-4">
 							    <label class='col-md-3'>
-							      <input type="checkbox" name='bikestands'> Fietsenstalling
+							      <input type="checkbox" name='bikestands'/> Fietsenstalling
 							    </label>
 							    <label class='col-md-3'>
-							      <input type="checkbox" name='seperatekitchen'> Aparte keuken
+							      <input type="checkbox" name='seperatekitchen'/> Aparte keuken
 							    </label>
 							    <label class='col-md-3'>
-							      <input type="checkbox" name='seperatebathroom'> Aparte badkamer
+							      <input type="checkbox" name='seperatebathroom'/> Aparte badkamer
 							    </label>
 							    <label class='col-md-3'>
-							      <input type="checkbox" name='furniture'> Bemeubeld
+							      <input type="checkbox" name='furniture'/> Bemeubeld
 							    </label>
 							    <label class='col-md-3'>
-							      <input type="checkbox" name='wifi'> Internet inbegrepen
+							      <input type="checkbox" name='wifi'/> Internet inbegrepen
 							    </label>
 							</div>
 
@@ -140,10 +140,10 @@
 								<label class="control-label">Afbeeldingen</label>
 								<div class="controls" id='input-images'>
 									<div id='img-1' class="imgd">
-										{!! Form::file('images[]', array('multiple'=>true,'class'=>'imgd')) !!}
-										{!! Form::file('images[]', array('multiple'=>true,'class'=>'imgd')) !!}
-										{!! Form::file('images[]', array('multiple'=>true,'class'=>'imgd')) !!}
-										{!! Form::file('images[]', array('multiple'=>true,'class'=>'imgd')) !!}
+										{!!Form::file('images[]', array('multiple'=>true,'class'=>'imgd'))!!}
+										{!!Form::file('images[]', array('multiple'=>true,'class'=>'imgd'))!!}
+										{!!Form::file('images[]', array('multiple'=>true,'class'=>'imgd'))!!}
+										{!!Form::file('images[]', array('multiple'=>true,'class'=>'imgd'))!!}
 									</div>
 								</div>
 							</div>
