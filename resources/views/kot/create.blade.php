@@ -149,7 +149,7 @@
 							</div>
 							<div class="control-group">
 								<div class="controls col-md-offset-4">
-									<button type="submit" class="btn btn-primary" style="margin-right: 15px;">
+									<button type="submit" class="btn btn-info" style="margin-right: 15px;">
 										Kot toevoegen
 									</button>
 								</div>
