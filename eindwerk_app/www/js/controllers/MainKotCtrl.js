@@ -69,6 +69,8 @@ angular.module('starter.controllers', [])
           if(data)
           {
             console.log('test');
+            //clean images so previos don't show
+            $scope.kot.images=''; 
             $scope.loading = true;
             getKot();
           }
@@ -81,12 +83,18 @@ angular.module('starter.controllers', [])
     map.setCenter(currCenter);
     var info = document.getElementById('extraInfo');
     var card = document.querySelectorAll('td-card')[0];
+    var openInfo = document.getElementById('openInfo');
+    var closeInfo = document.getElementById('closeInfo');
     angular.element(card).removeClass('fadeIn animated');
     angular.element(card).addClass('fadeOut animated');
+    angular.element(openInfo ).removeClass('fadeIn animated');
+    angular.element(openInfo ).addClass('fadeOut animated');
     $timeout(function(){
       $scope.extraInfo=true;
       angular.element(info).removeClass('fadeOut animated');
       angular.element(info).addClass('fadeIn animated');
+      angular.element(closeInfo).removeClass('fadeOut animated');
+      angular.element(closeInfo).addClass('fadeIn animated');
     },500);
   };
 
@@ -94,12 +102,18 @@ angular.module('starter.controllers', [])
   {
     var info = document.getElementById('extraInfo');
     var card = document.querySelectorAll('td-card')[0];
+    var openInfo = document.getElementById('openInfo');
+    var closeInfo = document.getElementById('closeInfo');
     angular.element(info).removeClass('fadeIn animated');
     angular.element(info).addClass('fadeOut animated');
+    angular.element(closeInfo).removeClass('fadeIn animated');
+    angular.element(closeInfo).addClass('fadeOut animated');
     $timeout(function(){
       $scope.extraInfo=false;
       angular.element(card).removeClass('fadeOut animated');
       angular.element(card).addClass('fadeIn animated');
+      angular.element(openInfo).removeClass('fadeOut animated');
+      angular.element(openInfo).addClass('fadeIn animated');
     },500);
   };
 
