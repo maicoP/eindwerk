@@ -6,13 +6,13 @@
 	</div>
 
   <ion-content id='content' class='content has-header padding content_dark'>
-      <div ng-show='!extraInfo && !noResult' ng-include="include" class="ng-cloak ng-hide">
+      <div ng-show='!extraInfo && !noResult' ng-include="include">
         
       </div>
       <div ng-show='noResult' class='info_message center text-center'>
         We konden geen koten vinden met uw huidige filters.
       </div>
-      <div ng-show='extraInfo' id='extraInfo' class='padding ng-cloak ng-hide'>
+      <div ng-show='extraInfo' id='extraInfo' class='padding'>
         <div id='map'></div>
         <div class="list card main_info">
 
