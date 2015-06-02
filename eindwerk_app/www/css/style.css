@@ -453,3 +453,7 @@ input.ng-untouched.ng-valid.ng-dirty.ng-valid-parse{
 .paddingr{
 	padding:16px;
 }
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
