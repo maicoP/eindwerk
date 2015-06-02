@@ -30,7 +30,7 @@
                 <img class="logo" src="img/logo.png" alt="">
                 <hr>
                 <h2 class="slogan">De app waarmee je je droomkot vindt in Antwerpen.</h2>
-                <p><a href=""><img class="download_mobile"src="img/android.png" alt=""></a><a href=""><img class="download_mobile" src="img/ios.png" alt=""></a></p>
+                <p><a href=""><img class="download_mobile" src="img/android.png" alt=""></a><a href=""><img class="download_mobile" src="img/ios.png" alt=""></a></p>
             </div>
         </div>
     </div>
@@ -141,7 +141,7 @@
             <div class='col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 '>
                 <div class="col-md-6 contact_group">
                     <input type="text" class="form-control contact_form col-md-10 " name="naam" value="{{ old('naam') }}" placeholder="Naam" required>
-                    <input type="email" class="form-control contact_form col-md-10 " name="email" value="{{ old('email') }}" placeholder="Email" required email>
+                    <input type="email" class="form-control contact_form col-md-10 " name="email" value="{{ old('email') }}" placeholder="Email" required>
                     <input type="text" class="form-control contact_form col-md-10 " name="bedrijf" value="{{ old('bedrijf') }}" placeholder="Bedrijf">
                 </div>
 
@@ -160,7 +160,7 @@
         <div class="container text-center">
             <div class="download_button">
                 <!-- <h2>Ontdek je droomkot.</h2>    -->     
-                <p><a href=""><img class="download_mobile wow wobble"src="img/android.png" alt=""></a><a href=""><img class="wow wobble download_mobile" src="img/ios.png" alt=""></a></p>
+                <p><a href=""><img class="download_mobile wow wobble" src="img/android.png" alt=""></a><a href=""><img class="wow wobble download_mobile" src="img/ios.png" alt=""></a></p>
             </div>
         </div>
         <div class="container">
