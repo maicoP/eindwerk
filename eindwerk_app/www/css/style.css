@@ -407,6 +407,10 @@ input.ng-untouched.ng-valid.ng-dirty.ng-valid-parse{
 
 .mapShow{
 	opacity: 1;
+	margin-top: 0px;
+}
+
+#favMap.mapShow{
 	margin-top: 45px;
 }
 

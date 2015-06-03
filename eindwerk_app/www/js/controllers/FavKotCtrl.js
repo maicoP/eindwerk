@@ -2,7 +2,8 @@ angular.module('starter.controllers')
 .controller('FavKotCtrl', function($scope, $stateParams,$http,$ionicScrollDelegate,$timeout) {
   var userdata = JSON.parse(window.localStorage['userdata']);
   var geocoder = new google.maps.Geocoder();
-  var markers = new Array();
+  var markers = new Array(); // for google markers
+  var scrollTo;// for opening extra info
   $scope.loading= false;
   $scope.noResult= false;
   $scope.extraInfo= false;
@@ -49,17 +50,16 @@ angular.module('starter.controllers')
           }
       });
   };
-
+  
   $scope.info = function(id)
   {
 
     var info = document.getElementById("extraInfo");
-    var map = document.getElementById("favMap");
+    var kotten = document.getElementById("favKotten");
+    var map = document.getElementById("favMap"); 
 
     $scope.kotExtra = $scope.favKot[id];
-    $scope.extraInfo = true;
-    $scope.map.draggable = true;
-
+    scrollTo = angular.element(document.getElementById("card"+$scope.kotExtra.id)).prop('offsetTop')-50;
     //remove existing markers
     if(markers.length > 0)
     {
@@ -71,6 +71,8 @@ angular.module('starter.controllers')
     location['lat'] = $scope.favKot[id]['lat'];
     location['lng'] = $scope.favKot[id]['lng'];
     $scope.map.setCenter(location);
+    $scope.map.draggable = true;
+
     var marker = new google.maps.Marker({
         map: $scope.map,
         animation: google.maps.Animation.DROP,
@@ -79,29 +81,38 @@ angular.module('starter.controllers')
     //add to array of markers for delete
     markers.push(marker);
 
-    angular.element(info).removeClass('hidden'); 
-    angular.element(info).removeClass('animated fadeOut'); 
-    angular.element(info).addClass('animated fadeIn');
-    angular.element(map).removeClass('mapHidden fadeOut animated');
-    angular.element(map).addClass('mapShow fadeIn animated');
-    $ionicScrollDelegate.scrollTop();
+    angular.element(kotten).removeClass('animated fadeIn');
+    angular.element(kotten).addClass('animated fadeOut'); 
+    $timeout(function() {
+      console.log('test');
+      $scope.extraInfo = true;
+      angular.element(info).removeClass('fadeOut animated '); 
+      angular.element(info).addClass('fadeIn animated ');
+      angular.element(map).removeClass('mapHidden fadeOut animated');
+      angular.element(map).addClass('mapShow fadeIn animated');
+      $ionicScrollDelegate.scrollTop();
+     },500);
+    
   };
 
   $scope.closeInfo = function(id)
   {
     var info = document.getElementById("extraInfo");
     var map = document.getElementById("favMap");
+    var kotten = document.getElementById("favKotten");
+    $scope.map.draggable = false;
 
     angular.element(info).removeClass('animated fadeIn');
     angular.element(info).addClass('animated fadeOut');
     angular.element(map).removeClass('mapShow fadeIn animated');
-    angular.element(map).addClass('mapHidden fadeOut animated');
+    
+    angular.element(map).addClass('fadeOut animated');
     $timeout(function() {
       $scope.extraInfo = false;
-      $scope.map.draggable = false;
-      var scroll =angular.element(document.getElementById("card"+$scope.kotExtra.id)).prop('offsetTop')-50;
-      console.log(document.getElementById("card"+$scope.kotExtra.id).getBoundingClientRect());
-      $ionicScrollDelegate.scrollTop();
+      $ionicScrollDelegate.scrollTo('center',scrollTo,false);
+      angular.element(kotten).removeClass('animated fadeOut'); 
+      angular.element(kotten).addClass('animated fadeIn');
+      angular.element(map).addClass('mapHidden');
      },500);
   }
     
