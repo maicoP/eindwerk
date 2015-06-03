@@ -2,8 +2,10 @@ angular.module('starter.controllers')
 .controller('FavKotCtrl', function($scope, $stateParams,$http,$ionicScrollDelegate,$timeout) {
   var userdata = JSON.parse(window.localStorage['userdata']);
   var geocoder = new google.maps.Geocoder();
+  var markers = new Array();
   $scope.loading= false;
   $scope.noResult= false;
+  $scope.extraInfo= false;
   $scope.userdata = userdata;
 
   $http({method: "get",dataType: "jsonp",url:'http://kotterapp.be/api/favkotten',params : {userid: userdata['id']},headers:{'Access-Control-Allow-Origin': '*'}})
@@ -12,6 +14,7 @@ angular.module('starter.controllers')
       {
         $scope.favKot = data['kotten'];
         $scope.loading= false;
+        initMap();
       }
       else
       {
@@ -20,14 +23,24 @@ angular.module('starter.controllers')
         $scope.noResult = true;
       }
   });
+
+  function initMap(){
+    var mapOptions = {
+        zoom: 15,
+        center: $scope.favKot[0],
+        draggable: false,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    $scope.map = new google.maps.Map(document.getElementById("favMap"), mapOptions);
+
+  };
+
   $scope.change_image = function($event,id){
-      angular.element(document.getElementById('main_image'+id)).attr("src", angular.element($event.target).attr('src'));
-      
+      angular.element(document.getElementById('main_image'+id)).attr("src", angular.element($event.target).attr('src'));   
   };
 
   $scope.vote = function(vote,kotid)
-  {
-    
+  { 
     $http({method: "get",dataType: "jsonp",url:'http://kotterapp.be/api/changevote',params : {userid: userdata['id'],kotid: kotid,vote: vote},headers:{'Access-Control-Allow-Origin': '*'}})
         .success(function(data, status, headers, config) {
           if(data)
@@ -39,52 +52,57 @@ angular.module('starter.controllers')
 
   $scope.info = function(id)
   {
-    var mapOptions = {
-        zoom: 16,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    var map = new google.maps.Map(document.getElementsByClassName("map"+id)[0], mapOptions);
 
-    var info = document.getElementById("extraInfo"+id);
-    var openInfo = document.getElementById("openInfo"+id);
-    var closeInfo = document.getElementById("closeInfo"+id);
+    var info = document.getElementById("extraInfo");
+    var map = document.getElementById("favMap");
 
+    $scope.kotExtra = $scope.favKot[id];
+    $scope.extraInfo = true;
+    $scope.map.draggable = true;
+
+    //remove existing markers
+    if(markers.length > 0)
+    {
+      markers[0].setMap(null);
+      markers.splice(0,1);
+    }
+    
     var location = new Array();
     location['lat'] = $scope.favKot[id]['lat'];
     location['lng'] = $scope.favKot[id]['lng'];
-
-    map.setCenter(location);
+    $scope.map.setCenter(location);
     var marker = new google.maps.Marker({
-        map: map,
+        map: $scope.map,
         animation: google.maps.Animation.DROP,
         position: location
     });
-    google.maps.event.trigger(map, "resize");
-    map.setCenter($scope.favKot[id]['location']);
+    //add to array of markers for delete
+    markers.push(marker);
+
     angular.element(info).removeClass('hidden'); 
-    angular.element(closeInfo).removeClass('hidden'); 
-    angular.element(openInfo).addClass('hidden');
-    angular.element(info).removeClass('animated fadeOutUp'); 
-    angular.element(info).addClass('animated fadeInDown');
-    var scroll = angular.element(document.getElementById("card"+id)).prop('offsetTop') + document.getElementById("card"+id).getBoundingClientRect()['height']-600;
-    $ionicScrollDelegate.scrollTo('center',scroll,true); 
+    angular.element(info).removeClass('animated fadeOut'); 
+    angular.element(info).addClass('animated fadeIn');
+    angular.element(map).removeClass('mapHidden fadeOut animated');
+    angular.element(map).addClass('mapShow fadeIn animated');
+    $ionicScrollDelegate.scrollTop();
   };
 
   $scope.closeInfo = function(id)
   {
-    var info = document.getElementById("extraInfo"+id);
-    var openInfo = document.getElementById("openInfo"+id);
-    var closeInfo = document.getElementById("closeInfo"+id);
-    $ionicScrollDelegate.scrollTo('center',angular.element(document.getElementById("card"+id)).prop('offsetTop')-50,true);
-    angular.element(info).removeClass('animated fadeInDown');
-    angular.element(info).addClass('animated fadeOutUp');
-    angular.element(closeInfo).addClass('hidden');
+    var info = document.getElementById("extraInfo");
+    var map = document.getElementById("favMap");
+
+    angular.element(info).removeClass('animated fadeIn');
+    angular.element(info).addClass('animated fadeOut');
+    angular.element(map).removeClass('mapShow fadeIn animated');
+    angular.element(map).addClass('mapHidden fadeOut animated');
     $timeout(function() {
-      var scroll =angular.element(document.getElementById("card"+id)).prop('offsetTop')-50;
-      $ionicScrollDelegate.scrollTo('center',scroll,true);
-      angular.element(openInfo).removeClass('hidden');
-      angular.element(info).addClass('hidden');
-     },200);
+      $scope.extraInfo = false;
+      $scope.map.draggable = false;
+      var scroll =angular.element(document.getElementById("card"+$scope.kotExtra.id)).prop('offsetTop')-50;
+      console.log(document.getElementById("card"+$scope.kotExtra.id).getBoundingClientRect());
+      $ionicScrollDelegate.scrollTop();
+     },500);
   }
     
 });

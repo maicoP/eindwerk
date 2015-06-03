@@ -37,7 +37,8 @@ angular.module('starter.controllers')
             userdata = {
               id : data['user']['id'],
               email:data['user']['email'],
-              password: data['user']['password']
+              password: data['user']['password'],
+              school: data['user']['school']
             };
             window.localStorage['userdata'] = JSON.stringify(userdata);
             $location.path('/main');

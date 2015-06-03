@@ -13,7 +13,7 @@
 	<div ng-show='noResult' class="info_message center text-center">
 	    U heeft nog geen koten aan uw favorieten toegevoegd.
 	</div>
-	<div ng-repeat="(key,kot) in favKot" id="card{{key}}" type="list-inset" class="list list-inset fav_card footer_padding" ng-show='!loading && !noResult'>
+	<div ng-repeat="(key,kot) in favKot" id="card{{kot.id}}" type="list-inset" class="list list-inset fav_card footer_padding" ng-show='!loading && !noResult && !extraInfo'>
 		<div class='info'>
 			<img width='100%' id='main_image{{kot.id}}' src="http://kotterapp.be//{{kot.images[0].image}}" alt="">
 			<div class="kot_thumbs">
@@ -38,7 +38,18 @@
 	            </a>
 
       		</div>
-      		<div id='extraInfo{{key}}' class='padding hidden'>
+		</div>
+		<div class='row content_dark' >
+	        <div class="col" id='openInfo{{key}}'>
+	          <img ng-click="info({{key}})" width="50" height="50"  src="img/icons/info.png" alt="" align="right">
+	        </div>
+	        <div class="col">
+	        	<img ng-click="vote('dislike',kot.id)" width="50" height="50" src="img/icons/dislike.png" align="left" alt="">
+	        </div>
+		</div>
+	</div>
+	 <div id='favMap' class='mapHidden' center="map.center" zoom="map.zoom" draggable="true" events='map.events' control="map.control" data-tap-disabled="true"></div>
+	<div id='extraInfo' ng-show='extraInfo' class='padding '>
 
 	            <div class="list card main_info">
 
@@ -47,14 +58,14 @@
 	              </div>
 
 
-	              <a href="tel:{{kot.telephonenumber}}" class="item item-icon-left">
+	              <a href="tel:{{kotExtra.telephonenumber}}" class="item item-icon-left">
 	                <i class="icon ion-ios-telephone-outline"></i>
-	                {{kot.telephonenumber}}
+	                {{kotExtra.telephonenumber}}
 	              </a>
 
-	              <a href="mailto:{{kot.email}}" class="item item-icon-left">
+	              <a href="mailto:{{kotExtra.email}}" class="item item-icon-left">
 	                <i class="icon ion-ios-email-outline"></i>
-	                {{kot.email}}
+	                {{kotExtra.email}}
 	              </a>
 
 	              <div class="item item-divider">
@@ -63,49 +74,40 @@
 
 	              <a href="#" class="item item-icon-left">
 	                <i class="icon ion-ios-information-outline"></i>
-	                {{kot.info}}
+	                {{kotExtra.info}}
 	              </a>
 
 	              <div class="item item-divider">
 	                Opties
 	              </div>
 
-	              <a ng-if="kot.seperatebathroom  == '1'" href="#" class="item item-icon-right">
+	              <a ng-if="kotExtra.seperatebathroom  == '1'" href="#" class="item item-icon-right">
 	                <i class="icon ion-android-done"></i>
 	                Aparte badkamer
 	              </a>
-	              <a ng-if="kot.seperatekitchen  == '1'" href="#" class="item item-icon-right">
+	              <a ng-if="kotExtra.seperatekitchen  == '1'" href="#" class="item item-icon-right">
 	                <i class="icon ion-android-done"></i>
 	                Aparte keuken
 	              </a>
-	              <a ng-if="kot.bikestands  == '1'" href="#" class="item item-icon-right">
+	              <a ng-if="kotExtra.bikestands  == '1'" href="#" class="item item-icon-right">
 	                <i class="icon ion-android-done"></i>
 	                Fietsenstalling
 	              </a>
-	              <a ng-if="kot.furniture  == '1'" href="#" class="item item-icon-right">
+	              <a ng-if="kotExtra.furniture  == '1'" href="#" class="item item-icon-right">
 	                <i class="icon ion-android-done"></i>
 	                Bemeubeld
 	              </a>
-	              <a ng-if="kot.wifi  == '1'" href="#" class="item item-icon-right">
+	              <a ng-if="kotExtra.wifi  == '1'" href="#" class="item item-icon-right">
 	                <i class="icon ion-android-done"></i>
 	                Wifi
 	              </a>
 
 	            </div>
-	        	<div id="map" class="map{{key}}" data-tap-disabled="true"></div>
+	            <div class='row content_dark' >
+			        <div class="col" id='closeInfo{{kotExtra.id}}'>
+			          <img ng-click="closeInfo({{kotExtra.id}})"  width="50" height="50" src="img/icons/k.png" alt="" align="right">
+			        </div>
+				</div>
 	        </div>
-		</div>
-		<div class='row content_dark' >
-	        <div class="col" id='openInfo{{key}}'>
-	          <img ng-click="info({{key}})" width="50" height="50"  src="img/icons/info.png" alt="" align="right">
-	        </div>
-	        <div class="col hidden" id='closeInfo{{key}}'>
-	          <img ng-click="closeInfo({{key}})"  width="50" height="50" src="img/icons/k.png" alt="" align="right">
-	        </div>
-	        <div class="col">
-	        	<img ng-click="vote('dislike',kot.id)" width="50" height="50" src="img/icons/dislike.png" align="left" alt="">
-	        </div>
-		</div>
-	</div>
   </ion-content>
 </ion-view>
