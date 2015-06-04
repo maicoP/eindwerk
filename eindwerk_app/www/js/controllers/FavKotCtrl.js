@@ -4,7 +4,7 @@ angular.module('starter.controllers')
   var geocoder = new google.maps.Geocoder();
   var markers = new Array(); // for google markers
   var scrollTo;// for opening extra info
-  $scope.loading= false;
+  $scope.loading= true;
   $scope.noResult= false;
   $scope.extraInfo= false;
   $scope.userdata = userdata;
