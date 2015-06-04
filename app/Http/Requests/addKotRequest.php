@@ -21,7 +21,7 @@ class addKotRequest extends Request {
 	 */
 	public function rules()
 	{
-		return [
+		$rules = [
             'city' =>   'required',
             'streatname'    => 'required',
             'housenumber'   =>  'required',
@@ -31,8 +31,12 @@ class addKotRequest extends Request {
             'telephonenumber'   =>  'required',
             'begindate'    =>  'required',
             'enddate'   =>  'required|after:begindate',
-            'images' => 'required'
+            'images.0' => 	'required|image|mimes:jpeg,jpg,bmp,png,gif',
+            'images.1' => 	'required|image|mimes:jpeg,jpg,bmp,png,gif',
+            'images.2' => 	'required|image|mimes:jpeg,jpg,bmp,png,gif',
+            'images.3' => 	'required|image|mimes:jpeg,jpg,bmp,png,gif',
 		];
+		return $rules;
 	}
 
 }

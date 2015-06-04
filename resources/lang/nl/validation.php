@@ -117,8 +117,8 @@ return array(
             'seperatebathroom'  =>  'afzonderlijke badkamer',
             'furniture' =>  'bemeubeld',
             'begindate'    =>  'beschikbaar vanaf',
-            'enddate'   =>  'beschikbaar tot'
-
+            'enddate'   =>  'beschikbaar tot',
+            'images' => 'afbeelding',
         ),
 
 );

@@ -1,5 +1,6 @@
 <?php namespace eindwerk\Http\Controllers;
 
+use Validator;
 use eindwerk\Http\Requests;
 use eindwerk\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -164,18 +165,26 @@ class kotController extends Controller {
 		$kot->lat = $response->results[0]->geometry->location->lat;
 		$kot->lng = $response->results[0]->geometry->location->lng;
 		$kot->save();
-		if($request->hasFile('images'))
+		
+		if($request->file('images') != null)
 		{
 			foreach( $request->file('images') as $image)
 			{
-				$filename = str_random(40).'.png';
-				$destination = 'kot_img/';
-				$image->move($destination, $filename);
-				$image = new Image;
-				$image->image = $destination.$filename;
-				$image->fk_kotid = $kot->id;
-				$image->save();
-
+				 $rules = array('file' => 'required|image|mimes:jpeg,jpg,bmp,png,gif');
+			      $validator = Validator::make(array('file'=> $image), $rules);
+			      if($validator->passes()){
+			        $filename = str_random(40).'.png';
+					$destination = 'kot_img/';
+					$image->move($destination, $filename);
+					$image = new Image;
+					$image->image = $destination.$filename;
+					$image->fk_kotid = $kot->id;
+					$image->save();
+			      }
+			      else
+			      {
+			      	return  redirect()->back()->withInput()->withErrors($validator);
+			      }	
 			}
 		}
 		

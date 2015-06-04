@@ -23,7 +23,7 @@
 								<strong>Oeps!</strong> Er was een probleem met de gegevens.<br><br>
 								<ul>
 									@foreach ($errors->all() as $error)
-											<li>{{$error}}</li>
+											<li>{{str_replace("images", "afbeelding", $error)}}</li>
 									@endforeach
 								</ul>
 							</div>
@@ -140,10 +140,10 @@
 								<label class="control-label">Afbeeldingen</label>
 								<div class="controls" id='input-images'>
 									<div id='img-1' class="imgd">
-										{!!Form::file('images[]', array('multiple'=>true,'class'=>'imgd'))!!}
-										{!!Form::file('images[]', array('multiple'=>true,'class'=>'imgd'))!!}
-										{!!Form::file('images[]', array('multiple'=>true,'class'=>'imgd'))!!}
-										{!!Form::file('images[]', array('multiple'=>true,'class'=>'imgd'))!!}
+										@for ($i=0; $i < 4; $i++)
+										    {!!Form::file('images['.$i.']', array('class'=>'imgd'))!!}
+										@endfor
+										
 									</div>
 								</div>
 							</div>

@@ -23,7 +23,7 @@
 							<strong>Oeps!</strong> Er was een probleem met de gegevens.<br><br>
 							<ul>
 								@foreach ($errors->all() as $error)
-										<li>{{$error}}</li>
+										<li>{{str_replace("file", "afbeelding", $error)}}</li>
 								@endforeach
 							</ul>
 						</div>
