@@ -1,11 +1,13 @@
 angular.module('starter.controllers')
-.controller('SettingsCtrl', function($scope, $stateParams,$timeout,$location,$http,$state) {
+.controller('SettingsCtrl',function($scope, $stateParams,$timeout,$location,$state,SchoolService,UserService,KotService) {
+
   $scope.loading= true;
   $scope.resetKot = false;
+
   var delayName;
   var userdata = JSON.parse(window.localStorage['userdata']);
 
-
+  // when a change is made to one of the inputs save it to db
   $scope.changeEmail = function(){
     $timeout.cancel(delayName);
     delayName = $timeout(function() {
@@ -15,7 +17,6 @@ angular.module('starter.controllers')
       $scope.postChanges('email',$scope.userdata.email); 
     }, 1000);
   };
-
 
   var delaySchool;
   $scope.changeSchool = function(){
@@ -28,7 +29,6 @@ angular.module('starter.controllers')
     }, 1000);    
   };
 
-
   var delayPrice;
   $scope.changePrice = function(){
     $timeout.cancel(delayPrice);
@@ -36,7 +36,6 @@ angular.module('starter.controllers')
       $scope.postChanges('price',$scope.userdata.price); 
     }, 1000);  
   };
-
 
   var delayDist;
   $scope.changeDistance = function(){
@@ -46,7 +45,6 @@ angular.module('starter.controllers')
     }, 1000);   
   };
 
-
   var delaySDate;
   $scope.changeStartDate = function(){
     $timeout.cancel(delaySDate);
@@ -54,7 +52,6 @@ angular.module('starter.controllers')
       $scope.postChanges('startDate',$scope.userdata.startDate);
     }, 1000);   
   };
-
 
   var delayEDate;
   $scope.changeEndDate = function(){
@@ -64,7 +61,6 @@ angular.module('starter.controllers')
     }, 1000);   
   };
 
-
   var delayBike;
   $scope.changeBikestands = function(){
     $timeout.cancel(delayBike);
@@ -72,7 +68,6 @@ angular.module('starter.controllers')
       $scope.postChanges('bikestands',$scope.userdata.bikestands?1:0);
     }, 1000);   
   };
-
 
   var delayKitchen;
   $scope.changeSeperatekitchen = function(){
@@ -82,7 +77,6 @@ angular.module('starter.controllers')
     }, 1000);   
   };
 
-
   var delayBath;
   $scope.changeSeperatebathroom = function(){
     $timeout.cancel(delayBath);
@@ -90,8 +84,6 @@ angular.module('starter.controllers')
       $scope.postChanges('seperatebathroom',$scope.userdata.seperatebathroom?1:0);
     }, 1000);   
   };
-
-
   var delayFurn;
   $scope.changeFurniture = function(){
     $timeout.cancel(delayFurn);
@@ -116,12 +108,12 @@ angular.module('starter.controllers')
     }, 1000);   
   };
 
+  // post the change to db
   $scope.postChanges = function(field,value)
   {
       console.log(value);
-      
-        $http({method: "get",dataType:"jsonp",url:'http://kotterapp.be/api/changefilter',params : {field: field,value: value , userid: userdata['id']},headers:{'Access-Control-Allow-Origin': '*'}})
-        .success(function(data, status, headers, config) {
+        UserService.changeFilter(field,value,userdata).then(function(response){
+          data = response.data;
           $scope.errors= false;
           if(data['value'])
           {
@@ -133,27 +125,30 @@ angular.module('starter.controllers')
         });
   }
 
+  // delete all votes from db
   $scope.resetKotten = function()
   {
-    $http({method: "get",dataType:"jsonp",url:'http://kotterapp.be/api/resetkotten',params : {userid: userdata['id']},headers:{'Access-Control-Allow-Origin': '*'}})
-      .success(function(data, status, headers, config) {
+    KotService.reset(userdata).then(function(response){
+        data = response.data;
         if(data['succes'])
         {
           $scope.resetKot = true;
         }
-      });
+    });
+
   }
 
+  // logout by clearing the local storage
   $scope.logout = function()
   {
     localStorage.clear();
     $location.path('/');
   }
 
+  // get users current filters 
   $scope.userdata = userdata;
-  $http({method: "get",dataType:"jsonp",url:'http://kotterapp.be/api/getappuser',params : {userid: userdata['id']},headers:{'Access-Control-Allow-Origin': '*'}})
-    .success(function(data, status, headers, config) {
-      console.log(data);
+  UserService.getUser(userdata).then(function(response){
+      data = response.data;
       if(data['succes'])
       {
         $scope.userdata.id = data['result']['id'];
@@ -172,10 +167,9 @@ angular.module('starter.controllers')
         $scope.loading = false;
       }
   });
-
-  $http({method: "GET",dataType:"jsonp",url:'http://kotterapp.be/api/getschools',headers:{'Access-Control-Allow-Origin': '*'}})
-  .success(function(data, status, headers, config) {
-    $scope.schools = data;
-  }); 
-           
+  
+  //get all schools in db
+  SchoolService.get().then(function(response){
+     $scope.schools = response.data;
+  });    
 });

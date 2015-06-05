@@ -33,6 +33,7 @@ angular.module('starter', ['ionic','ionic.contrib.ui.tinderCards', 'starter.cont
 .config(function($ionicConfigProvider,$stateProvider,$urlRouterProvider,$httpProvider) {
   // set caching off
   $ionicConfigProvider.views.maxCache(0);
+  // define routes
   $stateProvider
   .state('tutorial', {
     url: "/tutorial",

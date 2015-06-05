@@ -1,25 +1,25 @@
 angular.module('starter.controllers')
-.controller('StartCtrl', function($scope,$location,$http) {
+.controller('StartCtrl', function($scope,$location,UserService) {
   $scope.loading = true;
+
+  // if user has user data in local storage and it matches its values in db then user still logdin else show tutorial page
   if(window.localStorage.hasOwnProperty('userdata'))
   {
       userdata = JSON.parse(window.localStorage['userdata']);
-      $http({method: "get",dataType: "jsonp",url:'http://kotterapp.be/api/checkuser',params : {userid: userdata['id']},headers:{'Access-Control-Allow-Origin': '*'}})
-        .success(function(data, status, headers, config) {
-          if(data.succes)
-          {
-            $location.path('/main');
-          }
-          else
-          {
-            $scope.loading = false;
-            console.log($scope.loading);
-          }  
-      });   
+      UserService.checkUser(userdata).then(function(response){
+        data = response.data;
+        if(data.succes)
+        {
+          $location.path('/main');
+        }
+        else
+        {
+          $scope.loading = false;
+        } 
+      }) 
   }
   else
   {
     $scope.loading = false;
-    console.log($scope.loading);
   }
 });

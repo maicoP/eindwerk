@@ -1,17 +1,20 @@
 angular.module('starter.controllers')
-.controller('FavKotCtrl', function($scope, $stateParams,$http,$ionicScrollDelegate,$timeout) {
+.controller('FavKotCtrl', function($scope, $stateParams,$ionicScrollDelegate,$timeout,KotService,VoteService) {
+
   var userdata = JSON.parse(window.localStorage['userdata']);
   var geocoder = new google.maps.Geocoder();
   var markers = new Array(); // for google markers
   var scrollTo;// for opening extra info
+
   $scope.loading= true;
   $scope.noResult= false;
   $scope.extraInfo= false;
   $scope.userdata = userdata;
 
-  $http({method: "get",dataType: "jsonp",url:'http://kotterapp.be/api/favkotten',params : {userid: userdata['id']},headers:{'Access-Control-Allow-Origin': '*'}})
-    .success(function(data, status, headers, config) {
-      if(0<data['kotten'].length)
+  // get all the favorite koten of user
+  KotService.getFavKoten(userdata).then(function(response){
+    data = response.data;
+    if(0<data['kotten'].length)
       {
         $scope.favKot = data['kotten'];
         $scope.loading= false;
@@ -19,12 +22,12 @@ angular.module('starter.controllers')
       }
       else
       {
-        console.log('test');
         $scope.loading= false;
         $scope.noResult = true;
       }
-  });
+  })
 
+  //init google map
   function initMap(){
     var mapOptions = {
         zoom: 15,
@@ -36,21 +39,23 @@ angular.module('starter.controllers')
 
   };
 
+  // change main image
   $scope.change_image = function($event,id){
       angular.element(document.getElementById('main_image'+id)).attr("src", angular.element($event.target).attr('src'));   
   };
 
   $scope.vote = function(vote,kotid)
   { 
-    $http({method: "get",dataType: "jsonp",url:'http://kotterapp.be/api/changevote',params : {userid: userdata['id'],kotid: kotid,vote: vote},headers:{'Access-Control-Allow-Origin': '*'}})
-        .success(function(data, status, headers, config) {
-          if(data)
-          {
-            window.location.reload(true);
-          }
-      });
+    VoteService.changeVote(userdata,vote,kotid).then(function(response){
+      data = response.data;
+      if(data)
+      {
+        window.location.reload(true);
+      } 
+    });
   };
   
+  //open info tab
   $scope.info = function(id)
   {
 
@@ -95,6 +100,7 @@ angular.module('starter.controllers')
     
   };
 
+  //close info tab
   $scope.closeInfo = function(id)
   {
     var info = document.getElementById("extraInfo");

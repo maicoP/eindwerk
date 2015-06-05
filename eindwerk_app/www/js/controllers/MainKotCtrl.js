@@ -1,9 +1,11 @@
 angular.module('starter.controllers', [])
 
-.controller('MainKotCtrl', function($scope,$http,$window,$ionicScrollDelegate,$ionicLoading,$timeout,$state) {
+.controller('MainKotCtrl', function($scope,$window,$ionicScrollDelegate,$ionicLoading,$timeout,$state,KotService,VoteService) {
+
   $scope.loading=true;
   $scope.extraInfo=false;
   $scope.noResult=false;
+
   var kotids = [];
   var currentLocation = new Array();
   var userdata = JSON.parse(window.localStorage['userdata']);
@@ -11,10 +13,12 @@ angular.module('starter.controllers', [])
 
   getKot();
 
+  // change main image
   $scope.change_image = function($event){
       angular.element(document.getElementById('main_image')).attr("src", angular.element($event.target).attr('src'));  
   };
 
+  // init the map and set marker to position of kot
   function setMap(location){
     var mapOptions = {
         zoom: 15,
@@ -29,41 +33,39 @@ angular.module('starter.controllers', [])
         animation: google.maps.Animation.DROP,
         position: location
     });
-    console.log($scope.map);
   };
 
   function getKot()
   {
-    
-    $http({method: "get",dataType: "jsonp",url:'http://kotterapp.be/api/getKot',params: {userid: userdata['id'],kotids: kotids},headers:{'Access-Control-Allow-Origin': '*'}})
-        .success(function(data, status, headers, config) {
-          console.log(data);
-          if(data['kot'] == false)
-          {
-            $scope.loading = false;
-            $scope.noResult = true;  
-          }
-          else
-          {
-            $scope.include='templates/card.html';
-            
-            currentLocation['lat'] = data['kot']['lat'];
-            currentLocation['lng'] = data['kot']['lng'];
-            google.maps.event.addDomListener(document.getElementById("map"), "load",setMap(currentLocation));
-            $scope.kot = data['kot'];
-            $scope.lenght = data['kot']['distance'];
-            if(document.querySelectorAll('td-card')[0] !== undefined && document.querySelectorAll('td-card')[0] !== undefined){
-              document.querySelectorAll('td-card')[0].removeAttribute("style");
-            }
-            $scope.loading=false;
-          }
-          
-      });
+    // get a kot that you haven't voted on and match your current filters
+    KotService.getKot(userdata).then(function(response){
+      data = response.data;
+      console.log(data);
+      if(data['kot'] == null || data['kot'] == false)
+      {
+        $scope.loading = false;
+        $scope.noResult = true;  
+      }
+      else
+      {
+        $scope.include='templates/card.html';
+        
+        currentLocation['lat'] = data['kot']['lat'];
+        currentLocation['lng'] = data['kot']['lng'];
+        google.maps.event.addDomListener(document.getElementById("map"), "load",setMap(currentLocation));
+        $scope.kot = data['kot'];
+        $scope.lenght = data['kot']['distance'];
+        if(document.querySelectorAll('td-card')[0] !== undefined && document.querySelectorAll('td-card')[0] !== undefined){
+          document.querySelectorAll('td-card')[0].removeAttribute("style");
+        }
+        $scope.loading=false;
+      }
+    })
   };
   $scope.vote = function(vote,kotid)
   {
-    $http({method: "get",dataType: "jsonp",url:'http://kotterapp.be/api/vote',params : {userid: userdata['id'],kotid: kotid,vote: vote},headers:{'Access-Control-Allow-Origin': '*'}})
-        .success(function(data, status, headers, config) {
+    VoteService.vote(userdata,vote,kotid).then(function(response){
+          data = response.data;
           if(data)
           {
             console.log('test');
@@ -74,19 +76,23 @@ angular.module('starter.controllers', [])
           }
       });
   };
-
+  //open info tab
   $scope.info = function()
   {
     $scope.map.draggable =true;
+
     var info = document.getElementById('extraInfo');
     var card = document.querySelectorAll('td-card')[0];
     var openInfo = document.getElementById('openInfo');
     var closeInfo = document.getElementById('closeInfo');
     var map = document.getElementById("map");
+
     angular.element(card).removeClass('fadeIn animated');
-    angular.element(card).addClass('fadeOut animated');    
+    angular.element(card).addClass('fadeOut animated');  
+
     $timeout(function(){
       $scope.extraInfo=true;
+
       angular.element(info).removeClass('fadeOut animated');
       angular.element(info).addClass('fadeIn animated');
       angular.element(map).removeClass('mapHidden fadeOut animated');
@@ -96,22 +102,25 @@ angular.module('starter.controllers', [])
       angular.element(closeInfo).css( "display", "block" );
     },500);
   };
-
+  // close info tab
   $scope.closeInfo = function()
   {
     $scope.map.draggable =false;
+
     var info = document.getElementById('extraInfo');
     var card = document.querySelectorAll('td-card')[0];
     var openInfo = document.getElementById('openInfo');
     var closeInfo = document.getElementById('closeInfo');
     var map = document.getElementById("map");
+
     angular.element(info).removeClass('fadeIn animated');
     angular.element(info).addClass('fadeOut animated');
-    angular.element(map).removeClass('mapShow fadeIn animated');
-    
+    angular.element(map).removeClass('mapShow fadeIn animated');   
     angular.element(map).addClass('fadeOut animated');
+
     $timeout(function(){
       $scope.extraInfo=false;
+
       angular.element(map).addClass('mapHidden');
       angular.element(card).removeClass('fadeOut animated');
       angular.element(card).addClass('fadeIn animated');
@@ -122,14 +131,16 @@ angular.module('starter.controllers', [])
   };
 
   var timeout;
+  // when swipe left dislike
   $scope.swipeLeft = function(id)
   {
     console.log('leftswipe');
-    $timeout.cancel(timeout);
+    $timeout.cancel(timeout);// cancel the timeout of other functions like onRelease
       timeout = $timeout(function() {
         $scope.vote('dislike',id);
       }, 800);
   }
+  // when swipe right like
   $scope.swipeRight = function(id)
   {
     console.log('rightswipe');
@@ -138,6 +149,9 @@ angular.module('starter.controllers', [])
         $scope.vote('like',id);
       }, 800);
   }
+
+  // when swipe is slow it wil not register as a swipe
+  // this function wil check on drag release if the users has voted
   $scope.onRelease = function(id)
   {
     console.log('drag');

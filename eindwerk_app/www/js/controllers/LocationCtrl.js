@@ -1,18 +1,19 @@
 angular.module('starter.controllers')
-.controller('LocationCtrl', function($scope, $stateParams,$timeout,$location,$http) {
+.controller('LocationCtrl', function($scope, $stateParams,$timeout,$location,SchoolService,UserService) {
 
   $scope.locationData = {};
   $scope.locationData.price = 100;
-  $http({method: "GET",dataType:"jsonp",url:'http://kotterapp.be/api/getschools',headers:{'Access-Control-Allow-Origin': '*'}})
-  .success(function(data, status, headers, config) {
-    $scope.schools = data;
-  });        
+
+  //get all schools from db
+  SchoolService.get().then(function(response){
+     $scope.schools = response.data;
+  });
+
+  // check user input when valid save to db and local storage        
   $scope.doSave = function() {
-      //controlleren of alle velden zijn ingevuld
       var isValid = true;
       var schoolEl = document.querySelector( '.item-school' );
       var priceEl = document.querySelector( '.item-price' );
-      //remove red from input fields
       angular.element(schoolEl).removeClass('error');
       angular.element(priceEl).removeClass('error');
       if(!$scope.locationData.hasOwnProperty('school'))
@@ -32,9 +33,8 @@ angular.module('starter.controllers')
       if(isValid)
       {
         userdata = JSON.parse(window.localStorage['userdata']);
-        $http({method: "get",dataType:"jsonp",url:'http://kotterapp.be/api/savefilter',params : {school: $scope.locationData.school,price: $scope.locationData.price , userid: userdata['id']},headers:{'Access-Control-Allow-Origin': '*'}})
-        .success(function(data, status, headers, config) {
-          console.log(data);
+        UserService.saveFilter(userdata,$scope.locationData.price,$scope.locationData.school).then(function(response){
+          data = response.data;
           if(data['succes'])
           {
             userdata['school'] = $scope.locationData.school;
@@ -42,7 +42,7 @@ angular.module('starter.controllers')
             window.localStorage['userdata'] = JSON.stringify(userdata);
             $location.path('/main');
           }
-        });
+        })
       }
   };
 })

@@ -1,14 +1,14 @@
 angular.module('starter.controllers')
-.controller('RegisterCtrl', function($scope, $stateParams,$timeout,$location,$http) {
+.controller('RegisterCtrl', function($scope, $stateParams,$timeout,$location,UserService) {
 
   $scope.registerData = {};
-
+// check user data when valid save to db
   $scope.doRegister = function() {
-      //controlleren of alle velden zijn ingevuld
+
       var isValid = true;
       var emailEl = document.querySelector( '.item-email' );
       var passwordEl = document.querySelector( '.item-password' );
-      //remove red from input fields
+
       angular.element(emailEl).removeClass('error');
       angular.element(passwordEl).removeClass('error');
       if(!$scope.registerData.hasOwnProperty('email'))
@@ -29,35 +29,37 @@ angular.module('starter.controllers')
           email: $scope.registerData.email,
           password: $scope.registerData.password
         }
-        $http({method: "get",dataType:"jsonp",url:'http://kotterapp.be/api/register',params : {email: $scope.registerData.email,password: $scope.registerData.password},headers:{'Access-Control-Allow-Origin': '*'}})
-        .success(function(data, status, headers, config) {
-          if(data['email'])
-          {
-            $scope.errors = data['email'];
-          }
-          if(data['succes'])
-          {
-            userdata = {
-              id : data['id'],
-              email:data['email'],
-              password: data['password']
-            };
-            window.localStorage['userdata'] = JSON.stringify(userdata);
-            $location.path('/location');
-          }
+        console.log(userdata);
+        UserService.register(userdata.email,userdata.password,false).then(function(response){
+            data = response.data;
+            console.log(response);
+            if(data['email'])
+            {
+              $scope.errors = data['email'];
+            }
+            if(data['succes'])
+            {
+              userdata = {
+                id : data['id'],
+                email:data['email'],
+                password: data['password']
+              };
+              window.localStorage['userdata'] = JSON.stringify(userdata);
+              $location.path('/location');
+            }
         });
       }
   };
-
+  // register with facebook
   $scope.facebookRegister = function() {
     facebookConnectPlugin.login(["public_profile", "email"],
       function(success) {
         if(success.status == 'connected')
         {
           facebookConnectPlugin.api('/me',["public_profile", "email"],function(result){
-            console.log(result);
-              $http({method: "get",dataType:"jsonp",url:'http://kotterapp.be/api/register',params : {email: result.email,password: '',facebook:true},headers:{'Access-Control-Allow-Origin': '*'}})
-                .success(function(data, status, headers, config) {
+            // get email from user and set password empty in db
+            UserService.register(result.email,'','',true).then(function(response){
+                  data = response.data;
                   if(data['email'])
                   {
                     $scope.errors = data['email'];
