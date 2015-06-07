@@ -421,3 +421,7 @@ input.ng-untouched.ng-valid.ng-dirty.ng-valid-parse{
 #closeInfo{
 	display: none;
 }
+
+.ng-cloak {
+  display: none !important;
+}
