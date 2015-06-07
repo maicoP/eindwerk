@@ -8,18 +8,18 @@
 	</div>
   <ion-content id='content' class='content has-header has-subheader padding content_dark'>
     
-    <div ng-show="loading" class="center item-text center_slider">
+    <div ng-show="loading" class="center item-text center_slider ng-hide">
     	<img class="spinner" src="img/svg-loaders/puff.svg" alt="">
     </div>
 
-	<div ng-show='errors' class=' padding'>
+	<div ng-show='errors' class=' padding ng-hide'>
 	  <a class="item item-icon-left error_item" href="#">
 	    <i class="icon ion-alert"></i>
 	    <p class='error error_text' ng-repeat='error in errors'>{{error}}</p>
 	  </a>
 	</div>
 
-	<div ng-show='!loading' class="list list-inset">
+	<div ng-show='!loading' class="list list-inset ng-hide">
 	  	 <div class="item item-divider">
 		    Gebruiker
 		  </div>
@@ -38,7 +38,7 @@
 		      </select>
 		  </label>
 	</div>
-	<div ng-show='!loading' class="list list-inset footer_padding">	
+	<div ng-show='!loading' class="list list-inset footer_padding ng-hide">	
 		  <div class="item item-divider">
 		    Kot
 		  </div>
@@ -117,7 +117,7 @@
 			     Internet Inbegrepen
 			  </li>
 		  </ul>
-			<div ng-show='resetKot' class=''>
+			<div ng-show='resetKot' class='ng-hide'>
 				<p class="text-center">De koten zijn met succes gereset.</p>
 			</div>
 		  <button class="button button-block button-dark" ng-click='resetKotten()'>
