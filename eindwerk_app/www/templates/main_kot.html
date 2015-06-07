@@ -7,14 +7,14 @@
   
   <ion-content id='content'  class='content has-header padding content_dark'>
 
-      <div ng-show='!extraInfo && !noResult' ng-include="include">
+      <div ng-show='!extraInfo && !noResult' ng-include="include" class="ng-hide">
         
       </div>
-      <div ng-show='noResult' class='info_message center text-center'>
+      <div ng-show='noResult' class='info_message center text-center ng-hide'>
         We konden geen koten vinden met uw huidige filters.
       </div>
       <div id='map' class='mapHidden' center="map.center" zoom="map.zoom" draggable="true" events='map.events' control="map.control" data-tap-disabled="true"></div>
-      <div ng-show='extraInfo' id='extraInfo' class='padding'>
+      <div ng-show='extraInfo' id='extraInfo' class='padding ng-hide'>
         
         <div class="list card main_info">
 
@@ -68,7 +68,7 @@
           
         </div>
       </div>
-    <div ng-show="loading" class="center item-text center_slider map_slider">
+    <div ng-show="loading" class="center item-text center_slider map_slider ng-hide">
     	<img class="spinner" src="img/svg-loaders/puff.svg" alt="">
     </div>
 
@@ -77,7 +77,7 @@
 
   <div class="like_dislike content_dark" style="position: absolute; bottom: 0px; width: 100%">
 
-    <div class="row footer_row" ng-show='!loading'>
+    <div ng-show='!loading' class="row footer_row ng-hide">
         <div class="col">
         	<img ng-click="vote('dislike',kot.id)" width="50" height="50" src="img/icons/dislike.png" align="left" alt="">
         </div>

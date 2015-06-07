@@ -11,15 +11,15 @@
 
   <ion-content id='content' class='content has-header padding content_dark'>
 
-    <div ng-show="loading" class="center item-text center_slider map_slider">
+    <div ng-show="loading" class="center item-text center_slider map_slider ng-hide">
     	<img class="spinner" src="img/svg-loaders/puff.svg" alt="">
     </div>
 
-	<div ng-show='noResult' class="info_message center text-center">
+	<div ng-show='noResult' class="info_message center text-center ng-hide">
 	    U heeft nog geen koten aan uw favorieten toegevoegd.
 	</div>
 	<div id='favKotten'>
-		<div ng-repeat="(key,kot) in favKot" id="card{{kot.id}}" type="list-inset" class="list list-inset fav_card footer_padding" ng-show='!loading && !noResult && !extraInfo'>
+		<div ng-repeat="(key,kot) in favKot" id="card{{kot.id}}" type="list-inset" ng-show='!loading && !noResult && !extraInfo' class="list list-inset fav_card footer_padding ng-hide">
 			<div class='info'>
 				<img width='100%' id='main_image{{kot.id}}' src="http://kotterapp.be//{{kot.images[0].image}}" alt="">
 				<div class="kot_thumbs">
@@ -59,7 +59,7 @@
 
 	 <div id='favMap' class='mapHidden' center="map.center" zoom="map.zoom" draggable="true" events='map.events' control="map.control" data-tap-disabled="true"></div>
 
-	<div id='extraInfo' ng-show='extraInfo' class='padding '>
+	<div id='extraInfo' ng-show='extraInfo' class='padding ng-hide'>
 
 	            <div class="list card main_info">
 
