@@ -16,9 +16,6 @@
             <div class="collapse navbar-collapse" id="mobile_nav">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a class="page-scroll" href="/contact">Contact</a>
-                    </li>
-                    <li>
                         {!!Link_to('/auth/login','Koten toevoegen? login')!!}
                     </li>
                 </ul>
