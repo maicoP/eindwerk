@@ -78,6 +78,7 @@ img.kot_thumb{
 	border: 1px solid white;
 }
 
+
 .kot_thumbs{
 	margin-top:-4px;
 	margin-left:-1px;
@@ -399,6 +400,12 @@ input.ng-untouched.ng-valid.ng-dirty.ng-valid-parse{
 	padding-right:0px;
 }
 
+.range-nopadding .ng-pristine.ng-untouched.ng-valid{
+	padding-right:0!important;
+}
+
+/**/
+
 .paddingr{
 	padding:16px;
 }
@@ -425,3 +432,5 @@ input.ng-untouched.ng-valid.ng-dirty.ng-valid-parse{
 .ng-cloak {
   display: none !important;
 }
+
+
