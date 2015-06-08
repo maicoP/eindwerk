@@ -129,13 +129,7 @@
     </div>
     <div class='contact_wrapper row'>
         <h2 class="window_title">Contacteer ons</h2>
-        @if (count($errors) > 0)
-            <div class=" col-md-4 col-md-offset-4 alert alert-danger">
-                    @foreach ($errors->all() as $error)
-                            <p>{{$error}}</p>
-                    @endforeach
-            </div>
-        @endif
+
         {!!Form::open(['url' => '/message/send','action' => 'post','role' => 'form', 'class' => 'form-horizontal'])!!}
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class='col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 '>
@@ -149,7 +143,7 @@
                         <textarea class="form-control contact_form col-md-10 " name="boodschap" rows="5" cols="50" placeholder="Boodschap" required></textarea>
                 </div>
                 
-                <button type="submit" class="btn btn_contact center-block" style="margin-right: 15px;">
+                <button type="button" class="btn btn_contact center-block" style="margin-right: 15px;">
                     Verzenden
                 </button>
             </div>

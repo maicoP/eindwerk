@@ -55,7 +55,7 @@ class HomeController extends Controller {
 		{
 		    $message->to('maicopaulussen@hotmail.be', 'Kotter contact')->subject('Contact kotter');
 		});
-		return redirect('/');
+		return response(['message' => 'U bericht is met succes verzonden']);
 	}
 
 }

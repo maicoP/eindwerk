@@ -25,6 +25,40 @@
         offset: {
             top: 100
         }
+    });
+
+    $('.btn_contact').click(function(){
+        var naam = $('input[name="naam"]').val();
+        var email = $('input[name="email"]').val();
+        var bedrijf = $('input[name="bedrijf"]').val();
+        var bericht = $('textarea').val();
+        console.log($('input[name="_token"]').val());
+        $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('input[name="_token"]').val()
+                }
+            });
+
+        $.ajax({
+            type: "POST",
+            url: '/message/send',
+            data: {naam:naam, email:email, bedrijf:bedrijf,boodschap:bericht},
+            success: function( data ) {
+                $('.alert-danger').remove();
+                $('.alert-message').remove();
+                $('form').prepend('<div class=" col-md-4 col-md-offset-4 alert alert-message"><p>'+data['message']+'</p></div>');
+            },
+            error: function(data){
+            var errors = data.responseJSON;
+                $('.alert-danger').remove();
+                $('.alert-message').remove();
+                $('form').prepend('<div class=" col-md-4 col-md-offset-4 alert alert-danger"></div>');
+                $.each(errors, function(index, error) {
+                    $('.alert-danger').prepend('<p>'+error+'</p>');
+                });
+          }
+        });
+        
     })
 
     new WOW().init();

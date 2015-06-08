@@ -26,8 +26,8 @@ class editKotRequest extends Request {
             'streatname'    => 'required',
             'housenumber'   =>  'required',
             'zipcode'       => 'required',
-            'price'    =>   'required',
-            'size'  =>  'required',
+            'price'    =>   'required|integer',
+            'size'  =>  'required|integer',
             'telephonenumber'   =>  'required',
             'begindate'    =>  'required',
             'enddate'   =>  'required|after:begindate'
