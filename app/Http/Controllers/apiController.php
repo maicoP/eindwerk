@@ -56,7 +56,6 @@ class apiController extends Controller {
 			$q->where('type','like');
 			$q->where('fk_app_userid',$userid);
 		})->get();
-
 		foreach($favkotten as $kot)
 		{
 			$response = \Geocoder::geocode('json',['address' => $user->school]);
@@ -66,7 +65,6 @@ class apiController extends Controller {
 	        $distance = Geotools::distance()->setFrom($coordA)->setTo($coordB);
 	        $kot->distance = number_format($distance->in('km')->haversine(), 2, '.', '');
 		}
-
 		return response()->json(['kotten'=>$favkotten]);
 	}
 
@@ -75,7 +73,6 @@ class apiController extends Controller {
 		$field = $request->get('field');
 		$value = $request->get('value');
 		$userid = $request->get('userid');
-		
 		if($field == 'school')
 		{
 			AppUser::where('id',$userid)->update(array($field => $value));
@@ -145,7 +142,7 @@ class apiController extends Controller {
 		{
 			$user = new AppUser;
 			$user->email = $request->get('email');
-			$user->password =  ($request->has('facebook') ? '' : bcrypt($request->get('password')));
+			$user->password =  (($request->get('facebook') == 'true') ? '' : bcrypt($request->get('password') ));
 			$user->save();
 			return response()->json(['succes' => true,'email' => $user->email,'password' => $user->password,'id' => $user->id]);
 		}

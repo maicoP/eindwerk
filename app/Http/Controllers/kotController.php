@@ -10,6 +10,7 @@ use eindwerk\Kot;
 use eindwerk\Image;
 use eindwerk\AppUserKot;
 use Illuminate\Contracts\Auth\Guard;
+use Intervention\Image\ImageManager;
 
 
 
@@ -92,11 +93,13 @@ class kotController extends Controller {
 		$kot->lng = $response->results[0]->geometry->location->lng;
 		$kot->status = 'new';
 		$kot->save();
-		foreach( $request->file('images') as $image)
+		foreach( $request->file('images') as $file)
 		{
-			$filename = str_random(40).'.png';
+			$manager = new ImageManager();
+	      	$file = $manager->make($file)->widen(800);
+	        $filename = str_random(40).'.jpg';
 			$destination = 'kot_img/';
-			$image->move($destination, $filename);
+			$file->save($destination.$filename);
 			$image = new Image;
 			$image->image = $destination.$filename;
 			$image->fk_kotid = $kot->id;
@@ -168,14 +171,16 @@ class kotController extends Controller {
 		
 		if($request->file('images') != null)
 		{
-			foreach( $request->file('images') as $image)
+			foreach( $request->file('images') as $file)
 			{
 				 $rules = array('file' => 'required|image|mimes:jpeg,jpg,bmp,png,gif');
 			      $validator = Validator::make(array('file'=> $image), $rules);
 			      if($validator->passes()){
-			        $filename = str_random(40).'.png';
+			        $manager = new ImageManager();
+			      	$file = $manager->make($file)->widen(800);
+			        $filename = str_random(40).'.jpg';
 					$destination = 'kot_img/';
-					$image->move($destination, $filename);
+					$file->save($destination.$filename);
 					$image = new Image;
 					$image->image = $destination.$filename;
 					$image->fk_kotid = $kot->id;
