@@ -21,9 +21,7 @@
 						{!!Form::open(['url' => 'kot/'.$kot->id.'/edit','method' => 'GET','class' => 'frm-edit_delete'])!!}
 							{!!Form::submit('Edit',array('class' => 'btn btn-primary btn-edit_delete'))!!}
 						{!!Form::close()!!}
-						{!!Form::open(['url' => 'kot/'.$kot->id,'method' => 'DELETE'])!!}
-							{!!Form::submit('Delete',array('class' => 'btn btn-danger btn-edit_delete'))!!}
-						{!!Form::close()!!}							
+						<button type="button" class="btn btn-danger btn-edit_delete" data-toggle="popover" data-placement="top" title="Bent u zeker dat u dit kot wild deleten" data-content="<input class='btn btn-danger btn-block' type='submit' value='Bevestigen' onclick='deleteKot({{$kot->id}})'>">Delete</button>							
 					</div>
 
 

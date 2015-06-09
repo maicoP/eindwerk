@@ -45,4 +45,33 @@ $(document).ready(function(){
         
     });
     var endpicker = enddate.pickadate('picker');
+
+    $('[data-toggle="popover"]').popover({html: true,placement : 'right'}); 
+    $('body').on('click', function (e) {
+    $('[data-toggle="popover"]').each(function () {
+	        //the 'is' for buttons that trigger popups
+	        //the 'has' for icons within a button that triggers a popup
+	        if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+	            $(this).popover('hide');
+	        }
+	    });
+	});
 });
+function deleteKot(id){
+	$.ajaxSetup({
+	        headers: {
+	            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	        }
+	    });
+	$.ajax({
+    url: location.protocol + "//" + location.hostname + '/kot/'+id,
+    type: 'post',
+    data: {_method: 'delete'},
+    success: function(data){
+    	if(data['succes'])
+    	{
+    		window.location.replace("/kot");
+    	}
+    }
+	});
+}
