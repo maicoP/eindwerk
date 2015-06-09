@@ -16,6 +16,9 @@
 					<div class="span13">
 						
 						<h1>Alle toegevoegde koten</h1>
+						@if(Session::has('message'))
+							<p class='alert alert-success'>{{Session::get('message')}}</p>
+						@endif
 						@if($koten->isEmpty() && $new->isEmpty() && $declined->isEmpty())
 							<p><br>Er zijn geen koten beschikbaar omdat u er nog geen heeft toegevoegd.</p>
 			  				<p>Een kot toevoegen doet u via de knop "<b>Kot toevoegen</b>" in de balk links opzij.</p>

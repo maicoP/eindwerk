@@ -26,4 +26,23 @@ $(document).ready(function(){
             	location.reload();
             });
         });
-	})
+	//set the endate year later then begin date
+    $('.changeEndate').change(function(){
+    	var startDate = new Date($(this).val());
+    	var year = startDate.getFullYear()+1;
+    	var month = startDate.getMonth();
+    	var day  = startDate.getDate();
+    	 endpicker.set('select',[year, month, day]);
+    });
+
+    var begindate = $('.begindate').pickadate({
+					format : 'yyyy-mm-dd',
+			        formatSubmit : 'yyyy-mm-dd' 
+			    });
+    var enddate = $('.enddate').pickadate({
+		format : 'yyyy-mm-dd',
+        formatSubmit : 'yyyy-mm-dd'
+        
+    });
+    var endpicker = enddate.pickadate('picker');
+});

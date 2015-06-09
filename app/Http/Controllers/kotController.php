@@ -194,7 +194,7 @@ class kotController extends Controller {
 		}
 		
 
-		return Redirect('/kot');
+		return Redirect('/kot')->with('message','Alle aanpassingen zijn geregistreerd');
 	}
 
 	/**

@@ -96,15 +96,6 @@
 		<script src="/lib/pickadate/picker.js"></script>
 		<script src="/lib/pickadate/picker.date.js"></script>
 		<script src="/lib/pickadate/translations/nl_NL.js"></script>
-		<script>
-			$(document).ready(function(){
-				$('.date').pickadate({
-					format : 'yyyy-mm-dd',
-			        formatSubmit : 'yyyy-mm-dd'
-			        
-			    });
-			})
-		</script>
 </body>
 @endif
 </html>

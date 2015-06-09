@@ -102,7 +102,7 @@
 								<label class="control-label">Beschikbaar vanaf</label>
 								<div class="controls">
 									<div class="input-append date">
-										{!!Form::input('text','begindate','',array('class'=>'form-control date'))!!}
+										{!!Form::input('text','begindate','',array('class'=>'form-control begindate changeEndate'))!!}
 									    <span class="add-on"><i class="icon-th"></i></span>
 									</div>
 								</div>
@@ -112,7 +112,7 @@
 								<label class="control-label">Beschikbaar tot</label>
 								<div class="controls">
 									<div class="input-append date">
-										{!!Form::input('text','enddate','',array('class'=>'form-control date'))!!}
+										{!!Form::input('text','enddate','',array('class'=>'form-control enddate'))!!}
 									    <span class="add-on"><i class="icon-th"></i></span>
 									</div>
 								</div>

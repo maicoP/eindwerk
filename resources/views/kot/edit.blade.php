@@ -76,7 +76,7 @@
 							</div>
 						</div>
 
-						<h2>Informatei</h2>
+						<h2>Informatie</h2>
 						<div class="control-group">
 							<label class="control-label">Oppervlakte (in m²)</label>
 							<div class="controls">
