@@ -33,8 +33,8 @@
 						
 						<div class="kot approved">
 							<div class="info">
-								<a href="/kot/{{$kot->id}}"><div class="title">{{$kot->streatname}}  {{$kot->housenumber}} {{$kot->zipcode}} {{$kot->city}}</div>
-								<div><img width="300" src="{{URL::to('/').'/'.$kot->images[0]->image}}" alt="Kot image"></div></a>
+								<div class="title"><a href="/kot/{{$kot->id}}">{{$kot->streatname}}  {{$kot->housenumber}} {{$kot->zipcode}} {{$kot->city}}</a></div>
+								<div><a href="/kot/{{$kot->id}}"><img width="300" src="{{URL::to('/').'/'.$kot->images[0]->image}}" alt="Kot image"></a></div>
 								<div>
 									{!!Form::open(['url' => 'kot/'.$kot->id.'/edit','method' => 'GET','class' => 'frm-edit_delete'])!!}
 										{!!Form::submit('Edit',array('class' => 'btn btn-primary btn-edit_delete'))!!}
@@ -58,8 +58,8 @@
 					@foreach($new as $kot)
 						<div class="kot pending">
 							<div class="info">
-								<a href="/kot/{{$kot->id}}"><div class="title">{{$kot->streatname}}  {{$kot->housenumber}} {{$kot->zipcode}} {{$kot->city}}</div>
-								<div><img width="300" src="{{URL::to('/').'/'.$kot->images[0]->image}}" alt="Kot image"></div></a>
+								<div class="title"><a href="/kot/{{$kot->id}}">{{$kot->streatname}}  {{$kot->housenumber}} {{$kot->zipcode}} {{$kot->city}}</a></div>
+								<div><a href="/kot/{{$kot->id}}"><img width="300" src="{{URL::to('/').'/'.$kot->images[0]->image}}" alt="Kot image"></a></div>
 								<div>
 									{!!Form::open(['url' => 'kot/'.$kot->id.'/edit','method' => 'GET','class' => 'frm-edit_delete'])!!}
 										{!!Form::submit('Edit',array('class' => 'btn btn-primary btn-edit_delete'))!!}
@@ -83,8 +83,8 @@
 						@foreach($declined as $kot)
 							<div class="kot denied">
 								<div class="info">
-									<a href="/kot/{{$kot->id}}"><div class="title">{{$kot->streatname}}  {{$kot->housenumber}} {{$kot->zipcode}} {{$kot->city}}</div>
-									<div><img width="300" src="{{URL::to('/').'/'.$kot->images[0]->image}}" alt="Kot image"></div></a>
+									<div class="title"><a href="/kot/{{$kot->id}}">{{$kot->streatname}}  {{$kot->housenumber}} {{$kot->zipcode}} {{$kot->city}}</a></div>
+									<div><a href="/kot/{{$kot->id}}"><img width="300" src="{{URL::to('/').'/'.$kot->images[0]->image}}" alt="Kot image"></a></div>
 									<div>
 										{!!Form::open(['url' => 'kot/'.$kot->id.'/edit','method' => 'GET','class' => 'frm-edit_delete'])!!}
 											{!!Form::submit('Edit',array('class' => 'btn btn-primary btn-edit_delete'))!!}
