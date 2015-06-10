@@ -25,7 +25,6 @@
     <link rel="icon" type="image/png" href="/icons/favicon-16x16.png" sizes="16x16">
     <link rel="manifest" href="/icons/manifest.json">
     <meta name="msapplication-TileColor" content="#ff0000">
-    <meta name="theme-color" content="#ffffff">
 </head>
 
 @if (Auth::check())
@@ -45,7 +44,7 @@
 					<ul class="nav pull-right">
 						<li class="dropdown">
 							<a class="btn" data-toggle="dropdown" href="#">
-								{{ Auth::user()->name }} 
+								<i class="icon-user"></i> {{ Auth::user()->name }} 
 							</a>
 						</li>
 					</ul>
@@ -56,7 +55,6 @@
 	
 	<div class="container-fluid-full">
 		<div class="row-fluid">
-				
 			<div id="sidebar-left" class="span2">
 				<div class="nav-collapse sidebar-nav">
 					<ul class="nav nav-tabs nav-stacked main-menu">
@@ -71,20 +69,10 @@
 					</ul>
 				</div>
 			</div>
-			
-			<noscript>
-				<div class="alert alert-block span10">
-					<h4 class="alert-heading">Warning!</h4>
-					<p>Please enable javaScript to use this site.</p>
-				</div>
-			</noscript>
-			
 			<div id="content" class="span10">
-			
-	@yield('content')
-
-		<div class="clearfix"></div>
-</div>
+				@yield('content')
+				<div class="clearfix"></div>
+			</div>
 		<footer class="site_footer">
 			<p>&copy; 2015 <a href="#">Maico Paulussen &amp; Matthias Verhoeven</a></p>
 		</footer>

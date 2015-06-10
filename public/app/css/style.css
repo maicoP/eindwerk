@@ -79,8 +79,8 @@ h6 {
 }
 
 .navbar-inner a {
-	color: #7b7b7b;
-	text-shadow: 0 -1px 1px #0b090a;
+	color:#fff!important;
+	text-shadow:none!important;
 }
 
 a.brand span {
