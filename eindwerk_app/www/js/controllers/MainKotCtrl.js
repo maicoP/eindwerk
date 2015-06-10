@@ -40,7 +40,6 @@ angular.module('starter.controllers', [])
     // get a kot that you haven't voted on and match your current filters
     KotService.getKot(userdata).then(function(response){
       data = response.data;
-      console.log(data);
       if(data['kot'] == null || data['kot'] == false)
       {
         $scope.loading = false;
@@ -134,7 +133,6 @@ angular.module('starter.controllers', [])
   // when swipe left dislike
   $scope.swipeLeft = function(id)
   {
-    console.log('leftswipe');
     $timeout.cancel(timeout);// cancel the timeout of other functions like onRelease
       timeout = $timeout(function() {
         $scope.vote('dislike',id);
@@ -143,7 +141,6 @@ angular.module('starter.controllers', [])
   // when swipe right like
   $scope.swipeRight = function(id)
   {
-    console.log('rightswipe');
     $timeout.cancel(timeout);
       timeout = $timeout(function() {
         $scope.vote('like',id);
@@ -154,8 +151,6 @@ angular.module('starter.controllers', [])
   // this function wil check on drag release if the users has voted
   $scope.onRelease = function(id)
   {
-    console.log('drag');
-    console.log(document.querySelectorAll('td-card')[0].getBoundingClientRect()['right']);
     if(document.querySelectorAll('td-card')[0].getBoundingClientRect()['right'] > 435)
     {
 
