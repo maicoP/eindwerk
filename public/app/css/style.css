@@ -371,6 +371,11 @@ footer {
 
 /*buttons*/
 
+.btn-info{
+	border-radius: 0!important;
+    padding: 6px 16px!important;
+}
+
 .btn-add_user{
 	margin-bottom:20px;
 }
