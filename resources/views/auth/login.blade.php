@@ -51,7 +51,7 @@
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                                     <div class="form-group">
-                                        <label class="col-md-4 control-label">E-Mail adres</label>
+                                        <label class="col-md-4 control-label">E-Mail</label>
                                         <div class="col-md-6">
                                             <input type="email" class="form-control" name="email" value="{{ old('email') }}">
                                         </div>
@@ -65,7 +65,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <div class="col-md-6 col-md-offset-4">
+                                        <div class="col-md-6 col-md-offset-3">
                                             <div class="checkbox">
                                                 <label>
                                                     <input type="checkbox" name="remember"> Hou mij aangemeld
@@ -75,15 +75,15 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <div class="col-md-6 col-md-offset-4">
-                                            <button type="submit" class="btn btn-primary" style="margin-right: 15px;">
+                                        <div class="col-md-6 col-md-offset-3">
+                                            <button type="submit" class="btn btn-primary btn_login" style="margin-right: 15px;">
                                                 Login
                                             </button>
 
-                                            <a href="/password/email">wachtwoord vergeten?</a>
+                                            <div><a href="/password/email">wachtwoord vergeten?</a></div>
                                             
                                         </div>
-                                        <div class="col-md-6 col-md-offset-4"><br>
+                                        <div class="col-md-6 col-md-offset-3"><br>
                                         	<p>U bent koteigenaar en wenst koten toe te voegen? <br> <a href="/auth/register">Contacteer ons.</a></p>
                                         </div>
                                     </div>
