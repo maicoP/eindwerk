@@ -8,13 +8,12 @@ angular.module('starter.controllers', [])
   var currentLocation = new Array();
   var userdata = JSON.parse(window.localStorage['userdata']);
   $scope.user = userdata;
-
+  
   getKot();
 
   $scope.change_image = function($event){
       angular.element(document.getElementById('main_image')).attr("src", angular.element($event.target).attr('src'));  
   };
-
   function setMap(location){
     var mapOptions = {
         zoom: 15,

@@ -10,7 +10,7 @@ angular.module('starter.controllers', [])
   var currentLocation = new Array();
   var userdata = JSON.parse(window.localStorage['userdata']);
   $scope.user = userdata;
-
+  
   getKot();
 
   // change main image
@@ -151,17 +151,19 @@ angular.module('starter.controllers', [])
   // this function wil check on drag release if the users has voted
   $scope.onRelease = function(id)
   {
-    if(document.querySelectorAll('td-card')[0].getBoundingClientRect()['right'] > 435)
+    var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+    if(document.querySelectorAll('td-card')[0].getBoundingClientRect()['right'] > (w*1.2133))
     {
-
+      console.log('like');
       $timeout.cancel(timeout);
       timeout = $timeout(function() {
         $scope.vote('like',id);
       }, 800);
     }
 
-    if(document.querySelectorAll('td-card')[0].getBoundingClientRect()['left'] < -75)
+    if(document.querySelectorAll('td-card')[0].getBoundingClientRect()['left'] < (-w*0.2133))
       {
+      console.log('dislike'); 
         $timeout.cancel(timeout);
         timeout = $timeout(function() {
           $scope.vote('dislike',id);
