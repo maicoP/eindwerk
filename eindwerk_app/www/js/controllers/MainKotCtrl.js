@@ -151,6 +151,7 @@ angular.module('starter.controllers', [])
   // this function wil check on drag release if the users has voted
   $scope.onRelease = function(id)
   {
+    //get with of device
     var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
     if(document.querySelectorAll('td-card')[0].getBoundingClientRect()['right'] > (w*1.2133))
     {
