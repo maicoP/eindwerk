@@ -23,9 +23,8 @@ class apiController extends Controller {
 	public function getKot(Request $request)
 	{
 		$userid = $request->get('userid'); 
-		$filter = Filter::where('fk_app_userid',$userid)->first();
-		$kot = Kot::getKot($userid,$filter,array());
-		return response()->json(['filter'=> $filter,'kot'=>$kot]);
+		$kot = Kot::getKot($userid,array());
+		return response()->json(['kot'=>$kot]);
 	}
 
 	public function vote(Request $request)

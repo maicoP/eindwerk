@@ -32,21 +32,7 @@ angular.module('starter.controllers')
         console.log(userdata);
         UserService.register(userdata.email,userdata.password,false).then(function(response){
             data = response.data;
-            console.log(response);
-            if(data['email'])
-            {
-              $scope.errors = data['email'];
-            }
-            if(data['succes'])
-            {
-              userdata = {
-                id : data['id'],
-                email:data['email'],
-                password: data['password']
-              };
-              window.localStorage['userdata'] = JSON.stringify(userdata);
-              $location.path('/location');
-            }
+            handelRegister(data);
         });
       }
   };
@@ -60,20 +46,7 @@ angular.module('starter.controllers')
             // get email from user and set password empty in db
             UserService.register(result.email,'','',true).then(function(response){
                   data = response.data;
-                  if(data['email'])
-                  {
-                    $scope.errors = data['email'];
-                  }
-                  if(data['succes'])
-                  {
-                    userdata = {
-                      id : data['id'],
-                      email:data['email'],
-                      password: data['password']
-                    };
-                    window.localStorage['userdata'] = JSON.stringify(userdata);
-                    $location.path('/location');
-                  }
+                  handelRegister(data);
                 });
           });
         }
@@ -82,7 +55,22 @@ angular.module('starter.controllers')
       console.log(error);
     });
   };
-  
+  function handelRegister(data){
+    if(data['email'])
+    {
+      $scope.errors = data['email'];
+    }
+    if(data['succes'])
+    {
+      userdata = {
+        id : data['id'],
+        email:data['email'],
+        password: data['password']
+      };
+      window.localStorage['userdata'] = JSON.stringify(userdata);
+      $location.path('/location');
+    }
+  }
 });
 
 

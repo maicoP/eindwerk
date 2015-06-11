@@ -48,9 +48,9 @@ class Kot extends Eloquent{
 	protected $fillable = ['city', 'streatname', 'housenumber','zipcode','price','size','info','email','telephonenumber','bikestands','seperatekitchen','seperatebathroom','furniture','begindate','enddate','fk_userid','lat','lng'];
 
 
-    public static function getKot($userid,$filter,$kotid)
+    public static function getKot($userid,$kotid)
     {
-        
+        $filter = Filter::where('fk_app_userid',$userid)->first();
         $votedKotten = AppUserKot::where('fk_app_userid',$userid)->get();
         $votedKottenId = array();
         foreach($votedKotten as $kot)
