@@ -143,7 +143,7 @@ class apiController extends Controller {
 			$user->email = $request->get('email');
 			$user->password =  (($request->get('facebook') == 'true') ? '' : bcrypt($request->get('password') ));
 			$user->save();
-			return response()->json(['succes' => true,'email' => $user->email,'password' => $user->password,'id' => $user->id]);
+			return response()->json(['succes' => true,'user_email' => $user->email,'password' => $user->password,'id' => $user->id]);
 		}
 	}
 

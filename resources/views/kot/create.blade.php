@@ -63,6 +63,12 @@
 							
 							<h2>Contact</h2>
 							<div class="control-group">
+								<label class="control-label">Naam</label>
+								<div class="controls">
+									{!!Form::input('text','name','',array('class'=>'form-control'))!!}
+								</div>
+							</div>
+							<div class="control-group">
 								<label class="control-label">E-mail</label>
 								<div class="controls">
 									{!!Form::input('email','email','',array('class'=>'form-control'))!!}

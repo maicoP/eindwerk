@@ -64,7 +64,7 @@ angular.module('starter.controllers')
     {
       userdata = {
         id : data['id'],
-        email:data['email'],
+        email:data['user_email'],
         password: data['password']
       };
       window.localStorage['userdata'] = JSON.stringify(userdata);

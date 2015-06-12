@@ -153,7 +153,6 @@ class kotController extends Controller {
 	{
 		$kot =  Kot::find($id);
 		$kot->fill($request->all());
-
 		$param = array("address"=> $request->get('streatname').' '.$request->get('housenumber').' '.$request->get('zipcode').' '.$request->get('city'));
 		$response = \Geocoder::geocode('json', $param);
 		$response = json_decode($response);

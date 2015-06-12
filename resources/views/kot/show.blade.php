@@ -59,6 +59,7 @@
 				@endif
 		</ul>
 			<h2>Contact</h2>
+			<p>Naam: <b>{{$kot->name}}</b></p>
 			<p>E-mail: <b>{{$kot->email}}</b></p>
 			<p>Telefoonnummer: <b>{{$kot->telephonenumber}}</b></p>
 

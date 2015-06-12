@@ -28,7 +28,9 @@ class editKotRequest extends Request {
             'zipcode'       => 'required',
             'price'    =>   'required|integer',
             'size'  =>  'required|integer',
-            'telephonenumber'   =>  'required',
+            'name'    =>  'required',
+            'email' 	=> 'required|email',
+            'telephonenumber' 	=> 'required',
             'begindate'    =>  'required',
             'enddate'   =>  'required|after:begindate'
 		];
