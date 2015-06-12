@@ -84,7 +84,7 @@
                                             
                                         </div>
                                         <div class="col-md-6 col-md-offset-3"><br>
-                                        	<p>U bent koteigenaar en wenst koten toe te voegen? <br> <a href="/auth/register">Contacteer ons.</a></p>
+                                        	<p>U bent koteigenaar en wenst koten toe te voegen? <br> <a href="/">Contacteer ons.</a></p>
                                         </div>
                                     </div>
                                 </form>
