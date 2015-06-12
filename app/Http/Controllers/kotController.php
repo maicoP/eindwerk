@@ -97,7 +97,7 @@ class kotController extends Controller {
 			$manager = new ImageManager();
 	      	$file = $manager->make($file)->widen(800);
 	        $filename = str_random(40).'.jpg';
-			$destination = 'public/kot_img/';
+			$destination = 'kot_img/';
 			$file->save($destination.$filename);
 			$image = new Image;
 			$image->image = $destination.$filename;
@@ -177,7 +177,7 @@ class kotController extends Controller {
 			      	$manager = new ImageManager();
 			      	$file = $manager->make($file)->widen(800);
 			        $filename = str_random(40).'.jpg';
-					$destination = 'public/kot_img/';
+					$destination = 'kot_img/';
 					$file->save($destination.$filename);
 					$image = new Image;
 					$image->image = $destination.$filename;
