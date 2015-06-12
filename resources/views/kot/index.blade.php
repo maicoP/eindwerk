@@ -33,7 +33,9 @@
 						<div class="kot approved">
 							<div class="info">
 								<div class="title"><a href="/kot/{{$kot->id}}">{{$kot->streatname}}  {{$kot->housenumber}} {{$kot->zipcode}} {{$kot->city}}</a></div>
-								<div><a href="/kot/{{$kot->id}}"><img width="300" src="{{URL::to('/').'/'.$kot->images[0]->image}}" alt="Kot image"></a></div>
+								<div><a href="/kot/{{$kot->id}}">@if(!$kot->images->isEmpty())
+									<img width="300" src="{{URL::to('/').'/'.$kot->images[0]->image}}" alt="Kot image"></a>
+									@endif</a></div>
 								<div>
 									{!!Form::open(['url' => 'kot/'.$kot->id.'/edit','method' => 'GET','class' => 'frm-edit_delete'])!!}
 										{!!Form::submit('Edit',array('class' => 'btn btn-primary btn-edit_delete'))!!}
@@ -59,7 +61,9 @@
 							<div class="kot pending">
 								<div class="info">
 									<div class="title"><a href="/kot/{{$kot->id}}">{{$kot->streatname}}  {{$kot->housenumber}} {{$kot->zipcode}} {{$kot->city}}</a></div>
-									<div><a href="/kot/{{$kot->id}}"><img width="300" src="{{URL::to('/').'/'.$kot->images[0]->image}}" alt="Kot image"></a></div>
+									<div><a href="/kot/{{$kot->id}}">@if(!$kot->images->isEmpty())
+									<img width="300" src="{{URL::to('/').'/'.$kot->images[0]->image}}" alt="Kot image"></a>
+									@endif</a></div>
 									<div>
 										{!!Form::open(['url' => 'kot/'.$kot->id.'/edit','method' => 'GET','class' => 'frm-edit_delete'])!!}
 											{!!Form::submit('Edit',array('class' => 'btn btn-primary btn-edit_delete'))!!}
@@ -83,7 +87,9 @@
 							<div class="kot denied">
 								<div class="info">
 									<div class="title"><a href="/kot/{{$kot->id}}">{{$kot->streatname}}  {{$kot->housenumber}} {{$kot->zipcode}} {{$kot->city}}</a></div>
-									<div><a href="/kot/{{$kot->id}}"><img width="300" src="{{URL::to('/').'/'.$kot->images[0]->image}}" alt="Kot image"></a></div>
+									<div><a href="/kot/{{$kot->id}}">@if(!$kot->images->isEmpty())
+									<img width="300" src="{{URL::to('/').'/'.$kot->images[0]->image}}" alt="Kot image"></a>
+									@endif</a></div>
 									<div>
 										{!!Form::open(['url' => 'kot/'.$kot->id.'/edit','method' => 'GET','class' => 'frm-edit_delete'])!!}
 											{!!Form::submit('Edit',array('class' => 'btn btn-primary btn-edit_delete'))!!}
