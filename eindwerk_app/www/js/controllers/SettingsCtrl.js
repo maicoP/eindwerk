@@ -100,14 +100,6 @@ angular.module('starter.controllers')
     }, 1000);   
   };
 
-  var delayWifi;
-  $scope.changeWifi = function(){
-    $timeout.cancel(delayWifi);
-    delayWifi = $timeout(function() {
-      $scope.postChanges('wifi',$scope.userdata.wifi?1:0);
-    }, 1000);   
-  };
-
   // post the change to db
   $scope.postChanges = function(field,value)
   {
@@ -163,7 +155,6 @@ angular.module('starter.controllers')
         $scope.userdata.seperatekitchen = (data['result']['filter']['seperatekitchen'] == 1) ? true : false;
         $scope.userdata.seperatebathroom = (data['result']['filter']['seperatebathroom'] == 1) ? true : false;
         $scope.userdata.furniture = (data['result']['filter']['furniture'] == 1) ? true : false;
-        $scope.userdata.wifi = (data['result']['filter']['wifi']== 1) ? true : false;
         $scope.loading = false;
       }
   });

@@ -71,10 +71,6 @@ class Kot extends Eloquent{
         {
             $kot = $kot->where('seperatekitchen',true);
         }
-        if($filter->wifi == true)
-        {
-            $kot = $kot->where('wifi',true);
-        }
         if($filter->furniture == true)
         {
             $kot = $kot->where('furniture',true);

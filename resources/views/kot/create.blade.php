@@ -126,19 +126,16 @@
 
 							<div class="checkbox controls col-md-offset-4">
 							    <label class='col-md-3'>
-							      <input type="checkbox" name='bikestands'/> Fietsenstalling
+							      <input type="checkbox" name='bikestands'> Fietsenstalling
 							    </label>
 							    <label class='col-md-3'>
-							      <input type="checkbox" name='seperatekitchen'/> Aparte keuken
+							      <input type="checkbox" name='seperatekitchen'> Aparte keuken
 							    </label>
 							    <label class='col-md-3'>
-							      <input type="checkbox" name='seperatebathroom'/> Aparte badkamer
+							      <input type="checkbox" name='seperatebathroom'> Aparte badkamer
 							    </label>
 							    <label class='col-md-3'>
-							      <input type="checkbox" name='furniture'/> Bemeubeld
-							    </label>
-							    <label class='col-md-3'>
-							      <input type="checkbox" name='wifi'/> Internet inbegrepen
+							      <input type="checkbox" name='furniture'> Bemeubeld
 							    </label>
 							</div>
 
@@ -149,13 +146,12 @@
 										@for ($i=0; $i < 4; $i++)
 										    {!!Form::file('images['.$i.']', array('class'=>'imgd'))!!}
 										@endfor
-										
 									</div>
 								</div>
 							</div>
 							<div class="control-group">
 								<div class="controls col-md-offset-4">
-									<button type="submit" class="btn btn-info" style="margin-right: 15px;">
+									<button type="submit" class="btn btn-primary" style="margin-right: 15px;">
 										Kot toevoegen
 									</button>
 								</div>

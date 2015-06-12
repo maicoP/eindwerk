@@ -88,7 +88,6 @@ class kotController extends Controller {
 		$kot->seperatekitchen = ($request->get('seperatekitchen') == 'on' ? true :false );
 		$kot->seperatebathroom = ($request->get('seperatebathroom') == 'on' ? true :false );
 		$kot->furniture = ($request->get('furniture') == 'on' ? true :false );
-		$kot->wifi = ($request->get('wifi') == 'on' ? true :false );
 		$kot->lat = $response->results[0]->geometry->location->lat;
 		$kot->lng = $response->results[0]->geometry->location->lng;
 		$kot->status = 'new';
@@ -164,7 +163,6 @@ class kotController extends Controller {
 		$kot->seperatekitchen = ($request->get('seperatekitchen') == 'on' ? true :false );
 		$kot->seperatebathroom = ($request->get('seperatebathroom') == 'on' ? true :false );
 		$kot->furniture = ($request->get('furniture') == 'on' ? true :false );
-		$kot->wifi = ($request->get('wifi') == 'on' ? true :false );
 		$kot->lat = $response->results[0]->geometry->location->lat;
 		$kot->lng = $response->results[0]->geometry->location->lng;
 		$kot->save();

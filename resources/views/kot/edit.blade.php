@@ -108,7 +108,7 @@
 							<label class="control-label">Beschikbaar vanaf</label>
 							<div class="controls">
 								<div class="input-append date">
-									{!!Form::input('text','begindate',$kot->begindate,array('class'=>'form-control date'))!!}
+									{!!Form::input('text','begindate',$kot->begindate,array('class'=>'form-control begindate'))!!}
 								    <span class="add-on"><i class="icon-th"></i></span>
 								</div>
 							</div>
@@ -118,7 +118,7 @@
 							<label class="control-label">Beschikbaar tot</label>
 							<div class="controls">
 								<div class="input-append date">
-									{!!Form::input('text','enddate',$kot->enddate,array('class'=>'form-control date'))!!}
+									{!!Form::input('text','enddate',$kot->enddate,array('class'=>'form-control enddate'))!!}
 								    <span class="add-on"><i class="icon-th"></i></span>
 								</div>
 							</div>
@@ -137,9 +137,6 @@
 						    <label class='col-md-3'>
 						      <input type="checkbox" name='furniture' {{($kot->furniture ?  'checked' : '')}}> Bemeubeld
 						    </label>
-						    <label class='col-md-3'>
-						      <input type="checkbox" name='wifi' {{($kot->wifi ?  'checked' : '')}}> Internet inbegrepen
-						    </label>
 						</div>
 
 						<div class="control-group">
@@ -147,7 +144,7 @@
 							<div class="controls" id='input-images'>
 								<?php $i=0 ?>
 								@foreach($kot->images as $image)
-									<img width='300' src="{{URL::to('/').'/'.$image->image}}" alt="">
+									<img width='300px' src="{{URL::to('/').'/'.$image->image}}" alt="">
 									<button id='{{$image->id}}' class="btn btn-danger delImg" type="button">x</button>
 									<?php ++$i ?>
 								@endforeach
@@ -160,7 +157,7 @@
 						</div>
 						<div class="control-group">
 							<div class="controls col-md-offset-4">
-								<button type="submit" class="btn btn-info" style="margin-right: 15px;">
+								<button type="submit" class="btn btn-primary" style="margin-right: 15px;">
 									Wijzigingen opslaan
 								</button>
 							</div>
