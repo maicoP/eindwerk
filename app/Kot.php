@@ -110,7 +110,7 @@ class Kot extends Eloquent{
         if($kot->distance > $filter->distance)
         {
             $kotid[] = $kot->id;
-            Kot::getKot($userid,$filter,$kotid);
+            Kot::getKot($userid,$kotid);
         }
         else
         {

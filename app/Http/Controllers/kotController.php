@@ -98,7 +98,7 @@ class kotController extends Controller {
 			$manager = new ImageManager();
 	      	$file = $manager->make($file)->widen(800);
 	        $filename = str_random(40).'.jpg';
-			$destination = 'kot_img/';
+			$destination = 'public/kot_img/';
 			$file->save($destination.$filename);
 			$image = new Image;
 			$image->image = $destination.$filename;
@@ -153,6 +153,7 @@ class kotController extends Controller {
 	{
 		$kot =  Kot::find($id);
 		$kot->fill($request->all());
+
 		$param = array("address"=> $request->get('streatname').' '.$request->get('housenumber').' '.$request->get('zipcode').' '.$request->get('city'));
 		$response = \Geocoder::geocode('json', $param);
 		$response = json_decode($response);
@@ -167,18 +168,18 @@ class kotController extends Controller {
 		$kot->lat = $response->results[0]->geometry->location->lat;
 		$kot->lng = $response->results[0]->geometry->location->lng;
 		$kot->save();
-		
+
 		if($request->file('images') != null)
 		{
 			foreach( $request->file('images') as $file)
 			{
-				 $rules = array('file' => 'required|image|mimes:jpeg,jpg,bmp,png,gif');
-			      $validator = Validator::make(array('file'=> $image), $rules);
+				  $rules = array('file' => 'required|image|mimes:jpeg,jpg,bmp,png,gif');
+			      $validator = Validator::make(array('file'=> $file), $rules);
 			      if($validator->passes()){
-			        $manager = new ImageManager();
+			      	$manager = new ImageManager();
 			      	$file = $manager->make($file)->widen(800);
 			        $filename = str_random(40).'.jpg';
-					$destination = 'kot_img/';
+					$destination = 'public/kot_img/';
 					$file->save($destination.$filename);
 					$image = new Image;
 					$image->image = $destination.$filename;
