@@ -31,6 +31,10 @@
 	color:white!important;
 }
 
+.error_login{
+	background:transparent!important;
+}
+
 /*general*/
 
 .hidden{
@@ -39,6 +43,10 @@
 
 .right{
 	text-align:right;
+}
+
+.ng-cloak {
+  display: none !important;
 }
 
 /*tutorial*/
@@ -52,7 +60,7 @@
 	bottom:0px;
 }
 
-/**/
+/*like/dislike*/
 
 .like_dislike{
 	background-color:#fff8dc;
@@ -69,6 +77,8 @@
 	margin-bottom:0px;
 	margin-top:0px;
 }
+
+/*main kot*/
 
 .iconmenu:before{
   font-size:24px!important;
@@ -124,6 +134,7 @@ img.kot_thumb{
 }
 
 /*google maps*/
+
 .scroll {
     height: 100%;
 }
@@ -134,6 +145,7 @@ img.kot_thumb{
 }
 
 /*TUTORIAL*/
+
 .trans_header{
 	background:transparent;
 }
@@ -429,8 +441,5 @@ input.ng-untouched.ng-valid.ng-dirty.ng-valid-parse{
 	display: none;
 }
 
-.ng-cloak {
-  display: none !important;
-}
 
 
