@@ -1,7 +1,7 @@
 /*errors*/
 
 .error,.error > input , .error > select{
-	background:transparent!important;
+	background:#ff8181!important;
 	color: white !important;
 }
 
@@ -29,10 +29,6 @@
 .error_item{
 	background-color:#ff8181!important;
 	color:white!important;
-}
-
-.error_login{
-	background:transparent!important;
 }
 
 /*general*/

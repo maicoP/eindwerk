@@ -5,14 +5,14 @@
       <div class="list">
 
       <div ng-show='error' class=' paddingr ng-hide'>
-        <a class="item item-icon-left error_item error_login" href="#">
+        <a class="item item-icon-left error_item" href="#">
           <i class="icon ion-alert"></i>
           <p class='error'>{{error}}</p>
         </a>
       </div>
 
         <label class="item item-input item-email register_item register_userpass_item">
-          <input type="email" placeholder="Email" ng-model="loginData.email">
+          <input type="text" placeholder="Email" ng-model="loginData.email">
         </label>
         <label class="item item-input item-password register_item register_userpass_item">
           <input type="password" placeholder="Wachtwoord" ng-model="loginData.password">
