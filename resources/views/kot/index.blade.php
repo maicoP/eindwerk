@@ -52,7 +52,10 @@
 							</div>
 						</div>
 
-						@endforeach					
+						@endforeach
+						@if(!$koten->isEmpty())
+							{!!$koten->render()!!}
+						@endif					
 						@if(!$new->isEmpty())
 							<div class="status pending"><span>Koten in review</span></div>
 						@endif
@@ -78,7 +81,9 @@
 								</div>
 							</div>
 						@endforeach		
-
+						@if(!$new->isEmpty())
+							{!!$new->render()!!}
+						@endif
 						@if(!$declined->isEmpty())
 							<div class="status denied"><span>Geweigerde koten</span></div>
 						@endif
@@ -104,7 +109,9 @@
 								</div>
 							</div>
 						@endforeach	
-
+						@if(!$declined->isEmpty())
+							{!!$declined->render()!!}
+						@endif
 				</div>
 			</div><!--end content-->
 		</div><!--end row fluid-->

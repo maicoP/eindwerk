@@ -28,9 +28,9 @@ class kotController extends Controller {
 	
 	public function index()
 	{
-		$koten = Kot::with('images')->with('appUserKotCount')->where('fk_userid','=',\Auth::user()->id)->where('status','accepted')->get();
-		$new = Kot::with('images')->where('fk_userid','=',\Auth::user()->id)->where('status','new')->get();
-		$declined = Kot::with('images')->where('fk_userid','=',\Auth::user()->id)->where('status','declined')->get();
+		$koten = Kot::with('images')->with('appUserKotCount')->where('fk_userid','=',\Auth::user()->id)->where('status','accepted')->paginate(10);
+		$new = Kot::with('images')->where('fk_userid','=',\Auth::user()->id)->where('status','new')->paginate(10);
+		$declined = Kot::with('images')->where('fk_userid','=',\Auth::user()->id)->where('status','declined')->paginate(10);
 		return view('kot.index',['koten' => $koten,'new' => $new,'declined' => $declined]);
 	}
 
