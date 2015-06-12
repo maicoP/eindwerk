@@ -40,6 +40,7 @@ angular.module('starter.controllers', [])
     // get a kot that you haven't voted on and match your current filters
     KotService.getKot(userdata).then(function(response){
       data = response.data;
+      console.log(data);
       if(data['kot'] == null || data['kot'] == false)
       {
         $scope.loading = false;

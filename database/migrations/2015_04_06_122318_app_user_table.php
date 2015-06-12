@@ -17,8 +17,7 @@ class AppUserTable extends Migration {
 			$table->increments('id');
 			$table->string('email');
 			$table->string('password');
-			$table->string('school');
-			$table->string('price');
+			$table->integer('fk_schoolid')->unsigned();
 			$table->timestamps();
 		});
 	}

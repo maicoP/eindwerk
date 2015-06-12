@@ -100,11 +100,9 @@ class Kot extends Eloquent{
         {
             return false;
         }
-        $user = AppUser::find($userid);
-        $response = \Geocoder::geocode('json',['address' => $user->school]);
-        $response = json_decode($response);
+        $user = AppUser::with('school')->find($userid);
         $coordA   = Geotools::coordinate([$kot->lat, $kot->lng]);
-        $coordB   = Geotools::coordinate([$response->results[0]->geometry->location->lat,$response->results[0]->geometry->location->lng]);
+        $coordB   = Geotools::coordinate([$user->school->lat,$user->school->lng]);
         $distance = Geotools::distance()->setFrom($coordA)->setTo($coordB);
         $kot->distance = number_format($distance->in('km')->haversine(), 2, '.', '');
         if($kot->distance > $filter->distance)

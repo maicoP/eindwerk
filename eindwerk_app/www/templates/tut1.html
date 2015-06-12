@@ -3,10 +3,10 @@
       <div class="h1 title"><img src="img/header.png" width="130" height="35" alt=""></div>
   </div>
   <ion-content class='has-header padding'>
-  <div ng-show="loading" class="center item-text center_slider ng-hide">
+  <div ng-show="loading" class="center item-text center_slider">
     <img class="spinner" src="img/svg-loaders/puff.svg" alt="">
   </div>
-<ion-slide-box ng-show='!loading' class="ng-hide">
+<ion-slide-box ng-show="!loading">
 
   <ion-slide>
       <img class="full-image" src="img/tutorial_ex.png">
@@ -33,7 +33,7 @@
 
   </ion-content>
 
-  <div class="tut_footer row" style="position: absolute; bottom: 0px; width: 100%">
+  <div class="tut_footer row" ng-show="!loading" style="position: absolute; bottom: 0px; width: 100%">
 
     <a href="#/register" class='col col-50 padding'>
         <button class="button button-stable button-block register_button">

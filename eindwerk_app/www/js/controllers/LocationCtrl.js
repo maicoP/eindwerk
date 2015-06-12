@@ -2,7 +2,7 @@ angular.module('starter.controllers')
 .controller('LocationCtrl', function($scope, $stateParams,$timeout,$location,SchoolService,UserService) {
 
   $scope.locationData = {};
-  $scope.locationData.price = 100;
+  $scope.locationData.price = 250;
 
   //get all schools from db
   SchoolService.get().then(function(response){

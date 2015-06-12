@@ -10,4 +10,9 @@ class AppUser extends Model {
 	public function filter(){
 		return $this->hasOne('eindwerk\Filter','fk_app_userid');
 	}
+
+		public function school()
+    {
+        return $this->belongsTo('eindwerk\School','fk_schoolid','id');
+    }
 }

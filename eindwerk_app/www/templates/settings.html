@@ -34,7 +34,7 @@
 		  <label class="item item-input item-stacked-label item-select item-school">
 		    
 		   	 <select ng-change='changeSchool()' ng-model="userdata.school" class="setting_school">
-		        <option ng-repeat="school in schools"  ng-selected="school.name == userdata.school" value="{{school.name}}">{{school.name}}</option>
+		        <option ng-repeat="school in schools"  ng-selected="school == userdata.school" value="{{school}}">{{school}}</option>
 		      </select>
 		  </label>
 	</div>

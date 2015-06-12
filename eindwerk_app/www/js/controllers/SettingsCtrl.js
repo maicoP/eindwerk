@@ -153,7 +153,7 @@ angular.module('starter.controllers')
       {
         $scope.userdata.id = data['result']['id'];
         $scope.userdata.email = data['result']['email'];
-        $scope.userdata.school = data['result']['school'];
+        $scope.userdata.school = data['result']['school']['name'];
         $scope.userdata.price = data['result']['filter']['price'];
         $scope.userdata.size = data['result']['filter']['size'];
         $scope.userdata.distance = data['result']['filter']['distance'];

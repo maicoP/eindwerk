@@ -74,7 +74,8 @@ class apiController extends Controller {
 		$userid = $request->get('userid');
 		if($field == 'school')
 		{
-			AppUser::where('id',$userid)->update(array($field => $value));
+			$school = School::where('name',$value)->first();
+			AppUser::where('id',$userid)->update(array('fk_schoolid' => $school->id));
 		}
 		else if($field == 'email')
 		{
@@ -111,7 +112,7 @@ class apiController extends Controller {
 	public function getAppUser(Request $request)
 	{
 		
-		$appUser= AppUser::with('filter')->where('id',$request->get('userid'))->first();
+		$appUser= AppUser::with('filter','school')->where('id',$request->get('userid'))->first();
 		return response()->json(['succes' => true,'result' => $appUser]);
 	}
 
@@ -149,14 +150,15 @@ class apiController extends Controller {
 
 	public function getSchools()
 	{
-		$schools = School::orderBy('name')->get();
+		$schools = School::orderBy('name')->lists('name');
 		return response()->json($schools);
 	}
 
 	public function saveFilter(Request $request)
 	{
 		$userid = $request->get('userid');
-		AppUser::where('id',$userid)->update(array('school'=>$request->get('school')));
+		$school = School::where('name',$request->get('school'))->first();
+		AppUser::where('id',$userid)->update(array('fk_schoolid'=>$school->id));
 		$filter = new Filter;
 		$filter->fk_app_userid = $userid;
 		$filter->price = $request->get('price');

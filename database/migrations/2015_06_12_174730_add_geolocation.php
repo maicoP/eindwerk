@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAppUsersTable extends Migration {
+class AddGeolocation extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,12 +12,10 @@ class CreateAppUsersTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('app_users', function(Blueprint $table)
+		Schema::table('schools', function(Blueprint $table)
 		{
-			$table->increments('id');
-			$table->string('email');
-			$table->string('password');
-			$table->string('schools');
+			$table->double('lat');
+			$table->double('lng');
 		});
 	}
 
@@ -28,7 +26,11 @@ class CreateAppUsersTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('app_users');
+		Schema::table('schools', function(Blueprint $table)
+		{
+			$table->dropColumn('lat');
+			$table->dropColumn('lng');
+		});
 	}
 
 }
