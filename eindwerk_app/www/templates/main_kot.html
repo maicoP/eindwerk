@@ -79,7 +79,7 @@
   <div class="like_dislike content_dark" style="position: absolute; bottom: 0px; width: 100%">
 
     <div ng-show='!loading' class="row footer_row ng-hide">
-        <div class="col">
+        <div class="col" ng-show='!extraInfo'>
         	<img ng-click="vote('dislike',kot.id)" width="50" height="50" src="img/icons/dislike.png" align="left" alt="">
         </div>
         <div class="col text-center" id='openInfo'>
@@ -88,7 +88,7 @@
         <div class="col text-center" id='closeInfo' class="hidden">
           <img ng-click="closeInfo()" width="50" height="50" src="img/icons/k.png" alt="">
         </div>
-        <div class="col">
+        <div class="col" ng-show='!extraInfo'>
         	<img ng-click="vote('like',kot.id)" width="50" height="50" src="img/icons/like.png" align="right" alt="">
         </div>
     </div>
