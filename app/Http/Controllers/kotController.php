@@ -204,6 +204,7 @@ class kotController extends Controller {
 	 */
 	public function destroy($id)
 	{
+		return 'test';
 		Image::where('fk_kotid','=',$id)->delete();
 		Kot::destroy($id);
 		return response()->json(['succes'=> true]);
