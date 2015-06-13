@@ -45,6 +45,10 @@
   display: none !important;
 }
 
+.wrap{
+	white-space: normal;
+}
+
 /*tutorial*/
 
 .tut_title{

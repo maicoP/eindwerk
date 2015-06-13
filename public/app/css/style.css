@@ -429,3 +429,45 @@ footer {
 .img_up{
 	margin-top:20px;
 }
+
+/*pagination*/
+
+.pagination { 
+    width:250px;
+	margin:5px auto;
+	padding:0px;
+	text-align:center;
+	color:#667F99;
+	border:1px solid #ddd; 
+	border-radius:5px;
+	background:#fcfcfc;
+}
+.pagination a {
+	padding:7px;
+	text-decoration:none; 
+	color:#2D89EF;
+}
+.pagination li.active a {
+	font-weight:bold;
+}
+
+.pagination li
+{
+	display: inline;
+	list-style-type: none;
+}
+
+.pagination ul
+{
+	margin: 0px 0px;
+	padding: 0 0px;
+}
+
+.pagination  li.disabled a:hover {
+       pointer-events: none;
+       cursor: default;
+}
+
+.pagination  li.disabled a {
+       color: #B6B8BB;
+}
