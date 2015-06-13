@@ -50,17 +50,15 @@ class apiController extends Controller {
 	public function favKotten(Request $request)
 	{
 		$userid = $request->get('userid');
-		$user = AppUser::find($userid);
+		$user = AppUser::with('school')->find($userid);
 		$favkotten = Kot::with('images')->whereHas('appuserkot',function($q) use($userid){
 			$q->where('type','like');
 			$q->where('fk_app_userid',$userid);
 		})->get();
 		foreach($favkotten as $kot)
 		{
-			$response = \Geocoder::geocode('json',['address' => $user->school]);
-	        $response = json_decode($response);
 	        $coordA   = Geotools::coordinate([$kot->lat, $kot->lng]);
-	        $coordB   = Geotools::coordinate([$response->results[0]->geometry->location->lat,$response->results[0]->geometry->location->lng]);
+	        $coordB   = Geotools::coordinate([$user->school->lat,$user->school->lng]);
 	        $distance = Geotools::distance()->setFrom($coordA)->setTo($coordB);
 	        $kot->distance = number_format($distance->in('km')->haversine(), 2, '.', '');
 		}

@@ -32,7 +32,9 @@
 						
 						<div class="kot approved">
 							<div class="info">
-								<div class="title"><a href="/kot/{{$kot->id}}">{{$kot->streatname}}  {{$kot->housenumber}} {{$kot->zipcode}} {{$kot->city}}</a></div>
+								<div class="title"><a href="/kot/{{$kot->id}}">{{$kot->streatname}}  {{$kot->housenumber}} {{$kot->zipcode}} {{$kot->city}} @if($kot->kotnumber != '')
+										- kotnr:  {{$kot->kotnumber}}
+										@endif</a></div>
 								<div><a href="/kot/{{$kot->id}}">@if(!$kot->images->isEmpty())
 									<img width="300" src="{{URL::to('/').'/'.$kot->images[0]->image}}" alt="Kot image"></a>
 									@endif</a></div>
@@ -65,7 +67,9 @@
 						@foreach($new as $kot)
 							<div class="kot pending">
 								<div class="info">
-									<div class="title"><a href="/kot/{{$kot->id}}">{{$kot->streatname}}  {{$kot->housenumber}} {{$kot->zipcode}} {{$kot->city}}</a></div>
+									<div class="title"><a href="/kot/{{$kot->id}}">{{$kot->streatname}}  {{$kot->housenumber}} {{$kot->zipcode}} {{$kot->city}} @if($kot->kotnumber != '')
+										- kotnr:  {{$kot->kotnumber}}
+										@endif</a></div>
 									<div><a href="/kot/{{$kot->id}}">@if(!$kot->images->isEmpty())
 									<img width="300" src="{{URL::to('/').'/'.$kot->images[0]->image}}" alt="Kot image"></a>
 									@endif</a></div>
@@ -95,7 +99,9 @@
 						@foreach($declined as $kot)
 							<div class="kot denied">
 								<div class="info">
-									<div class="title"><a href="/kot/{{$kot->id}}">{{$kot->streatname}}  {{$kot->housenumber}} {{$kot->zipcode}} {{$kot->city}}</a></div>
+									<div class="title"><a href="/kot/{{$kot->id}}">{{$kot->streatname}}  {{$kot->housenumber}} {{$kot->zipcode}} {{$kot->city}} @if($kot->kotnumber != '')
+										- kotnr:  {{$kot->kotnumber}}
+										@endif</a></div>
 									<div><a href="/kot/{{$kot->id}}">@if(!$kot->images->isEmpty())
 									<img width="300" src="{{URL::to('/').'/'.$kot->images[0]->image}}" alt="Kot image"></a>
 									@endif</a></div>

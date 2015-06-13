@@ -12,7 +12,9 @@
 					<li><a href="#">Kot detail</a></li>
 				</ul>
 				<div class="row-fluid sortable">
-					<h1>Kot detail: {{$kot->streatname}}  {{$kot->housenumber}} {{$kot->zipcode}} {{$kot->city}}</h1>		
+					<h1>Kot detail: {{$kot->streatname}}  {{$kot->housenumber}} {{$kot->zipcode}} {{$kot->city}} @if($kot->kotnumber != '')
+						- kotnr: {{$kot->kotnumber}}
+						@endif</h1>		
 					<div class="top_spacing">	
 						<div>
 							{!!Form::open(['url' => 'kot/'.$kot->id.'/edit','method' => 'GET','class' => 'frm-edit_delete'])!!}

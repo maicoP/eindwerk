@@ -45,7 +45,7 @@ class Kot extends Eloquent{
 
 
 
-	protected $fillable = ['city', 'streatname', 'housenumber','zipcode','price','size','info','email','telephonenumber','bikestands','seperatekitchen','seperatebathroom','furniture','begindate','enddate','fk_userid','lat','lng','name','estimateprice'];
+	protected $fillable = ['city', 'streatname', 'housenumber','zipcode','price','size','info','email','telephonenumber','bikestands','seperatekitchen','seperatebathroom','furniture','begindate','enddate','fk_userid','lat','lng','name','estimateprice','kotnumber'];
 
 
     public static function getKot($userid,$kotid)

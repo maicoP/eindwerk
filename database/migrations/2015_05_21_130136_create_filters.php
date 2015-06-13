@@ -30,7 +30,6 @@ class CreateFilters extends Migration {
 			$table->boolean('seperatekitchen');
 			$table->boolean('seperatebathroom');
 			$table->boolean('furniture');
-			$table->boolean('wifi');
 			$table->timestamps();
 		});
 	}

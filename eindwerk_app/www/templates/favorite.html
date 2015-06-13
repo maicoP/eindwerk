@@ -32,11 +32,11 @@
 	      			</a>
 
 	      			<a class="item item-icon-left  kot_details" href="#">
-	      				<i class="icon ion-android-pin"><p>{{kot.streatname}} {{kot.housenumber}} {{kot.city}}</p></i>
+	      				<i class="icon ion-android-pin"><p>{{kot.streatname}} {{kot.housenumber}} {{kot.city}} <span ng-if='kot.kotnumber != ""'>- Kotnr: {{kot.kotnumber}}</span></p></i>
 	      			</a>
 
 		            <a class="item item-icon-left  kot_details" href="#">
-		              <i class="icon ion-social-euro"><p>{{kot.price}},0</p></i>
+		              <i class="icon ion-social-euro"><p><span ng-if='kot.estimateprice'>{{kot.price}},0 (totaal geschatte prijs)</span> <span ng-if='!kot.estimateprice'>{{kot.price}},0 (totaal prijs)</span></p></i>
 		            </a>
 
 		            <a class="item item-icon-left kot_details" href="#">

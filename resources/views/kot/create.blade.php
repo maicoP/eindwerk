@@ -60,6 +60,13 @@
 									{!!Form::input('text','zipcode','',array('class'=>'form-control'))!!}
 								</div>
 							</div>
+
+							<div class="control-group">
+								<label class="control-label">Kot Nummer</label>
+								<div class="controls">
+									{!!Form::input('text','kotnumber','',array('class'=>'form-control'))!!}
+								</div>
+							</div>
 							
 							<h2>Contact</h2>
 							<div class="control-group">
