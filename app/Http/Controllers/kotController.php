@@ -76,7 +76,6 @@ class kotController extends Controller {
 	public function store(addKotRequest $request,Kot $kot)
 	{
 		$kot->fill($request->all());
-
 		$param = array("address"=> $request->get('streatname').' '.$request->get('housenumber').' '.$request->get('zipcode').' '.$request->get('city'));
 		$response = \Geocoder::geocode('json', $param);
 		$response = json_decode($response);
@@ -88,6 +87,7 @@ class kotController extends Controller {
 		$kot->seperatekitchen = ($request->get('seperatekitchen') == 'on' ? true :false );
 		$kot->seperatebathroom = ($request->get('seperatebathroom') == 'on' ? true :false );
 		$kot->furniture = ($request->get('furniture') == 'on' ? true :false );
+		$kot->estimateprice = ($request->get('estimateprice') == 'on' ? true :false );
 		$kot->lat = $response->results[0]->geometry->location->lat;
 		$kot->lng = $response->results[0]->geometry->location->lng;
 		$kot->status = 'new';
@@ -165,6 +165,7 @@ class kotController extends Controller {
 		$kot->furniture = ($request->get('furniture') == 'on' ? true :false );
 		$kot->lat = $response->results[0]->geometry->location->lat;
 		$kot->lng = $response->results[0]->geometry->location->lng;
+		$kot->estimateprice = ($request->get('estimateprice') ? true :false );
 		$kot->save();
 
 		if($request->file('images') != null)

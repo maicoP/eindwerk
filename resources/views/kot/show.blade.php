@@ -25,7 +25,9 @@
 						@endforeach
 						<div>
 							<h2>Info</h2>
-							<p>Prijs (€): <b>{{$kot->price}}</b></p>
+							<p>Prijs (€): <b>@if($kot->estimateprice)
+									&#177
+									@endif{{$kot->price}}</b></p>
 							<p>Oppervlakte (m²): <b>{{$kot->size}}</b></p>
 							<p>Adres: <b>{{$kot->streatname}}  {{$kot->housenumber}} {{$kot->zipcode}} {{$kot->city}}</b></p>
 							<p>Beschikbaar van <b>{{$kot->begindate}}</b> tot <b>{{$kot->enddate}}</b></p>

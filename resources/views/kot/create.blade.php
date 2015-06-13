@@ -94,6 +94,7 @@
 								<label class="control-label">Prijs (in €)</label>
 								<div class="controls">
 									{!!Form::input('text','price','',array('class'=>'form-control'))!!}
+									<input type="checkbox" name='estimateprice'> Schatting
 								</div>
 							</div>
 

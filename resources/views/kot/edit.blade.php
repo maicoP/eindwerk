@@ -80,6 +80,10 @@
 								<label class="control-label">Prijs (in €)</label>
 								<div class="controls">
 									{!!Form::input('text','price',$kot->price,array('class'=>'form-control'))!!}
+									<input type="checkbox" name='estimateprice' 
+									@if($kot->estimateprice)
+									checked
+									@endif> Schatting
 								</div>
 							</div>
 							<div class="control-group">

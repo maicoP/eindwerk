@@ -45,7 +45,9 @@
 								</div>
 								</div>
 							<div class="details">
-								<div class="price">€{{$kot->price}}</div>
+								<div class="price">@if($kot->estimateprice)
+									&#177
+									@endif€{{$kot->price}}</div>
 								<div>{{$kot->size}}m²</div>
 								<div class="kot_info"><br>{{$kot->info}}</div>
 								<div>Aantal likes @if(!$kot->appUserKotCount->isEmpty()){{$kot->appUserKotCount[0]->count}}@else 0 @endif</div>
@@ -75,7 +77,9 @@
 									</div>
 									</div>
 								<div class="details">
-									<div class="price">€{{$kot->price}}</div>
+									<div class="price">@if($kot->estimateprice)
+										&#177
+										@endif€{{$kot->price}}</div>
 									<div>{{$kot->size}}m²</div>
 									<div class="kot_info"><br>{{$kot->info}}</div>
 								</div>
@@ -103,7 +107,9 @@
 									</div>
 									</div>
 								<div class="details">
-									<div class="price">€{{$kot->price}}</div>
+									<div class="price">@if($kot->estimateprice)
+										&#177
+										@endif€{{$kot->price}}</div>
 									<div>{{$kot->size}}m²</div>
 									<div class="kot_info"><br>{{$kot->info}}</div>
 								</div>
