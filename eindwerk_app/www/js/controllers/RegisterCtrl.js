@@ -29,7 +29,6 @@ angular.module('starter.controllers')
           email: $scope.registerData.email,
           password: $scope.registerData.password
         }
-        console.log(userdata);
         UserService.register(userdata.email,userdata.password,false).then(function(response){
             data = response.data;
             handelRegister(data);

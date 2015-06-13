@@ -40,7 +40,6 @@ angular.module('starter.controllers', [])
     // get a kot that you haven't voted on and match your current filters
     KotService.getKot(userdata).then(function(response){
       data = response.data;
-      console.log(data);
       if(data['kot'] == null || data['kot'] == false)
       {
         $scope.loading = false;
@@ -68,7 +67,6 @@ angular.module('starter.controllers', [])
           data = response.data;
           if(data)
           {
-            console.log('test');
             //clean images so previos don't show
             $scope.kot.images = ''; 
             $scope.loading = true;
@@ -156,7 +154,6 @@ angular.module('starter.controllers', [])
     var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
     if(document.querySelectorAll('td-card')[0].getBoundingClientRect()['right'] > (w*1.2133))
     {
-      console.log('like');
       $timeout.cancel(timeout);
       timeout = $timeout(function() {
         $scope.vote('like',id);
@@ -165,7 +162,6 @@ angular.module('starter.controllers', [])
 
     if(document.querySelectorAll('td-card')[0].getBoundingClientRect()['left'] < (-w*0.2133))
       {
-      console.log('dislike'); 
         $timeout.cancel(timeout);
         timeout = $timeout(function() {
           $scope.vote('dislike',id);

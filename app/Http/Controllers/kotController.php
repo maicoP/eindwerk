@@ -28,17 +28,17 @@ class kotController extends Controller {
 	
 	public function index()
 	{
-		$koten = Kot::with('images')->with('appUserKotCount')->where('fk_userid','=',\Auth::user()->id)->where('status','accepted')->paginate(10);
-		$new = Kot::with('images')->where('fk_userid','=',\Auth::user()->id)->where('status','new')->paginate(10);
-		$declined = Kot::with('images')->where('fk_userid','=',\Auth::user()->id)->where('status','declined')->paginate(10);
+		$koten = Kot::with('images')->with('appUserKotCount')->where('fk_userid','=',\Auth::user()->id)->where('status','accepted')->orderBy('streatname','asc')->paginate(10);
+		$new = Kot::with('images')->where('fk_userid','=',\Auth::user()->id)->where('status','new')->orderBy('streatname','asc')->paginate(10);
+		$declined = Kot::with('images')->where('fk_userid','=',\Auth::user()->id)->where('status','declined')->orderBy('streatname','asc')->paginate(10);
 		return view('kot.index',['koten' => $koten,'new' => $new,'declined' => $declined]);
 	}
 
 	public function manageKot()
 	{
-		$kotenNew =  Kot::where('status','new')->get();
-		$kotenAc =  Kot::where('status','accepted')->get();
-		$kotenDe =  Kot::where('status','declined')->get();
+		$kotenNew =  Kot::where('status','new')->orderBy('streatname','asc')->get();
+		$kotenAc =  Kot::where('status','accepted')->orderBy('streatname','asc')->get();
+		$kotenDe =  Kot::where('status','declined')->orderBy('streatname','asc')->get();
 		return view('kot.manage',['kotenNew' => $kotenNew,'kotenAc' => $kotenAc,'kotenDe' => $kotenDe]);
 	}
 

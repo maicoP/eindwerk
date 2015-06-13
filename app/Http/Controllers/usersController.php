@@ -21,7 +21,7 @@ class usersController extends Controller {
 
 	public function index()
 	{
-		$users =  User::where('type','user')->get();
+		$users =  User::where('type','user')->orderBy('name','asc')->get();
 		return view('users.index',['users' => $users]);
 	}
 

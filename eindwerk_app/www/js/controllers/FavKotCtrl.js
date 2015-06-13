@@ -89,7 +89,6 @@ angular.module('starter.controllers')
     angular.element(kotten).removeClass('animated fadeIn');
     angular.element(kotten).addClass('animated fadeOut'); 
     $timeout(function() {
-      console.log('test');
       $scope.extraInfo = true;
       angular.element(info).removeClass('fadeOut animated '); 
       angular.element(info).addClass('fadeIn animated ');

@@ -103,7 +103,6 @@ angular.module('starter.controllers')
   // post the change to db
   $scope.postChanges = function(field,value)
   {
-      console.log(value);
         UserService.changeFilter(field,value,userdata).then(function(response){
           data = response.data;
           $scope.errors= false;
