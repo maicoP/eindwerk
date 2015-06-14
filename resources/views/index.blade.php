@@ -25,11 +25,6 @@
     </nav>
     
     <div class="header_wrapper">
-        <div class='video_wrapper'>
-           <video autoplay loop poster="polina.jpg" id="bgvid">
-            <source src="KOTTER.mp4" type="video/mp4">
-            </video> 
-        </div>
         
         <div class="header">
             <div class="header_content">
@@ -175,5 +170,6 @@
     <script src="js/jquery.easing.min.js"></script>
     <script src="js/wow.min.js"></script><!--animeer items vanaf user scrolled-->
     <script src="js/custom.js"></script>
+
     
 @stop
