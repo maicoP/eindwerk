@@ -94,32 +94,32 @@
         <div class="container-fluid">
             <div class="row no_gutter">
                 <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="kot">
+                    <a class="kot">
                         <img src="img/1.jpg" class="img-responsive" alt="">
                     </a>
                 </div>
                 <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="kot">
+                    <a class="kot">
                         <img src="img/2.jpg" class="img-responsive" alt="">
                     </a>
                 </div>
                 <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="kot">
+                    <a class="kot">
                         <img src="img/3.jpg" class="img-responsive" alt="">
                     </a>
                 </div>
                 <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="kot">
+                    <a class="kot">
                         <img src="img/4.jpg" class="img-responsive" alt="">
                     </a>
                 </div>
                 <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="kot">
+                    <a class="kot">
                         <img src="img/5.jpg" class="img-responsive" alt="">
                     </a>
                 </div>
                 <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="kot">
+                    <a class="kot">
                         <img src="img/6.jpg" class="img-responsive" alt="">
                     </a>
                 </div>

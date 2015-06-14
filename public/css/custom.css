@@ -1,4 +1,4 @@
-/*GENERAL*/
+/*general*/
 
 html,body{
     width: 100%;
@@ -48,6 +48,161 @@ p{
     font-size: 16px;
     line-height: 1.5;
 }
+
+.window{
+    padding:100px 0;
+}
+
+.window_title{
+    margin-top: 0;
+}
+
+.no_padding {
+    padding: 0;
+}
+
+/*navigation*/
+
+.navbar-default{
+    border-color: rgba(34,34,34,.05);
+    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+    background-color: #fff;
+    -webkit-transition: all .35s;
+    -moz-transition: all .35s;
+    transition: all .35s;
+}
+
+.navbar-default .navbar-header .navbar-brand {
+    text-transform: uppercase;
+    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+    font-weight: 700;
+    color: #972F38;
+}
+
+.navbar-default .navbar-header .navbar-brand:hover,
+.navbar-default .navbar-header .navbar-brand:focus {
+    color: #eb3812;
+}
+
+.navbar-default .nav>li>a,
+.navbar-default .nav>li>a:focus {
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 700;
+    color: #222;
+}
+
+.navbar-default .nav>li>a:hover,
+.navbar-default .nav>li>a:focus:hover {
+    color: #972F38;
+}
+
+.navbar-default .nav>li.active>a,
+.navbar-default .nav>li.active>a:focus {
+    color: #972F38!important;
+    background-color: transparent;
+}
+
+.navbar-default .nav>li.active>a:hover,
+.navbar-default .nav>li.active>a:focus:hover {
+    background-color: transparent;
+}
+
+/*header*/
+
+.header_wrapper{
+    position: relative;
+    width: 100%;
+    min-height: auto;
+    text-align: center;
+    color: #fff;
+    background-image: url(../img/header.jpg);
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.header {
+    position: relative;
+    width: 100%;
+    padding: 100px 15px;
+    text-align: center;
+}
+
+.header_content hr {
+    margin: 30px auto;
+}
+
+.header_content p {
+    margin-bottom: 50px;
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(255,255,255,.7);
+}
+
+/*info*/
+
+.info{
+    font-size:18px;
+    color: rgba(255,255,255,.7);
+}
+
+.img_phones{
+    margin:0 auto;
+}
+
+/*koten*/
+
+.kot{
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    max-width: 650px;
+}
+
+.kot img{
+    transition: all 1s ease 0s;
+}
+
+.kot img:hover{
+    opacity:0.4;
+}
+
+/*login*/
+
+.login_content{
+    color:#b7b7b7;
+}
+
+.login_content p{
+    color:#7e7e7e;   
+}
+
+.login_content .btn-primary{
+    border-color: #ed431f;
+    color: #fff;
+    background-color:#3399FF;
+}
+
+/*features*/
+
+.feature_text{
+    color:#777;
+    margin-top:20px;
+}
+
+.feature{
+    margin: 50px auto 0;
+    max-width: 400px;
+}
+
+.feature i{
+    color:#3399FF;
+}
+
+/*contact*/
 
 .contact_wrapper{
     background: #191919;
@@ -105,6 +260,8 @@ textarea.contact_form{
     margin-bottom: 35px;
 }
 
+/*backgrounds*/
+
 .bg_info {
     background-color: #3399FF;
     color:#fff;
@@ -125,77 +282,81 @@ textarea.contact_form{
     padding-bottom:5px;
 }
 
-.info{
-    font-size:18px;
-    color: rgba(255,255,255,.7);
-}
+/*buttons*/
 
-.window{
-    padding:100px 0;
-}
-
-.no_padding {
-    padding: 0;
-}
-
-.kot img{
-    transition: all 1s ease 0s;
-}
-
-.kot img:hover{
-    opacity:0.4;
-}
-
-.img_phones{
-    margin:0 auto;
-}
-
-/*NAVIGATION*/
-
-.navbar-default{
-    border-color: rgba(34,34,34,.05);
-    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
-    background-color: #fff;
+.btn-primary {
+    border-color: #972f38;/**/
+    color:#191919;
+    background-color: #fff055;
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
     transition: all .35s;
 }
 
-.navbar-default .navbar-header .navbar-brand {
+.btn-primary:hover,.btn-primary:focus{
+    border-color: #ed431f;
+    color: #fff;
+    background-color:#000;
+}
+
+.btn{
+    border-radius:0px;
+    border: 0;
     text-transform: uppercase;
     font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
     font-weight: 700;
-    color: #972F38;
 }
 
-.navbar-default .navbar-header .navbar-brand:hover,
-.navbar-default .navbar-header .navbar-brand:focus {
-    color: #eb3812;
+.btn_login{
+    padding:6px 65px;
+    margin:0px 0px 5px 0px!important;
 }
 
-.navbar-default .nav>li>a,
-.navbar-default .nav>li>a:focus {
-    text-transform: uppercase;
-    font-size: 13px;
-    font-weight: 700;
-    color: #222;
+/*foooter*/
+
+.footertext{
+    font-size:90%;
+    margin-top:30px;
+    margin-bottom:0px;
+    padding-bottom:0px;
+    color:#919191;
 }
 
-.navbar-default .nav>li>a:hover,
-.navbar-default .nav>li>a:focus:hover {
-    color: #972F38;
+/*jquery fix*/
+.jQuery p{
+    margin-bottom: 0;
 }
 
-.navbar-default .nav>li.active>a,
-.navbar-default .nav>li.active>a:focus {
-    color: #972F38!important;
-    background-color: transparent;
+
+/*http://julienmelissas.com/no-gutter-column-trick-for-bootstrap/*/
+.no_gutter > [class*=col-] {
+    padding-right: 0;
+    padding-left: 0;
 }
 
-.navbar-default .nav>li.active>a:hover,
-.navbar-default .nav>li.active>a:focus:hover {
-    background-color: transparent;
+/*icon heart fix*/
+
+.icon_smaller{
+    font-size:3.3em;   
+    margin-top:10px;
 }
+
+/*boostrap alert contact fix*/
+
+.alert{   
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #3c763d;
+    text-align:center;
+}
+
+.alert-danger{
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    color: #a94442;
+}
+
+/*queries*/
 
 @media(max-width:550px){
     h1{
@@ -260,53 +421,6 @@ textarea.contact_form{
     }
 }
 
-.header_wrapper{
-    position: relative;
-    width: 100%;
-    min-height: auto;
-    text-align: center;
-    color: #fff;
-    background-image: url(../img/header.jpg);
-    background-position: center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
-}
-
-.header {
-    position: relative;
-    width: 100%;
-    padding: 100px 15px;
-    text-align: center;
-}
-
-.header_content hr {
-    margin: 30px auto;
-}
-
-.header_content p {
-    margin-bottom: 50px;
-    font-size: 16px;
-    font-weight: 300;
-    color: rgba(255,255,255,.7);
-}
-
-.login_content{
-    color:#b7b7b7;
-}
-
-.login_content p{
-    color:#7e7e7e;   
-}
-
-.login_content .btn-primary{
-    border-color: #ed431f;
-    color: #fff;
-    background-color:#3399FF;
-}
-
-
 @media(min-width:768px) {
     .header_wrapper{
         min-height: 100%;
@@ -330,117 +444,4 @@ textarea.contact_form{
         max-width: 80%;
         font-size: 18px;
     }
-}
-
-.window_title{
-    margin-top: 0;
-}
-
-.feature{
-    margin: 50px auto 0;
-    max-width: 400px;
-}
-
-.feature i{
-    color:#3399FF;
-}
-
-.footertext{
-    font-size:90%;
-    margin-top:30px;
-    margin-bottom:0px;
-    padding-bottom:0px;
-    color:#919191;
-}
-
-@media(min-width:992px){
-    .ervaring {
-        margin: 20px auto 0;
-    }
-}
-
-.ervaring p{
-    margin-bottom: 0;
-}
-
-.kot{
-    display: block;
-    position: relative;
-    margin: 0 auto;
-    max-width: 650px;
-}
-
-.download_button h2{
-    margin: 0 auto 20px;
-}
-
-.icon-color{
-    color: #595241;
-}
-
-/*http://julienmelissas.com/no-gutter-column-trick-for-bootstrap/*/
-.no_gutter > [class*=col-] {
-    padding-right: 0;
-    padding-left: 0;
-}
-
-/*buttons*/
-
-.btn-primary {
-    border-color: #972f38;/**/
-    color:#191919;
-    background-color: #fff055;
-    -webkit-transition: all .35s;
-    -moz-transition: all .35s;
-    transition: all .35s;
-}
-
-.btn-primary:hover,.btn-primary:focus{
-    border-color: #ed431f;
-    color: #fff;
-    background-color:#000;
-}
-
-.btn{
-    border-radius:0px;
-    border: 0;
-    text-transform: uppercase;
-    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
-    font-weight: 700;
-}
-
-.btn_download {
-    padding: 15px 30px;
-}
-
-.btn_login{
-    padding:6px 65px;
-    margin:0px 0px 5px 0px!important;
-}
-
-.feature_text{
-    color:#777;
-    margin-top:20px;
-}
-
-/*icon heart fix*/
-
-.icon_smaller{
-    font-size:3.3em;   
-    margin-top:10px;
-}
-
-/*boostrap alert contact fix*/
-
-.alert{   
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
-    color: #3c763d;
-    text-align:center;
-}
-
-.alert-danger{
-    background-color: #f2dede;
-    border-color: #ebccd1;
-    color: #a94442;
 }
