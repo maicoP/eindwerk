@@ -294,12 +294,20 @@ img.kot_thumb{
 
 /*tutorial*/
 
+.slider-pager{
+    bottom:0px;
+}
+
 .tut_footer a{
 	text-decoration:none;
 }
 
 .tut_footer button{
 	margin:0px!important;
+}
+
+.full-image{
+	margin-top:10px;
 }
 
 /*loader*/
