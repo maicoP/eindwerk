@@ -1,5 +1,5 @@
 angular.module('starter.controllers')
-.controller('LocationCtrl', function($scope, $stateParams,$timeout,$location,SchoolService,UserService) {
+.controller('LocationCtrl', function($scope, $timeout,$location,SchoolService,UserService) {
 
   $scope.locationData = {};
   $scope.locationData.price = 250;

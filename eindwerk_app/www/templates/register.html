@@ -4,9 +4,9 @@
     <form ng-submit="doRegister()">
       <div class="list">
       <div ng-show='errors' class=' paddingr ng-hide'>
-        <a class="item item-icon-left error_item" href="#">
+        <a ng-repeat='error in errors' class="item item-icon-left error_item" href="#">
           <i class="icon ion-alert"></i>
-          <p class='error error_text' ng-repeat='error in errors'>{{error}}</p>
+          <p class='error error_text' ng-repeat='message in error'>{{message}}</p>
         </a>
       </div>
         <label class="item item-input item-email register_item register_userpass_item">

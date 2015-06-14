@@ -1,5 +1,5 @@
 angular.module('starter.controllers')
-.controller('FavKotCtrl', function($scope, $stateParams,$ionicScrollDelegate,$timeout,KotService,VoteService) {
+.controller('FavKotCtrl', function($scope,$ionicScrollDelegate,$timeout,KotService,VoteService) {
 
   var userdata = JSON.parse(window.localStorage['userdata']);
   var geocoder = new google.maps.Geocoder();

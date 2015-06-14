@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('MainKotCtrl', function($scope,$window,$ionicScrollDelegate,$ionicLoading,$timeout,$state,KotService,VoteService) {
+.controller('MainKotCtrl', function($scope,$ionicScrollDelegate,$timeout,$state,KotService,VoteService) {
 
   $scope.loading=true;
   $scope.extraInfo=false;

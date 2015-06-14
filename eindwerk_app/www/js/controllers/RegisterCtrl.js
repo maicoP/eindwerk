@@ -1,5 +1,5 @@
 angular.module('starter.controllers')
-.controller('RegisterCtrl', function($scope, $stateParams,$timeout,$location,UserService) {
+.controller('RegisterCtrl', function($scope,$timeout,$location,UserService) {
 
   $scope.registerData = {};
 // check user data when valid save to db
@@ -11,13 +11,13 @@ angular.module('starter.controllers')
 
       angular.element(emailEl).removeClass('error');
       angular.element(passwordEl).removeClass('error');
-      if(!$scope.registerData.hasOwnProperty('email'))
+      if(!$scope.registerData.hasOwnProperty('email') || $scope.registerData.email == '' )
       {
         isValid = false;
         addError(emailEl,$timeout);
       }
 
-      if(!$scope.registerData.hasOwnProperty('password'))
+      if(!$scope.registerData.hasOwnProperty('password') || $scope.registerData.password == '')
       {
         isValid = false;
         addError(passwordEl,$timeout);
@@ -55,16 +55,18 @@ angular.module('starter.controllers')
     });
   };
   function handelRegister(data){
-    if(data['email'])
+    console.log(data);
+    if(data['email'] || data['password'])
     {
-      $scope.errors = data['email'];
+      $scope.errors = data;
+      console.log($scope.errors);
     }
     if(data['succes'])
     {
       userdata = {
         id : data['id'],
         email:data['user_email'],
-        password: data['password']
+        password: data['user_password']
       };
       window.localStorage['userdata'] = JSON.stringify(userdata);
       $location.path('/location');

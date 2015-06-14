@@ -1,5 +1,5 @@
 angular.module('starter.controllers')
-.controller('LoginCtrl', function($scope, $stateParams,$timeout,$location,UserService) {
+.controller('LoginCtrl', function($scope,$timeout,$location,UserService) {
 
   $scope.loginData= {};
 

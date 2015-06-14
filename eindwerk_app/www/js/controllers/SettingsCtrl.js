@@ -1,5 +1,5 @@
 angular.module('starter.controllers')
-.controller('SettingsCtrl',function($scope, $stateParams,$timeout,$location,$state,SchoolService,UserService,KotService) {
+.controller('SettingsCtrl',function($scope,$timeout,$location,$state,SchoolService,UserService,KotService) {
 
   $scope.loading= true;
   $scope.resetKot = false;
