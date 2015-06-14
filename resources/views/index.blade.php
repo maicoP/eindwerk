@@ -44,9 +44,7 @@
                 <div class="col-lg-6 col-md-6 text-center">
                     <h2>Je droomkot ligt bij ons te wachten.</h2>
                     <hr class="light">
-                    <p class="info">Met meer dan 1000 exclusieve koten gelegen in Antwerpen 
-                    zal je bij ons met zekerheid op het ideale kot van je dromen stuiten. Een aangename en gebruiksvriendelijke interface van de applicatie 
-                    zorgt voor de unieke en prettige ervaring</p>
+                    <p class="info">Kotter is een onafhankelijk medium tussen student en koteigenaar. De kwaliteit van de koten wordt gegarandeert door manuele selectie. Elk Kotter-kot laat enkel de totaalprijs zijn, zo kom je niet voor verrassingen te staan en kan je eenvoudiger koten vergelijken.</p>
                 </div>
             </div>
         </div>
@@ -66,7 +64,7 @@
                 <div class="col-lg-3 col-md-6 text-center">
                     <div class="feature">
                         <i class="fa fa-4x fa-home wow bounceInDown icon_color"></i>
-                        <p class="feature_text">Browse meer dan 1000 exclusieve koten</p>
+                        <p class="feature_text">Enkel totaalprijzen, alles inclusief</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 text-center">
@@ -129,6 +127,8 @@
     </div>
     <div class='contact_wrapper row'>
         <h2 class="window_title">Contacteer ons</h2>
+
+        <h3></h3>
 
         {!!Form::open(['url' => '/message/send','action' => 'post','role' => 'form', 'class' => 'form-horizontal'])!!}
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
