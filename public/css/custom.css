@@ -429,3 +429,18 @@ textarea.contact_form{
     font-size:3.3em;   
     margin-top:10px;
 }
+
+/*boostrap alert contact fix*/
+
+.alert{   
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #3c763d;
+    text-align:center;
+}
+
+.alert-danger{
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    color: #a94442;
+}
