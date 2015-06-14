@@ -66,6 +66,7 @@ function deleteKot(id){
 	$.ajax({
     url: location.protocol + "//" + location.hostname + '/kot/'+id,
     type: 'post',
+    cache: false,
     data: {_method: 'delete'},
     success: function(data){
     	if(data['succes'])

@@ -47,6 +47,10 @@
                 $('.alert-danger').remove();
                 $('.alert-message').remove();
                 $('form').prepend('<div class=" col-md-4 col-md-offset-4 alert alert-message"><p>'+data['message']+'</p></div>');
+                $('input[name="naam"]').val('');
+                $('input[name="email"]').val('');
+                $('input[name="bedrijf"]').val('');
+                $('textarea').val('');
             },
             error: function(data){
             var errors = data.responseJSON;
