@@ -26,7 +26,7 @@ Indien een kot aan alle voorwaarden voldoet, zullen wij het goedkeuren en zal he
 
 						<h2><br>Koten toevoegen</h2>
 
-Een kot toevoegen doet u via het menu in de zijbalk genaamd 'kot toevoegen'. Het proces wijst zichzelf uit. Het enige wat we nodig hebben, zijn alle gegevens en 4 kwaliteitsvolle foto's die een beeld geven van het kot. (Een foto met een breedhoeklens/fisheye heeft de voorkeur aangezien deze meer kunnen laten zien binnenin een kamer.)
+Een kot toevoegen doet u via het menu in de zijbalk genaamd 'kot toevoegen'. Het proces wijst zichzelf uit. Het enige wat we nodig hebben, zijn alle gegevens en 4 kwaliteitsvolle foto's die een beeld geven van het kot. (Een foto met een breedhoeklens/fisheye heeft de voorkeur aangezien deze een mooier beeld geeft van de kamer.)
 
 <br><u>Prijs</u><br>
 Elk kot moet verplicht de totaalprijs laten zien. Indien een vaste totale prijs niet mogelijk is bij een kot, moet er een geschatte totale prijs gegeven worden (vink hiervoor ook het veld 'schatting' aan). Deze geschatte prijs moet zo realistisch mogelijk zijn. Misbruik hiervan zal worden bestraft.
@@ -42,7 +42,6 @@ Indien u een kot permanent wenst te verwijderen uit de app, dan kan u dit doen d
 						<h1><br>Richtlijnen koten</h1>
 
 						<ul>
-						<li>Het kot heeft een minimum oppervlakte van 10 m²</li>
 						<li>De kotprijs is een totaalprijs met alle kosten inbegrepen. Dit mag ook een schatting zijn</li>
 						<li>Het kot bevindt zich in zeer goede staat</li>
 						<li>Het kot beschikt over 4 duidelijke foto's</li>
