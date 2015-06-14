@@ -1,36 +1,3 @@
-/*errors*/
-
-.error,.error > input , .error > select{
-	background:#ff8181!important;
-	color: white !important;
-}
-
-.error > input::-webkit-input-placeholder {
-   color: white;
-}
-
-.error > input:-moz-placeholder { /* Firefox 18- */
-   color: white;  
-}
-
-.error > input::-moz-placeholder {  /* Firefox 19+ */
-   color: white;  
-}
-
-.error > input:-ms-input-placeholder {  
-   color: white;  
-}
-
-.error_text{
-	color:white;
-	background:transparent!important;
-}
-
-.error_item{
-	background-color:#ff8181!important;
-	color:white!important;
-}
-
 /*general*/
 
 .hidden{
@@ -49,15 +16,72 @@
 	white-space: normal!important;
 }
 
-/*tutorial*/
-
-.tut_title{
-	margin:10px;
-	font-size:16px;
+.no_border_bottom{
+	border-bottom-width:0px;
 }
 
-.slider-pager{
-	bottom:0px;
+.no_border{
+	border:0;
+}
+
+/*styles*/
+
+.bg-gradient{
+	background-image: url('../img/bg.png');
+	background-size: cover;
+	background-position: center,center;
+}
+
+.trans_header{
+	background:transparent;
+}
+
+/*main kot*/
+
+.main_header{
+	background-color:#387ef5!important;
+}
+
+.footer_row{
+	padding:inherit;
+}
+
+.iconmenu:before{
+  font-size:24px!important;
+}
+
+img.kot_thumb{
+	border: 1px solid white;
+}
+
+.kot_thumbs{
+	margin-top:-4px;
+	margin-left:-1px;
+	margin-right:-1px;
+}
+
+.kot_icons{
+	margin-top:-6px;
+}
+
+.kot_icons i.icon{
+	color:#387ef5;
+	font-size:24px;
+}
+
+.main_info i.icon{
+	color:#387ef5;
+}
+
+/*google maps*/
+
+.scroll {
+    height: 100%;
+}
+ 
+#map ,#favMap{
+    width: 100%;
+    height: 200px;
 }
 
 /*like/dislike*/
@@ -78,85 +102,11 @@
 	margin-top:0px;
 }
 
-/*main kot*/
+/*tutorial*/
 
-.iconmenu:before{
-  font-size:24px!important;
-}
-
-img.kot_thumb{
-	border: 1px solid white;
-}
-
-
-.kot_thumbs{
-	margin-top:-4px;
-	margin-left:-1px;
-	margin-right:-1px;
-}
-
-.kot_icons{
-	margin-top:-6px;
-}
-
-.kot_icons i.icon{
-	color:#387ef5;
-	font-size:24px;
-}
-
-.footer_padding{
-	padding-bottom:55px!important; /*iphone*/
-	background-color:#1c1d22;
-}
-
-.main_info i.icon{
-	color:#387ef5;
-}
-
-.fav_card{
-	margin-top:45px;
-	border-radius:0;
-	padding-bottom:0;
-	padding-top:0;
-}
-
-.info_message{
-	text-align:center;
-	color:#e4e4e4
-}
-
-.sub_menu{
-	background-color:#387EF5;
-}
-
-.sub_menu h2{
-	color:#FFFFFF;
-}
-
-/*google maps*/
-
-.scroll {
-    height: 100%;
-}
- 
-#map ,#favMap{
-    width: 100%;
-    height: 200px;
-}
-
-/*TUTORIAL*/
-
-.trans_header{
-	background:transparent;
-}
-
-.main_header{
-	background-color:#387ef5!important;
-}
-
-button.button.button-block.button-positive.button_action{
-	background-color:#e48f32;
-	border:#e48f32;
+.tut_title{
+	margin:10px;
+	font-size:16px;
 }
 
 /*register*/
@@ -176,9 +126,6 @@ button.button.button-block.button-positive.button_action{
 .btn_fb > button{
 	margin-top: 0px !important;
 }
-.location_item{
-	background:transparent;
-}
 
 .register_item p, .location_item p{
 	color:#f4f4f4;
@@ -192,20 +139,6 @@ button.button.button-block.button-positive.button_action{
 	background:transparent!important;
 	color:#f4f4f4!important;
 	/* font-weight:bold; */
-}
-
-.no_border_bottom{
-	border-bottom-width:0px;
-}
-
-.no_border{
-	border:0;
-}
-
-
-
-.setup_content .item-select:after{
-	color:#fff;
 }
 
 .register_userpass_item{
@@ -229,11 +162,20 @@ button.button.button-block.button-positive.button_action{
 	background-color:#3b5998!important;
 	border-color:#2f4c88!important;
 }
+
 .register_content input[type=text],.register_content input[type=password] {
    color:#b7b7b7;
 }
 
-/*SETUP*/
+/*setup (location)*/
+
+.location_item{
+	background:transparent;
+}
+
+.setup_content .item-select:after{
+	color:#fff;
+}
 
 .setup_content{
 	height:100%!important;
@@ -243,7 +185,7 @@ button.button.button-block.button-positive.button_action{
 	max-width:60%;
 }
 
-/*Content dark color*/
+/*content dark color*/
 
 .content_dark, .content_dark .info{
 	background-color:#1c1d22;
@@ -293,19 +235,46 @@ button.button.button-block.button-positive.button_action{
 	background-color:#363a40;
 }
 
-/**/
-
+/*main kot & favorite*/
 
 #extraInfo{
 	padding-bottom:50px;
 }
 
-.footer_row{
-	padding:inherit;
+/*settings & fav*/
+
+.footer_padding{
+	padding-bottom:55px!important; /*iphone*/
+	background-color:#1c1d22;
 }
+
+.sub_menu{
+	background-color:#387EF5;
+}
+
+.sub_menu h2{
+	color:#FFFFFF;
+}
+
+/*fav*/
+
+.info_message{
+	text-align:center;
+	color:#e4e4e4
+}
+
+.fav_card{
+	margin-top:45px;
+	border-radius:0;
+	padding-bottom:0;
+	padding-top:0;
+}
+
+/*school dropdown*/
 
 .setting_school{
 	padding:7px 28px 0px 12px!important;
+	max-width:100%!important;
 	width:100%!important;
 	text-align:left;
 	right:auto!important;
@@ -321,6 +290,8 @@ button.button.button-block.button-positive.button_action{
 .item-school, .item-stacked-label{
 	border: none;
 }
+
+/*tutorial*/
 
 .tut_footer a{
 	text-decoration:none;
@@ -351,8 +322,6 @@ button.button.button-block.button-positive.button_action{
 .map_slider{
 	top: calc(50% + 220px);
 }
-
-/*loader / spinner*/
 
 .spinner{
 	width:100px;
@@ -387,41 +356,67 @@ td-card img {
   opacity: 0;
 }
 
-/* gradient */
+/*errors*/
 
-.bg-gradient{
-	background-image: url('../img/bg.png');
-	background-size: cover;
-	background-position: center,center;
+.error,.error > input , .error > select{
+	background:#ff8181!important;
+	color: white !important;
 }
 
-/*border fix*/
+.error > input::-webkit-input-placeholder {
+   color: white;
+}
+
+.error > input:-moz-placeholder { /* Firefox 18- */
+   color: white;  
+}
+
+.error > input::-moz-placeholder {  /* Firefox 19+ */
+   color: white;  
+}
+
+.error > input:-ms-input-placeholder {  
+   color: white;  
+}
+
+.error_text{
+	color:white;
+	background:transparent!important;
+}
+
+.error_item{
+	background-color:#ff8181!important;
+	color:white!important;
+}
+
+/*range fix bug*/
+
+input.ng-untouched.ng-valid.ng-dirty.ng-valid-parse{
+	padding-right:0px;
+}
+.range-nopadding .ng-pristine.ng-untouched.ng-valid{
+	padding-right:0!important;
+}
+
+
+/*border fix bug*/
 
 .card .item:first-child, .list-inset .item:first-child, .padding > .list .item:first-child{
 	border:none;
 	border-radius:0;
 }
-
 .card .item:last-child, .list-inset .item:last-child, .padding > .list .item:last-child{
 	border:none;
 	border-radius:0;	
 }
 
-/*range fix (test)*/
-
-input.ng-untouched.ng-valid.ng-dirty.ng-valid-parse{
-	padding-right:0px;
-}
-
-.range-nopadding .ng-pristine.ng-untouched.ng-valid{
-	padding-right:0!important;
-}
-
-/**/
+/*padding fix login & register*/
 
 .paddingr{
 	padding:16px;
 }
+
+/*map fixes*/
 
 .mapHidden{
 	opacity: 0;
@@ -439,8 +434,5 @@ input.ng-untouched.ng-valid.ng-dirty.ng-valid-parse{
 }
 
 #closeInfo{
-	display: none;
+	display:none;
 }
-
-
-
