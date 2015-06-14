@@ -23,8 +23,14 @@
             </div>
         </div>
     </nav>
-
+    
     <div class="header_wrapper">
+        <div class='video_wrapper'>
+           <video autoplay loop poster="polina.jpg" id="bgvid">
+            <source src="KOTTER.mp4" type="video/mp4">
+            </video> 
+        </div>
+        
         <div class="header">
             <div class="header_content">
                 <img class="logo" src="img/logo.png" alt="">
