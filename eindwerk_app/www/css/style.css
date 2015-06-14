@@ -33,7 +33,7 @@
 }
 
 .trans_header{
-	background:transparent;
+	background:transparent!important;
 }
 
 /*main kot*/
@@ -250,6 +250,7 @@ img.kot_thumb{
 
 .sub_menu{
 	background-color:#387EF5;
+	border:0;
 }
 
 .sub_menu h2{
@@ -435,4 +436,8 @@ input.ng-untouched.ng-valid.ng-dirty.ng-valid-parse{
 
 #closeInfo{
 	display:none;
+}
+
+.bar-header{
+	border:0;
 }
