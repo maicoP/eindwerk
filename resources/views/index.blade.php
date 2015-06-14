@@ -44,7 +44,7 @@
                 <div class="col-lg-6 col-md-6 text-center">
                     <h2>Je droomkot ligt bij ons te wachten.</h2>
                     <hr class="light">
-                    <p class="info">Kotter is een onafhankelijk medium tussen student en koteigenaar. De kwaliteit van de koten wordt gegarandeert door manuele selectie. Elk Kotter-kot laat enkel de totaalprijs zijn, zo kom je niet voor verrassingen te staan en kan je eenvoudiger koten vergelijken.</p>
+                    <p class="info">Kotter is een onafhankelijk medium tussen student en koteigenaar. De kwaliteit van de koten wordt gegarandeerd door manuele selectie. Elk Kotter-kot vermeldt enkel de totaalprijs. Zo kom je niet voor verrassingen te staan en kan je eenvoudiger koten vergelijken.</p>
                 </div>
             </div>
         </div>
@@ -76,7 +76,7 @@
                 <div class="col-lg-3 col-md-6 text-center">
                     <div class="feature">
                         <i class="fa fa-4x fa-phone wow bounceIn icon_color" data-wow-delay=".2s"></i>
-                        <p class="feature_text">Contacteer een kot eigenaar rechtstreeks</p>
+                        <p class="feature_text">Contacteer een koteigenaar rechtstreeks</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 text-center">
@@ -127,8 +127,6 @@
     </div>
     <div class='contact_wrapper row'>
         <h2 class="window_title">Contacteer ons</h2>
-
-        <h3></h3>
 
         {!!Form::open(['url' => '/message/send','action' => 'post','role' => 'form', 'class' => 'form-horizontal'])!!}
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
