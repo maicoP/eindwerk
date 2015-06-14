@@ -266,7 +266,7 @@ textarea.contact_form{
     min-height: auto;
     text-align: center;
     color: #fff;
-/*     background-image: url(../img/header.jpg); */
+    background-image: url(../img/header.jpg);
     background-position: center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -428,28 +428,4 @@ textarea.contact_form{
 .icon_smaller{
     font-size:3.3em;   
     margin-top:10px;
-}
-
-video#bgvid {
-position: fixed;
-top: 50%;
-left: 50%;
-min-width: 100%;
-min-height: 100%;
-width: auto;
-height: auto;
-z-index: -100;
--webkit-transform: translateX(-50%) translateY(-50%);
--webkit-filter: blur(2.5px);
-      -moz-filter: blur(2.5px);
-      -o-filter: blur(2.5px);
-      -ms-filter: blur(2.5px);
-      filter: blur(2.5px);
-transform: translateX(-50%) translateY(-50%);
-background: url(polina.jpg) no-repeat;
-background-size: cover;
-}
-.video_wrapper{
-    height: 955px;
-    background-color: rgba(51, 153, 255, 0.3);
 }
