@@ -17,6 +17,8 @@
   "cordovaPlugins": [
     "https://github.com/phonegap/phonegap-facebook-plugin.git",
     "org.apache.cordova.network-information",
-    "https://git-wip-us.apache.org/repos/asf/cordova-plugin-geolocation.git"
+    "https://git-wip-us.apache.org/repos/asf/cordova-plugin-geolocation.git",
+    "org.apache.cordova.splashscreen",
+    "cordova-plugin-splashscreen"
   ]
 }

@@ -43,7 +43,7 @@ angular.module('starter.controllers')
         {
           facebookConnectPlugin.api('/me',["public_profile", "email"],function(result){
             // get email from user and set password empty in db
-            UserService.register(result.email,'','',true).then(function(response){
+            UserService.register(result.email,'',true).then(function(response){
                   data = response.data;
                   handelRegister(data);
                 });
