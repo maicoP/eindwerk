@@ -25,8 +25,6 @@ angular.module('starter', ['ionic','ionic.contrib.ui.tinderCards', 'starter.cont
           });
       }
     }
-
-    
   });
 })
 
