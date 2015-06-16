@@ -86,7 +86,7 @@ class apiController extends Controller {
 			}
 			else
 			{
-				$appUser = AppUser::where('email',$value)->get();
+				$appUser = AppUser::where('email',$value)->where('id','!=',$userid)->get();
 				if(count($appUser) == 0)
 				{
 					AppUser::where('id',$userid)->update(array($field => $value));
@@ -129,9 +129,20 @@ class apiController extends Controller {
 
 	public function register(Request $request)
 	{
-		$validator = Validator::make($request->all(),
+		if($request->get('facebook') == 'true')
+		{
+			$validator = Validator::make($request->all(),
 		    ['email' => 'required|email|unique:app_user']
 		);
+		}
+		else
+		{
+			$validator = Validator::make($request->all(),
+			    ['email' => 'required|email|unique:app_user',
+			     'password' => 'required|min:6']
+			);	
+		}
+		
 		if($validator->fails())
 		{
 			return response()->json($validator->messages());
@@ -142,7 +153,7 @@ class apiController extends Controller {
 			$user->email = $request->get('email');
 			$user->password =  (($request->get('facebook') == 'true') ? '' : bcrypt($request->get('password') ));
 			$user->save();
-			return response()->json(['succes' => true,'user_email' => $user->email,'password' => $user->password,'id' => $user->id]);
+			return response()->json(['succes' => true,'user_email' => $user->email,'user_password' => $user->password,'id' => $user->id]);
 		}
 	}
 

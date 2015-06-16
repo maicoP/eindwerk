@@ -127,8 +127,8 @@
         </div>
     </div>
     <div class='contact_wrapper row'>
-        <h2 class="window_title">Contacteer ons</h2>
-
+        <h2 class="window_title">Contact</h2>
+        <p class='text-center'>Contacteer ons als u een koteigenaar bent die interesse heeft in Kotter,<br/> of als u een gebruiker bent met vragen.</p>
         {!!Form::open(['url' => '/message/send','action' => 'post','role' => 'form', 'class' => 'form-horizontal'])!!}
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class='col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 '>

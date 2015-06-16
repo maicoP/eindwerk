@@ -26,7 +26,7 @@
 				  	<td>{{$kot->streatname.' '.$kot->housenumber.' '.$kot->city.' '.$kot->zipcode}}</td>
 				  	<td>{{$kot->user->name}}</td>
 				  	<td><a href="/accept/kot/{{$kot->id}}">toevoegen</a></td>
-				  	<td><a href="/decline/kot/{{$kot->id}}">wijgeren</a></td>
+				  	<td><a href="/decline/kot/{{$kot->id}}">weigeren</a></td>
 				  </tr>
 				  @endforeach
 				</table>
@@ -46,7 +46,7 @@
 				  	<td><a href="/kot/{{$kot->id}}">bekijken</a></td>
 				  	<td>{{$kot->streatname.' '.$kot->housenumber.' '.$kot->city.' '.$kot->zipcode}}</td>
 				  	<td>{{$kot->user->name}}</td>
-				  	<td><a href="/decline/kot/{{$kot->id}}">wijgeren</a></td>
+				  	<td><a href="/decline/kot/{{$kot->id}}">weigeren</a></td>
 				  </tr>
 				  @endforeach
 				</table>

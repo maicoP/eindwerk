@@ -15,7 +15,7 @@ angular.module('starter.controllers')
       userdata['email'] = $scope.userdata.email;
       window.localStorage['userdata'] = JSON.stringify(userdata);
       $scope.postChanges('email',$scope.userdata.email); 
-    }, 1000);
+    }, 750);
   };
 
   var delaySchool;
@@ -26,7 +26,7 @@ angular.module('starter.controllers')
       userdata['school'] = $scope.userdata.school;
       window.localStorage['userdata'] = JSON.stringify(userdata);
       $scope.postChanges('school',$scope.userdata.school);
-    }, 1000);    
+    }, 750);    
   };
 
   var delayPrice;
@@ -34,7 +34,7 @@ angular.module('starter.controllers')
     $timeout.cancel(delayPrice);
     delayPrice = $timeout(function() {
       $scope.postChanges('price',$scope.userdata.price); 
-    }, 1000);  
+    }, 750);  
   };
 
   var delayDist;
@@ -42,23 +42,25 @@ angular.module('starter.controllers')
     $timeout.cancel(delayDist);
     delayDist = $timeout(function() {
       $scope.postChanges('distance',$scope.userdata.distance);
-    }, 1000);   
+    }, 750);   
   };
 
   var delaySDate;
   $scope.changeStartDate = function(){
     $timeout.cancel(delaySDate);
     delaySDate = $timeout(function() {
-      $scope.postChanges('startDate',$scope.userdata.startDate);
-    }, 1000);   
+     $scope.userdata.startDate = new Date(Date.UTC($scope.userdata.startDate.getFullYear(),$scope.userdata.startDate.getMonth(),$scope.userdata.startDate.getDate()));
+     $scope.postChanges('startDate',$scope.userdata.startDate);
+    }, 750);   
   };
 
   var delayEDate;
   $scope.changeEndDate = function(){
     $timeout.cancel(delayEDate);
     delayEDate = $timeout(function() {
+      $scope.userdata.endDate = new Date(Date.UTC($scope.userdata.endDate.getFullYear(),$scope.userdata.endDate.getMonth(),$scope.userdata.endDate.getDate()));
       $scope.postChanges('endDate',$scope.userdata.endDate);
-    }, 1000);   
+    }, 750);   
   };
 
   var delayBike;
@@ -66,7 +68,7 @@ angular.module('starter.controllers')
     $timeout.cancel(delayBike);
     delayBike = $timeout(function() {
       $scope.postChanges('bikestands',$scope.userdata.bikestands?1:0);
-    }, 1000);   
+    }, 750);   
   };
 
   var delayKitchen;
@@ -74,7 +76,7 @@ angular.module('starter.controllers')
     $timeout.cancel(delayKitchen);
     delayKitchen = $timeout(function() {
       $scope.postChanges('seperatekitchen',$scope.userdata.seperatekitchen?1:0);
-    }, 1000);   
+    }, 750);   
   };
 
   var delayBath;
@@ -82,14 +84,14 @@ angular.module('starter.controllers')
     $timeout.cancel(delayBath);
     delayBath = $timeout(function() {
       $scope.postChanges('seperatebathroom',$scope.userdata.seperatebathroom?1:0);
-    }, 1000);   
+    }, 750);   
   };
   var delayFurn;
   $scope.changeFurniture = function(){
     $timeout.cancel(delayFurn);
     delayFurn = $timeout(function() {
       $scope.postChanges('furniture',$scope.userdata.furniture?1:0);
-    }, 1000);   
+    }, 750);   
   };
 
   var delaySize;
@@ -97,7 +99,7 @@ angular.module('starter.controllers')
     $timeout.cancel(delaySize);
     delaySize = $timeout(function() {
       $scope.postChanges('size',$scope.userdata.size);
-    }, 1000);   
+    }, 750);   
   };
 
   // post the change to db
@@ -105,6 +107,7 @@ angular.module('starter.controllers')
   {
         UserService.changeFilter(field,value,userdata).then(function(response){
           data = response.data;
+          console.log(data);
           $scope.errors= false;
           if(data['value'])
           {
@@ -150,6 +153,16 @@ angular.module('starter.controllers')
         $scope.userdata.distance = data['result']['filter']['distance'];
         $scope.userdata.startDate = new Date(data['result']['filter']['startDate']);
         $scope.userdata.endDate = new Date(data['result']['filter']['endDate']);
+        if(Date.parse(data['result']['filter']['startDate']))
+        {
+          $scope.startDate = new Date(Date.UTC($scope.userdata.startDate.getFullYear(),$scope.userdata.startDate.getMonth(),$scope.userdata.startDate.getDate()));
+          $scope.startDate = $scope.startDate.toISOString().substring(0, 10);
+        }
+        if(Date.parse(data['result']['filter']['endDate']))
+        {
+          $scope.endDate = new Date(Date.UTC($scope.userdata.endDate.getFullYear(),$scope.userdata.endDate.getMonth(),$scope.userdata.endDate.getDate()))
+          $scope.endDate = $scope.endDate .toISOString().substring(0, 10);
+        }
         $scope.userdata.bikestands = (data['result']['filter']['bikestands'] == 1) ? true : false;
         $scope.userdata.seperatekitchen = (data['result']['filter']['seperatekitchen'] == 1) ? true : false;
         $scope.userdata.seperatebathroom = (data['result']['filter']['seperatebathroom'] == 1) ? true : false;

@@ -55,11 +55,9 @@ angular.module('starter.controllers')
     });
   };
   function handelRegister(data){
-    console.log(data);
     if(data['email'] || data['password'])
     {
       $scope.errors = data;
-      console.log($scope.errors);
     }
     if(data['succes'])
     {
