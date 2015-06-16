@@ -36,9 +36,9 @@ class kotController extends Controller {
 
 	public function manageKot()
 	{
-		$kotenNew =  Kot::where('status','new')->orderBy('streatname','asc')->get();
-		$kotenAc =  Kot::where('status','accepted')->orderBy('streatname','asc')->get();
-		$kotenDe =  Kot::where('status','declined')->orderBy('streatname','asc')->get();
+		$kotenNew =  Kot::where('status','new')->orderBy('streatname','asc')->paginate(10);
+		$kotenAc =  Kot::where('status','accepted')->orderBy('streatname','asc')->paginate(10);
+		$kotenDe =  Kot::where('status','declined')->orderBy('streatname','asc')->paginate(10);
 		return view('kot.manage',['kotenNew' => $kotenNew,'kotenAc' => $kotenAc,'kotenDe' => $kotenDe]);
 	}
 

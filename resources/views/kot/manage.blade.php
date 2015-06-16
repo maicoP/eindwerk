@@ -30,7 +30,9 @@
 				  </tr>
 				  @endforeach
 				</table>
-
+				@if(!$kotenNew->isEmpty())
+					{!!$kotenNew->render()!!}
+				@endif	
 				<h1>Geaccepteerde kotten</h1>
 				<table class="table table-striped">
 				  <tr>
@@ -48,7 +50,9 @@
 				  </tr>
 				  @endforeach
 				</table>
-
+				@if(!$kotenAc->isEmpty())
+					{!!$kotenAc->render()!!}
+				@endif
 				<h1>Geweigerde kotten</h1>
 				<table class="table table-striped">
 				  <tr>
@@ -66,6 +70,9 @@
 				  </tr>
 				  @endforeach
 				</table>
+				@if(!$kotenDe->isEmpty())
+					{!!$kotenDe->render()!!}
+				@endif
 			</div><!--end content-->
 		</div><!--end row fluid-->
 	</div><!--end container fluid-->
