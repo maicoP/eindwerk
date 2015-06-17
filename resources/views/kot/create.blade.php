@@ -137,10 +137,10 @@
 							      <input type="checkbox" name='bikestands'> Fietsenstalling
 							    </label>
 							    <label class='col-md-3'>
-							      <input type="checkbox" name='seperatekitchen'> Aparte keuken
+							      <input type="checkbox" name='seperatekitchen'> Individuele keuken
 							    </label>
 							    <label class='col-md-3'>
-							      <input type="checkbox" name='seperatebathroom'> Aparte badkamer
+							      <input type="checkbox" name='seperatebathroom'> Individuele badkamer
 							    </label>
 							    <label class='col-md-3'>
 							      <input type="checkbox" name='furniture'> Bemeubeld

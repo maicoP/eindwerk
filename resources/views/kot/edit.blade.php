@@ -121,10 +121,10 @@
 							      <input type="checkbox" name='bikestands' {{($kot->bikestands ? 'checked' : '')}}> Fietsenstalling
 							    </label>
 							    <label class='col-md-3'>
-							      <input type="checkbox" name='seperatekitchen' {{($kot->seperatekitchen ?  'checked' : '')}}> Aparte keuken
+							      <input type="checkbox" name='seperatekitchen' {{($kot->seperatekitchen ?  'checked' : '')}}> Individuele keuken
 							    </label>
 							    <label class='col-md-3'>
-							      <input type="checkbox" name='seperatebathroom' {{($kot->seperatebathroom ?  'checked' : '')}}> Aparte badkamer
+							      <input type="checkbox" name='seperatebathroom' {{($kot->seperatebathroom ?  'checked' : '')}}> Individuele badkamer
 							    </label>
 							    <label class='col-md-3'>
 							      <input type="checkbox" name='furniture' {{($kot->furniture ?  'checked' : '')}}> Bemeubeld

@@ -11,7 +11,7 @@
 					</li>
 					<li><a href="#">Koten beheer</a></li>
 				</ul>
-				<h1>Nieuwe kotten</h1>
+				<h1>Nieuwe koten</h1>
 				<table class="table table-striped">
 				  <tr>
 				  	<th>link</th>
@@ -33,7 +33,7 @@
 				@if(!$kotenNew->isEmpty())
 					{!!$kotenNew->render()!!}
 				@endif	
-				<h1>Geaccepteerde kotten</h1>
+				<h1>Geaccepteerde koten</h1>
 				<table class="table table-striped">
 				  <tr>
 				  	<th>link</th>
@@ -53,7 +53,7 @@
 				@if(!$kotenAc->isEmpty())
 					{!!$kotenAc->render()!!}
 				@endif
-				<h1>Geweigerde kotten</h1>
+				<h1>Geweigerde koten</h1>
 				<table class="table table-striped">
 				  <tr>
 				  	<th>link</th>
